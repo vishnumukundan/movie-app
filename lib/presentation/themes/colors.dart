@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 const kColorWhite = Color(0xffffffff);
 const kColorBlack = Color(0xff000000);
 
+const kColorWhite50 = Color(0x50ffffff);
+
 const kColorPrimary = Color(0xff14181D);
 const kColorSecondary = Color(0x10FFFFFF);
 const kColorAccent = Color(0xffF83A43);

@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 
-const kFontFamily = 'Poppins';
+import '../themes/values.dart';
 
 ///
 /// default values
@@ -135,6 +135,25 @@ class Regular__text extends Text__widget {
     super.fontWeight = FontWeight.w400,
     super.fontFamily,
     super.color,
+    super.textAlign,
+    super.textOverFlow,
+    super.maxLines,
+  });
+}
+
+///
+/// body
+/// -----------------------------------------------------------------------------------------------
+
+class Body__text extends Text__widget {
+  const Body__text({
+    required super.text,
+    super.fontSize = kDefaultFontSize,
+    super.letterSpacing = 1,
+    super.height = 1.35,
+    super.fontWeight = FontWeight.w400,
+    super.fontFamily,
+    super.color = kColorWhite50,
     super.textAlign,
     super.textOverFlow,
     super.maxLines,

@@ -1,8 +1,67 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, camel_case_types
+// ignore_for_file: prefer_typing_uninitialized_variables, camel_case_types, unused_element
 
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentation/themes/colors.dart';
+import 'package:movie_app/presentation/themes/values.dart';
 
-import '../themes/button_config.dart';
+///
+////// Primary Button color
+const _kBtnPriColor = Colors.transparent;
+const _kBtnPriBorderColor = kColorPrimaryTint_3;
+const _kBtnPriTextColor = kColorPrimaryTint_3;
+
+///
+////// Secondary Button color
+const _kBtnSecColor = Colors.transparent;
+const _kBtnSecBorderColor = Colors.transparent;
+const _kBtnSecTextColor = kColorPrimaryTint_3;
+
+///
+////// Accent Button color
+const _kBtnAccColor = kColorAccent;
+const _kBtnAccBorderColor = Colors.transparent;
+const _kBtnAccTextColor = kColorWhite;
+
+///
+////// Button Large Config
+const double _kBtnLargeTextAndIconSpace = 8.0;
+const double _kBtnLargeTextSize = 16.0;
+const double _kBtnLargeIconSize = 24.0;
+const double _kBtnLargeHeight = 56.0;
+
+const double _kBtnLargeBasePadding = 16.0;
+const double _kBtnLargePadding = 16.0;
+
+const double _kBtnLargeCornerRadius = 8.0;
+const FontWeight _kBtnLargeFontWeight = FontWeight.w500;
+
+///
+////// Button Medium Config
+const double _kBtnMediumTextAndIconSpace = 8.0;
+const double _kBtnMediumTextSize = 16.0;
+const double _kBtnMediumIconSize = 24.0;
+const double _kBtnMediumHeight = 56.0;
+
+const double _kBtnMediumBasePadding = 28.0;
+const double _kBtnMediumPadding = 24.0;
+
+const double _kBtnMediumCornerRadius = 8.0;
+const FontWeight _kBtnMediumFontWeight = FontWeight.w400;
+
+///
+////// Button Small Config
+const double _kBtnSmallTextAndIconSpace = 8.0;
+const double _kBtnSmallTextSize = 16.0;
+const double _kBtnSmallIconSize = 24.0;
+const double _kBtnSmallHeight = 48.0;
+
+const double _kBtnSmallBasePadding = 24.0;
+const double _kBtnSmallPadding = 20.0;
+
+const double _kBtnSmallCornerRadius = 8.0;
+const FontWeight _kBtnSmallFontWeight = FontWeight.w400;
+
+//---------------------------------------------------------------------------------------
 
 ////////////////////////////////////////////////////////
 //////  Base Button Design
@@ -15,8 +74,8 @@ class ButtonStyle extends StatelessWidget {
     required this.backgroundColor,
     required this.paddingLeft,
     required this.paddingRight,
-    required this.leftIconVisibility,
-    required this.rightIconVisibility,
+    this.leftIconVisibility = false,
+    this.rightIconVisibility = false,
     this.leftIcon,
     this.rightIcon,
     required this.iconAndTextSpace,
@@ -26,21 +85,23 @@ class ButtonStyle extends StatelessWidget {
     required this.buttonHeight,
     required this.cornerRadius,
     required this.onTap,
+    this.borderColor,
   }) : super(key: key);
 
-  final text;
-  final onTap;
-  final textColor;
-  final backgroundColor;
-  final paddingLeft;
-  final paddingRight;
+  final String text;
+  final VoidCallback onTap;
+  final Color textColor;
+  final Color backgroundColor;
+  final Color? borderColor;
+  final double paddingLeft;
+  final double paddingRight;
   final bool leftIconVisibility;
   final bool rightIconVisibility;
   final IconData? leftIcon;
   final IconData? rightIcon;
   final double iconAndTextSpace;
   final double buttonHeight;
-  final iconSize;
+  final double iconSize;
   final double cornerRadius;
 
   // should remove when there is custom text style
@@ -59,43 +120,46 @@ class ButtonStyle extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: backgroundColor,
+          border: Border.all(color: borderColor ?? Colors.transparent),
           borderRadius: BorderRadius.circular(cornerRadius),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: <Widget>[
-                Visibility(
-                  visible: leftIconVisibility,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(leftIcon, size: iconSize, color: textColor),
-                      SizedBox(width: iconAndTextSpace),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Text(
-              text,
-              style: TextStyle(
-                fontFamily: fontFamily,
-                fontWeight: fontWeight,
-                fontSize: textSize,
-                color: textColor,
-              ),
-            ),
-            Visibility(
-              visible: rightIconVisibility,
-              child: Row(
+        child: Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
                 children: <Widget>[
-                  SizedBox(width: iconAndTextSpace),
-                  Icon(rightIcon, size: iconSize, color: textColor),
+                  Visibility(
+                    visible: leftIconVisibility,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(leftIcon, size: iconSize, color: textColor),
+                        SizedBox(width: iconAndTextSpace),
+                      ],
+                    ),
+                  )
                 ],
               ),
-            ),
-          ],
+              Text(
+                text,
+                style: TextStyle(
+                  fontFamily: kFontFamily,
+                  fontWeight: fontWeight,
+                  fontSize: textSize,
+                  color: textColor,
+                ),
+              ),
+              Visibility(
+                visible: rightIconVisibility,
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(width: iconAndTextSpace),
+                    Icon(rightIcon, size: iconSize, color: textColor),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -108,433 +172,54 @@ class ButtonStyle extends StatelessWidget {
 //////  Large Button Design
 ////////////////////////////////////////////////////////
 
-///
-//////  Primary Large Button
-///
-class Primary__Button__Large extends StatelessWidget {
-  const Primary__Button__Large({
-    Key? key,
-    required this.text,
-    this.leftIcon,
-    this.rightIcon,
-    required this.leftIconVisibility,
-    required this.rightIconVisibility,
-    required this.onTap,
-  }) : super(key: key);
-
-  final text;
-  final onTap;
-  final IconData? leftIcon;
-  final IconData? rightIcon;
-  final bool leftIconVisibility;
-  final bool rightIconVisibility;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonStyle(
-      text: text,
-      onTap: onTap,
-      textColor: kButtonPrimaryTextColor,
-      backgroundColor: kButtonPrimaryColor,
-      paddingLeft:
-          leftIconVisibility ? kButtonLargePadding : kButtonLargeBasePadding,
-      paddingRight:
-          rightIconVisibility ? kButtonLargePadding : kButtonLargeBasePadding,
-      leftIcon: leftIcon,
-      rightIcon: rightIcon,
-      leftIconVisibility: leftIconVisibility,
-      rightIconVisibility: rightIconVisibility,
-      //
-      fontWeight: kButtonLargeFontWeight,
-      iconAndTextSpace: kButtonLargeTextAndIconSpace,
-      textSize: kButtonLargeTextSize,
-      iconSize: kButtonLargeIconSize,
-      buttonHeight: kButtonLargeHeight,
-      cornerRadius: kButtonLargeCornerRadius,
-    );
-  }
+//  Primary Large Button
+class Primary_Large__button extends ButtonStyle {
+  Primary_Large__button({
+    required super.text,
+    required super.onTap,
+    //
+    super.textColor = _kBtnPriTextColor,
+    super.borderColor = _kBtnPriBorderColor,
+    //
+    super.backgroundColor = _kBtnPriColor,
+    super.paddingLeft = kDefaultPadding,
+    super.paddingRight = kDefaultPadding,
+    super.iconAndTextSpace = _kBtnLargeTextAndIconSpace,
+    super.textSize = _kBtnLargeTextSize,
+    super.fontWeight = _kBtnLargeFontWeight,
+    super.iconSize = _kBtnLargeIconSize,
+    super.buttonHeight = _kBtnLargeHeight,
+    super.cornerRadius = _kBtnLargeCornerRadius,
+    //
+    super.leftIcon,
+    super.rightIcon,
+    super.leftIconVisibility,
+    super.rightIconVisibility,
+  });
 }
 
-///
-//////  Secondary Large Button
-///
-class Secondary__Button__Large extends StatelessWidget {
-  const Secondary__Button__Large({
-    Key? key,
-    required this.text,
-    this.leftIcon,
-    this.rightIcon,
-    required this.leftIconVisibility,
-    required this.rightIconVisibility,
-    required this.onTap,
-  }) : super(key: key);
-
-  final text;
-  final onTap;
-  final IconData? leftIcon;
-  final IconData? rightIcon;
-  final bool leftIconVisibility;
-  final bool rightIconVisibility;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonStyle(
-      text: text,
-      onTap: onTap,
-      textColor: kButtonSecondaryTextColor,
-      backgroundColor: kButtonSecondaryColor,
-      paddingLeft:
-          leftIconVisibility ? kButtonLargePadding : kButtonLargeBasePadding,
-      paddingRight:
-          rightIconVisibility ? kButtonLargePadding : kButtonLargeBasePadding,
-      leftIcon: leftIcon,
-      rightIcon: rightIcon,
-      leftIconVisibility: leftIconVisibility,
-      rightIconVisibility: rightIconVisibility,
-      //
-      fontWeight: kButtonLargeFontWeight,
-      iconAndTextSpace: kButtonLargeTextAndIconSpace,
-      textSize: kButtonLargeTextSize,
-      iconSize: kButtonLargeIconSize,
-      buttonHeight: kButtonLargeHeight,
-      cornerRadius: kButtonLargeCornerRadius,
-    );
-  }
-}
-
-///
-//////  Accent Large Button
-///
-class Accent__Button__Large extends StatelessWidget {
-  const Accent__Button__Large({
-    Key? key,
-    required this.text,
-    this.leftIcon,
-    this.rightIcon,
-    required this.leftIconVisibility,
-    required this.rightIconVisibility,
-    required this.onTap,
-  }) : super(key: key);
-
-  final text;
-  final onTap;
-  final IconData? leftIcon;
-  final IconData? rightIcon;
-  final bool leftIconVisibility;
-  final bool rightIconVisibility;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonStyle(
-      text: text,
-      onTap: onTap,
-      textColor: kButtonAccentTextColor,
-      backgroundColor: kButtonAccentColor,
-      paddingLeft:
-          leftIconVisibility ? kButtonLargePadding : kButtonLargeBasePadding,
-      paddingRight:
-          rightIconVisibility ? kButtonLargePadding : kButtonLargeBasePadding,
-      leftIcon: leftIcon,
-      rightIcon: rightIcon,
-      leftIconVisibility: leftIconVisibility,
-      rightIconVisibility: rightIconVisibility,
-      //
-      fontWeight: kButtonLargeFontWeight,
-      iconAndTextSpace: kButtonLargeTextAndIconSpace,
-      textSize: kButtonLargeTextSize,
-      iconSize: kButtonLargeIconSize,
-      buttonHeight: kButtonLargeHeight,
-      cornerRadius: kButtonLargeCornerRadius,
-    );
-  }
-}
-
-////////////////////////////////////////////////////////
-//////  Medium Button Design
-////////////////////////////////////////////////////////
-
-///
-//////  Primary Medium Button
-///
-class Primary__Button__Medium extends StatelessWidget {
-  const Primary__Button__Medium({
-    Key? key,
-    required this.text,
-    this.leftIcon,
-    this.rightIcon,
-    required this.leftIconVisibility,
-    required this.rightIconVisibility,
-    required this.onTap,
-  }) : super(key: key);
-
-  final text;
-  final onTap;
-  final IconData? leftIcon;
-  final IconData? rightIcon;
-  final bool leftIconVisibility;
-  final bool rightIconVisibility;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonStyle(
-      text: text,
-      onTap: onTap,
-      textColor: kButtonPrimaryTextColor,
-      backgroundColor: kButtonPrimaryColor,
-      paddingLeft:
-          leftIconVisibility ? kButtonMediumPadding : kButtonMediumBasePadding,
-      paddingRight:
-          rightIconVisibility ? kButtonMediumPadding : kButtonMediumBasePadding,
-      leftIcon: leftIcon,
-      rightIcon: rightIcon,
-      leftIconVisibility: leftIconVisibility,
-      rightIconVisibility: rightIconVisibility,
-      //
-      fontWeight: kButtonMediumFontWeight,
-      iconAndTextSpace: kButtonMediumTextAndIconSpace,
-      textSize: kButtonMediumTextSize,
-      iconSize: kButtonMediumIconSize,
-      buttonHeight: kButtonMediumHeight,
-      cornerRadius: kButtonMediumCornerRadius,
-    );
-  }
-}
-
-///
-//////  Secondary Medium Button
-///
-class Secondary__Button__Medium extends StatelessWidget {
-  const Secondary__Button__Medium({
-    Key? key,
-    required this.text,
-    this.leftIcon,
-    this.rightIcon,
-    required this.leftIconVisibility,
-    required this.rightIconVisibility,
-    required this.onTap,
-  }) : super(key: key);
-
-  final text;
-  final onTap;
-  final IconData? leftIcon;
-  final IconData? rightIcon;
-  final bool leftIconVisibility;
-  final bool rightIconVisibility;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonStyle(
-      text: text,
-      onTap: onTap,
-      textColor: kButtonSecondaryTextColor,
-      backgroundColor: kButtonSecondaryColor,
-      paddingLeft:
-          leftIconVisibility ? kButtonMediumPadding : kButtonMediumBasePadding,
-      paddingRight:
-          rightIconVisibility ? kButtonMediumPadding : kButtonMediumBasePadding,
-      leftIcon: leftIcon,
-      rightIcon: rightIcon,
-      leftIconVisibility: leftIconVisibility,
-      rightIconVisibility: rightIconVisibility,
-      //
-      fontWeight: kButtonMediumFontWeight,
-      iconAndTextSpace: kButtonMediumTextAndIconSpace,
-      textSize: kButtonMediumTextSize,
-      iconSize: kButtonMediumIconSize,
-      buttonHeight: kButtonMediumHeight,
-      cornerRadius: kButtonMediumCornerRadius,
-    );
-  }
-}
-
-///
-//////  Accent Medium Button
-///
-class Accent__Button__Medium extends StatelessWidget {
-  const Accent__Button__Medium({
-    Key? key,
-    required this.text,
-    this.leftIcon,
-    this.rightIcon,
-    required this.leftIconVisibility,
-    required this.rightIconVisibility,
-    required this.onTap,
-  }) : super(key: key);
-
-  final text;
-  final onTap;
-  final IconData? leftIcon;
-  final IconData? rightIcon;
-  final bool leftIconVisibility;
-  final bool rightIconVisibility;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonStyle(
-      text: text,
-      onTap: onTap,
-      textColor: kButtonAccentTextColor,
-      backgroundColor: kButtonAccentColor,
-      paddingLeft:
-          leftIconVisibility ? kButtonMediumPadding : kButtonMediumBasePadding,
-      paddingRight:
-          rightIconVisibility ? kButtonMediumPadding : kButtonMediumBasePadding,
-      leftIcon: leftIcon,
-      rightIcon: rightIcon,
-      leftIconVisibility: leftIconVisibility,
-      rightIconVisibility: rightIconVisibility,
-      //
-      fontWeight: kButtonMediumFontWeight,
-      iconAndTextSpace: kButtonMediumTextAndIconSpace,
-      textSize: kButtonMediumTextSize,
-      iconSize: kButtonMediumIconSize,
-      buttonHeight: kButtonMediumHeight,
-      cornerRadius: kButtonMediumCornerRadius,
-    );
-  }
-}
-
-////////////////////////////////////////////////////////
-//////  Small Button Design
-////////////////////////////////////////////////////////
-
-///
-//////  Primary Small Button
-///
-class Primary__Button__Small extends StatelessWidget {
-  const Primary__Button__Small({
-    Key? key,
-    required this.text,
-    this.leftIcon,
-    this.rightIcon,
-    required this.leftIconVisibility,
-    required this.rightIconVisibility,
-    required this.onTap,
-  }) : super(key: key);
-
-  final text;
-  final onTap;
-  final IconData? leftIcon;
-  final IconData? rightIcon;
-  final bool leftIconVisibility;
-  final bool rightIconVisibility;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonStyle(
-      text: text,
-      onTap: onTap,
-      textColor: kButtonPrimaryTextColor,
-      backgroundColor: kButtonPrimaryColor,
-      paddingLeft:
-          leftIconVisibility ? kButtonSmallPadding : kButtonSmallBasePadding,
-      paddingRight:
-          rightIconVisibility ? kButtonSmallPadding : kButtonSmallBasePadding,
-      leftIcon: leftIcon,
-      rightIcon: rightIcon,
-      leftIconVisibility: leftIconVisibility,
-      rightIconVisibility: rightIconVisibility,
-      //
-      fontWeight: kButtonSmallFontWeight,
-      iconAndTextSpace: kButtonSmallTextAndIconSpace,
-      textSize: kButtonSmallTextSize,
-      iconSize: kButtonSmallIconSize,
-      buttonHeight: kButtonSmallHeight,
-      cornerRadius: kButtonSmallCornerRadius,
-    );
-  }
-}
-
-///
-//////  Secondary Small Button
-///
-class Secondary__Button__Small extends StatelessWidget {
-  const Secondary__Button__Small({
-    Key? key,
-    required this.text,
-    this.leftIcon,
-    this.rightIcon,
-    required this.leftIconVisibility,
-    required this.rightIconVisibility,
-    required this.onTap,
-  }) : super(key: key);
-
-  final text;
-  final onTap;
-  final IconData? leftIcon;
-  final IconData? rightIcon;
-  final bool leftIconVisibility;
-  final bool rightIconVisibility;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonStyle(
-      text: text,
-      onTap: onTap,
-      textColor: kButtonSecondaryTextColor,
-      backgroundColor: kButtonSecondaryColor,
-      paddingLeft:
-          leftIconVisibility ? kButtonSmallPadding : kButtonSmallBasePadding,
-      paddingRight:
-          rightIconVisibility ? kButtonSmallPadding : kButtonSmallBasePadding,
-      leftIcon: leftIcon,
-      rightIcon: rightIcon,
-      leftIconVisibility: leftIconVisibility,
-      rightIconVisibility: rightIconVisibility,
-      //
-      fontWeight: kButtonSmallFontWeight,
-      iconAndTextSpace: kButtonSmallTextAndIconSpace,
-      textSize: kButtonSmallTextSize,
-      iconSize: kButtonSmallIconSize,
-      buttonHeight: kButtonSmallHeight,
-      cornerRadius: kButtonSmallCornerRadius,
-    );
-  }
-}
-
-///
-//////  Accent Small Button
-///
-class Accent__Button__Small extends StatelessWidget {
-  const Accent__Button__Small({
-    Key? key,
-    required this.text,
-    this.leftIcon,
-    this.rightIcon,
-    required this.leftIconVisibility,
-    required this.rightIconVisibility,
-    required this.onTap,
-  }) : super(key: key);
-
-  final text;
-  final onTap;
-  final IconData? leftIcon;
-  final IconData? rightIcon;
-  final bool leftIconVisibility;
-  final bool rightIconVisibility;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonStyle(
-      text: text,
-      onTap: onTap,
-      textColor: kButtonAccentTextColor,
-      backgroundColor: kButtonAccentColor,
-      paddingLeft:
-          leftIconVisibility ? kButtonSmallPadding : kButtonSmallBasePadding,
-      paddingRight:
-          rightIconVisibility ? kButtonSmallPadding : kButtonSmallBasePadding,
-      leftIcon: leftIcon,
-      rightIcon: rightIcon,
-      leftIconVisibility: leftIconVisibility,
-      rightIconVisibility: rightIconVisibility,
-      //
-      fontWeight: kButtonSmallFontWeight,
-      iconAndTextSpace: kButtonSmallTextAndIconSpace,
-      textSize: kButtonSmallTextSize,
-      iconSize: kButtonSmallIconSize,
-      buttonHeight: kButtonSmallHeight,
-      cornerRadius: kButtonSmallCornerRadius,
-    );
-  }
+//  Accent Large Button
+class Accent_Large__button extends ButtonStyle {
+  Accent_Large__button({
+    required super.text,
+    required super.onTap,
+    //
+    super.textColor = _kBtnAccTextColor,
+    super.borderColor = _kBtnAccBorderColor,
+    super.backgroundColor = _kBtnAccColor,
+    //
+    super.paddingLeft = kDefaultPadding,
+    super.paddingRight = kDefaultPadding,
+    super.iconAndTextSpace = _kBtnLargeTextAndIconSpace,
+    super.textSize = _kBtnLargeTextSize,
+    super.fontWeight = _kBtnLargeFontWeight,
+    super.iconSize = _kBtnLargeIconSize,
+    super.buttonHeight = _kBtnLargeHeight,
+    super.cornerRadius = _kBtnLargeCornerRadius,
+    //
+    super.leftIcon,
+    super.rightIcon,
+    super.leftIconVisibility,
+    super.rightIconVisibility,
+  });
 }
