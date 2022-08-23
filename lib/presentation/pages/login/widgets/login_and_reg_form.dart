@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/presentation/components/button.dart';
-import 'package:movie_app/presentation/pages/home/view/home_page.dart';
+import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 
 import '../../../../gen/assets.gen.dart';
 import '../../../themes/values.dart';
@@ -53,7 +53,7 @@ class _LoginAndRegForm__widgetState extends State<LoginAndRegForm__widget> {
                 Expanded(
                   child: Accent_Large__button(
                     text: 'SignUp',
-                    onTap: () => PageNav.pushAndReplace(context, HomePage()),
+                    onTap: () => PageNav.pushAndReplace(context, MainPage()),
                   ),
                 ),
               ],
@@ -85,7 +85,7 @@ class _LoginAndRegForm__widgetState extends State<LoginAndRegForm__widget> {
                 Expanded(
                   child: Accent_Large__button(
                     text: 'Login',
-                    onTap: () => PageNav.pushAndReplace(context, HomePage()),
+                    onTap: () => PageNav.pushAndReplace(context, MainPage()),
                   ),
                 ),
               ],

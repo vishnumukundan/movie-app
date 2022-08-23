@@ -25,14 +25,20 @@ class Background extends StatelessWidget {
               image: AssetImage(Assets.images.bgImage.path),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                  kColorPrimary.withOpacity(0.5), BlendMode.multiply),
+                kColorPrimary.withOpacity(0.5),
+                BlendMode.multiply,
+              ),
             ),
           ),
-          child: kDefaultBlur,
+          child: BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaX: kDefaultBlur,
+              sigmaY: kDefaultBlur,
+            ),
+            child: Container(),
+          ),
         ),
-        SafeArea(
-          child: child,
-        ),
+        child,
       ],
     );
   }

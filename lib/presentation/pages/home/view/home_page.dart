@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 
 import 'package:movie_app/gen/assets.gen.dart';
@@ -11,21 +13,20 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenConfig().init(context);
 
-    return Scaffold(
-      body: Background(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          AspectRatio(
+            aspectRatio: 3 / 4,
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
                     image: AssetImage(Assets.images.bgImage.path),
-                  ),
-                ),
-              )
-            ],
+                    fit: BoxFit.cover),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

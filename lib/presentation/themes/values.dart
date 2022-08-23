@@ -11,10 +11,7 @@ const kFontFamily = 'Poppins';
 const double kDefaultPadding = 16;
 
 // blur
-final kDefaultBlur = BackdropFilter(
-  filter: ImageFilter.blur(sigmaX: 50.0, sigmaY: 50.0),
-  child: Container(),
-);
+const double kDefaultBlur = 50.0;
 
 // boxshadow
 final kDefaultBoxShadow = [
