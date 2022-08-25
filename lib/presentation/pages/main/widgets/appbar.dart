@@ -13,8 +13,8 @@ class Appbar__widget extends StatelessWidget {
     return BlurredBackground__widget(
       child: Padding(
         padding: const EdgeInsets.only(
-          top: kDefaultPadding * 3,
-          bottom: kDefaultPadding,
+          top: kDefaultPadding * 2.5,
+          bottom: kDefaultPadding / 1.5,
           left: kDefaultPadding * 2,
           right: kDefaultPadding * 2,
         ),

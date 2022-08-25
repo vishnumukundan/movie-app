@@ -1,11 +1,15 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/presentation/bloc/home/image_slider/image_slider_cubit.dart';
 
-import 'package:movie_app/gen/assets.gen.dart';
 import '../../../components/text.dart';
 import '../../../components/background.dart';
 import '../../../themes/screen_size_config.dart';
+import '../../../themes/values.dart';
+import '../../main/widgets/appbar.dart';
+import '../widgets/image_slider.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -13,19 +17,22 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenConfig().init(context);
 
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          AspectRatio(
-            aspectRatio: 3 / 4,
-            child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(Assets.images.bgImage.path),
-                    fit: BoxFit.cover),
-              ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ImageSliderCubit(),
+        )
+      ],
+      child: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                ImageSlider__widget(),
+              ],
             ),
           ),
+          const Appbar__widget(),
         ],
       ),
     );

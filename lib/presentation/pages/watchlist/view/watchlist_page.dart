@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentation/components/background.dart';
 
 class WatchlistPage extends StatelessWidget {
   const WatchlistPage({Key? key}) : super(key: key);
@@ -6,7 +7,7 @@ class WatchlistPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(child: const Text('WatchlistPage')),
+        child: Background(child: Center(child: const Text('WatchlistPage'))),
       ),
     );
   }
