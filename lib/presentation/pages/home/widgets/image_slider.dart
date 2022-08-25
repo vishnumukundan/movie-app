@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/gen/assets.gen.dart';
@@ -52,38 +53,29 @@ class ImageSlider__widget extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        AspectRatio(
-          aspectRatio: 3 / 4,
-          child: GlowingOverscrollIndicator(
-            color: kColorWhite,
-            axisDirection: AxisDirection.right,
-            child: PageView.builder(
-                allowImplicitScrolling: true,
-                controller: _pageController,
-                itemCount: _sliderData.length,
-                onPageChanged: (value) {
-                  context.read<ImageSliderCubit>().setIndex(value);
-                  _pageController.animateToPage(
-                    value,
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.linear,
-                  );
-                },
-                itemBuilder: (context, index) =>
-                    BlocBuilder<ImageSliderCubit, ImageSliderState>(
-                      builder: (context, state) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image:
-                                  NetworkImage(_sliderData[index]["image_url"]),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        );
-                      },
-                    )),
+        CarouselSlider.builder(
+          itemCount: _sliderData.length,
+          options: CarouselOptions(
+            aspectRatio: 3 / 4,
+            autoPlay: true,
+            initialPage: 0,
+            enableInfiniteScroll: true,
+            viewportFraction: 1.0,
+            onPageChanged: (index, reason) {
+              context.read<ImageSliderCubit>().setIndex(index);
+            },
           ),
+          itemBuilder: (context, index, realIndex) {
+            return Container(
+              width: ScreenConfig.screenWidth,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(_sliderData[index]["image_url"]),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          },
         ),
         Positioned(
           bottom: -150,
