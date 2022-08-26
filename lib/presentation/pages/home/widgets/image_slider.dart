@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/bloc/home/image_slider/image_slider_cubit.dart';
 import 'package:movie_app/presentation/components/icon_button.dart';
@@ -13,33 +14,6 @@ import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 import '../../../themes/values.dart';
-
-List _sliderData = [
-  {
-    "id": 1,
-    "image_url":
-        "https://image.tmdb.org/t/p/w500/hJfI6AGrmr4uSHRccfJuSsapvOb.jpg",
-    "title": "She-Hulk: Attorney at Law"
-  },
-  {
-    "id": 2,
-    "image_url":
-        "https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
-    "title": "Stranger Things"
-  },
-  {
-    "id": 3,
-    "image_url":
-        "https://image.tmdb.org/t/p/w500/clAMlA3DcwKMJIYeAFGGN0vyJQp.jpg",
-    "title": "Purple Hearts"
-  },
-  {
-    "id": 4,
-    "image_url":
-        "https://image.tmdb.org/t/p/w500/r7XifzvtezNt31ypvsmb6Oqxw49.jpg",
-    "title": "DC League of Super-Pets"
-  },
-];
 
 PageController _pageController = PageController(initialPage: 0);
 
@@ -54,7 +28,7 @@ class ImageSlider__widget extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         CarouselSlider.builder(
-          itemCount: _sliderData.length,
+          itemCount: sliderDummyData.length,
           options: CarouselOptions(
             aspectRatio: 3 / 4,
             autoPlay: true,
@@ -70,7 +44,7 @@ class ImageSlider__widget extends StatelessWidget {
               width: ScreenConfig.screenWidth,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(_sliderData[index]["image_url"]),
+                  image: NetworkImage(sliderDummyData[index]["image_url"]),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -100,7 +74,7 @@ class ImageSlider__widget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Bold__text(
-                    text: '${_sliderData[_currentIndex]["title"]}',
+                    text: '${sliderDummyData[_currentIndex]["title"]}',
                     fontSize: 24.0,
                     maxLines: 2,
                     textOverFlow: TextOverflow.ellipsis,
@@ -113,7 +87,7 @@ class ImageSlider__widget extends StatelessWidget {
                   const SizedBox(height: kDefaultPadding * 2),
                   Row(
                     children: List.generate(
-                      _sliderData.length,
+                      sliderDummyData.length,
                       (int index) {
                         if (index == _currentIndex) {
                           return const SingleIndicator(isActive: true);

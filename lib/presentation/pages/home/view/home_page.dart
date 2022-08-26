@@ -1,8 +1,17 @@
 // ignore_for_file: unused_import
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/services/sort_list_by.dart';
+import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
+import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/presentation/bloc/home/image_slider/image_slider_cubit.dart';
+import 'package:movie_app/presentation/components/movie_list_scroll.dart';
+import 'package:movie_app/presentation/pages/home/widgets/genres_scroll.dart';
+import 'package:movie_app/presentation/pages/home/widgets/upcoming_movies/upcoming_stack.dart';
+import 'package:movie_app/presentation/themes/colors.dart';
 
 import '../../../components/text.dart';
 import '../../../components/background.dart';
@@ -25,11 +34,25 @@ class HomePage extends StatelessWidget {
       ],
       child: Stack(
         children: [
-          SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                ImageSlider__widget(),
-              ],
+          ScrollConfiguration(
+            behavior: CustomScroll(),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 120),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ImageSlider__widget(),
+                  const SizedBox(height: 92.0),
+                  const GenresScroll__widget(),
+                  MovieListScroll__widget(
+                    title: 'Popular Movies',
+                    dataList: moviePosterDummyData,
+                  ),
+                  const SizedBox(height: kDefaultPadding * 2),
+                  const UpcomingStack__widget()
+                ],
+              ),
             ),
           ),
           const Appbar__widget(),

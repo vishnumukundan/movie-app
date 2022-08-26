@@ -27,6 +27,7 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenConfig().init(context);
     return BlocProvider(
       create: (context) => BottomNavCubit(),
       child: Scaffold(

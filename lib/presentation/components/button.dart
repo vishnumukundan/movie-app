@@ -46,20 +46,20 @@ const double _kBtnMediumBasePadding = 28.0;
 const double _kBtnMediumPadding = 24.0;
 
 const double _kBtnMediumCornerRadius = 8.0;
-const FontWeight _kBtnMediumFontWeight = FontWeight.w400;
+const FontWeight _kBtnMediumFontWeight = FontWeight.w500;
 
 ///
 ////// Button Small Config
 const double _kBtnSmallTextAndIconSpace = 8.0;
-const double _kBtnSmallTextSize = 16.0;
+const double _kBtnSmallTextSize = 14.0;
 const double _kBtnSmallIconSize = 24.0;
-const double _kBtnSmallHeight = 48.0;
+const double _kBtnSmallHeight = 30;
 
-const double _kBtnSmallBasePadding = 24.0;
-const double _kBtnSmallPadding = 20.0;
+const double _kBtnSmallBasePadding = 12.0;
+const double _kBtnSmallPadding = 12.0;
 
 const double _kBtnSmallCornerRadius = 8.0;
-const FontWeight _kBtnSmallFontWeight = FontWeight.w400;
+const FontWeight _kBtnSmallFontWeight = FontWeight.w500;
 
 //---------------------------------------------------------------------------------------
 
@@ -190,6 +190,32 @@ class Primary_Large__button extends ButtonStyle {
     super.iconSize = _kBtnLargeIconSize,
     super.buttonHeight = _kBtnLargeHeight,
     super.cornerRadius = _kBtnLargeCornerRadius,
+    //
+    super.leftIcon,
+    super.rightIcon,
+    super.leftIconVisibility,
+    super.rightIconVisibility,
+  });
+}
+
+//  Primary Small Button
+class Primary_Small__button extends ButtonStyle {
+  Primary_Small__button({
+    required super.text,
+    required super.onTap,
+    //
+    super.textColor = _kBtnPriTextColor,
+    super.borderColor = _kBtnPriBorderColor,
+    //
+    super.backgroundColor = _kBtnPriColor,
+    super.paddingLeft = kDefaultPadding,
+    super.paddingRight = kDefaultPadding,
+    super.iconAndTextSpace = _kBtnSmallTextAndIconSpace,
+    super.textSize = _kBtnSmallTextSize,
+    super.fontWeight = _kBtnSmallFontWeight,
+    super.iconSize = _kBtnSmallIconSize,
+    super.buttonHeight = _kBtnSmallHeight,
+    super.cornerRadius = _kBtnSmallCornerRadius,
     //
     super.leftIcon,
     super.rightIcon,
