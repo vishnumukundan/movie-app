@@ -55,8 +55,8 @@ const double _kBtnSmallTextSize = 14.0;
 const double _kBtnSmallIconSize = 24.0;
 const double _kBtnSmallHeight = 30;
 
-const double _kBtnSmallBasePadding = 12.0;
-const double _kBtnSmallPadding = 12.0;
+const double _kBtnSmallBasePadding = 8.0;
+const double _kBtnSmallPadding = 8.0;
 
 const double _kBtnSmallCornerRadius = 8.0;
 const FontWeight _kBtnSmallFontWeight = FontWeight.w500;
@@ -242,6 +242,32 @@ class Accent_Large__button extends ButtonStyle {
     super.iconSize = _kBtnLargeIconSize,
     super.buttonHeight = _kBtnLargeHeight,
     super.cornerRadius = _kBtnLargeCornerRadius,
+    //
+    super.leftIcon,
+    super.rightIcon,
+    super.leftIconVisibility,
+    super.rightIconVisibility,
+  });
+}
+
+//  Accent Small Button
+class Accent_Small__button extends ButtonStyle {
+  Accent_Small__button({
+    required super.text,
+    required super.onTap,
+    //
+    super.textColor = _kBtnAccTextColor,
+    super.borderColor = _kBtnAccBorderColor,
+    //
+    super.backgroundColor = _kBtnAccColor,
+    super.paddingLeft = kDefaultPadding,
+    super.paddingRight = kDefaultPadding,
+    super.iconAndTextSpace = _kBtnSmallTextAndIconSpace,
+    super.textSize = _kBtnSmallTextSize,
+    super.fontWeight = _kBtnSmallFontWeight,
+    super.iconSize = _kBtnSmallIconSize,
+    super.buttonHeight = _kBtnSmallHeight,
+    super.cornerRadius = _kBtnSmallCornerRadius,
     //
     super.leftIcon,
     super.rightIcon,

@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
           ScrollConfiguration(
             behavior: CustomScroll(),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.only(bottom: 120),
+              padding: const EdgeInsets.only(bottom: 100),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,11 +46,23 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 92.0),
                   const GenresScroll__widget(),
                   MovieListScroll__widget(
-                    title: 'Popular Movies',
-                    dataList: moviePosterDummyData,
-                  ),
+                      title: 'Popular Movies', dataList: moviePosterDummyData),
                   const SizedBox(height: kDefaultPadding * 2),
-                  const UpcomingStack__widget()
+                  const UpcomingStack__widget(),
+                  MovieListScroll__widget(
+                    title: 'Trending ',
+                    dataList: moviePosterDummyData,
+                    buttonVisibility: true,
+                  ),
+                  MovieListScroll__widget(
+                      title: 'Top 10 Action Movies',
+                      dataList: moviePosterDummyData),
+                  MovieListScroll__widget(
+                      title: 'Top 10 Romantic Movies',
+                      dataList: moviePosterDummyData),
+                  MovieListScroll__widget(
+                      title: 'Top 10 Drama Movies',
+                      dataList: moviePosterDummyData),
                 ],
               ),
             ),
