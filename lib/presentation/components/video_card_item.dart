@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/gen/assets.gen.dart';
+import 'package:movie_app/presentation/components/icon_button.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 
@@ -22,10 +24,29 @@ class VideoCardItem__widget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            height: 150,
-            width: 250,
-            color: kColorWhite50,
+          Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              Container(
+                height: 150,
+                width: 250,
+                decoration: BoxDecoration(
+                  color: kColorPrimary.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(8),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        "https://image.tmdb.org/t/p/w500${dataList[index]["backdrop_path"]}"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Primary_Large__IconButton(
+                icon: Assets.icons.play,
+                borderRadius: 60.0,
+                bgColor: kColorPrimary.withOpacity(0.6),
+                onTap: () {},
+              )
+            ],
           ),
           const SizedBox(height: kDefaultPadding),
           Medium__text(

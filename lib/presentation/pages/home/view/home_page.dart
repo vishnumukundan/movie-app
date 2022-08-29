@@ -59,7 +59,9 @@ class HomePage extends StatelessWidget {
                     dataList: moviePosterDummyData,
                     buttonVisibility: true,
                   ),
+                  const SizedBox(height: kDefaultPadding),
                   const LatestTrailers__widget(),
+                  const SizedBox(height: kDefaultPadding),
                   MovieListScroll__widget(
                       title: 'Top 10 Action Movies',
                       dataList: moviePosterDummyData),
@@ -69,21 +71,6 @@ class HomePage extends StatelessWidget {
                   MovieListScroll__widget(
                       title: 'Top 10 Drama Movies',
                       dataList: moviePosterDummyData),
-                  CustomWidgetBuilder(
-                    spacing: 16.0,
-                    itemCount: 3,
-                    scrollDirection: Axis.horizontal,
-                    builder: (context, index) {
-                      return Container(
-                        height: 150,
-                        width: 250,
-                        color: kColorWhite50,
-                        child: Center(
-                          child: Bold__text(text: '$index', fontSize: 16.0),
-                        ),
-                      );
-                    },
-                  ),
                 ],
               ),
             ),

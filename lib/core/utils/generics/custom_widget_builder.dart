@@ -13,15 +13,17 @@ class CustomWidgetBuilder extends StatelessWidget {
     this.clipBehavior = Clip.hardEdge,
     this.itemCount = 1,
     required this.builder,
-    this.spacing = 8.0,
+    this.contentSpacing = 8.0,
+    this.padding,
   }) : super(key: key);
 
   final Axis scrollDirection;
-  final double spacing;
+  final double contentSpacing;
   final ScrollController? controller;
   final int? itemCount;
   final Clip clipBehavior;
   IndexedWidgetBuilder builder;
+  final EdgeInsets? padding;
 
   final items = <Widget>[];
   late Widget finalWidget;
@@ -33,7 +35,7 @@ class CustomWidgetBuilder extends StatelessWidget {
         items.add(builder(context, i));
         if (i < itemCount! - 1) {
           for (int j = 0; j < (itemCount! - 1); j++) {
-            items.add(SizedBox.square(dimension: spacing));
+            items.add(SizedBox.square(dimension: contentSpacing));
             break;
           }
         }
@@ -41,6 +43,7 @@ class CustomWidgetBuilder extends StatelessWidget {
 
       finalWidget = SingleChildScrollView(
         scrollDirection: scrollDirection,
+        padding: padding,
         controller: controller,
         clipBehavior: clipBehavior,
         child: getDirection(scrollDirection, items),

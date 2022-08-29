@@ -11,28 +11,26 @@ class RatingIndicator__widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ClipOval(
-        child: Container(
-          color: kColorPrimary,
-          height: 50,
-          width: 50,
-          child: Stack(
-            children: [
-              Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: kColorWhite50,
-                  color: getColor(ratingValue),
-                  strokeWidth: 3,
-                  value: ratingValue / 10,
-                ),
+    return ClipOval(
+      child: Container(
+        color: kColorPrimary,
+        height: 50,
+        width: 50,
+        child: Stack(
+          children: [
+            Center(
+              child: CircularProgressIndicator(
+                backgroundColor: kColorWhite50,
+                color: getColor(ratingValue),
+                strokeWidth: 3,
+                value: ratingValue / 10,
               ),
-              Center(
-                child: SemiBold__text(
-                    text: ratingValue.toString(), fontSize: 16.0),
-              )
-            ],
-          ),
+            ),
+            Center(
+              child:
+                  SemiBold__text(text: ratingValue.toString(), fontSize: 16.0),
+            )
+          ],
         ),
       ),
     );

@@ -15,6 +15,10 @@ class LatestTrailers__widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.only(
+        top: kDefaultPadding * 2,
+        bottom: kDefaultPadding,
+      ),
       width: ScreenConfig.screenWidth,
       decoration: const BoxDecoration(
         color: kColorSecondary,
@@ -23,29 +27,21 @@ class LatestTrailers__widget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const SizedBox(height: kDefaultPadding * 2),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
             child: Medium__text(text: 'Latest Trailers', fontSize: 16.0),
           ),
-          SizedBox(
-            height: 222,
-            width: ScreenConfig.screenWidth,
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              itemCount: 3,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: ((context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child:
-                      VideoCardItem__widget(dataList: _dataList, index: index),
-                );
-              }),
+          CustomWidgetBuilder(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(
+              vertical: kDefaultPadding,
+              horizontal: kDefaultPadding * 2,
             ),
-          ),
-          const SizedBox(height: kDefaultPadding),
+            itemCount: 10,
+            contentSpacing: kDefaultPadding,
+            builder: (context, index) =>
+                VideoCardItem__widget(dataList: _dataList, index: index),
+          )
         ],
       ),
     );
