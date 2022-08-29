@@ -235,3 +235,106 @@ List upcomingMoviesDummyData = [
     "poster_path": "/qHcn3PbjVHxBweDZxWpYH3JfugS.jpg"
   }
 ];
+
+List latestTrailersDummyData = [
+  {
+    "id": 610150,
+    "backdrop_path": "/ugS5FVfCI3RV0ZwZtBV3HAV75OX.jpg",
+    "title": "Dragon Ball Super: Super Hero"
+  },
+  {
+    "id": 756999,
+    "backdrop_path": "/AfvIjhDu9p64jKcmohS4hsPG95Q.jpg",
+    "title": "The Black Phone"
+  },
+  {
+    "id": 539681,
+    "backdrop_path": "/xfNHRI2f5kHGvogxLd0C5sB90L7.jpg",
+    "title": "DC League of Super-Pets"
+  },
+  {
+    "id": 744276,
+    "backdrop_path": "/sS4MadD7pKMt251vKxdJo2YrkYP.jpg",
+    "title": "After Ever Happy"
+  },
+  {
+    "id": 760161,
+    "backdrop_path": "/5GA3vV1aWWHTSDO5eno8V5zDo8r.jpg",
+    "title": "Orphan: First Kill"
+  },
+  {
+    "id": 634649,
+    "backdrop_path": "/aYBSKWOf8g2oD1ZGfeMQvMRLe9E.jpg",
+    "title": "Spider-Man: No Way Home"
+  },
+  {
+    "id": 961484,
+    "backdrop_path": "/ftGzl2GCyko61Qp161bQElN2Uzd.jpg",
+    "title": "Last Seen Alive"
+  },
+  {
+    "id": 619803,
+    "backdrop_path": "/kpM7wX8K66bGZkYvfHXIrnXvDRS.jpg",
+    "title": "The Roundup"
+  },
+  {
+    "id": 676701,
+    "backdrop_path": "/piEEg5kDQyxK05V4Am8sVxFe267.jpg",
+    "title": "Tad the Lost Explorer and the Curse of the Mummy"
+  },
+  {
+    "id": 676705,
+    "backdrop_path": "/mDvx0cafHm1Z0R295wMxzpVTGf9.jpg",
+    "title": "Pil's Adventures"
+  },
+  {
+    "id": 985939,
+    "backdrop_path": "/1DBDwevWS8OhiT3wqqlW7KGPd6m.jpg",
+    "title": "Fall"
+  },
+  {
+    "id": 698508,
+    "backdrop_path": "/lD8dFIk9wDEvOwZw0RB47e346io.jpg",
+    "title": "Redeeming Love"
+  },
+  {
+    "id": 766907,
+    "backdrop_path": "/vsN9Lpi3HQJHQeHx8GzN6qfOYqk.jpg",
+    "title": "American Siege"
+  },
+  {
+    "id": 936074,
+    "backdrop_path": "/7IW5xt241RUAufYiFBoAPx5n52V.jpg",
+    "title": "Tenor"
+  },
+  {
+    "id": 830788,
+    "backdrop_path": "/99CeVSYiZcdqmVXi4S9U4tLuwg8.jpg",
+    "title": "The Invitation"
+  },
+  {
+    "id": 366672,
+    "backdrop_path": "/92PJmMopfy64VYjd0HvIQaHGZX0.jpg",
+    "title": "Paws of Fury: The Legend of Hank"
+  },
+  {
+    "id": 743439,
+    "backdrop_path": "/vwpxy4kmQyW5aBJ3uxhQM6koU6H.jpg",
+    "title": "PAW Patrol: Jet To The Rescue"
+  },
+  {
+    "id": 763788,
+    "backdrop_path": "/mo57hzhW3BcZL1f7MNteWKHsmlN.jpg",
+    "title": "Dangerous"
+  },
+  {
+    "id": 717728,
+    "backdrop_path": "/zEMVGHpkxQ1GIgD6rATaYz6a7dk.jpg",
+    "title": "Jeepers Creepers: Reborn"
+  },
+  {
+    "id": 601796,
+    "backdrop_path": "/ymkbn5pkj5wGcNr5IoKMdBtB55V.jpg",
+    "title": "Alienoid"
+  }
+];
