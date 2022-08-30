@@ -10,7 +10,7 @@ class GenresScroll__widget extends StatelessWidget {
   const GenresScroll__widget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return CustomWidgetBuilder(
+    return CustomListViewBuilder(
       scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
       itemCount: 5,

@@ -1,12 +1,12 @@
-import 'dart:developer';
+// ignore_for_file: must_be_immutable
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
-import '../../../presentation/components/video_card_item.dart';
-
-class CustomWidgetBuilder extends StatelessWidget {
-  CustomWidgetBuilder({
+//
+//ListView Builder
+class CustomListViewBuilder extends StatelessWidget {
+  CustomListViewBuilder({
     Key? key,
     this.scrollDirection = Axis.vertical,
     this.controller,
@@ -61,5 +61,100 @@ getDirection(Axis direction, List<Widget> items) {
     return Row(children: items);
   } else {
     return Column(children: items);
+  }
+}
+
+//
+//GridView Builder
+
+enum Behavior { down, start }
+
+class CustomGridViewBuilder extends StatelessWidget {
+  CustomGridViewBuilder({
+    Key? key,
+    this.scrollDirection = Axis.vertical,
+    this.reverse = false,
+    this.controller,
+    this.primary,
+    this.physics = const ScrollPhysics(),
+    this.shrinkWrap = false,
+    this.padding,
+    required this.crossAxisCount,
+    this.mainAxisSpacing = 0.0,
+    this.crossAxisSpacing = 0.0,
+    this.childAspectRatio = 1.0,
+    this.addAutomaticKeepAlives = true,
+    this.addRepaintBoundaries = true,
+    this.addSemanticIndexes = true,
+    this.cacheExtent,
+    this.semanticChildCount,
+    this.keyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual,
+    this.restorationId,
+    this.clipBehavior = Clip.hardEdge,
+    this.dragStartBehavior = DragStartBehavior.start,
+    //
+    required this.dataList,
+    required this.itemCount,
+    required this.builder,
+  }) : super(key: key);
+
+  final Axis scrollDirection;
+  final bool reverse;
+  final ScrollController? controller;
+  final bool? primary;
+  final ScrollPhysics? physics;
+  final bool shrinkWrap;
+  final EdgeInsetsGeometry? padding;
+  final int crossAxisCount;
+  final double mainAxisSpacing;
+  final double crossAxisSpacing;
+  final double childAspectRatio;
+  final bool addAutomaticKeepAlives;
+  final bool addRepaintBoundaries;
+  final bool addSemanticIndexes;
+  final double? cacheExtent;
+  final int? semanticChildCount;
+  final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
+  final String? restorationId;
+  final Clip clipBehavior;
+  final DragStartBehavior dragStartBehavior;
+  //
+  final List dataList;
+  final int itemCount;
+  final IndexedWidgetBuilder builder;
+  final items = <Widget>[];
+
+  @override
+  Widget build(BuildContext context) {
+    if (dataList.isNotEmpty) {
+      for (int i = 0; i < itemCount; i++) {
+        items.add(builder(context, i));
+      }
+      return GridView.count(
+        crossAxisCount: crossAxisCount,
+        scrollDirection: scrollDirection,
+        reverse: reverse,
+        controller: controller,
+        primary: primary,
+        physics: physics,
+        shrinkWrap: shrinkWrap,
+        padding: padding,
+        mainAxisSpacing: mainAxisSpacing,
+        crossAxisSpacing: crossAxisSpacing,
+        childAspectRatio: childAspectRatio,
+        addAutomaticKeepAlives: addAutomaticKeepAlives,
+        addRepaintBoundaries: addRepaintBoundaries,
+        addSemanticIndexes: addSemanticIndexes,
+        cacheExtent: cacheExtent,
+        semanticChildCount: semanticChildCount,
+        keyboardDismissBehavior: keyboardDismissBehavior,
+        restorationId: restorationId,
+        clipBehavior: clipBehavior,
+        dragStartBehavior: dragStartBehavior,
+        children: items,
+      );
+    } else {
+      return Container();
+    }
   }
 }

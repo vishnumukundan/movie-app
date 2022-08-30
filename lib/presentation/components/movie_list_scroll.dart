@@ -41,7 +41,7 @@ class MovieListScroll__widget extends StatelessWidget {
             ],
           ),
         ),
-        CustomWidgetBuilder(
+        CustomListViewBuilder(
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.symmetric(
             vertical: kDefaultPadding,

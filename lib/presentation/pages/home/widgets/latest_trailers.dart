@@ -31,7 +31,7 @@ class LatestTrailers__widget extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
             child: Medium__text(text: 'Latest Trailers', fontSize: 16.0),
           ),
-          CustomWidgetBuilder(
+          CustomListViewBuilder(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(
               vertical: kDefaultPadding,

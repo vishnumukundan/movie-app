@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 
 import '../themes/colors.dart';
 
@@ -30,8 +31,8 @@ class ImageContainer__widget extends StatelessWidget {
         boxShadow: boxshadow,
         borderRadius: BorderRadius.circular(radius ?? 0.0),
         image: DecorationImage(
-          image: NetworkImage(
-              "https://image.tmdb.org/t/p/w500${imageData[index]["poster_path"]}"),
+          image:
+              NetworkImage(ApiEndPoints.image(imageData[index]["poster_path"])),
           fit: BoxFit.cover,
         ),
       ),

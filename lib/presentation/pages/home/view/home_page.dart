@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
           ScrollConfiguration(
             behavior: CustomScroll(),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.only(bottom: 100),
+              padding: const EdgeInsets.only(bottom: 116),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,

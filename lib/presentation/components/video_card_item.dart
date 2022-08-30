@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/icon_button.dart';
 import 'package:movie_app/presentation/components/text.dart';
@@ -35,7 +36,7 @@ class VideoCardItem__widget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
                     image: NetworkImage(
-                        "https://image.tmdb.org/t/p/w500${dataList[index]["backdrop_path"]}"),
+                        ApiEndPoints.image(dataList[index]["backdrop_path"])),
                     fit: BoxFit.cover,
                   ),
                 ),

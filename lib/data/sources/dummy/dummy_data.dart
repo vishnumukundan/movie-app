@@ -338,3 +338,128 @@ List latestTrailersDummyData = [
     "title": "Alienoid"
   }
 ];
+
+List genresDataList = [
+  {"id": 28, "name": "Action"},
+  {"id": 12, "name": "Adventure"},
+  {"id": 16, "name": "Animation"},
+  {"id": 35, "name": "Comedy"},
+  {"id": 80, "name": "Crime"},
+  {"id": 99, "name": "Documentary"},
+  {"id": 18, "name": "Drama"},
+  {"id": 10751, "name": "Family"},
+  {"id": 14, "name": "Fantasy"},
+  {"id": 36, "name": "History"},
+  {"id": 27, "name": "Horror"},
+  {"id": 10402, "name": "Music"},
+  {"id": 9648, "name": "Mystery"},
+  {"id": 10749, "name": "Romance"},
+  {"id": 878, "name": "Science Fiction"},
+  {"id": 10770, "name": "TV Movie"},
+  {"id": 53, "name": "Thriller"},
+  {"id": 10752, "name": "War"},
+  {"id": 37, "name": "Western"}
+];
+
+List personDummyData = [
+  {
+    "id": 6161,
+    "name": "Jennifer Connelly",
+    "profile_path": "/egh1eOHuYgeoqdlLQgaXMl6cPOm.jpg"
+  },
+  {
+    "id": 1173984,
+    "name": "Olivia Cooke",
+    "profile_path": "/yZNcUEqmvDJQQ7avMfJfCh7sVk9.jpg"
+  },
+  {
+    "id": 1907997,
+    "name": "Min Do-yoon",
+    "profile_path": "/bHHn3krbHyxQIWb4JbHkPlV6Uu1.jpg"
+  },
+  {
+    "id": 224513,
+    "name": "Ana de Armas",
+    "profile_path": "/vkoSSVrGxFYvtr2uUdz99ENXF1v.jpg"
+  },
+  {
+    "id": 1136406,
+    "name": "Tom Holland",
+    "profile_path": "/lVd9ffRzJGDSCL96R8E5z0yqTfc.jpg"
+  },
+  {
+    "id": 996701,
+    "name": "Miles Teller",
+    "profile_path": "/cg3LW0xX6RKr8dmescxq1bepcb5.jpg"
+  },
+  {
+    "id": 169337,
+    "name": "Katherine LaNasa",
+    "profile_path": "/a1T5Smn7sCEtV8NHvTa5WaxgOML.jpg"
+  },
+  {
+    "id": 115440,
+    "name": "Sydney Sweeney",
+    "profile_path": "/afr2eoktU4lFYtmtfKo05EbQdXo.jpg"
+  },
+  {
+    "id": 2710789,
+    "name": "Seung Ha",
+    "profile_path": "/8dCFK8FDFQbYFZvzAE9IIeaDMKo.jpg"
+  },
+  {
+    "id": 136532,
+    "name": "Matt Smith",
+    "profile_path": "/fH1GxtUvAP0bnBsZDlAceNrcXiY.jpg"
+  },
+  {
+    "id": 14887,
+    "name": "Paddy Considine",
+    "profile_path": "/uIKOm4w2wtUegxratSHj2KPFF7i.jpg"
+  },
+  {
+    "id": 976,
+    "name": "Jason Statham",
+    "profile_path": "/whNwkEQYWLFJA8ij0WyOOAD5xhQ.jpg"
+  },
+  {
+    "id": 74568,
+    "name": "Chris Hemsworth",
+    "profile_path": "/jpurJ9jAcLCYjgHHfYF32m3zJYm.jpg"
+  },
+  {
+    "id": 5576,
+    "name": "Val Kilmer",
+    "profile_path": "/szMi36EOoCuMYeYO9eYqRefEnKo.jpg"
+  },
+  {
+    "id": 2524,
+    "name": "Tom Hardy",
+    "profile_path": "/yVGF9FvDxTDPhGimTbZNfghpllA.jpg"
+  },
+  {
+    "id": 1134684,
+    "name": "Park Eun-bin",
+    "profile_path": "/fpMeZG7En6BUfNPNGmzZqJWKlCM.jpg"
+  },
+  {
+    "id": 83271,
+    "name": "Glen Powell",
+    "profile_path": "/o1UZnQasM49w7OIUiE9YEdS0wqg.jpg"
+  },
+  {
+    "id": 2046128,
+    "name": "Milly Alcock",
+    "profile_path": "/qQ70Z8RF6WgOwp8Zuh5S8ZadffT.jpg"
+  },
+  {
+    "id": 974169,
+    "name": "Jenna Ortega",
+    "profile_path": "/nK4GwlX3iEQsp4ZBkKSqbpzmYcB.jpg"
+  },
+  {
+    "id": 2121005,
+    "name": "Emma D'Arcy",
+    "profile_path": "/3JnzRIemoAXb38GBaBH3rj0GfRz.jpg"
+  }
+];
