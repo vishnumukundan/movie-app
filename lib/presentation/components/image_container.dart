@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 
@@ -31,8 +32,8 @@ class ImageContainer__widget extends StatelessWidget {
         boxShadow: boxshadow,
         borderRadius: BorderRadius.circular(radius ?? 0.0),
         image: DecorationImage(
-          image:
-              NetworkImage(ApiEndPoints.image(imageData[index]["poster_path"])),
+          image: CachedNetworkImageProvider(
+              ApiEndPoints.image(imageData[index]["poster_path"])),
           fit: BoxFit.cover,
         ),
       ),

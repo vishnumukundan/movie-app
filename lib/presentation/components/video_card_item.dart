@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/gen/assets.gen.dart';
@@ -35,8 +36,9 @@ class VideoCardItem__widget extends StatelessWidget {
                   color: kColorPrimary.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                    image: NetworkImage(
-                        ApiEndPoints.image(dataList[index]["backdrop_path"])),
+                    image: CachedNetworkImageProvider(
+                      ApiEndPoints.image(dataList[index]["backdrop_path"]),
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),

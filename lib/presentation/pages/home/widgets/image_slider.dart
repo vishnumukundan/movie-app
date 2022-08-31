@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +45,8 @@ class ImageSlider__widget extends StatelessWidget {
               width: ScreenConfig.screenWidth,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(sliderDummyData[index]["image_url"]),
+                  image: CachedNetworkImageProvider(
+                      sliderDummyData[index]["image_url"]),
                   fit: BoxFit.cover,
                 ),
               ),
