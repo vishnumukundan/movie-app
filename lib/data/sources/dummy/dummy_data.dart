@@ -463,3 +463,26 @@ List personDummyData = [
     "profile_path": "/3JnzRIemoAXb38GBaBH3rj0GfRz.jpg"
   }
 ];
+
+List userDummyData = [
+  {
+    "id": 1136406,
+    "name": "Myself",
+    "profile_path": "/lVd9ffRzJGDSCL96R8E5z0yqTfc.jpg"
+  },
+  {
+    "id": 976,
+    "name": "Jason Statham",
+    "profile_path": "/whNwkEQYWLFJA8ij0WyOOAD5xhQ.jpg"
+  },
+  {
+    "id": 74568,
+    "name": "Chris Hemsworth",
+    "profile_path": "/jpurJ9jAcLCYjgHHfYF32m3zJYm.jpg"
+  },
+  {
+    "id": 2524,
+    "name": "Tom Hardy",
+    "profile_path": "/yVGF9FvDxTDPhGimTbZNfghpllA.jpg"
+  }
+];

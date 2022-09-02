@@ -33,40 +33,36 @@ class HomePage extends StatelessWidget {
 
     return Stack(
       children: [
-        ScrollConfiguration(
-          behavior: CustomScroll(),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.only(bottom: 116),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ImageSlider__widget(),
-                const SizedBox(height: 92.0),
-                const GenresScroll__widget(),
-                MovieListScroll__widget(
-                    title: 'Popular Movies', dataList: moviePosterDummyData),
-                const SizedBox(height: kDefaultPadding * 2),
-                const UpcomingStack__widget(),
-                MovieListScroll__widget(
-                  title: 'Trending ',
-                  dataList: moviePosterDummyData,
-                  buttonVisibility: true,
-                ),
-                const SizedBox(height: kDefaultPadding),
-                const LatestTrailers__widget(),
-                const SizedBox(height: kDefaultPadding),
-                MovieListScroll__widget(
-                    title: 'Top 10 Action Movies',
-                    dataList: moviePosterDummyData),
-                MovieListScroll__widget(
-                    title: 'Top 10 Romantic Movies',
-                    dataList: moviePosterDummyData),
-                MovieListScroll__widget(
-                    title: 'Top 10 Drama Movies',
-                    dataList: moviePosterDummyData),
-              ],
-            ),
+        SingleChildScrollView(
+          padding: const EdgeInsets.only(bottom: 116),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ImageSlider__widget(),
+              const SizedBox(height: 92.0),
+              const GenresScroll__widget(),
+              MovieListScroll__widget(
+                  title: 'Popular Movies', dataList: moviePosterDummyData),
+              const SizedBox(height: kDefaultPadding * 2),
+              const UpcomingStack__widget(),
+              MovieListScroll__widget(
+                title: 'Trending ',
+                dataList: moviePosterDummyData,
+                buttonVisibility: true,
+              ),
+              const SizedBox(height: kDefaultPadding),
+              const LatestTrailers__widget(),
+              const SizedBox(height: kDefaultPadding),
+              MovieListScroll__widget(
+                  title: 'Top 10 Action Movies',
+                  dataList: moviePosterDummyData),
+              MovieListScroll__widget(
+                  title: 'Top 10 Romantic Movies',
+                  dataList: moviePosterDummyData),
+              MovieListScroll__widget(
+                  title: 'Top 10 Drama Movies', dataList: moviePosterDummyData),
+            ],
           ),
         ),
         const Appbar__widget(),

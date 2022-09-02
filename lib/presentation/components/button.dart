@@ -40,7 +40,7 @@ const FontWeight _kBtnLargeFontWeight = FontWeight.w500;
 const double _kBtnMediumTextAndIconSpace = 8.0;
 const double _kBtnMediumTextSize = 16.0;
 const double _kBtnMediumIconSize = 24.0;
-const double _kBtnMediumHeight = 56.0;
+const double _kBtnMediumHeight = 40.0;
 
 const double _kBtnMediumBasePadding = 28.0;
 const double _kBtnMediumPadding = 24.0;
@@ -198,6 +198,32 @@ class Primary_Large__button extends ButtonStyle {
   });
 }
 
+//  Primary Medium Button
+class Primary_Medium__button extends ButtonStyle {
+  Primary_Medium__button({
+    required super.text,
+    required super.onTap,
+    //
+    super.textColor = _kBtnPriTextColor,
+    super.borderColor = _kBtnPriBorderColor,
+    //
+    super.backgroundColor = _kBtnPriColor,
+    super.paddingLeft = kDefaultPadding,
+    super.paddingRight = kDefaultPadding,
+    super.iconAndTextSpace = _kBtnMediumTextAndIconSpace,
+    super.textSize = _kBtnMediumTextSize,
+    super.fontWeight = _kBtnMediumFontWeight,
+    super.iconSize = _kBtnMediumIconSize,
+    super.buttonHeight = _kBtnMediumHeight,
+    super.cornerRadius = _kBtnMediumCornerRadius,
+    //
+    super.leftIcon,
+    super.rightIcon,
+    super.leftIconVisibility,
+    super.rightIconVisibility,
+  });
+}
+
 //  Primary Small Button
 class Primary_Small__button extends ButtonStyle {
   Primary_Small__button({
@@ -242,6 +268,32 @@ class Accent_Large__button extends ButtonStyle {
     super.iconSize = _kBtnLargeIconSize,
     super.buttonHeight = _kBtnLargeHeight,
     super.cornerRadius = _kBtnLargeCornerRadius,
+    //
+    super.leftIcon,
+    super.rightIcon,
+    super.leftIconVisibility,
+    super.rightIconVisibility,
+  });
+}
+
+//  Accent Medium Button
+class Accent_Medium__button extends ButtonStyle {
+  Accent_Medium__button({
+    required super.text,
+    required super.onTap,
+    //
+    super.textColor = _kBtnAccTextColor,
+    super.borderColor = _kBtnAccBorderColor,
+    //
+    super.backgroundColor = _kBtnAccColor,
+    super.paddingLeft = kDefaultPadding,
+    super.paddingRight = kDefaultPadding,
+    super.iconAndTextSpace = _kBtnMediumTextAndIconSpace,
+    super.textSize = _kBtnMediumTextSize,
+    super.fontWeight = _kBtnMediumFontWeight,
+    super.iconSize = _kBtnMediumIconSize,
+    super.buttonHeight = _kBtnMediumHeight,
+    super.cornerRadius = _kBtnMediumCornerRadius,
     //
     super.leftIcon,
     super.rightIcon,

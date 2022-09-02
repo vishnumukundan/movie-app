@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
 import 'package:movie_app/presentation/pages/discover/view/discover_page.dart';
 import 'package:movie_app/presentation/pages/home/view/home_page.dart';
 import 'package:movie_app/presentation/pages/main/widgets/bottom_navbar/bottom_navbar.dart';
@@ -31,36 +32,39 @@ class MainPage extends StatelessWidget {
     ScreenConfig().init(context);
     return Scaffold(
       backgroundColor: kColorPrimary,
-      body: Stack(
-        children: [
-          Container(
-            width: ScreenConfig.screenWidth,
-            height: ScreenConfig.screenHeight,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(Assets.images.bgImage.path),
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(
-                  kColorPrimary.withOpacity(0.5),
-                  BlendMode.multiply,
+      body: ScrollConfiguration(
+        behavior: CustomScroll(),
+        child: Stack(
+          children: [
+            Container(
+              width: ScreenConfig.screenWidth,
+              height: ScreenConfig.screenHeight,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(Assets.images.bgImage.path),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                    kColorPrimary.withOpacity(0.5),
+                    BlendMode.multiply,
+                  ),
                 ),
               ),
-            ),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: kDefaultBlur,
-                sigmaY: kDefaultBlur,
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: kDefaultBlur,
+                  sigmaY: kDefaultBlur,
+                ),
+                child: Container(),
               ),
-              child: Container(),
             ),
-          ),
-          BlocBuilder<BottomNavCubit, BottomNavState>(
-            builder: (context, state) {
-              return _pages[state.selectedIndex];
-            },
-          ),
-          const BottomNavbar__widget(),
-        ],
+            BlocBuilder<BottomNavCubit, BottomNavState>(
+              builder: (context, state) {
+                return _pages[state.selectedIndex];
+              },
+            ),
+            const BottomNavbar__widget(),
+          ],
+        ),
       ),
     );
   }

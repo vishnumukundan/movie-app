@@ -31,100 +31,96 @@ class WatchlistPage extends StatelessWidget {
         context.watch<WatchlistScrollCubit>().state.watchlistExpanded;
     return Scaffold(
       backgroundColor: kColorPrimary,
-      body: ScrollConfiguration(
-        behavior: CustomScroll(),
-        child: Stack(
-          alignment: AlignmentDirectional.topCenter,
-          children: [
-            //
-            // countinue watching section
-            Container(
-              height: getScreenHeightPercentage(40.0),
-              width: ScreenConfig.screenWidth,
-              color: kColorPrimaryTint_1,
+      body: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        children: [
+          //
+          // countinue watching section
+          Container(
+            height: getScreenHeightPercentage(40.0),
+            width: ScreenConfig.screenWidth,
+            color: kColorPrimaryTint_1,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: kDefaultPadding * 3),
+                const Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
+                  child: Medium__text(
+                    text: 'Continue Watching',
+                    fontSize: 16.0,
+                  ),
+                ),
+                const SizedBox(height: kDefaultPadding),
+                CustomListViewBuilder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: sliderDummyData.length,
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  contentSpacing: 16.0,
+                  scrollPhysics: _isWatchlistExpanded
+                      ? const NeverScrollableScrollPhysics()
+                      : const ScrollPhysics(),
+                  builder: (context, index) {
+                    return ContinueWatchingCard__widget(
+                      title: sliderDummyData[index]["title"],
+                      image: sliderDummyData[index]["image_url"],
+                      progress: getRandRange(5, 90) / 100,
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+          //
+          // whatchlist section
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Background(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(kDefaultPadding * 2),
+                topRight: Radius.circular(kDefaultPadding * 2),
+              ),
+              height: _watchlistSectionHeight,
+              animationDuration: const Duration(milliseconds: 300),
+              animationCurve: Curves.easeIn,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: kDefaultPadding * 3),
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
-                    child: Medium__text(
-                      text: 'Continue Watching',
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  const SizedBox(height: kDefaultPadding),
-                  CustomListViewBuilder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: sliderDummyData.length,
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
-                    contentSpacing: 16.0,
-                    scrollPhysics: _isWatchlistExpanded
-                        ? const NeverScrollableScrollPhysics()
-                        : const ScrollPhysics(),
-                    builder: (context, index) {
-                      return ContinueWatchingCard__widget(
-                        title: sliderDummyData[index]["title"],
-                        image: sliderDummyData[index]["image_url"],
-                        progress: getRandRange(5, 90) / 100,
-                      );
+                  const SizedBox(height: kDefaultPadding * 2),
+                  const TitleWithToggle__widget(),
+                  GestureDetector(
+                    onVerticalDragDown: (details) {
+                      context
+                          .read<WatchlistScrollCubit>()
+                          .userScrolled(_scrollController);
                     },
+                    child: CustomListViewBuilder(
+                      controller: _scrollController,
+                      padding: const EdgeInsets.only(
+                        left: 32,
+                        right: 32,
+                        bottom: 100,
+                      ),
+                      contentSpacing: 16.0,
+                      itemCount: upcomingMoviesDummyData.length,
+                      height: _watchlistHeight,
+                      builder: (context, index) {
+                        return MovieHorizontalCardWithPlaybutton__widget(
+                          title: upcomingMoviesDummyData[index]["title"],
+                          image: upcomingMoviesDummyData[index]["poster_path"],
+                          onTap: () {},
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
             ),
-            //
-            // whatchlist section
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Background(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(kDefaultPadding * 2),
-                  topRight: Radius.circular(kDefaultPadding * 2),
-                ),
-                height: _watchlistSectionHeight,
-                animationDuration: const Duration(milliseconds: 300),
-                animationCurve: Curves.easeIn,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: kDefaultPadding * 2),
-                    const TitleWithToggle__widget(),
-                    GestureDetector(
-                      onVerticalDragDown: (details) {
-                        context
-                            .read<WatchlistScrollCubit>()
-                            .userScrolled(_scrollController);
-                      },
-                      child: CustomListViewBuilder(
-                        controller: _scrollController,
-                        padding: const EdgeInsets.only(
-                          left: 32,
-                          right: 32,
-                          bottom: 100,
-                        ),
-                        contentSpacing: 16.0,
-                        itemCount: upcomingMoviesDummyData.length,
-                        height: _watchlistHeight,
-                        builder: (context, index) {
-                          return MovieHorizontalCardWithPlaybutton__widget(
-                            title: upcomingMoviesDummyData[index]["title"],
-                            image: upcomingMoviesDummyData[index]
-                                ["poster_path"],
-                            onTap: () {},
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
