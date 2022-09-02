@@ -61,7 +61,7 @@ class DiscoverPage extends StatelessWidget {
                             BorderRadius.circular(kDefaultPadding / 2),
                         child: Center(
                           child: SemiBold__text(
-                              text: '${genresDataList[index]['name']}',
+                              text: genresDataList[index]['name'],
                               fontSize: 16.0),
                         ),
                       ),
@@ -90,7 +90,7 @@ class DiscoverPage extends StatelessWidget {
                     return Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         ClipOval(
                           child: Container(
@@ -109,7 +109,7 @@ class DiscoverPage extends StatelessWidget {
                         ),
                         const SizedBox(height: kDefaultPadding / 2),
                         SemiBold__text(
-                          text: '${personDummyData[index]["name"]}',
+                          text: personDummyData[index]["name"],
                           fontSize: 12.0,
                           textAlign: TextAlign.center,
                           maxLines: 2,

@@ -2,6 +2,7 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 //
 //ListView Builder
@@ -15,6 +16,11 @@ class CustomListViewBuilder extends StatelessWidget {
     required this.builder,
     this.contentSpacing = 8.0,
     this.padding,
+    this.height,
+    this.width,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
+    this.scrollPhysics = const ScrollPhysics(),
   }) : super(key: key);
 
   final Axis scrollDirection;
@@ -24,6 +30,11 @@ class CustomListViewBuilder extends StatelessWidget {
   final Clip clipBehavior;
   IndexedWidgetBuilder builder;
   final EdgeInsets? padding;
+  final double? height;
+  final double? width;
+  final MainAxisAlignment mainAxisAlignment;
+  final CrossAxisAlignment crossAxisAlignment;
+  final ScrollPhysics scrollPhysics;
 
   final items = <Widget>[];
   late Widget finalWidget;
@@ -41,26 +52,44 @@ class CustomListViewBuilder extends StatelessWidget {
         }
       }
 
-      finalWidget = SingleChildScrollView(
-        scrollDirection: scrollDirection,
-        padding: padding,
-        controller: controller,
-        clipBehavior: clipBehavior,
-        child: getDirection(scrollDirection, items),
+      finalWidget = SizedBox(
+        height: height,
+        width: width,
+        child: SingleChildScrollView(
+          scrollDirection: scrollDirection,
+          padding: padding,
+          controller: controller,
+          clipBehavior: clipBehavior,
+          physics: scrollPhysics,
+          child: getDirection(scrollDirection, items),
+        ),
       );
     }
     return finalWidget;
   }
-}
 
-getDirection(Axis direction, List<Widget> items) {
-  if (direction == Axis.vertical) {
-    return Column(children: items);
-  }
-  if (direction == Axis.horizontal) {
-    return Row(children: items);
-  } else {
-    return Column(children: items);
+  getDirection(Axis direction, List<Widget> items) {
+    if (direction == Axis.vertical) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: mainAxisAlignment,
+        crossAxisAlignment: crossAxisAlignment,
+        children: items,
+      );
+    }
+    if (direction == Axis.horizontal) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: mainAxisAlignment,
+        crossAxisAlignment: crossAxisAlignment,
+        children: items,
+      );
+    } else {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: items,
+      );
+    }
   }
 }
 

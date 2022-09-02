@@ -53,7 +53,7 @@ class VideoCardItem__widget extends StatelessWidget {
           ),
           const SizedBox(height: kDefaultPadding),
           Medium__text(
-            text: '${dataList[index]["title"]}',
+            text: dataList[index]["title"],
             fontSize: 14.0,
             maxLines: 1,
             textOverFlow: TextOverflow.ellipsis,

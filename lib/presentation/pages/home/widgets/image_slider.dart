@@ -76,7 +76,7 @@ class ImageSlider__widget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Bold__text(
-                    text: '${sliderDummyData[_currentIndex]["title"]}',
+                    text: sliderDummyData[_currentIndex]["title"],
                     fontSize: 24.0,
                     maxLines: 2,
                     textOverFlow: TextOverflow.ellipsis,

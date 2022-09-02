@@ -55,6 +55,20 @@ class Accent_Large__IconButton extends IconButton__baseWidget {
   });
 }
 
+// Accent Medium Button
+class Accent_Medium__IconButton extends IconButton__baseWidget {
+  Accent_Medium__IconButton({
+    required super.icon,
+    required super.borderRadius,
+    required super.onTap,
+    //
+    super.iconSize = 32.0,
+    super.iconColor = kColorWhite,
+    super.padding = 8.0,
+    super.bgColor = kColorAccent,
+  });
+}
+
 // Primary Large Button
 class Primary_Large__IconButton extends IconButton__baseWidget {
   Primary_Large__IconButton({
@@ -65,6 +79,20 @@ class Primary_Large__IconButton extends IconButton__baseWidget {
     super.iconSize = 32.0,
     super.iconColor = kColorWhite,
     super.padding = 16.0,
+    super.bgColor = kColorWhite50,
+  });
+}
+
+// Primary Medium Button
+class Primary_Medium__IconButton extends IconButton__baseWidget {
+  Primary_Medium__IconButton({
+    required super.icon,
+    required super.borderRadius,
+    required super.onTap,
+    //
+    super.iconSize = 32.0,
+    super.iconColor = kColorWhite,
+    super.padding = 8.0,
     super.bgColor = kColorWhite50,
   });
 }

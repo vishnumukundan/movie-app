@@ -10,6 +10,7 @@ import 'package:movie_app/presentation/pages/watchlist/view/watchlist_page.dart'
 
 import '../../../../gen/assets.gen.dart';
 import '../../../bloc/main/bottom_navbar/botom_nav_cubit.dart';
+import '../../../components/text.dart';
 import '../../../themes/colors.dart';
 import '../../../themes/screen_size_config.dart';
 import '../../../themes/values.dart';
@@ -28,41 +29,38 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenConfig().init(context);
-    return BlocProvider(
-      create: (context) => BottomNavCubit(),
-      child: Scaffold(
-        backgroundColor: kColorPrimary,
-        body: Stack(
-          children: [
-            Container(
-              width: ScreenConfig.screenWidth,
-              height: ScreenConfig.screenHeight,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(Assets.images.bgImage.path),
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(
-                    kColorPrimary.withOpacity(0.5),
-                    BlendMode.multiply,
-                  ),
+    return Scaffold(
+      backgroundColor: kColorPrimary,
+      body: Stack(
+        children: [
+          Container(
+            width: ScreenConfig.screenWidth,
+            height: ScreenConfig.screenHeight,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(Assets.images.bgImage.path),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  kColorPrimary.withOpacity(0.5),
+                  BlendMode.multiply,
                 ),
               ),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(
-                  sigmaX: kDefaultBlur,
-                  sigmaY: kDefaultBlur,
-                ),
-                child: Container(),
+            ),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: kDefaultBlur,
+                sigmaY: kDefaultBlur,
               ),
+              child: Container(),
             ),
-            BlocBuilder<BottomNavCubit, BottomNavState>(
-              builder: (context, state) {
-                return _pages[state.selectedIndex];
-              },
-            ),
-            const BottomNavbar__widget(),
-          ],
-        ),
+          ),
+          BlocBuilder<BottomNavCubit, BottomNavState>(
+            builder: (context, state) {
+              return _pages[state.selectedIndex];
+            },
+          ),
+          const BottomNavbar__widget(),
+        ],
       ),
     );
   }

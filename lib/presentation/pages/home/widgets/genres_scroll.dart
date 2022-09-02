@@ -24,7 +24,7 @@ class GenresScroll__widget extends StatelessWidget {
           ),
           child: Center(
             child: Regular__text(
-              text: '${genreDummyData[index]["genre"]}',
+              text: genreDummyData[index]["genre"],
               fontSize: 18.0,
             ),
           ),
