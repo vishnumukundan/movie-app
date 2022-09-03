@@ -2,10 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/services/sort_list_by.dart';
+import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/home/widgets/upcoming_movies/upcoming_movies_single_poster.dart';
+import 'package:movie_app/presentation/pages/upcoming_movies/view/upcoming_movies_page.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 import '../../../../themes/values.dart';
@@ -57,7 +59,9 @@ class UpcomingStack__widget extends StatelessWidget {
             width: 100,
             child: Primary_Small__button(
               text: 'View All',
-              onTap: () {},
+              onTap: () {
+                PageNav.push(context, const UpcomingMoviesPage());
+              },
             ),
           ),
         ],

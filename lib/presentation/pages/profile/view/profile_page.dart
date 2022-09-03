@@ -31,12 +31,19 @@ class ProfilePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: kDefaultPadding * 3),
-                const Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
-                  child: Medium__text(
-                    text: 'Whose Watching',
-                    fontSize: 16.0,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: kDefaultPadding * 2),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Medium__text(
+                        text: 'Whose Watching',
+                        fontSize: 16.0,
+                      ),
+                      const Spacer(),
+                      Assets.icons.edit.svg(height: 20.0, width: 20.0),
+                    ],
                   ),
                 ),
                 const SizedBox(height: kDefaultPadding),

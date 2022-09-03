@@ -164,75 +164,163 @@ List genreDummyData = [
 List upcomingMoviesDummyData = [
   {
     "id": 610150,
-    "title": "Dragon Ball Super: Super Hero",
     "release_date": "2022-06-11",
-    "poster_path": "/rugyJdeoJm7cSJL1q4jBpTNbxyU.jpg"
-  },
-  {
-    "id": 756999,
-    "title": "The Black Phone",
-    "release_date": "2022-06-22",
-    "poster_path": "/lr11mCT85T1JanlgjMuhs9nMht4.jpg"
-  },
-  {
-    "id": 760161,
-    "poster_path": "/fjaW1byM45r1Si6ax1U64XP6AsO.jpg",
-    "release_date": "2022-07-27",
-    "title": "Orphan: First Kill"
+    "poster_path": "/rugyJdeoJm7cSJL1q4jBpTNbxyU.jpg",
+    "title": "Dragon Ball Super: Super Hero",
+    "overview":
+        "The Red Ribbon Army, an evil organization that was once destroyed by Goku in the past, has been reformed by a group of people who have created new and mightier Androids, Gamma 1 and Gamma 2, and seek vengeance against Goku and his family."
   },
   {
     "id": 539681,
-    "title": "DC League of Super-Pets",
     "release_date": "2022-07-27",
-    "poster_path": "/r7XifzvtezNt31ypvsmb6Oqxw49.jpg"
+    "poster_path": "/r7XifzvtezNt31ypvsmb6Oqxw49.jpg",
+    "title": "DC League of Super-Pets",
+    "overview":
+        "When Superman and the rest of the Justice League are kidnapped, Krypto the Super-Dog must convince a rag-tag shelter pack - Ace the hound, PB the potbellied pig, Merton the turtle and Chip the squirrel - to master their own newfound powers and help him rescue the superheroes."
   },
   {
     "id": 744276,
-    "title": "After Ever Happy",
     "release_date": "2022-08-24",
+    "title": "After Ever Happy",
+    "overview":
+        "As a shocking truth about a couple's families emerges, the two lovers discover they are not so different from each other. Tessa is no longer the sweet, simple, good girl she was when she met Hardin — any more than he is the cruel, moody boy she fell so hard for.",
     "poster_path": "/moogpu8rNkEjTgFyLXwhPghft5w.jpg"
   },
   {
-    "id": 760741,
-    "title": "Beast",
-    "release_date": "2022-08-11",
-    "poster_path": "/xIGr7UHsKf0URWmyyd5qFMAq4d8.jpg"
+    "id": 634649,
+    "release_date": "2021-12-15",
+    "poster_path": "/uJYYizSuA9Y3DCs0qS4qWvHfZg4.jpg",
+    "title": "Spider-Man: No Way Home",
+    "overview":
+        "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man."
   },
   {
-    "id": 762504,
-    "title": "Nope",
-    "release_date": "2022-07-20",
-    "poster_path": "/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg"
+    "id": 760161,
+    "release_date": "2022-07-27",
+    "poster_path": "/wSqAXL1EHVJ3MOnJzMhUngc8gFs.jpg",
+    "title": "Orphan: First Kill",
+    "overview":
+        "After escaping from an Estonian psychiatric facility, Leena Klammer travels to America by impersonating Esther, the missing daughter of a wealthy family. But when her mask starts to slip, she is put against a mother who will protect her family from the murderous “child” at any cost."
+  },
+  {
+    "id": 961484,
+    "release_date": "2022-05-19",
+    "poster_path": "/qvqyDj34Uivokf4qIvK4bH0m0qF.jpg",
+    "title": "Last Seen Alive",
+    "overview":
+        "After Will Spann's wife suddenly vanishes at a gas station, his desperate search to find her leads him down a dark path that forces him to run from authorities and take the law into his own hands."
+  },
+  {
+    "id": 19995,
+    "release_date": "2009-12-10",
+    "poster_path": "/unbrtK8zEjPANvNkbwhjpSxYWzN.jpg",
+    "title": "Avatar",
+    "overview":
+        "In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization."
   },
   {
     "id": 985939,
-    "title": "Fall",
     "release_date": "2022-08-11",
-    "poster_path": "/v28T5F1IygM8vXWZIycfNEm3xcL.jpg"
+    "poster_path": "/v28T5F1IygM8vXWZIycfNEm3xcL.jpg",
+    "title": "Fall",
+    "overview":
+        "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote, abandoned radio tower, they find themselves stranded with no way down. Now Becky and Hunter’s expert climbing skills will be put to the ultimate test as they desperately fight to survive the elements, a lack of supplies, and vertigo-inducing heights."
+  },
+  {
+    "id": 619803,
+    "release_date": "2022-05-18",
+    "poster_path": "/tqHXCshqysM6DPnXeFIR74fNdKw.jpg",
+    "title": "The Roundup",
+    "overview":
+        "The ‘Beast Cop’ Ma Seok-do heads to a foreign country to extradite a suspect, but soon after his arrival, he discovers additional murder cases and hears about a vicious killer who has been committing crimes against tourists for several years."
   },
   {
     "id": 676701,
-    "title": "Tad the Lost Explorer and the Curse of the Mummy",
     "release_date": "2022-08-24",
-    "poster_path": "/yt0CGOtKbFGR4bqLnDyB0rJeUrZ.jpg"
+    "poster_path": "/yt0CGOtKbFGR4bqLnDyB0rJeUrZ.jpg",
+    "title": "Tad the Lost Explorer and the Curse of the Mummy",
+    "overview":
+        "Tad would love for his archeologist colleagues to accept him as one of their own, but he always messes everything up. Tad accidentally destroys a sarcophagus and unleashes an ancient spell endangering the lives of his friends: Mummy, Jeff and Belzoni. With everyone against him and only helped by Sara, he sets off on an adventure that will take him from Mexico to Chicago and from Paris to Egypt, in order to put an end to the curse of the Mummy."
   },
   {
-    "id": 366672,
-    "title": "Paws of Fury: The Legend of Hank",
-    "release_date": "2022-07-14",
-    "poster_path": "/vccE9bBa9mgghFpkWzU1fQqmOKB.jpg"
+    "id": 698508,
+    "release_date": "2022-01-21",
+    "poster_path": "/z8VpsTdIjBhdeGeNEsHFwz6MJXp.jpg",
+    "title": "Redeeming Love",
+    "overview":
+        "A retelling of the biblical book of Hosea set against the backdrop of the California Gold Rush of 1850."
+  },
+  {
+    "id": 601796,
+    "release_date": "2022-07-20",
+    "poster_path": "/qHXTUUJ3Rsxw67Ns75u6RdGNaMJ.jpg",
+    "title": "Alienoid",
+    "overview":
+        "Gurus in the late Goryeo dynasty try to obtain a fabled, holy sword, and humans in 2022 hunt down an alien prisoner that is locked in a human's body. The two parties cross paths when a time-traveling portal opens up."
+  },
+  {
+    "id": 763788,
+    "release_date": "2021-11-05",
+    "poster_path": "/vTtkQGC7qKlSRQJZYtAWAmYdH0A.jpg",
+    "title": "Dangerous",
+    "overview":
+        "A reformed sociopath heads to a remote island after the death of his brother. Soon after his arrival, the island falls under siege from a deadly gang of mercenaries, and when he discovers their role in his brother’s demise, he sets out on a relentless quest for vengeance."
+  },
+  {
+    "id": 717728,
+    "release_date": "2022-09-15",
+    "poster_path": "/aGBuiirBIQ7o64FmJxO53eYDuro.jpg",
+    "title": "Jeepers Creepers: Reborn",
+    "overview":
+        "Chase and Laine head to the Horror Hound festival where Laine begins to experience unexplained premonitions and disturbing visions associated with the town's past, and in particular, local legend The Creeper. As the festival gets underway and the blood-soaked entertainment builds to a frenzy, Laine believes that something unearthly has been summoned and that for the first time in 23 years... The Creeper is back."
   },
   {
     "id": 830788,
-    "title": "The Invitation",
     "release_date": "2022-08-24",
-    "poster_path": "/jcTq6gIskCsHlKDvCKKouEfiU66.jpg"
+    "poster_path": "/jcTq6gIskCsHlKDvCKKouEfiU66.jpg",
+    "title": "The Invitation",
+    "overview":
+        "After the death of her mother, Evie is approached by an unknown cousin who invites her to a lavish wedding in the English countryside. Soon, she realizes a gothic conspiracy is afoot and must fight for survival as she uncovers twisted secrets in her family’s history."
   },
   {
     "id": 743439,
-    "title": "PAW Patrol: Jet To The Rescue",
     "release_date": "2020-09-10",
-    "poster_path": "/qHcn3PbjVHxBweDZxWpYH3JfugS.jpg"
+    "poster_path": "/qHcn3PbjVHxBweDZxWpYH3JfugS.jpg",
+    "title": "PAW Patrol: Jet To The Rescue",
+    "overview":
+        "A royal relative steals a gem with the power to make things fly, the Paw Patrol takes to the skies to stop him and save Barkingburg."
+  },
+  {
+    "id": 556694,
+    "release_date": "2022-08-24",
+    "poster_path": "/qL75s3vyy6294b2QnmgDstDJWTF.jpg",
+    "title": "Three Thousand Years of Longing",
+    "overview":
+        "A lonely and bitter British woman discovers an ancient bottle while on a trip to Istanbul and unleashes a djinn who offers her three wishes. Filled with apathy, she is unable to come up with one until his stories spark in her a desire to be loved."
+  },
+  {
+    "id": 366672,
+    "release_date": "2022-07-14",
+    "poster_path": "/vccE9bBa9mgghFpkWzU1fQqmOKB.jpg",
+    "title": "Paws of Fury: The Legend of Hank",
+    "overview":
+        "A hard-on-his-luck hound finds himself in a town full of cats in need of a hero to defend them from a ruthless villain's wicked plot to wipe their village off the map. With help from a reluctant mentor, our underdog must assume the role of town samurai and team up with the villagers to save the day."
+  },
+  {
+    "id": 936074,
+    "release_date": "2022-05-04",
+    "poster_path": "/t8ShCiZxrbiy7kuO06OilLI3PeL.jpg",
+    "title": "Tenor",
+    "overview":
+        "While working part-time as a food deliveryman, Antoine, an aspiring young rapper from the suburbs of Paris, meets Mrs. Loiseau, an eminent teacher at the Paris Opéra. Stunned by the young man's raw talent, she introduces him to the world of opera. As Antoine becomes one of Mrs. Loiseau's students, he hides his new dream from his friends and family, fearing that they won’t understand – this double life burdens him... Somewhere in between the gilded and uptight Parisian upper-class, and the harsh yet free-spirited and familiar suburbs he grew up in, Antoine will have to find his own voice."
+  },
+  {
+    "id": 793937,
+    "release_date": "2021-10-14",
+    "poster_path": "/puAQv2Vo5MQJYLCdJh5cfdwA8Vc.jpg",
+    "title": "The School of the Magical Animals",
+    "overview":
+        "Ida has a hard time making friends. One day, her weird class teacher announces that everyone in the class will have a magical animal with them. Ida is put to the side of the fox Rabbat. Benni, just like Ida also an outsider, has the turtle Henrietta as a new companion. Together they have amazing adventures ahead of them, but will they be able to fulfill the main requirement of the \"Magic Pet Shop\": to keep their new friends a secret from adults?"
   }
 ];
 
