@@ -22,10 +22,12 @@ class UpcomingStack__widget extends StatelessWidget {
       width: ScreenConfig.screenWidth,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           const Medium__text(text: 'Upcoming Movies', fontSize: 16.0),
           const SizedBox(height: kDefaultPadding * 1.5),
           Stack(
+            clipBehavior: Clip.none,
             alignment: AlignmentDirectional.center,
             children: [
               SizedBox(width: ScreenConfig.screenWidth),

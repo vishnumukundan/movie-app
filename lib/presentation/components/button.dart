@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, camel_case_types, unused_element
 
 import 'package:flutter/material.dart';
+import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
@@ -24,13 +25,13 @@ const _kBtnAccTextColor = kColorWhite;
 
 ///
 ////// Button Large Config
-const double _kBtnLargeTextAndIconSpace = 8.0;
+const double _kBtnLargeTextAndIconSpace = 4;
 const double _kBtnLargeTextSize = 16.0;
 const double _kBtnLargeIconSize = 24.0;
 const double _kBtnLargeHeight = 56.0;
 
-const double _kBtnLargeBasePadding = 16.0;
-const double _kBtnLargePadding = 16.0;
+const double _kBtnLargeBasePadding = 24.0;
+const double _kBtnLargePadding = 24.0;
 
 const double _kBtnLargeCornerRadius = 8.0;
 const FontWeight _kBtnLargeFontWeight = FontWeight.w500;
@@ -74,8 +75,6 @@ class ButtonStyle extends StatelessWidget {
     required this.backgroundColor,
     required this.paddingLeft,
     required this.paddingRight,
-    this.leftIconVisibility = false,
-    this.rightIconVisibility = false,
     this.leftIcon,
     this.rightIcon,
     required this.iconAndTextSpace,
@@ -95,16 +94,13 @@ class ButtonStyle extends StatelessWidget {
   final Color? borderColor;
   final double paddingLeft;
   final double paddingRight;
-  final bool leftIconVisibility;
-  final bool rightIconVisibility;
-  final IconData? leftIcon;
-  final IconData? rightIcon;
+  final leftIcon;
+  final rightIcon;
   final double iconAndTextSpace;
   final double buttonHeight;
   final double iconSize;
   final double cornerRadius;
 
-  // should remove when there is custom text style
   final textSize;
   final fontWeight;
 
@@ -128,12 +124,17 @@ class ButtonStyle extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Row(
-                children: <Widget>[
+                children: [
                   Visibility(
-                    visible: leftIconVisibility,
+                    visible: leftIcon != null,
                     child: Row(
-                      children: <Widget>[
-                        Icon(leftIcon, size: iconSize, color: textColor),
+                      children: [
+                        if (leftIcon != null)
+                          leftIcon.svg(
+                            height: iconSize,
+                            width: iconSize,
+                            color: textColor,
+                          ),
                         SizedBox(width: iconAndTextSpace),
                       ],
                     ),
@@ -150,11 +151,16 @@ class ButtonStyle extends StatelessWidget {
                 ),
               ),
               Visibility(
-                visible: rightIconVisibility,
+                visible: rightIcon != null,
                 child: Row(
-                  children: <Widget>[
+                  children: [
                     SizedBox(width: iconAndTextSpace),
-                    Icon(rightIcon, size: iconSize, color: textColor),
+                    if (rightIcon != null)
+                      rightIcon.svg(
+                        height: iconSize,
+                        width: iconSize,
+                        color: textColor,
+                      ),
                   ],
                 ),
               ),
@@ -182,8 +188,8 @@ class Primary_Large__button extends ButtonStyle {
     super.borderColor = _kBtnPriBorderColor,
     //
     super.backgroundColor = _kBtnPriColor,
-    super.paddingLeft = kDefaultPadding,
-    super.paddingRight = kDefaultPadding,
+    super.paddingLeft = _kBtnLargePadding,
+    super.paddingRight = _kBtnLargeBasePadding,
     super.iconAndTextSpace = _kBtnLargeTextAndIconSpace,
     super.textSize = _kBtnLargeTextSize,
     super.fontWeight = _kBtnLargeFontWeight,
@@ -193,8 +199,6 @@ class Primary_Large__button extends ButtonStyle {
     //
     super.leftIcon,
     super.rightIcon,
-    super.leftIconVisibility,
-    super.rightIconVisibility,
   });
 }
 
@@ -208,8 +212,8 @@ class Primary_Medium__button extends ButtonStyle {
     super.borderColor = _kBtnPriBorderColor,
     //
     super.backgroundColor = _kBtnPriColor,
-    super.paddingLeft = kDefaultPadding,
-    super.paddingRight = kDefaultPadding,
+    super.paddingLeft = _kBtnMediumBasePadding,
+    super.paddingRight = _kBtnMediumBasePadding,
     super.iconAndTextSpace = _kBtnMediumTextAndIconSpace,
     super.textSize = _kBtnMediumTextSize,
     super.fontWeight = _kBtnMediumFontWeight,
@@ -219,8 +223,6 @@ class Primary_Medium__button extends ButtonStyle {
     //
     super.leftIcon,
     super.rightIcon,
-    super.leftIconVisibility,
-    super.rightIconVisibility,
   });
 }
 
@@ -234,8 +236,8 @@ class Primary_Small__button extends ButtonStyle {
     super.borderColor = _kBtnPriBorderColor,
     //
     super.backgroundColor = _kBtnPriColor,
-    super.paddingLeft = kDefaultPadding,
-    super.paddingRight = kDefaultPadding,
+    super.paddingLeft = _kBtnSmallBasePadding,
+    super.paddingRight = _kBtnSmallBasePadding,
     super.iconAndTextSpace = _kBtnSmallTextAndIconSpace,
     super.textSize = _kBtnSmallTextSize,
     super.fontWeight = _kBtnSmallFontWeight,
@@ -245,8 +247,6 @@ class Primary_Small__button extends ButtonStyle {
     //
     super.leftIcon,
     super.rightIcon,
-    super.leftIconVisibility,
-    super.rightIconVisibility,
   });
 }
 
@@ -260,8 +260,8 @@ class Accent_Large__button extends ButtonStyle {
     super.borderColor = _kBtnAccBorderColor,
     super.backgroundColor = _kBtnAccColor,
     //
-    super.paddingLeft = kDefaultPadding,
-    super.paddingRight = kDefaultPadding,
+    super.paddingLeft = _kBtnLargeBasePadding,
+    super.paddingRight = _kBtnLargeBasePadding,
     super.iconAndTextSpace = _kBtnLargeTextAndIconSpace,
     super.textSize = _kBtnLargeTextSize,
     super.fontWeight = _kBtnLargeFontWeight,
@@ -271,8 +271,6 @@ class Accent_Large__button extends ButtonStyle {
     //
     super.leftIcon,
     super.rightIcon,
-    super.leftIconVisibility,
-    super.rightIconVisibility,
   });
 }
 
@@ -286,8 +284,8 @@ class Accent_Medium__button extends ButtonStyle {
     super.borderColor = _kBtnAccBorderColor,
     //
     super.backgroundColor = _kBtnAccColor,
-    super.paddingLeft = kDefaultPadding,
-    super.paddingRight = kDefaultPadding,
+    super.paddingLeft = _kBtnMediumBasePadding,
+    super.paddingRight = _kBtnMediumBasePadding,
     super.iconAndTextSpace = _kBtnMediumTextAndIconSpace,
     super.textSize = _kBtnMediumTextSize,
     super.fontWeight = _kBtnMediumFontWeight,
@@ -297,8 +295,6 @@ class Accent_Medium__button extends ButtonStyle {
     //
     super.leftIcon,
     super.rightIcon,
-    super.leftIconVisibility,
-    super.rightIconVisibility,
   });
 }
 
@@ -312,8 +308,8 @@ class Accent_Small__button extends ButtonStyle {
     super.borderColor = _kBtnAccBorderColor,
     //
     super.backgroundColor = _kBtnAccColor,
-    super.paddingLeft = kDefaultPadding,
-    super.paddingRight = kDefaultPadding,
+    super.paddingLeft = _kBtnSmallBasePadding,
+    super.paddingRight = _kBtnSmallBasePadding,
     super.iconAndTextSpace = _kBtnSmallTextAndIconSpace,
     super.textSize = _kBtnSmallTextSize,
     super.fontWeight = _kBtnSmallFontWeight,
@@ -323,7 +319,5 @@ class Accent_Small__button extends ButtonStyle {
     //
     super.leftIcon,
     super.rightIcon,
-    super.leftIconVisibility,
-    super.rightIconVisibility,
   });
 }

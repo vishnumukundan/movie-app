@@ -34,8 +34,7 @@ class UpcomingListItem__widget extends StatelessWidget {
           children: <Widget>[
             ImageContainer__widget(
               radius: 8,
-              imageData: dataList,
-              index: index,
+              imageData: dataList[index]["poster_path"],
               height: getScreenWidthPercentage(45.0),
               width: getScreenWidthPercentage(30.0),
               boxshadow: const [
@@ -55,7 +54,6 @@ class UpcomingListItem__widget extends StatelessWidget {
                 children: [
                   const SizedBox(height: kDefaultPadding * 1.33),
                   UpcomingMovieDate__widget(date: date),
-                  // const SizedBox(height: kDefaultPadding / 1.5),
                   Medium__text(
                     text: title.toUpperCase(),
                     fontSize: 18.0,
@@ -68,7 +66,7 @@ class UpcomingListItem__widget extends StatelessWidget {
                     text: overview,
                     fontSize: 12.0,
                     color: kColorWhite.withOpacity(0.6),
-                    height: 1.3,
+                    height: 1.4,
                     maxLines: 4,
                     textOverFlow: TextOverflow.ellipsis,
                   )

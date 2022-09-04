@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 import '../../../../components/blurred_background.dart';
 import '../../../../components/image_container.dart';
@@ -19,15 +20,14 @@ class UpcomingMoviesSinglePoster__widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 175,
+      width: getScreenWidthPercentage(45.0),
       child: Stack(
         alignment: AlignmentDirectional.bottomCenter,
         children: [
           ImageContainer__widget(
-            imageData: dataList,
-            index: index,
-            height: 270,
-            width: 175,
+            imageData: dataList[index]["poster_path"],
+            height: getScreenWidthPercentage(70.0),
+            width: double.infinity,
             radius: 8.0,
             boxshadow: kDefaultBoxShadow,
           ),

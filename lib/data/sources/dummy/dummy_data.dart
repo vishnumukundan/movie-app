@@ -574,3 +574,52 @@ List userDummyData = [
     "profile_path": "/yVGF9FvDxTDPhGimTbZNfghpllA.jpg"
   }
 ];
+
+List personDetailsDummyData = [
+  {
+    "id": 1136406,
+    "name": "Tom Holland",
+    "profile_path": "/lVd9ffRzJGDSCL96R8E5z0yqTfc.jpg",
+    "biography":
+        "Thomas \"Tom\" Stanley Holland is an English actor and dancer. He is best known for playing Peter Parker / Spider-Man in the Marvel Cinematic Universe and has appeared as the character in six films: Captain America: Civil War (2016), Spider-Man: Homecoming (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), Spider-Man: Far From Home (2019), and Spider-Man: No Way Home (2021). He is also known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre, London, as well as for starring in the 2012 film The Impossible.",
+    "known_for_department": "Acting",
+    "birthday": "1996-06-01",
+    "deathday": null,
+    "gender": 2,
+    "place_of_birth": "Surrey, England, UK",
+    "popularity": 201.936
+  }
+];
+
+List creditDummyData = [
+  {"id": 315635, "title": "Spider-Man: Homecoming"},
+  {"id": 335787, "title": "Uncharted"},
+  {"id": 340442, "title": "Pilgrimage"},
+  {"id": 499932, "title": "The Devil All the Time"},
+  {"id": 508439, "title": "Onward"},
+  {"id": 544401, "title": "Cherry"},
+  {"id": 429617, "title": "Spider-Man: Far from Home"},
+  {"id": 634649, "title": "Spider-Man: No Way Home"},
+  {"id": 758025, "title": "Peter's To-Do List"},
+  {"id": 626329, "title": "A Fan's Guide to Spider-Man: Homecoming"},
+  {"id": 912227, "title": "Untitled Fred Astaire Biopic"},
+  {"id": 961651, "title": "Spider-Man: All Roads Lead to No Way Home"},
+  {"id": 969681, "title": "Untitled Spider-Man 4 Movie"},
+  {"id": 402446, "title": "Edge of Winter"},
+  {"id": 412656, "title": "Chaos Walking"},
+  {"id": 431693, "title": "Spies in Disguise"},
+  {"id": 411587, "title": "Moments"},
+  {"id": 80278, "title": "The Impossible"},
+  {"id": 162215, "title": "How I Live Now"},
+  {"id": 314095, "title": "The Lost City of Z"},
+  {"id": 210479, "title": "Locke"},
+  {"id": 418879, "title": "The Current War"},
+  {"id": 205775, "title": "In the Heart of the Sea"},
+  {"id": 299536, "title": "Avengers: Infinity War"},
+  {"id": 298931, "title": "Billy Elliot: The Musical Live"},
+  {"id": 299534, "title": "Avengers: Endgame"},
+  {"id": 448119, "title": "Dolittle"},
+  {"id": 271110, "title": "Captain America: Civil War"},
+  {"id": 662151, "title": "Celebrating Marvel's Stan Lee"},
+  {"id": 580489, "title": "Venom: Let There Be Carnage"}
+];

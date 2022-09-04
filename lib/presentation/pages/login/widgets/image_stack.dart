@@ -21,8 +21,7 @@ class ImageStack__widget extends StatelessWidget {
             child: Transform.scale(
               scale: 0.8,
               child: ImageContainer__widget(
-                imageData: _dataList,
-                index: 1,
+                imageData: _dataList[1]["poster_path"],
                 height: getScreenHeightPercentage(30.0),
                 width: getScreenHeightPercentage(20.0),
                 radius: 8.0,
@@ -35,8 +34,7 @@ class ImageStack__widget extends StatelessWidget {
             child: Transform.scale(
               scale: 0.8,
               child: ImageContainer__widget(
-                imageData: _dataList,
-                index: 2,
+                imageData: _dataList[2]["poster_path"],
                 height: getScreenHeightPercentage(30.0),
                 width: getScreenHeightPercentage(20.0),
                 radius: 8.0,
@@ -45,8 +43,7 @@ class ImageStack__widget extends StatelessWidget {
             ),
           ),
           ImageContainer__widget(
-            imageData: _dataList,
-            index: 0,
+            imageData: _dataList[0]["poster_path"],
             height: getScreenHeightPercentage(30.0),
             width: getScreenHeightPercentage(20.0),
             radius: 8.0,

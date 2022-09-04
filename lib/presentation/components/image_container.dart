@@ -8,7 +8,6 @@ class ImageContainer__widget extends StatelessWidget {
   const ImageContainer__widget({
     Key? key,
     required this.imageData,
-    required this.index,
     required this.height,
     required this.width,
     this.radius,
@@ -16,7 +15,6 @@ class ImageContainer__widget extends StatelessWidget {
   }) : super(key: key);
 
   final dynamic imageData;
-  final int index;
   final double height;
   final double width;
   final double? radius;
@@ -32,8 +30,7 @@ class ImageContainer__widget extends StatelessWidget {
         boxShadow: boxshadow,
         borderRadius: BorderRadius.circular(radius ?? 0.0),
         image: DecorationImage(
-          image: CachedNetworkImageProvider(
-              ApiEndPoints.image(imageData[index]["poster_path"])),
+          image: CachedNetworkImageProvider(ApiEndPoints.image(imageData)),
           fit: BoxFit.cover,
         ),
       ),

@@ -57,8 +57,7 @@ class MovieListScroll__widget extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   ImageContainer__widget(
-                    imageData: dataList,
-                    index: index,
+                    imageData: dataList[index]["poster_path"],
                     height: 200.0,
                     width: 130.0,
                     radius: 8.0,
