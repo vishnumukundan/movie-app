@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/button.dart';
@@ -28,12 +30,12 @@ class ReferalCard__widget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: kDefaultPadding / 2),
-          Medium__text(
+          const Medium__text(
             text:
                 'Invite your friends to enjoy your favoutite shows and movies together.',
             fontSize: 12.0,
             height: 1.4,
-            color: kColorWhite.withOpacity(0.6),
+            color: kColorWhite60,
           ),
           const SizedBox(height: kDefaultPadding / 2),
           Row(

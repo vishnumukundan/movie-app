@@ -84,7 +84,12 @@ class ProfilePage extends StatelessWidget {
               ),
               height: getScreenHeightPercentage(70.0),
               child: Padding(
-                padding: const EdgeInsets.all(32),
+                padding: const EdgeInsets.only(
+                  top: kDefaultPadding * 2,
+                  left: kDefaultPadding * 2,
+                  right: kDefaultPadding * 2,
+                  bottom: kDefaultPadding * 6,
+                ),
                 child: SizedBox(
                   height: getScreenHeightPercentage(52.0),
                   child: SingleChildScrollView(

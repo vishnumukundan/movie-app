@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/presentation/components/button.dart';
@@ -8,7 +10,7 @@ import '../../../themes/values.dart';
 import 'text_field.dart';
 
 class LoginAndRegForm__widget extends StatefulWidget {
-  LoginAndRegForm__widget({
+  const LoginAndRegForm__widget({
     Key? key,
   }) : super(key: key);
 

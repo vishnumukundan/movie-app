@@ -1,16 +1,16 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/background.dart';
-import 'package:movie_app/presentation/components/basic_bottomsheet.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/image_container.dart';
 import 'package:movie_app/presentation/components/movie_list_scroll.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/actor_profile/widgets/biogarphy_bottomsheet.dart';
 import 'package:movie_app/presentation/pages/actor_profile/widgets/title_and_data.dart';
-import 'package:movie_app/presentation/pages/upcoming_movies/widgets/upcoming_movie_date.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 import 'package:movie_app/presentation/themes/values.dart';
@@ -108,7 +108,8 @@ class ActorProfilePage__widget extends StatelessWidget {
                             text: _dataList[0]["biography"],
                             fontSize: 12.0,
                             height: 1.4,
-                            color: kColorWhite.withOpacity(0.6),
+                            letterSpacing: 0.9,
+                            color: kColorWhite60,
                             maxLines: 10,
                             textOverFlow: TextOverflow.ellipsis,
                           ),
@@ -122,7 +123,9 @@ class ActorProfilePage__widget extends StatelessWidget {
                                   backgroundColor: Colors.transparent,
                                   barrierColor: kColorPrimary.withOpacity(0.5),
                                   builder: (context) {
-                                    return BiogarphyBottomsheet__widget();
+                                    return BiogarphyBottomsheet__widget(
+                                      text: _dataList[0]["biography"],
+                                    );
                                   },
                                 );
                               },

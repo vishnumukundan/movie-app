@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/components/image_container.dart';
 import 'package:movie_app/presentation/components/text.dart';
@@ -65,7 +67,7 @@ class UpcomingListItem__widget extends StatelessWidget {
                   Medium__text(
                     text: overview,
                     fontSize: 12.0,
-                    color: kColorWhite.withOpacity(0.6),
+                    color: kColorWhite60,
                     height: 1.4,
                     maxLines: 4,
                     textOverFlow: TextOverflow.ellipsis,

@@ -1,8 +1,9 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 
 import '../../../components/text.dart';
-import '../../../themes/values.dart';
 
 class TitleWithToggle__widget extends StatefulWidget {
   const TitleWithToggle__widget({Key? key}) : super(key: key);

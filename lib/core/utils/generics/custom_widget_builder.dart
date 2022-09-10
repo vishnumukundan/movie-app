@@ -2,7 +2,6 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 //
 //ListView Builder

@@ -11,20 +11,18 @@ import 'package:movie_app/presentation/pages/watchlist/view/watchlist_page.dart'
 
 import '../../../../gen/assets.gen.dart';
 import '../../../bloc/main/bottom_navbar/botom_nav_cubit.dart';
-import '../../../components/text.dart';
 import '../../../themes/colors.dart';
 import '../../../themes/screen_size_config.dart';
 import '../../../themes/values.dart';
-import '../widgets/bottom_navbar/bottom_navbar.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
 
   final List _pages = [
-    HomePage(),
-    DiscoverPage(),
-    WatchlistPage(),
-    ProfilePage(),
+    const HomePage(),
+    const DiscoverPage(),
+    const WatchlistPage(),
+    const ProfilePage(),
   ];
 
   @override

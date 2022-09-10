@@ -623,3 +623,34 @@ List creditDummyData = [
   {"id": 662151, "title": "Celebrating Marvel's Stan Lee"},
   {"id": 580489, "title": "Venom: Let There Be Carnage"}
 ];
+
+List movieDetailsDummyData = [
+  {
+    "backdrop_path": "/lD8dFIk9wDEvOwZw0RB47e346io.jpg",
+    "belongs_to_collection": null,
+    "budget": 0,
+    "genres": [
+      {"id": 10749, "name": "Romance"},
+      {"id": 18, "name": "Drama"},
+      {"id": 36, "name": "History"}
+    ],
+    "homepage": "https://redeeminglovemovie.com/",
+    "id": 698508,
+    "imdb_id": "tt11365186",
+    "original_language": "en",
+    "original_title": "Redeeming Love",
+    "overview":
+        "A retelling of the biblical book of Hosea set against the backdrop of the California Gold Rush of 1850.",
+    "popularity": 162.935,
+    "poster_path": "/z8VpsTdIjBhdeGeNEsHFwz6MJXp.jpg",
+    "release_date": "2022-01-21",
+    "revenue": 9100000,
+    "runtime": 134,
+    "status": "Released",
+    "tagline": "Never look back. Never look forward.",
+    "title": "Redeeming Love",
+    "video": false,
+    "vote_average": 7.8,
+    "vote_count": 124
+  }
+];

@@ -1,5 +1,6 @@
+// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
-import 'package:movie_app/gen/assets.gen.dart';
 
 class PosterCard__widget extends StatelessWidget {
   const PosterCard__widget({

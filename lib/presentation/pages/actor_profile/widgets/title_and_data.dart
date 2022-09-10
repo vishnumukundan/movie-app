@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, camel_case_types
 import 'package:flutter/material.dart';
 
 import '../../../components/text.dart';
@@ -24,7 +24,7 @@ class TitleAndData__widget extends StatelessWidget {
         Regular__text(
           text: title,
           fontSize: 14.0,
-          color: kColorWhite.withOpacity(0.6),
+          color: kColorWhite60,
           height: 1.4,
           maxLines: 1,
           textOverFlow: TextOverflow.ellipsis,

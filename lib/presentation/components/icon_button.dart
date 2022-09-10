@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 
@@ -43,7 +45,7 @@ class IconButton__baseWidget extends StatelessWidget {
 
 // Accent Large Button
 class Accent_Large__IconButton extends IconButton__baseWidget {
-  Accent_Large__IconButton({
+  const Accent_Large__IconButton({
     required super.icon,
     required super.borderRadius,
     required super.onTap,
@@ -57,7 +59,7 @@ class Accent_Large__IconButton extends IconButton__baseWidget {
 
 // Accent Medium Button
 class Accent_Medium__IconButton extends IconButton__baseWidget {
-  Accent_Medium__IconButton({
+  const Accent_Medium__IconButton({
     required super.icon,
     required super.borderRadius,
     required super.onTap,
@@ -71,7 +73,7 @@ class Accent_Medium__IconButton extends IconButton__baseWidget {
 
 // Primary Large Button
 class Primary_Large__IconButton extends IconButton__baseWidget {
-  Primary_Large__IconButton({
+  const Primary_Large__IconButton({
     required super.icon,
     required super.borderRadius,
     required super.onTap,
@@ -85,7 +87,7 @@ class Primary_Large__IconButton extends IconButton__baseWidget {
 
 // Primary Medium Button
 class Primary_Medium__IconButton extends IconButton__baseWidget {
-  Primary_Medium__IconButton({
+  const Primary_Medium__IconButton({
     required super.icon,
     required super.borderRadius,
     required super.onTap,

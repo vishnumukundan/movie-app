@@ -1,7 +1,7 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/get_random_no_from_range.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
@@ -17,14 +17,11 @@ import '../../../bloc/watchlist/watchlist_scroll/watchlist_scroll_cubit.dart';
 import '../../../components/text.dart';
 
 ScrollController _scrollController = ScrollController();
-late ScrollDirection _scrollDirection;
 
 class WatchlistPage extends StatelessWidget {
   const WatchlistPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    double _watchlistSectionHeight =
-        context.watch<WatchlistScrollCubit>().state.watchlistSectionHeight;
     double _watchlistHeight =
         context.watch<WatchlistScrollCubit>().state.watchlistHeight;
     bool _isWatchlistExpanded =
@@ -82,9 +79,6 @@ class WatchlistPage extends StatelessWidget {
                 topLeft: Radius.circular(kDefaultPadding * 2),
                 topRight: Radius.circular(kDefaultPadding * 2),
               ),
-              height: _watchlistSectionHeight,
-              animationDuration: const Duration(milliseconds: 300),
-              animationCurve: Curves.easeIn,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,9 +94,9 @@ class WatchlistPage extends StatelessWidget {
                     child: CustomListViewBuilder(
                       controller: _scrollController,
                       padding: const EdgeInsets.only(
-                        left: 32,
-                        right: 32,
-                        bottom: 100,
+                        left: kDefaultPadding * 2,
+                        right: kDefaultPadding * 2,
+                        bottom: kDefaultPadding * 7,
                       ),
                       contentSpacing: 16.0,
                       itemCount: upcomingMoviesDummyData.length,

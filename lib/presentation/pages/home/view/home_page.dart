@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, unused_element
 
 import 'dart:developer';
 
@@ -26,7 +26,7 @@ import '../widgets/image_slider.dart';
 final _data = moviePosterDummyData;
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     ScreenConfig().init(context);

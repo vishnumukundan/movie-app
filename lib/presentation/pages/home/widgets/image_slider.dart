@@ -1,22 +1,20 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_const_constructors_in_immutables, camel_case_types
 
-import 'dart:async';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/bloc/home/image_slider/image_slider_cubit.dart';
 import 'package:movie_app/presentation/components/icon_button.dart';
 import 'package:movie_app/presentation/components/text.dart';
+import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 import '../../../themes/values.dart';
-
-PageController _pageController = PageController(initialPage: 0);
 
 class ImageSlider__widget extends StatelessWidget {
   ImageSlider__widget({Key? key}) : super(key: key);
@@ -41,13 +39,23 @@ class ImageSlider__widget extends StatelessWidget {
             },
           ),
           itemBuilder: (context, index, realIndex) {
-            return Container(
-              width: ScreenConfig.screenWidth,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: CachedNetworkImageProvider(
-                      sliderDummyData[index]["image_url"]),
-                  fit: BoxFit.cover,
+            return GestureDetector(
+              onTap: () {
+                PageNav.push(
+                  context,
+                  MovieDetailsPage__widget(
+                    id: sliderDummyData[index]["id"],
+                  ),
+                );
+              },
+              child: Container(
+                width: ScreenConfig.screenWidth,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(
+                        sliderDummyData[index]["image_url"]),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             );

@@ -6,6 +6,9 @@ const kColorBlack = Color(0xff000000);
 const kColorWhite10 = Color(0x10ffffff);
 const kColorWhite20 = Color(0x20ffffff);
 const kColorWhite50 = Color(0x50ffffff);
+const kColorWhite60 = Color(0x60ffffff);
+const kColorWhite70 = Color(0x70ffffff);
+const kColorWhite80 = Color(0x80ffffff);
 
 const kColorPrimary = Color(0xff14181D);
 const kColorSecondary = Color(0x10FFFFFF);

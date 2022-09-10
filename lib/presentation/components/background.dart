@@ -13,14 +13,10 @@ class Background extends StatelessWidget {
     required this.child,
     this.height,
     this.borderRadius,
-    this.animationDuration,
-    this.animationCurve,
   }) : super(key: key);
   final Widget child;
   final double? height;
   final BorderRadius? borderRadius;
-  final Duration? animationDuration;
-  final Curve? animationCurve;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -28,11 +24,9 @@ class Background extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: borderRadius ?? BorderRadius.zero,
-          child: AnimatedContainer(
-            duration: animationDuration ?? const Duration(seconds: 0),
-            curve: animationCurve ?? Curves.linear,
+          child: Container(
             width: ScreenConfig.screenWidth,
-            height: height ?? ScreenConfig.screenHeight,
+            height: height,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(Assets.images.bgImage.path),
@@ -48,11 +42,10 @@ class Background extends StatelessWidget {
                 sigmaX: kDefaultBlur,
                 sigmaY: kDefaultBlur,
               ),
-              child: SizedBox(height: height),
+              child: child,
             ),
           ),
         ),
-        child,
       ],
     );
   }

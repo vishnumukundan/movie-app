@@ -13,7 +13,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
-      PageNav.pushAndReplace(context, LoginPage());
+      PageNav.pushAndReplace(context, const LoginPage());
     });
     ScreenConfig().init(context);
     return Scaffold(

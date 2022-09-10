@@ -1,9 +1,13 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
+import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/image_container.dart';
 import 'package:movie_app/presentation/components/rating_indicator.dart';
 import 'package:movie_app/presentation/components/text.dart';
+import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
 
 import '../../data/sources/dummy/dummy_data.dart';
 import '../themes/values.dart';
@@ -50,26 +54,37 @@ class MovieListScroll__widget extends StatelessWidget {
           itemCount: 10,
           contentSpacing: kDefaultPadding,
           builder: (context, index) {
-            return Container(
-              padding: const EdgeInsets.only(bottom: 25),
-              child: Stack(
-                alignment: AlignmentDirectional.topCenter,
-                clipBehavior: Clip.none,
-                children: [
-                  ImageContainer__widget(
-                    imageData: dataList[index]["poster_path"],
-                    height: 200.0,
-                    width: 130.0,
-                    radius: 8.0,
-                    boxshadow: kDefaultBoxShadow,
+            return GestureDetector(
+              onTap: () {
+                PageNav.push(
+                  context,
+                  MovieDetailsPage__widget(
+                    id: dataList[index]["id"],
                   ),
-                  Positioned(
-                    bottom: -25,
-                    child: RatingIndicator__widget(
-                      ratingValue: moviePosterDummyData[index]["vote_average"],
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.only(bottom: 25),
+                child: Stack(
+                  alignment: AlignmentDirectional.topCenter,
+                  clipBehavior: Clip.none,
+                  children: [
+                    ImageContainer__widget(
+                      imageData: dataList[index]["poster_path"],
+                      height: 200.0,
+                      width: 130.0,
+                      radius: 8.0,
+                      boxshadow: kDefaultBoxShadow,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      bottom: -25,
+                      child: RatingIndicator__widget(
+                        ratingValue: moviePosterDummyData[index]
+                            ["vote_average"],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           },

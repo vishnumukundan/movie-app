@@ -1,8 +1,9 @@
+// ignore_for_file: camel_case_types
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/components/text.dart';
 
-import '../../data/sources/dummy/dummy_data.dart';
 import '../../data/sources/remote_data_sources/api_end_points.dart';
 import '../themes/colors.dart';
 import '../themes/screen_size_config.dart';

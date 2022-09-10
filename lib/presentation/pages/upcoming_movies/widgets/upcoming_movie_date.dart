@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/generics/string_date_manipulation.dart';
 
@@ -19,7 +21,7 @@ class UpcomingMovieDate__widget extends StatelessWidget {
         Regular__text(
           text: StringExtraction.toDay(date),
           fontSize: 64.0,
-          color: kColorWhite.withOpacity(0.6),
+          color: kColorWhite60,
         ),
         const SizedBox(width: kDefaultPadding / 2),
         Column(
@@ -28,13 +30,13 @@ class UpcomingMovieDate__widget extends StatelessWidget {
             Regular__text(
               text: StringExtraction.toMonthText(date),
               fontSize: 20.0,
-              color: kColorWhite.withOpacity(0.6),
+              color: kColorWhite60,
             ),
             const SizedBox(height: kDefaultPadding / 2),
             Regular__text(
               text: StringExtraction.toYear(date),
               fontSize: 20.0,
-              color: kColorWhite.withOpacity(0.6),
+              color: kColorWhite60,
             ),
           ],
         )

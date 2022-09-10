@@ -10,7 +10,7 @@ import '../../../components/background.dart';
 import '../../../themes/screen_size_config.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                LoginAndRegForm__widget(),
+                const LoginAndRegForm__widget(),
               ],
             ),
           ),

@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
@@ -10,7 +9,6 @@ import 'package:movie_app/presentation/components/person_image_and_name_card.dar
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/actor_profile/view/actor_profile_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
-import 'package:movie_app/presentation/themes/screen_size_config.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
 class DiscoverPage extends StatelessWidget {
@@ -40,27 +38,32 @@ class DiscoverPage extends StatelessWidget {
                 itemCount: genresDataList.length,
                 shrinkWrap: true,
                 builder: (context, index) {
-                  return Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: kColorWhite50,
-                      borderRadius: BorderRadius.circular(kDefaultPadding / 2),
-                      image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                          ApiEndPoints.image(
-                              moviePosterDummyData[index]["poster_path"]),
+                  return GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: kColorWhite50,
+                        borderRadius:
+                            BorderRadius.circular(kDefaultPadding / 2),
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                            ApiEndPoints.image(
+                                moviePosterDummyData[index]["poster_path"]),
+                          ),
+                          fit: BoxFit.cover,
                         ),
-                        fit: BoxFit.cover,
                       ),
-                    ),
-                    child: BlurredBackground__widget(
-                      color: kColorPrimary.withOpacity(0.1),
-                      blur: 17.0,
-                      borderRadius: BorderRadius.circular(kDefaultPadding / 2),
-                      child: Center(
-                        child: SemiBold__text(
-                            text: genresDataList[index]['name'],
-                            fontSize: 16.0),
+                      child: BlurredBackground__widget(
+                        color: kColorPrimary.withOpacity(0.1),
+                        blur: 17.0,
+                        borderRadius:
+                            BorderRadius.circular(kDefaultPadding / 2),
+                        child: Center(
+                          child: SemiBold__text(
+                              text: genresDataList[index]['name'],
+                              fontSize: 16.0),
+                        ),
                       ),
                     ),
                   );
@@ -88,7 +91,7 @@ class DiscoverPage extends StatelessWidget {
                     image: personDummyData[index]["profile_path"],
                     name: personDummyData[index]["name"],
                     onTap: () {
-                      PageNav.push(context, ActorProfilePage__widget());
+                      PageNav.push(context, const ActorProfilePage__widget());
                     },
                   );
                 },

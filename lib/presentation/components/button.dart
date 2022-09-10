@@ -1,7 +1,6 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, camel_case_types, unused_element
+// ignore_for_file: prefer_typing_uninitialized_variables, camel_case_types, unused_element, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
@@ -180,7 +179,8 @@ class ButtonStyle extends StatelessWidget {
 
 //  Primary Large Button
 class Primary_Large__button extends ButtonStyle {
-  Primary_Large__button({
+  const Primary_Large__button({
+    super.key,
     required super.text,
     required super.onTap,
     //
@@ -204,7 +204,7 @@ class Primary_Large__button extends ButtonStyle {
 
 //  Primary Medium Button
 class Primary_Medium__button extends ButtonStyle {
-  Primary_Medium__button({
+  const Primary_Medium__button({
     required super.text,
     required super.onTap,
     //
@@ -228,7 +228,7 @@ class Primary_Medium__button extends ButtonStyle {
 
 //  Primary Small Button
 class Primary_Small__button extends ButtonStyle {
-  Primary_Small__button({
+  const Primary_Small__button({
     required super.text,
     required super.onTap,
     //
@@ -252,7 +252,7 @@ class Primary_Small__button extends ButtonStyle {
 
 //  Accent Large Button
 class Accent_Large__button extends ButtonStyle {
-  Accent_Large__button({
+  const Accent_Large__button({
     required super.text,
     required super.onTap,
     //
@@ -276,7 +276,7 @@ class Accent_Large__button extends ButtonStyle {
 
 //  Accent Medium Button
 class Accent_Medium__button extends ButtonStyle {
-  Accent_Medium__button({
+  const Accent_Medium__button({
     required super.text,
     required super.onTap,
     //
@@ -300,7 +300,7 @@ class Accent_Medium__button extends ButtonStyle {
 
 //  Accent Small Button
 class Accent_Small__button extends ButtonStyle {
-  Accent_Small__button({
+  const Accent_Small__button({
     required super.text,
     required super.onTap,
     //
