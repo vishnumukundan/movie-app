@@ -14,12 +14,14 @@ class ReviewCard__widget extends StatelessWidget {
     required this.date,
     required this.rating,
     required this.content,
+    required this.onTap,
   }) : super(key: key);
 
   final String user;
   final String date;
   final int rating;
   final String content;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,50 +30,53 @@ class ReviewCard__widget extends StatelessWidget {
     final String year = StringExtraction.toYear(date);
     return Column(
       children: <Widget>[
-        Container(
-          padding: const EdgeInsets.all(kDefaultPadding),
-          decoration: BoxDecoration(
-            color: kColorWhite20,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: <Widget>[
-                  RatingIndicator__widget(ratingValue: rating.toDouble()),
-                  const SizedBox(width: kDefaultPadding),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Medium__text(
-                          text: user,
-                          fontSize: 16.0,
-                          maxLines: 1,
-                          textOverFlow: TextOverflow.ellipsis,
-                        ),
-                        const SizedBox(height: kDefaultPadding / 4),
-                        Regular__text(
-                          text: "$day $month $year",
-                          fontSize: 12.0,
-                          color: kColorWhite80,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(height: kDefaultPadding),
-              Medium__text(
-                text: content,
-                fontSize: 12.0,
-                maxLines: 9,
-                textOverFlow: TextOverflow.ellipsis,
-                color: kColorWhite80,
-                height: 1.4,
-              ),
-            ],
+        GestureDetector(
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.all(kDefaultPadding),
+            decoration: BoxDecoration(
+              color: kColorWhite20,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: <Widget>[
+                    RatingIndicator__widget(ratingValue: rating.toDouble()),
+                    const SizedBox(width: kDefaultPadding),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Medium__text(
+                            text: user,
+                            fontSize: 16.0,
+                            maxLines: 1,
+                            textOverFlow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: kDefaultPadding / 4),
+                          Regular__text(
+                            text: "$day $month $year",
+                            fontSize: 12.0,
+                            color: kColorWhite80,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(height: kDefaultPadding),
+                Medium__text(
+                  text: content,
+                  fontSize: 12.0,
+                  maxLines: 9,
+                  textOverFlow: TextOverflow.ellipsis,
+                  color: kColorWhite80,
+                  height: 1.4,
+                ),
+              ],
+            ),
           ),
         ),
       ],

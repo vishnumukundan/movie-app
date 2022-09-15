@@ -14,9 +14,11 @@ import '../themes/screen_size_config.dart';
 class BasicBottomsheet__widget extends StatelessWidget {
   const BasicBottomsheet__widget({
     Key? key,
+    required this.title,
     required this.children,
   }) : super(key: key);
 
+  final String title;
   final List<Widget> children;
   @override
   Widget build(BuildContext context) {
@@ -59,8 +61,8 @@ class BasicBottomsheet__widget extends StatelessWidget {
               ),
               child: Row(
                 children: <Widget>[
-                  const Expanded(
-                    child: Medium__text(text: 'Biography', fontSize: 16.0),
+                  Expanded(
+                    child: Medium__text(text: title, fontSize: 16.0),
                   ),
                   GestureDetector(
                     onTap: () => PageNav.pop(context),

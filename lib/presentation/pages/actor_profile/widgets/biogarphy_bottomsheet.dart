@@ -14,6 +14,7 @@ class BiogarphyBottomsheet__widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasicBottomsheet__widget(
+      title: 'Biography',
       children: [
         Medium__text(
           text: text,
