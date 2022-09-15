@@ -1,7 +1,6 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/components/video_card_item.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
@@ -9,8 +8,6 @@ import 'package:movie_app/presentation/themes/screen_size_config.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
 import '../../../../core/utils/generics/custom_widget_builder.dart';
-
-final _dataList = latestTrailersDummyData;
 
 class LatestTrailers__widget extends StatelessWidget {
   const LatestTrailers__widget({Key? key}) : super(key: key);
@@ -41,8 +38,11 @@ class LatestTrailers__widget extends StatelessWidget {
             ),
             itemCount: 10,
             contentSpacing: kDefaultPadding,
-            builder: (context, index) =>
-                VideoCardItem__widget(dataList: _dataList, index: index),
+            builder: (context, index) => const VideoCardItem__widget(
+              youtubeKey: 'SagMK3jkzlI',
+              title: 'title',
+              tagline: 'tagline',
+            ),
           )
         ],
       ),

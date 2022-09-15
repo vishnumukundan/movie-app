@@ -92,9 +92,9 @@ class Primary_Medium__IconButton extends IconButton__baseWidget {
     required super.borderRadius,
     required super.onTap,
     //
-    super.iconSize = 32.0,
+    super.iconSize = 24.0,
     super.iconColor = kColorWhite,
-    super.padding = 8.0,
+    super.padding = 12.0,
     super.bgColor = kColorWhite50,
   });
 }

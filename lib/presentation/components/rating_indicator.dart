@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/components/text.dart';
@@ -25,12 +25,14 @@ class RatingIndicator__widget extends StatelessWidget {
                 backgroundColor: kColorWhite50,
                 color: getColor(ratingValue),
                 strokeWidth: 3,
-                value: ratingValue / 10,
+                value: ratingValue != null ? ratingValue / 10 : 0.0,
               ),
             ),
             Center(
-              child:
-                  SemiBold__text(text: ratingValue.toString(), fontSize: 16.0),
+              child: SemiBold__text(
+                text: ratingValue != null ? ratingValue.toString() : '0.0',
+                fontSize: 16.0,
+              ),
             )
           ],
         ),

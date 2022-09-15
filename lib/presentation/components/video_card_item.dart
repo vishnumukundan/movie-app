@@ -13,12 +13,14 @@ import '../themes/values.dart';
 class VideoCardItem__widget extends StatelessWidget {
   const VideoCardItem__widget({
     Key? key,
-    required this.dataList,
-    required this.index,
+    required this.youtubeKey,
+    required this.title,
+    required this.tagline,
   }) : super(key: key);
 
-  final dynamic dataList;
-  final int index;
+  final String youtubeKey;
+  final String title;
+  final String tagline;
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +34,14 @@ class VideoCardItem__widget extends StatelessWidget {
             alignment: AlignmentDirectional.center,
             children: [
               Container(
-                height: 150,
+                height: 140,
                 width: 250,
                 decoration: BoxDecoration(
                   color: kColorPrimary.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
                     image: CachedNetworkImageProvider(
-                      ApiEndPoints.image(dataList[index]["backdrop_path"]),
+                      ApiEndPoints.youtubeTumbnail(youtubeKey),
                     ),
                     fit: BoxFit.cover,
                   ),
@@ -55,14 +57,14 @@ class VideoCardItem__widget extends StatelessWidget {
           ),
           const SizedBox(height: kDefaultPadding),
           Medium__text(
-            text: dataList[index]["title"],
+            text: title,
             fontSize: 14.0,
             maxLines: 1,
             textOverFlow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: kDefaultPadding / 2),
-          const Regular__text(
-            text: 'Tagline',
+          Regular__text(
+            text: tagline,
             fontSize: 12.0,
             color: kColorWhite50,
             maxLines: 1,
