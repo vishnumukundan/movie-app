@@ -1,7 +1,9 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/presentation/components/text.dart';
+import 'package:movie_app/presentation/pages/search_result/view/search_result_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
@@ -23,7 +25,7 @@ class Appbar__widget extends StatelessWidget {
         child: Row(
           children: <Widget>[
             GestureDetector(
-              onTap: () {},
+              onTap: () => PageNav.push(context, const SearchResultPage()),
               child: Assets.icons.search.svg(
                 height: 32,
                 width: 32,

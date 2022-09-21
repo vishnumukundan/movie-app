@@ -43,7 +43,7 @@ class ImageSlider__widget extends StatelessWidget {
               onTap: () {
                 PageNav.push(
                   context,
-                  MovieDetailsPage__widget(
+                  MovieDetailsPage(
                     id: sliderDummyData[index]["id"],
                   ),
                 );

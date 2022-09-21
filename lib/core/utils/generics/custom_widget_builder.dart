@@ -55,6 +55,7 @@ class CustomListViewBuilder extends StatelessWidget {
         height: height,
         width: width,
         child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           scrollDirection: scrollDirection,
           padding: padding,
           controller: controller,

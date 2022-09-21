@@ -58,7 +58,7 @@ class MovieListScroll__widget extends StatelessWidget {
               onTap: () {
                 PageNav.push(
                   context,
-                  MovieDetailsPage__widget(
+                  MovieDetailsPage(
                     id: dataList[index]["id"],
                   ),
                 );

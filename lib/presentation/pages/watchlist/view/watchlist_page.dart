@@ -103,9 +103,9 @@ class WatchlistPage extends StatelessWidget {
                       height: _watchlistHeight,
                       builder: (context, index) {
                         return MovieHorizontalCardWithPlaybutton__widget(
+                          id: upcomingMoviesDummyData[index]["id"],
                           title: upcomingMoviesDummyData[index]["title"],
                           image: upcomingMoviesDummyData[index]["poster_path"],
-                          onTap: () {},
                         );
                       },
                     ),

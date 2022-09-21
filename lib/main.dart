@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/presentation/bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
 import 'package:movie_app/presentation/bloc/watchlist/watchlist_scroll/watchlist_scroll_cubit.dart';
 import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
           create: (context) => ImageSliderCubit(),
         ),
         BlocProvider(create: (context) => WatchlistScrollCubit()),
+        BlocProvider(create: (context) => AppbarSearchCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

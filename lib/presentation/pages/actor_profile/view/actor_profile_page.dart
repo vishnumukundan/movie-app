@@ -36,6 +36,8 @@ class ActorProfilePage__widget extends StatelessWidget {
             ScrollConfiguration(
               behavior: CustomScroll(),
               child: SingleChildScrollView(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

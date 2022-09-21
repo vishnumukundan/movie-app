@@ -23,9 +23,8 @@ import '../../../components/text.dart';
 
 final List _dataList = movieDetailsDummyData;
 
-class MovieDetailsPage__widget extends StatelessWidget {
-  const MovieDetailsPage__widget({Key? key, required this.id})
-      : super(key: key);
+class MovieDetailsPage extends StatelessWidget {
+  const MovieDetailsPage({Key? key, required this.id}) : super(key: key);
 
   final int id;
 
