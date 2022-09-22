@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
-import 'package:movie_app/presentation/components/basic_bottomsheet.dart';
 import 'package:movie_app/presentation/components/review_card.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/movie_details/widgets/review_bottom_sheet.dart';

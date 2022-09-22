@@ -2,10 +2,12 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/icon_button.dart';
 import 'package:movie_app/presentation/components/text.dart';
+import 'package:movie_app/presentation/pages/video_playback/view/video_playback_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 
 import '../themes/values.dart';
@@ -51,7 +53,10 @@ class VideoCardItem__widget extends StatelessWidget {
                 icon: Assets.icons.play,
                 borderRadius: 60.0,
                 bgColor: kColorPrimary.withOpacity(0.6),
-                onTap: () {},
+                onTap: () => PageNav.push(
+                  context,
+                  VideoPlaybackPage(youtubeKey: youtubeKey),
+                ),
               )
             ],
           ),

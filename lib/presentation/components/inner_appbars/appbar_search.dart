@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, no_leading_underscores_for_local_identifiers, must_be_immutable, invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
+// ignore_for_file: camel_case_types, no_leading_underscores_for_local_identifiers, must_be_immutable, invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, prefer_final_fields
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +17,7 @@ class AppbarSearch__widget extends StatelessWidget {
   }) : super(key: key);
 
   FocusNode _focus = FocusNode();
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class AppbarSearch__widget extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     PageNav.pop(context);
-                    Future.delayed(Duration(milliseconds: 300), () {
+                    Future.delayed(const Duration(milliseconds: 300), () {
                       context.read<AppbarSearchCubit>().emit(
                             const AppbarSearchState.initial(
                                 focusEnabled: false),

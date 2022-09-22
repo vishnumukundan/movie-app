@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
