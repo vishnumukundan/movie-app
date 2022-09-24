@@ -38,7 +38,7 @@ class VideoPlaybackPage extends StatelessWidget {
                     youtubeKey: youtubeKey,
                   ),
                 ),
-                const SizedBox(width: kDefaultPadding),
+                const SizedBox(width: kDefaultPadding * 2),
                 GestureDetector(
                   onTap: () => PageNav.pop(context),
                   child: Padding(

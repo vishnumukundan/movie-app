@@ -1,6 +1,10 @@
+import 'package:movie_app/data/sources/remote_data_sources/constatnts.dart';
+import 'package:movie_app/domain/usecase/apiKey.dart';
+
 class ApiEndPoints {
-  static String image(String imageUrl) =>
-      'https://image.tmdb.org/t/p/w500$imageUrl';
+  static String image(String imageUrl) => '$kImageBaseUrl$imageUrl';
   static String youtubeTumbnail(String youtubeKey) =>
-      'https://img.youtube.com/vi/$youtubeKey/0.jpg';
+      '$kYoutubeImageBaseUrl$youtubeKey/0.jpg';
+  static String trendingMovieAllWeek(String youtubeKey) =>
+      '$kBaseUrl/trending/movie/week?api_key=$apiKey';
 }
