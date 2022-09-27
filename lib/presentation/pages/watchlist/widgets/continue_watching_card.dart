@@ -44,8 +44,8 @@ class ContinueWatchingCard__widget extends StatelessWidget {
                   color: kColorWhite50,
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                    image:
-                        CachedNetworkImageProvider(ApiEndPoints.image(image)),
+                    image: CachedNetworkImageProvider(
+                        ApiDataFetching.image(image)),
                     fit: BoxFit.cover,
                   ),
                 ),

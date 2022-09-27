@@ -45,7 +45,7 @@ class MoviePosterGrid__widget extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               image: DecorationImage(
                   image: NetworkImage(
-                    ApiEndPoints.image(
+                    ApiDataFetching.image(
                       upcomingMoviesDummyData[index]["poster_path"],
                     ),
                   ),

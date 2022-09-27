@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/data/bloc/login/login_poster/login_poster_bloc.dart';
+import 'package:movie_app/domain/usecase/dependancy_injection/injectable.dart';
 import 'package:movie_app/presentation/bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
 import 'package:movie_app/presentation/bloc/main/appbar/appbar_bloc.dart';
 import 'package:movie_app/presentation/bloc/watchlist/watchlist_scroll/watchlist_scroll_cubit.dart';
@@ -10,7 +12,9 @@ import 'presentation/bloc/home/image_slider/image_slider_cubit.dart';
 import 'presentation/bloc/main/bottom_navbar/botom_nav_cubit.dart';
 import 'presentation/pages/splash/view/splash_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureInjectable();
   runApp(const MyApp());
 }
 
@@ -29,11 +33,14 @@ class MyApp extends StatelessWidget {
     ]);
     return MultiBlocProvider(
       providers: [
+        //presentation blocs
         BlocProvider(create: (context) => BottomNavCubit()),
         BlocProvider(create: (context) => ImageSliderCubit()),
         BlocProvider(create: (context) => WatchlistScrollCubit()),
         BlocProvider(create: (context) => AppbarSearchCubit()),
         BlocProvider(create: (context) => AppbarBloc()),
+        //data blocs
+        BlocProvider(create: (context) => getIt<LoginPosterBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -41,7 +48,6 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.dark,
         darkTheme: ThemeData.dark(),
         home: const SplashPage(),
-        // home: MainPage(),
       ),
     );
   }

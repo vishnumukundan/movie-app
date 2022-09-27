@@ -48,7 +48,7 @@ class DiscoverPage extends StatelessWidget {
                             BorderRadius.circular(kDefaultPadding / 2),
                         image: DecorationImage(
                           image: CachedNetworkImageProvider(
-                            ApiEndPoints.image(
+                            ApiDataFetching.image(
                                 moviePosterDummyData[index]["poster_path"]),
                           ),
                           fit: BoxFit.cover,

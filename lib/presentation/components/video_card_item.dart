@@ -43,7 +43,7 @@ class VideoCardItem__widget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
                     image: CachedNetworkImageProvider(
-                      ApiEndPoints.youtubeTumbnail(youtubeKey),
+                      ApiDataFetching.youtubeTumbnail(youtubeKey),
                     ),
                     fit: BoxFit.cover,
                   ),

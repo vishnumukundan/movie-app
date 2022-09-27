@@ -32,7 +32,7 @@ class ImageContainer__widget extends StatelessWidget {
         boxShadow: boxshadow,
         borderRadius: BorderRadius.circular(radius ?? 0.0),
         image: DecorationImage(
-          image: CachedNetworkImageProvider(ApiEndPoints.image(imageData)),
+          image: CachedNetworkImageProvider(ApiDataFetching.image(imageData)),
           fit: BoxFit.cover,
         ),
       ),

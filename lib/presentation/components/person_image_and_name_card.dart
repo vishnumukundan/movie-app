@@ -46,7 +46,7 @@ class PersonImageAndNameCard__widget extends StatelessWidget {
                 color: kColorWhite50,
                 image: DecorationImage(
                     image: CachedNetworkImageProvider(
-                      ApiEndPoints.image(image),
+                      ApiDataFetching.image(image),
                     ),
                     fit: BoxFit.cover),
               ),
