@@ -1,17 +1,19 @@
 // ignore_for_file: camel_case_types
 
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/data/bloc/login/login_poster/login_poster_bloc.dart';
+import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 import '../../../components/image_container.dart';
 import '../../../themes/values.dart';
 
 class ImageStack__widget extends StatelessWidget {
-  ImageStack__widget({Key? key}) : super(key: key);
+  const ImageStack__widget({Key? key}) : super(key: key);
+
+  final _progressIndicator =
+      const CircularProgressIndicator(color: kColorWhite);
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +28,10 @@ class ImageStack__widget extends StatelessWidget {
                 left: 0,
                 child: Transform.scale(
                   scale: 0.8,
-                  child: state.loginPoster.isEmpty || state.isLoading
-                      ? const CircularProgressIndicator()
+                  child: state.isLoading
+                      ? _progressIndicator
                       : ImageContainer__widget(
-                          imageData: state.loginPoster[1].posterPath,
+                          imageData: state.loginPosterDataList[1].posterPath,
                           height: getScreenHeightPercentage(30.0),
                           width: getScreenHeightPercentage(20.0),
                           radius: 8.0,
@@ -41,10 +43,10 @@ class ImageStack__widget extends StatelessWidget {
                 right: 0,
                 child: Transform.scale(
                   scale: 0.8,
-                  child: state.loginPoster.isEmpty || state.isLoading
-                      ? const CircularProgressIndicator()
+                  child: state.isLoading
+                      ? _progressIndicator
                       : ImageContainer__widget(
-                          imageData: state.loginPoster[2].posterPath,
+                          imageData: state.loginPosterDataList[2].posterPath,
                           height: getScreenHeightPercentage(30.0),
                           width: getScreenHeightPercentage(20.0),
                           radius: 8.0,
@@ -52,10 +54,10 @@ class ImageStack__widget extends StatelessWidget {
                         ),
                 ),
               ),
-              state.loginPoster.isEmpty || state.isLoading
-                  ? const CircularProgressIndicator()
+              state.isLoading
+                  ? _progressIndicator
                   : ImageContainer__widget(
-                      imageData: state.loginPoster[0].posterPath,
+                      imageData: state.loginPosterDataList[0].posterPath,
                       height: getScreenHeightPercentage(30.0),
                       width: getScreenHeightPercentage(20.0),
                       radius: 8.0,

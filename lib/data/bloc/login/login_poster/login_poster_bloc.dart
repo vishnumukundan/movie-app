@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_app/core/errors/network_error/network_error.dart';
-import 'package:movie_app/domain/repositories/product/i_login_poster_repo.dart';
+import 'package:movie_app/domain/repositories/login/i_login_poster_repo.dart';
 
 import '../../../models/login/login_poster_model.dart';
 
@@ -29,7 +29,7 @@ class LoginPosterBloc extends Bloc<LoginPosterEvent, LoginPosterState> {
         ),
         (success) => state.copyWith(
           isLoading: false,
-          loginPoster: success,
+          loginPosterDataList: success,
           loginPosterFailureOrSuccessOption: some(right(success)),
         ),
       ));

@@ -11,9 +11,13 @@ enum HomePageCurrentPage { movies, tvShows }
 
 class AppbarBloc extends Bloc<AppbarEvent, AppbarState> {
   AppbarBloc()
-      : super(const _Initial(
-          currentPage: HomePageCurrentPage.movies,
-        ));
-  void changeTab(HomePageCurrentPage currentPage) =>
-      emit(AppbarState.initial(currentPage: currentPage));
+      : super(const _Initial(currentPage: HomePageCurrentPage.movies)) {
+    on<_MoviesSelected>((event, emit) {
+      emit(state.copyWith(currentPage: HomePageCurrentPage.movies));
+    });
+
+    on<_TvShowsSelected>((event, emit) {
+      emit(state.copyWith(currentPage: HomePageCurrentPage.tvShows));
+    });
+  }
 }

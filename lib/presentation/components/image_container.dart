@@ -24,17 +24,23 @@ class ImageContainer__widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      decoration: BoxDecoration(
-        color: kColorPrimary,
-        boxShadow: boxshadow,
-        borderRadius: BorderRadius.circular(radius ?? 0.0),
-        image: DecorationImage(
-          image: CachedNetworkImageProvider(ApiDataFetching.image(imageData)),
-          fit: BoxFit.cover,
+    return CachedNetworkImage(
+      imageUrl: ApiDataFetching.image(imageData),
+      imageBuilder: (context, imageProvider) => Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+          color: kColorPrimary,
+          boxShadow: boxshadow,
+          borderRadius: BorderRadius.circular(radius ?? 0.0),
+          image: DecorationImage(
+            image: imageProvider,
+            fit: BoxFit.cover,
+          ),
         ),
+      ),
+      placeholder: (context, url) => const Center(
+        child: CircularProgressIndicator(color: kColorWhite),
       ),
     );
   }

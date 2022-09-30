@@ -4,16 +4,16 @@ part of 'login_poster_bloc.dart';
 class LoginPosterState with _$LoginPosterState {
   const factory LoginPosterState({
     required bool isLoading,
-    required List<LoginPoster> loginPoster,
+    required List<LoginPoster> loginPosterDataList,
     required Option<Either<NetworkError, List<LoginPoster>>>
         loginPosterFailureOrSuccessOption,
   }) = _LoginPosterState;
 
   factory LoginPosterState.initial() {
     return const LoginPosterState(
-      isLoading: false,
+      isLoading: true,
       loginPosterFailureOrSuccessOption: None(),
-      loginPoster: [],
+      loginPosterDataList: [],
     );
   }
 }

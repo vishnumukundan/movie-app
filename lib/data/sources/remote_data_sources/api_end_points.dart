@@ -4,6 +4,8 @@ import 'package:movie_app/domain/usecase/apiKey.dart';
 class ApiEndPoints {
   static String trendingMovieAllWeek =
       '$kBaseUrl/trending/movie/week?api_key=$apiKey';
+  static String trendingMovieToday =
+      '$kBaseUrl/trending/movie/day?api_key=$apiKey';
   static String popularMovies =
       '$kBaseUrl/movie/popular?api_key=$apiKey&language=en-US';
   static String popularTv =

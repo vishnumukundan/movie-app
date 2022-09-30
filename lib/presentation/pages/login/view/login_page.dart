@@ -39,16 +39,16 @@ class LoginPage extends StatelessWidget {
                       Visibility(
                         visible: isKeyboardActive(context) ? false : true,
                         child: Column(
-                          children: [
+                          children: const [
                             ImageStack__widget(),
-                            const SizedBox(height: kDefaultPadding * 1.5),
-                            const Bold__text(
+                            SizedBox(height: kDefaultPadding * 1.5),
+                            Bold__text(
                               text: "See what’s next.",
                               fontSize: 18.0,
                               textAlign: TextAlign.center,
                             ),
-                            const SizedBox(height: kDefaultPadding / 2),
-                            const Body__text(
+                            SizedBox(height: kDefaultPadding / 2),
+                            Body__text(
                               text:
                                   'Watch TV shows anytime anywhere & whenever you want.',
                               textAlign: TextAlign.center,

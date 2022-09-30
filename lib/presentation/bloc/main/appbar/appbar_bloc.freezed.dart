@@ -18,33 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppbarEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() userTapped,
+    required TResult Function() moviesSelected,
+    required TResult Function() tvShowsSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? userTapped,
+    TResult Function()? moviesSelected,
+    TResult Function()? tvShowsSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? userTapped,
+    TResult Function()? moviesSelected,
+    TResult Function()? tvShowsSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserTapped value) userTapped,
+    required TResult Function(_MoviesSelected value) moviesSelected,
+    required TResult Function(_TvShowsSelected value) tvShowsSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UserTapped value)? userTapped,
+    TResult Function(_MoviesSelected value)? moviesSelected,
+    TResult Function(_TvShowsSelected value)? tvShowsSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserTapped value)? userTapped,
+    TResult Function(_MoviesSelected value)? moviesSelected,
+    TResult Function(_TvShowsSelected value)? tvShowsSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,37 +73,38 @@ class _$AppbarEventCopyWithImpl<$Res> implements $AppbarEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_UserTappedCopyWith<$Res> {
-  factory _$$_UserTappedCopyWith(
-          _$_UserTapped value, $Res Function(_$_UserTapped) then) =
-      __$$_UserTappedCopyWithImpl<$Res>;
+abstract class _$$_MoviesSelectedCopyWith<$Res> {
+  factory _$$_MoviesSelectedCopyWith(
+          _$_MoviesSelected value, $Res Function(_$_MoviesSelected) then) =
+      __$$_MoviesSelectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UserTappedCopyWithImpl<$Res> extends _$AppbarEventCopyWithImpl<$Res>
-    implements _$$_UserTappedCopyWith<$Res> {
-  __$$_UserTappedCopyWithImpl(
-      _$_UserTapped _value, $Res Function(_$_UserTapped) _then)
-      : super(_value, (v) => _then(v as _$_UserTapped));
+class __$$_MoviesSelectedCopyWithImpl<$Res>
+    extends _$AppbarEventCopyWithImpl<$Res>
+    implements _$$_MoviesSelectedCopyWith<$Res> {
+  __$$_MoviesSelectedCopyWithImpl(
+      _$_MoviesSelected _value, $Res Function(_$_MoviesSelected) _then)
+      : super(_value, (v) => _then(v as _$_MoviesSelected));
 
   @override
-  _$_UserTapped get _value => super._value as _$_UserTapped;
+  _$_MoviesSelected get _value => super._value as _$_MoviesSelected;
 }
 
 /// @nodoc
 
-class _$_UserTapped implements _UserTapped {
-  const _$_UserTapped();
+class _$_MoviesSelected implements _MoviesSelected {
+  const _$_MoviesSelected();
 
   @override
   String toString() {
-    return 'AppbarEvent.userTapped()';
+    return 'AppbarEvent.moviesSelected()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UserTapped);
+        (other.runtimeType == runtimeType && other is _$_MoviesSelected);
   }
 
   @override
@@ -106,27 +113,30 @@ class _$_UserTapped implements _UserTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() userTapped,
+    required TResult Function() moviesSelected,
+    required TResult Function() tvShowsSelected,
   }) {
-    return userTapped();
+    return moviesSelected();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? userTapped,
+    TResult Function()? moviesSelected,
+    TResult Function()? tvShowsSelected,
   }) {
-    return userTapped?.call();
+    return moviesSelected?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? userTapped,
+    TResult Function()? moviesSelected,
+    TResult Function()? tvShowsSelected,
     required TResult orElse(),
   }) {
-    if (userTapped != null) {
-      return userTapped();
+    if (moviesSelected != null) {
+      return moviesSelected();
     }
     return orElse();
   }
@@ -134,34 +144,142 @@ class _$_UserTapped implements _UserTapped {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserTapped value) userTapped,
+    required TResult Function(_MoviesSelected value) moviesSelected,
+    required TResult Function(_TvShowsSelected value) tvShowsSelected,
   }) {
-    return userTapped(this);
+    return moviesSelected(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UserTapped value)? userTapped,
+    TResult Function(_MoviesSelected value)? moviesSelected,
+    TResult Function(_TvShowsSelected value)? tvShowsSelected,
   }) {
-    return userTapped?.call(this);
+    return moviesSelected?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserTapped value)? userTapped,
+    TResult Function(_MoviesSelected value)? moviesSelected,
+    TResult Function(_TvShowsSelected value)? tvShowsSelected,
     required TResult orElse(),
   }) {
-    if (userTapped != null) {
-      return userTapped(this);
+    if (moviesSelected != null) {
+      return moviesSelected(this);
     }
     return orElse();
   }
 }
 
-abstract class _UserTapped implements AppbarEvent {
-  const factory _UserTapped() = _$_UserTapped;
+abstract class _MoviesSelected implements AppbarEvent {
+  const factory _MoviesSelected() = _$_MoviesSelected;
+}
+
+/// @nodoc
+abstract class _$$_TvShowsSelectedCopyWith<$Res> {
+  factory _$$_TvShowsSelectedCopyWith(
+          _$_TvShowsSelected value, $Res Function(_$_TvShowsSelected) then) =
+      __$$_TvShowsSelectedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_TvShowsSelectedCopyWithImpl<$Res>
+    extends _$AppbarEventCopyWithImpl<$Res>
+    implements _$$_TvShowsSelectedCopyWith<$Res> {
+  __$$_TvShowsSelectedCopyWithImpl(
+      _$_TvShowsSelected _value, $Res Function(_$_TvShowsSelected) _then)
+      : super(_value, (v) => _then(v as _$_TvShowsSelected));
+
+  @override
+  _$_TvShowsSelected get _value => super._value as _$_TvShowsSelected;
+}
+
+/// @nodoc
+
+class _$_TvShowsSelected implements _TvShowsSelected {
+  const _$_TvShowsSelected();
+
+  @override
+  String toString() {
+    return 'AppbarEvent.tvShowsSelected()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_TvShowsSelected);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() moviesSelected,
+    required TResult Function() tvShowsSelected,
+  }) {
+    return tvShowsSelected();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? moviesSelected,
+    TResult Function()? tvShowsSelected,
+  }) {
+    return tvShowsSelected?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? moviesSelected,
+    TResult Function()? tvShowsSelected,
+    required TResult orElse(),
+  }) {
+    if (tvShowsSelected != null) {
+      return tvShowsSelected();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MoviesSelected value) moviesSelected,
+    required TResult Function(_TvShowsSelected value) tvShowsSelected,
+  }) {
+    return tvShowsSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_MoviesSelected value)? moviesSelected,
+    TResult Function(_TvShowsSelected value)? tvShowsSelected,
+  }) {
+    return tvShowsSelected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_MoviesSelected value)? moviesSelected,
+    TResult Function(_TvShowsSelected value)? tvShowsSelected,
+    required TResult orElse(),
+  }) {
+    if (tvShowsSelected != null) {
+      return tvShowsSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TvShowsSelected implements AppbarEvent {
+  const factory _TvShowsSelected() = _$_TvShowsSelected;
 }
 
 /// @nodoc

@@ -16,10 +16,7 @@ class Appbar__widget extends StatelessWidget {
   const Appbar__widget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    //
-    final _bloc = BlocProvider.of<AppbarBloc>(context);
-
-    //
+    
     return BlurredBackground__widget(
       child: Padding(
         padding: const EdgeInsets.only(
@@ -41,38 +38,49 @@ class Appbar__widget extends StatelessWidget {
             const SizedBox(width: kDefaultPadding * 2),
             GestureDetector(
               onTap: () {
-                _bloc.changeTab(HomePageCurrentPage.movies);
+                context
+                    .read<AppbarBloc>()
+                    .add(const AppbarEvent.moviesSelected());
               },
               child: BlocBuilder<AppbarBloc, AppbarState>(
                   builder: (context, state) {
-                return Regular__text(
-                  text: 'Movies',
-                  fontSize: 16.0,
-                  fontWeight: state.currentPage == HomePageCurrentPage.movies
-                      ? FontWeight.bold
-                      : FontWeight.normal,
-                  color: state.currentPage == HomePageCurrentPage.movies
-                      ? kColorWhite
-                      : kColorWhite.withOpacity(0.7),
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Regular__text(
+                    text: 'Movies',
+                    fontSize: 16.0,
+                    fontWeight: state.currentPage == HomePageCurrentPage.movies
+                        ? FontWeight.bold
+                        : FontWeight.normal,
+                    color: state.currentPage == HomePageCurrentPage.movies
+                        ? kColorWhite
+                        : kColorWhite.withOpacity(0.7),
+                  ),
                 );
               }),
             ),
-            const SizedBox(width: kDefaultPadding * 3),
+            const SizedBox(width: kDefaultPadding * 2),
             GestureDetector(
               onTap: () {
-                _bloc.changeTab(HomePageCurrentPage.tvShows);
+                context
+                    .read<AppbarBloc>()
+                    .add(const AppbarEvent.tvShowsSelected());
               },
               child: BlocBuilder<AppbarBloc, AppbarState>(
                 builder: (context, state) {
-                  return Regular__text(
-                    text: 'Tv Shows',
-                    fontSize: 16.0,
-                    fontWeight: state.currentPage == HomePageCurrentPage.tvShows
-                        ? FontWeight.bold
-                        : FontWeight.normal,
-                    color: state.currentPage == HomePageCurrentPage.tvShows
-                        ? kColorWhite
-                        : kColorWhite.withOpacity(0.7),
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Regular__text(
+                      text: 'Tv Shows',
+                      fontSize: 16.0,
+                      fontWeight:
+                          state.currentPage == HomePageCurrentPage.tvShows
+                              ? FontWeight.bold
+                              : FontWeight.normal,
+                      color: state.currentPage == HomePageCurrentPage.tvShows
+                          ? kColorWhite
+                          : kColorWhite.withOpacity(0.7),
+                    ),
                   );
                 },
               ),

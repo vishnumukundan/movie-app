@@ -1,19 +1,23 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_const_constructors_in_immutables, camel_case_types
 
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
+import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/gen/assets.gen.dart';
-import 'package:movie_app/presentation/bloc/home/image_slider/image_slider_cubit.dart';
 import 'package:movie_app/presentation/components/icon_button.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
+import '../../../../data/bloc/home/image_slider/image_slider_bloc.dart';
+import '../../../bloc/home/slider_image/slider_image_cubit.dart';
 import '../../../themes/values.dart';
 
 class ImageSlider__widget extends StatelessWidget {
@@ -21,108 +25,131 @@ class ImageSlider__widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int _currentIndex = context.watch<ImageSliderCubit>().state.currentIndex;
+    int _currentIndex = context.watch<SliderImageCubit>().state.currentIndex;
 
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        CarouselSlider.builder(
-          itemCount: sliderDummyData.length,
-          options: CarouselOptions(
-            aspectRatio: 3 / 4,
-            autoPlay: true,
-            initialPage: 0,
-            enableInfiniteScroll: true,
-            viewportFraction: 1.0,
-            onPageChanged: (index, reason) {
-              context.read<ImageSliderCubit>().setIndex(index);
-            },
-          ),
-          itemBuilder: (context, index, realIndex) {
-            return GestureDetector(
-              onTap: () {
-                PageNav.push(
-                  context,
-                  MovieDetailsPage(
-                    id: sliderDummyData[index]["id"],
+    return BlocBuilder<ImageSliderBloc, ImageSliderState>(
+      builder: (context, state) {
+        // log(state.imageSliderDataList.toString());
+        return SizedBox(
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              CarouselSlider.builder(
+                itemCount: sliderDummyData.length,
+                options: CarouselOptions(
+                  aspectRatio: 3 / 4,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 6),
+                  initialPage: 0,
+                  enableInfiniteScroll: true,
+                  viewportFraction: 1.0,
+                  onPageChanged: (index, reason) {
+                    context.read<SliderImageCubit>().setIndex(index);
+                  },
+                ),
+                itemBuilder: (context, index, realIndex) {
+                  return GestureDetector(
+                    onTap: () {
+                      PageNav.push(
+                        context,
+                        MovieDetailsPage(
+                          id: state.isLoading
+                              ? state.imageSliderDataList[index].id
+                              : 0,
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: ScreenConfig.screenWidth,
+                      decoration: const BoxDecoration(color: kColorWhite50),
+                      child: state.imageSliderDataList.isEmpty ||
+                              state.isLoading
+                          ? const Center(
+                              child:
+                                  CircularProgressIndicator(color: kColorWhite),
+                            )
+                          : CachedNetworkImage(
+                              imageUrl: ApiDataFetching.image(
+                                state.isLoading
+                                    ? ''
+                                    : state
+                                        .imageSliderDataList[index].posterPath,
+                              ),
+                              fit: BoxFit.cover,
+                              fadeInDuration: const Duration(milliseconds: 100),
+                              fadeOutDuration: const Duration(milliseconds: 10),
+                            ),
+                    ),
+                  );
+                },
+              ),
+              Positioned(
+                bottom: -150,
+                child: Container(
+                  height: 300,
+                  width: ScreenConfig.screenWidth,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        kColorPrimary.withOpacity(0.0),
+                        kColorPrimary,
+                        kColorPrimary.withOpacity(0.0),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
                   ),
-                );
-              },
-              child: Container(
-                width: ScreenConfig.screenWidth,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: CachedNetworkImageProvider(
-                        sliderDummyData[index]["image_url"]),
-                    fit: BoxFit.cover,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Bold__text(
+                          text: state.isLoading
+                              ? '...'
+                              : state.imageSliderDataList[_currentIndex].title,
+                          fontSize: 24.0,
+                          maxLines: 2,
+                          textOverFlow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: kDefaultPadding / 2),
+                        const Regular__text(
+                          text: 'Watch Now',
+                          fontSize: 14.0,
+                        ),
+                        const SizedBox(height: kDefaultPadding * 2),
+                        Row(
+                          children: List.generate(
+                            sliderDummyData.length,
+                            (int index) {
+                              if (index == _currentIndex) {
+                                return const SingleIndicator(isActive: true);
+                              } else {
+                                return const SingleIndicator(isActive: false);
+                              }
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: kDefaultPadding * 2.5),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            );
-          },
-        ),
-        Positioned(
-          bottom: -150,
-          child: Container(
-            height: 300,
-            width: ScreenConfig.screenWidth,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  kColorPrimary.withOpacity(0.0),
-                  kColorPrimary,
-                  kColorPrimary.withOpacity(0.0),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+              Positioned(
+                bottom: -35,
+                right: 32,
+                child: Accent_Large__IconButton(
+                  icon: Assets.icons.play,
+                  borderRadius: 60.0,
+                  onTap: () {},
+                ),
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Bold__text(
-                    text: sliderDummyData[_currentIndex]["title"],
-                    fontSize: 24.0,
-                    maxLines: 2,
-                    textOverFlow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: kDefaultPadding / 2),
-                  const Regular__text(
-                    text: 'Watch Now',
-                    fontSize: 14.0,
-                  ),
-                  const SizedBox(height: kDefaultPadding * 2),
-                  Row(
-                    children: List.generate(
-                      sliderDummyData.length,
-                      (int index) {
-                        if (index == _currentIndex) {
-                          return const SingleIndicator(isActive: true);
-                        } else {
-                          return const SingleIndicator(isActive: false);
-                        }
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: kDefaultPadding * 2.5),
-                ],
-              ),
-            ),
+            ],
           ),
-        ),
-        Positioned(
-          bottom: -35,
-          right: 32,
-          child: Accent_Large__IconButton(
-            icon: Assets.icons.play,
-            borderRadius: 60.0,
-            onTap: () {},
-          ),
-        ),
-      ],
+        );
+      },
     );
   }
 }

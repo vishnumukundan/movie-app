@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'image_slider_cubit.dart';
+part of 'slider_image_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ImageSliderState {
+mixin _$SliderImageState {
   int get currentIndex => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -51,26 +51,26 @@ mixin _$ImageSliderState {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ImageSliderStateCopyWith<ImageSliderState> get copyWith =>
+  $SliderImageStateCopyWith<SliderImageState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ImageSliderStateCopyWith<$Res> {
-  factory $ImageSliderStateCopyWith(
-          ImageSliderState value, $Res Function(ImageSliderState) then) =
-      _$ImageSliderStateCopyWithImpl<$Res>;
+abstract class $SliderImageStateCopyWith<$Res> {
+  factory $SliderImageStateCopyWith(
+          SliderImageState value, $Res Function(SliderImageState) then) =
+      _$SliderImageStateCopyWithImpl<$Res>;
   $Res call({int currentIndex});
 }
 
 /// @nodoc
-class _$ImageSliderStateCopyWithImpl<$Res>
-    implements $ImageSliderStateCopyWith<$Res> {
-  _$ImageSliderStateCopyWithImpl(this._value, this._then);
+class _$SliderImageStateCopyWithImpl<$Res>
+    implements $SliderImageStateCopyWith<$Res> {
+  _$SliderImageStateCopyWithImpl(this._value, this._then);
 
-  final ImageSliderState _value;
+  final SliderImageState _value;
   // ignore: unused_field
-  final $Res Function(ImageSliderState) _then;
+  final $Res Function(SliderImageState) _then;
 
   @override
   $Res call({
@@ -87,7 +87,7 @@ class _$ImageSliderStateCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res>
-    implements $ImageSliderStateCopyWith<$Res> {
+    implements $SliderImageStateCopyWith<$Res> {
   factory _$$_InitialCopyWith(
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
@@ -97,7 +97,7 @@ abstract class _$$_InitialCopyWith<$Res>
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$ImageSliderStateCopyWithImpl<$Res>
+    extends _$SliderImageStateCopyWithImpl<$Res>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, (v) => _then(v as _$_Initial));
@@ -128,7 +128,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'ImageSliderState.initial(currentIndex: $currentIndex)';
+    return 'SliderImageState.initial(currentIndex: $currentIndex)';
   }
 
   @override
@@ -206,7 +206,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements ImageSliderState {
+abstract class _Initial implements SliderImageState {
   const factory _Initial({required final int currentIndex}) = _$_Initial;
 
   @override
