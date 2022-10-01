@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/data/bloc/login/login_poster/login_poster_bloc.dart';
+import 'package:movie_app/presentation/components/skelton.dart';
+import 'package:movie_app/presentation/pages/login/widgets/ImageStack_skelton.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
@@ -12,8 +14,7 @@ import '../../../themes/values.dart';
 class ImageStack__widget extends StatelessWidget {
   const ImageStack__widget({Key? key}) : super(key: key);
 
-  final _progressIndicator =
-      const CircularProgressIndicator(color: kColorWhite);
+  final _skelton = const Skelton__widget(child: ImageStackSkelton__widget());
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class ImageStack__widget extends StatelessWidget {
                 child: Transform.scale(
                   scale: 0.8,
                   child: state.isLoading
-                      ? _progressIndicator
+                      ? _skelton
                       : ImageContainer__widget(
                           imageData: state.loginPosterDataList[1].posterPath,
                           height: getScreenHeightPercentage(30.0),
@@ -44,7 +45,7 @@ class ImageStack__widget extends StatelessWidget {
                 child: Transform.scale(
                   scale: 0.8,
                   child: state.isLoading
-                      ? _progressIndicator
+                      ? _skelton
                       : ImageContainer__widget(
                           imageData: state.loginPosterDataList[2].posterPath,
                           height: getScreenHeightPercentage(30.0),
@@ -55,7 +56,7 @@ class ImageStack__widget extends StatelessWidget {
                 ),
               ),
               state.isLoading
-                  ? _progressIndicator
+                  ? _skelton
                   : ImageContainer__widget(
                       imageData: state.loginPosterDataList[0].posterPath,
                       height: getScreenHeightPercentage(30.0),

@@ -1,7 +1,5 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_const_constructors_in_immutables, camel_case_types
 
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';

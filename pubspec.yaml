@@ -23,6 +23,7 @@ dependencies:
   injectable: ^1.5.3
   intl: ^0.17.0
   json_annotation: ^4.6.0
+  shimmer: ^2.0.0
   youtube_player_iframe: ^3.1.0
 
 dev_dependencies:

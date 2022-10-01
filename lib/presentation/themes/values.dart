@@ -36,3 +36,8 @@ const TextStyle kLabelTextStyle = TextStyle(
   fontWeight: FontWeight.w400,
   color: kColorWhite,
 );
+
+// skelton Colors
+const kSkeltonColor = kColorWhite;
+const kSkeltonBaseColor = kColorPrimaryTint_2;
+const kSkeltonHighlightColor = kColorPrimaryTint_3;
