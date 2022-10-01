@@ -10,6 +10,7 @@ import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/icon_button.dart';
 import 'package:movie_app/presentation/components/text.dart';
+import 'package:movie_app/presentation/pages/home/widgets/skelton/image_slider_skelton.dart';
 import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
@@ -27,7 +28,6 @@ class ImageSlider__widget extends StatelessWidget {
 
     return BlocBuilder<ImageSliderBloc, ImageSliderState>(
       builder: (context, state) {
-        // log(state.imageSliderDataList.toString());
         return SizedBox(
           child: Stack(
             clipBehavior: Clip.none,
@@ -60,22 +60,17 @@ class ImageSlider__widget extends StatelessWidget {
                     child: Container(
                       width: ScreenConfig.screenWidth,
                       decoration: const BoxDecoration(color: kColorWhite50),
-                      child: state.imageSliderDataList.isEmpty ||
-                              state.isLoading
-                          ? const Center(
-                              child:
-                                  CircularProgressIndicator(color: kColorWhite),
-                            )
+                      child: state.isLoading
+                          ? const ImageSliderSkelton__widget()
                           : CachedNetworkImage(
                               imageUrl: ApiDataFetching.image(
-                                state.isLoading
-                                    ? ''
-                                    : state
-                                        .imageSliderDataList[index].posterPath,
+                                state.imageSliderDataList[index].posterPath,
                               ),
                               fit: BoxFit.cover,
                               fadeInDuration: const Duration(milliseconds: 100),
                               fadeOutDuration: const Duration(milliseconds: 10),
+                              placeholder: (context, url) =>
+                                  const ImageSliderSkelton__widget(),
                             ),
                     ),
                   );
@@ -100,12 +95,12 @@ class ImageSlider__widget extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Bold__text(
                           text: state.isLoading
-                              ? '...'
+                              ? 'Movie Title'
                               : state.imageSliderDataList[_currentIndex].title,
                           fontSize: 24.0,
                           maxLines: 2,
@@ -129,7 +124,7 @@ class ImageSlider__widget extends StatelessWidget {
                             },
                           ),
                         ),
-                        const SizedBox(height: kDefaultPadding * 2.5),
+                        const SizedBox(height: kDefaultPadding * 7.6),
                       ],
                     ),
                   ),

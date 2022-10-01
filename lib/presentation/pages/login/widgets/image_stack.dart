@@ -3,9 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/data/bloc/login/login_poster/login_poster_bloc.dart';
-import 'package:movie_app/presentation/components/skelton.dart';
-import 'package:movie_app/presentation/pages/login/widgets/ImageStack_skelton.dart';
-import 'package:movie_app/presentation/themes/colors.dart';
+import 'package:movie_app/presentation/pages/login/widgets/Image_stack_skelton.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 import '../../../components/image_container.dart';
@@ -14,7 +12,7 @@ import '../../../themes/values.dart';
 class ImageStack__widget extends StatelessWidget {
   const ImageStack__widget({Key? key}) : super(key: key);
 
-  final _skelton = const Skelton__widget(child: ImageStackSkelton__widget());
+  final _skelton = const ImageStackSkelton__widget();
 
   @override
   Widget build(BuildContext context) {

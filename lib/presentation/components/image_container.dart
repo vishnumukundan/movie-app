@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 
-import '../pages/login/widgets/ImageStack_skelton.dart';
+import '../pages/login/widgets/Image_stack_skelton.dart';
 import '../themes/colors.dart';
 import 'skelton.dart';
 
