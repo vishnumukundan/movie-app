@@ -7,10 +7,10 @@
     <img src="screenshots/github.png" alt="Logo" width="80" height="80">
   </a>
 
-  # Movie App
+  # Netflip
   
   <p align="center">
-    A Flutter project for Home Rental application UI.
+  An interesting project for movie lovers. 
     <br />
     <a href="#getting_started">Getting Started</a>
     ·
@@ -57,7 +57,8 @@ samples, guidance on mobile development, and a full API reference.
 
 ## :blue_book: About The Project
 
-.............
+An interesting project for movie lovers. Users can search for movies here and browse them by artists and categories. Additionally, visitors may read reviews and see teasers and trailers for movies.
+This project primarily focuses on integrating API data. In this case, the backend uses the TMDB movie data API.
 
 <br />
 
@@ -66,10 +67,14 @@ samples, guidance on mobile development, and a full API reference.
 - [Dart](https://dart.dev/guides)
 - [Flutter](https://docs.flutter.dev/get-started/codelab)
 
-#### Packages
+#### Packages and Integrations
 
-- [Build Runner](https://pub.dev/packages/build_runner)
-- [Flutter Gen](https://pub.dev/packages/flutter_gen) 
+- [Flutter Bloc](https://pub.dev/packages/flutter_bloc)
+- [Freezed](https://pub.dev/packages/freezed) 
+- [JSON Serializable](https://pub.dev/packages/json_serializable) 
+- [Youtube Player Iframe](https://pub.dev/packages/youtube_player_iframe)
+- [Get It](https://pub.dev/packages/get_it) 
+- [Injectable](https://pub.dev/packages/injectable) 
 
 
 <p align="right"><a href="#top"> :arrow_up_small: </a></p>
