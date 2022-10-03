@@ -95,13 +95,13 @@ This project primarily focuses on integrating API data. In this case, the backen
 
 <p align="right"><a href="#top"> :arrow_up_small: </a></p>
 
-<br /> -->
+<br />
 <!-- DESIGN PATTERN -->
 <div id="design_pattern"></div>
 
 ## :open_file_folder: Design Pattern
 
-<img style="width: 250px" src="screenshots/file_Structure.png" alt="file_Structure" title="file_Structure">
+<img style="width: 300px" src="screenshots/file_structure.png" alt="file Structure" title="file Structure">
 
 <p align="right"><a href="#top"> :arrow_up_small: </a></p> 
 
