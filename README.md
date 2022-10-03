@@ -17,8 +17,8 @@
     <a href="#about_project">About The Project</a>
     ·
     <a href="#screenshots">Screenshots</a>
-<!--     ·
-    <a href="#design_pattern">Design Pattern</a> -->
+    ·
+    <a href="#design_pattern">Design Pattern</a>
     .
     <a href="#acknowledgments">Acknowledgments</a>
     ·
@@ -95,26 +95,15 @@ This project primarily focuses on integrating API data. In this case, the backen
 
 <p align="right"><a href="#top"> :arrow_up_small: </a></p>
 
-<!-- <br /> -->
+<br /> -->
 <!-- DESIGN PATTERN -->
-<!-- <div id="design_pattern"></div>
+<div id="design_pattern"></div>
 
 ## :open_file_folder: Design Pattern
 
-- components (global componets)
-- config (app config like colors and size)
-- data (dummy data)
-- models
-- controller (global state management)
-- screens
-  - home
-    - view
-    - widgets
-    - controller (small controller of the view)
-- utilities
-  - services
+<img style="width: 250px" src="screenshots/file_Structure.png" alt="file_Structure" title="file_Structure">
 
-<p align="right"><a href="#top"> :arrow_up_small: </a></p>  -->
+<p align="right"><a href="#top"> :arrow_up_small: </a></p> 
 
 
 
@@ -124,7 +113,7 @@ This project primarily focuses on integrating API data. In this case, the backen
 
 ## :smiling_face_with_three_hearts: Aknowledgments
 
-- [rendy vickriansyah](https://www.figma.com/@rendy)
+- [ThemovieDatabase](https://www.themoviedb.org/)
 - [Stack Overflow](https://stackoverflow.com/)
 - [Github Stickers](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
 - [Youtube](https://youtube.com)
