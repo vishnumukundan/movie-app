@@ -81,10 +81,11 @@ samples, guidance on mobile development, and a full API reference.
 ## :camera: Screenshots
 
 <div style="display:grid">
-    <img style="width: 235px" src="screenshots/home1.png" alt="home1" title="home1">
-    <img style="width: 235px" src="screenshots/home2.png" alt="home2" title="home2">
-    <img style="width: 235px" src="screenshots/detail1.png" alt="detail1" title="detail1">
-    <img style="width: 235px" src="screenshots/detail2.png" alt="detail2" title="detail2">
+    <img style="width: 235px" src="screenshots/home.jpg" alt="home" title="home">
+    <img style="width: 235px" src="screenshots/discover1.jpg" alt="discover1" title="discover1">
+    <img style="width: 235px" src="screenshots/discover2.jpg" alt="discover2" title="discover2">
+    <img style="width: 235px" src="screenshots/watchlist.jpg" alt="watchlist" title="watchlist">
+    <img style="width: 235px" src="screenshots/profile.jpg" alt="profile" title="profile">
 </div>
 
 <p align="right"><a href="#top"> :arrow_up_small: </a></p>
