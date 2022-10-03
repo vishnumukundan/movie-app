@@ -41,8 +41,8 @@ class ImageContainer__widget extends StatelessWidget {
           ),
         ),
       ),
-      placeholder: (context, url) =>
-          const Skelton__widget(child: ImageStackSkelton__widget()),
+      // placeholder: (context, url) =>
+      //     const Skelton__widget(child: ImageStackSkelton__widget()),
     );
   }
 }

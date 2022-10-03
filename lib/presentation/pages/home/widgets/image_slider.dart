@@ -52,8 +52,8 @@ class ImageSlider__widget extends StatelessWidget {
                         context,
                         MovieDetailsPage(
                           id: state.isLoading
-                              ? state.imageSliderDataList[index].id
-                              : 0,
+                              ? 0
+                              : state.imageSliderDataList[index].id,
                         ),
                       );
                     },

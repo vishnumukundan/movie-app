@@ -9,6 +9,7 @@ import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.d
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/data/bloc/home/image_slider/image_slider_bloc.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
+import 'package:movie_app/presentation/bloc/main/appbar/appbar_bloc.dart';
 import 'package:movie_app/presentation/components/movie_list_scroll.dart';
 import 'package:movie_app/presentation/pages/home/widgets/genres_scroll.dart';
 import 'package:movie_app/presentation/pages/home/widgets/latest_trailers.dart';
@@ -24,19 +25,20 @@ import '../../main/widgets/appbar.dart';
 import '../widgets/image_slider.dart';
 
 final _data = moviePosterDummyData;
+late HomePageCurrentPage _currentPage;
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     ScreenConfig().init(context);
+    _currentPage = context.watch<AppbarBloc>().state.currentPage;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context
           .read<ImageSliderBloc>()
           .add(const ImageSliderEvent.getImageSliderData());
     });
-
     return Stack(
       children: [
         SingleChildScrollView(

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/components/skelton.dart';
-import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
 import '../../../themes/screen_size_config.dart';
