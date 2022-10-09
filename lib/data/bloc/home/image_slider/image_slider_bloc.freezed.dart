@@ -169,11 +169,9 @@ abstract class _GetImageSliderData implements ImageSliderEvent {
 /// @nodoc
 mixin _$ImageSliderState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isError => throw _privateConstructorUsedError;
   List<ImageSlider> get imageSliderDataList =>
       throw _privateConstructorUsedError;
-  Option<Either<NetworkError, List<ImageSlider>>>
-      get imageSliderFailureOrSuccessOption =>
-          throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ImageSliderStateCopyWith<ImageSliderState> get copyWith =>
@@ -186,10 +184,7 @@ abstract class $ImageSliderStateCopyWith<$Res> {
           ImageSliderState value, $Res Function(ImageSliderState) then) =
       _$ImageSliderStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isLoading,
-      List<ImageSlider> imageSliderDataList,
-      Option<Either<NetworkError, List<ImageSlider>>>
-          imageSliderFailureOrSuccessOption});
+      {bool isLoading, bool isError, List<ImageSlider> imageSliderDataList});
 }
 
 /// @nodoc
@@ -204,23 +199,22 @@ class _$ImageSliderStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isError = freezed,
     Object? imageSliderDataList = freezed,
-    Object? imageSliderFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
       imageSliderDataList: imageSliderDataList == freezed
           ? _value.imageSliderDataList
           : imageSliderDataList // ignore: cast_nullable_to_non_nullable
               as List<ImageSlider>,
-      imageSliderFailureOrSuccessOption: imageSliderFailureOrSuccessOption ==
-              freezed
-          ? _value.imageSliderFailureOrSuccessOption
-          : imageSliderFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<NetworkError, List<ImageSlider>>>,
     ));
   }
 }
@@ -233,10 +227,7 @@ abstract class _$$_ImageSliderStateCopyWith<$Res>
       __$$_ImageSliderStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isLoading,
-      List<ImageSlider> imageSliderDataList,
-      Option<Either<NetworkError, List<ImageSlider>>>
-          imageSliderFailureOrSuccessOption});
+      {bool isLoading, bool isError, List<ImageSlider> imageSliderDataList});
 }
 
 /// @nodoc
@@ -253,23 +244,22 @@ class __$$_ImageSliderStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? isError = freezed,
     Object? imageSliderDataList = freezed,
-    Object? imageSliderFailureOrSuccessOption = freezed,
   }) {
     return _then(_$_ImageSliderState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
       imageSliderDataList: imageSliderDataList == freezed
           ? _value._imageSliderDataList
           : imageSliderDataList // ignore: cast_nullable_to_non_nullable
               as List<ImageSlider>,
-      imageSliderFailureOrSuccessOption: imageSliderFailureOrSuccessOption ==
-              freezed
-          ? _value.imageSliderFailureOrSuccessOption
-          : imageSliderFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<NetworkError, List<ImageSlider>>>,
     ));
   }
 }
@@ -279,12 +269,14 @@ class __$$_ImageSliderStateCopyWithImpl<$Res>
 class _$_ImageSliderState implements _ImageSliderState {
   const _$_ImageSliderState(
       {required this.isLoading,
-      required final List<ImageSlider> imageSliderDataList,
-      required this.imageSliderFailureOrSuccessOption})
+      required this.isError,
+      required final List<ImageSlider> imageSliderDataList})
       : _imageSliderDataList = imageSliderDataList;
 
   @override
   final bool isLoading;
+  @override
+  final bool isError;
   final List<ImageSlider> _imageSliderDataList;
   @override
   List<ImageSlider> get imageSliderDataList {
@@ -293,12 +285,8 @@ class _$_ImageSliderState implements _ImageSliderState {
   }
 
   @override
-  final Option<Either<NetworkError, List<ImageSlider>>>
-      imageSliderFailureOrSuccessOption;
-
-  @override
   String toString() {
-    return 'ImageSliderState(isLoading: $isLoading, imageSliderDataList: $imageSliderDataList, imageSliderFailureOrSuccessOption: $imageSliderFailureOrSuccessOption)';
+    return 'ImageSliderState(isLoading: $isLoading, isError: $isError, imageSliderDataList: $imageSliderDataList)';
   }
 
   @override
@@ -307,19 +295,17 @@ class _$_ImageSliderState implements _ImageSliderState {
         (other.runtimeType == runtimeType &&
             other is _$_ImageSliderState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.isError, isError) &&
             const DeepCollectionEquality()
-                .equals(other._imageSliderDataList, _imageSliderDataList) &&
-            const DeepCollectionEquality().equals(
-                other.imageSliderFailureOrSuccessOption,
-                imageSliderFailureOrSuccessOption));
+                .equals(other._imageSliderDataList, _imageSliderDataList));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(_imageSliderDataList),
-      const DeepCollectionEquality().hash(imageSliderFailureOrSuccessOption));
+      const DeepCollectionEquality().hash(isError),
+      const DeepCollectionEquality().hash(_imageSliderDataList));
 
   @JsonKey(ignore: true)
   @override
@@ -329,18 +315,17 @@ class _$_ImageSliderState implements _ImageSliderState {
 
 abstract class _ImageSliderState implements ImageSliderState {
   const factory _ImageSliderState(
-      {required final bool isLoading,
-      required final List<ImageSlider> imageSliderDataList,
-      required final Option<Either<NetworkError, List<ImageSlider>>>
-          imageSliderFailureOrSuccessOption}) = _$_ImageSliderState;
+          {required final bool isLoading,
+          required final bool isError,
+          required final List<ImageSlider> imageSliderDataList}) =
+      _$_ImageSliderState;
 
   @override
   bool get isLoading;
   @override
-  List<ImageSlider> get imageSliderDataList;
+  bool get isError;
   @override
-  Option<Either<NetworkError, List<ImageSlider>>>
-      get imageSliderFailureOrSuccessOption;
+  List<ImageSlider> get imageSliderDataList;
   @override
   @JsonKey(ignore: true)
   _$$_ImageSliderStateCopyWith<_$_ImageSliderState> get copyWith =>

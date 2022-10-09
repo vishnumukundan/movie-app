@@ -9,14 +9,14 @@ import '../../../themes/colors.dart';
 import '../../../themes/values.dart';
 
 class ButtonGroupSection__widget extends StatelessWidget {
-  const ButtonGroupSection__widget({Key? key, required this.dataList})
+  const ButtonGroupSection__widget({Key? key, required this.ratingvalue})
       : super(key: key);
 
-  final dataList;
+  final ratingvalue;
 
   @override
   Widget build(BuildContext context) {
-    final double doubleValue = dataList[0]["vote_average"];
+    final double doubleValue = ratingvalue;
     final String stringValue = doubleValue.toStringAsFixed(1);
     final double finalValue = double.parse(stringValue);
     return Row(

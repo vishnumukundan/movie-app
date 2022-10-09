@@ -10,6 +10,8 @@ class ApiEndPoints {
       '$kBaseUrl/movie/popular?api_key=$apiKey&language=en-US';
   static String popularTv =
       '$kBaseUrl/tv/popular?api_key=$apiKey&language=en-US';
+  static String movieDetils(movieId) =>
+      '$kBaseUrl/movie/$movieId?api_key=$apiKey&language=en-US';
 }
 
 class ApiDataFetching {

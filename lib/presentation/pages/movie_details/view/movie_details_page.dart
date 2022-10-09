@@ -1,9 +1,11 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/services/sort_list_by.dart';
 import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
 import 'package:movie_app/core/utils/generics/navigator.dart';
+import 'package:movie_app/data/bloc/movie_details/bloc/movie_details_bloc.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/background.dart';
@@ -14,6 +16,7 @@ import 'package:movie_app/presentation/pages/movie_details/widgets/cast_section.
 import 'package:movie_app/presentation/pages/movie_details/widgets/description_section.dart';
 import 'package:movie_app/presentation/pages/movie_details/widgets/movie_title_section.dart';
 import 'package:movie_app/presentation/pages/movie_details/widgets/review_section.dart';
+import 'package:movie_app/presentation/pages/movie_details/widgets/skelton/poster_image_skelton.dart';
 import 'package:movie_app/presentation/pages/movie_details/widgets/video_section.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
@@ -30,6 +33,11 @@ class MovieDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context
+          .read<MovieDetailsBloc>()
+          .add(MovieDetailsEvent.getMovieDetails(movieId: id.toString()));
+    });
     return Scaffold(
       body: Stack(
         children: [
@@ -42,10 +50,18 @@ class MovieDetailsPage extends StatelessWidget {
                 children: [
                   Positioned(
                     top: 0,
-                    child: ImageContainer__widget(
-                      imageData: _dataList[0]["poster_path"],
-                      height: getScreenHeightPercentage(80.0),
-                      width: ScreenConfig.screenWidth,
+                    child: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+                      builder: (context, state) {
+                        if (state.isLoading) {
+                          return const PosterImageSkelton__widget();
+                        } else {
+                          return ImageContainer__widget(
+                            imageData: state.movieDetailsData.posterPath,
+                            height: getScreenHeightPercentage(80.0),
+                            width: ScreenConfig.screenWidth,
+                          );
+                        }
+                      },
                     ),
                   ),
                   Padding(
@@ -64,13 +80,27 @@ class MovieDetailsPage extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             // movie title section
-                            MovieTitleSection__widget(
-                              title: _dataList[0]["title"],
-                              tagline: _dataList[0]["tagline"],
+                            BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+                              builder: (context, state) =>
+                                  MovieTitleSection__widget(
+                                title: state.isLoading
+                                    ? 'Title'
+                                    : state.movieDetailsData.title,
+                                tagline: state.isLoading
+                                    ? '........'
+                                    : state.movieDetailsData.tagline,
+                              ),
                             ),
                             const SizedBox(height: kDefaultPadding),
                             // button group section
-                            ButtonGroupSection__widget(dataList: _dataList),
+                            BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+                              builder: (context, state) =>
+                                  ButtonGroupSection__widget(
+                                ratingvalue: state.isLoading
+                                    ? 0.0
+                                    : state.movieDetailsData.voteAverage,
+                              ),
+                            ),
                             const SizedBox(height: kDefaultPadding * 2),
                             // desctiption section
                             const DescriptionSection__widget(),
@@ -81,11 +111,15 @@ class MovieDetailsPage extends StatelessWidget {
                               fontSize: 16.0,
                             ),
                             const SizedBox(height: kDefaultPadding / 2),
-                            Medium__text(
-                              text: _dataList[0]["overview"],
-                              fontSize: 12.0,
-                              height: 1.5,
-                              color: kColorWhite80,
+                            BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+                              builder: (context, state) => Medium__text(
+                                text: state.isLoading
+                                    ? 'Loading..........'
+                                    : state.movieDetailsData.overview,
+                                fontSize: 12.0,
+                                height: 1.5,
+                                color: kColorWhite80,
+                              ),
                             ),
                             const SizedBox(height: kDefaultPadding * 2),
                             // cast section

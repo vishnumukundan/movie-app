@@ -1,7 +1,6 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 import 'package:shimmer/shimmer.dart';
 

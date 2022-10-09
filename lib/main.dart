@@ -10,6 +10,7 @@ import 'package:movie_app/presentation/bloc/watchlist/watchlist_scroll/watchlist
 import 'package:movie_app/presentation/themes/colors.dart';
 
 import 'data/bloc/home/image_slider/image_slider_bloc.dart';
+import 'data/bloc/movie_details/bloc/movie_details_bloc.dart';
 import 'presentation/bloc/main/bottom_navbar/botom_nav_cubit.dart';
 import 'presentation/pages/splash/view/splash_page.dart';
 
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         //data blocs
         BlocProvider(create: (context) => getIt<LoginPosterBloc>()),
         BlocProvider(create: (context) => getIt<ImageSliderBloc>()),
+        BlocProvider(create: (context) => getIt<MovieDetailsBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

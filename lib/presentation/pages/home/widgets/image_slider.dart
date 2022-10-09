@@ -46,14 +46,14 @@ class ImageSlider__widget extends StatelessWidget {
                   },
                 ),
                 itemBuilder: (context, index, realIndex) {
+                  final _dataList = state.imageSliderDataList;
+
                   return GestureDetector(
                     onTap: () {
                       PageNav.push(
                         context,
                         MovieDetailsPage(
-                          id: state.isLoading
-                              ? 0
-                              : state.imageSliderDataList[index].id,
+                          id: state.isLoading ? 0 : _dataList[index].id,
                         ),
                       );
                     },
@@ -64,7 +64,7 @@ class ImageSlider__widget extends StatelessWidget {
                           ? const ImageSliderSkelton__widget()
                           : CachedNetworkImage(
                               imageUrl: ApiDataFetching.image(
-                                state.imageSliderDataList[index].posterPath,
+                                _dataList[index].posterPath,
                               ),
                               fit: BoxFit.cover,
                               fadeInDuration: const Duration(milliseconds: 100),

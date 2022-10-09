@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,28 +18,29 @@ class ImageSliderBloc extends Bloc<ImageSliderEvent, ImageSliderState> {
   final IImageSliderRepo _iImageSliderRepo;
   ImageSliderBloc(this._iImageSliderRepo) : super(ImageSliderState.initial()) {
     on<_GetImageSliderData>((event, emit) async {
-      emit(state.copyWith(
-        isLoading: true,
-        imageSliderDataList: [],
-        imageSliderFailureOrSuccessOption: none(),
-      ));
+      if (state.imageSliderDataList.isNotEmpty) {
+        emit(ImageSliderState(
+          isLoading: false,
+          isError: false,
+          imageSliderDataList: state.imageSliderDataList,
+        ));
+      }
 
       final Either<NetworkError, List<ImageSlider>> imageSliderOption =
           await _iImageSliderRepo.getImageSliderData();
 
-      emit(
-        imageSliderOption.fold(
-          (failure) => state.copyWith(
-            isLoading: false,
-            imageSliderFailureOrSuccessOption: some(left(failure)),
-          ),
-          (success) => state.copyWith(
-            isLoading: false,
-            imageSliderDataList: success,
-            imageSliderFailureOrSuccessOption: some(right(success)),
-          ),
-        ),
-      );
+      final _state = imageSliderOption.fold(
+          (failure) => const ImageSliderState(
+                isLoading: false,
+                isError: true,
+                imageSliderDataList: [],
+              ),
+          (success) => ImageSliderState(
+                isLoading: false,
+                isError: false,
+                imageSliderDataList: success,
+              ));
+      emit(_state);
     });
   }
 }
