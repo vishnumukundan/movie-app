@@ -56,7 +56,7 @@ class MovieHorizontalCardWithPlaybutton__widget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       image: DecorationImage(
                         image: CachedNetworkImageProvider(
-                            ApiDataFetching.image(image)),
+                            ApiDataFetching.image(image, ImageWidth.w92)),
                         fit: BoxFit.cover,
                       ),
                     ),

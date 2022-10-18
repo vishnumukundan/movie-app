@@ -65,6 +65,7 @@ class ImageSlider__widget extends StatelessWidget {
                           : CachedNetworkImage(
                               imageUrl: ApiDataFetching.image(
                                 _dataList[index].posterPath,
+                                ImageWidth.w500,
                               ),
                               fit: BoxFit.cover,
                               fadeInDuration: const Duration(milliseconds: 100),

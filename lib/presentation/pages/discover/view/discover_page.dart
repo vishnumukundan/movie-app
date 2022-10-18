@@ -49,7 +49,9 @@ class DiscoverPage extends StatelessWidget {
                         image: DecorationImage(
                           image: CachedNetworkImageProvider(
                             ApiDataFetching.image(
-                                moviePosterDummyData[index]["poster_path"]),
+                              moviePosterDummyData[index]["poster_path"],
+                              ImageWidth.w154,
+                            ),
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -90,8 +92,10 @@ class DiscoverPage extends StatelessWidget {
                   return PersonImageAndNameCard__widget(
                     image: personDummyData[index]["profile_path"],
                     name: personDummyData[index]["name"],
+                    isLoading: true,
                     onTap: () {
-                      PageNav.push(context, const ActorProfilePage__widget());
+                      PageNav.push(
+                          context, const ActorProfilePage(personId: 1));
                     },
                   );
                 },

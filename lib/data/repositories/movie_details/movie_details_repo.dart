@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -17,10 +18,13 @@ class MovieDetailsRepository implements IMovieDetailsRepo {
     try {
       final response =
           await Dio(BaseOptions()).get(ApiEndPoints.movieDetils(movieId));
+
+      // log(jsonEncode(response.data).toString());
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = MovieDetails.fromJson(response.data);
 
-        // log(dataList.toString());
+        log(dataList.toString());
         return Right(dataList);
       } else {
         log(const Left(NetworkError.serverError()).toString());

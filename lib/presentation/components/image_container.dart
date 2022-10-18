@@ -14,6 +14,7 @@ class ImageContainer__widget extends StatelessWidget {
     required this.width,
     this.radius,
     this.boxshadow,
+    this.imageWidth = ImageWidth.w500,
   }) : super(key: key);
 
   final dynamic imageData;
@@ -21,11 +22,12 @@ class ImageContainer__widget extends StatelessWidget {
   final double width;
   final double? radius;
   final List<BoxShadow>? boxshadow;
+  final ImageWidth? imageWidth;
 
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: ApiDataFetching.image(imageData),
+      imageUrl: ApiDataFetching.image(imageData, imageWidth!),
       imageBuilder: (context, imageProvider) => Container(
         height: height,
         width: width,

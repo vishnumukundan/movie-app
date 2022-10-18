@@ -12,8 +12,16 @@ _$_LoginPoster _$$_LoginPosterFromJson(Map<String, dynamic> json) =>
       posterPath: json['poster_path'] as String?,
     );
 
-Map<String, dynamic> _$$_LoginPosterToJson(_$_LoginPoster instance) =>
-    <String, dynamic>{
-      'popularity': instance.popularity,
-      'poster_path': instance.posterPath,
-    };
+Map<String, dynamic> _$$_LoginPosterToJson(_$_LoginPoster instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('popularity', instance.popularity);
+  writeNotNull('poster_path', instance.posterPath);
+  return val;
+}

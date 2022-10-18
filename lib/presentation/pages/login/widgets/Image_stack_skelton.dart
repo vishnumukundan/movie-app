@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, file_names
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/presentation/components/skelton.dart';

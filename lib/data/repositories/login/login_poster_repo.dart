@@ -14,6 +14,7 @@ class LoginPosterRepository implements ILoginImagesRepo {
     try {
       final response =
           await Dio(BaseOptions()).get(ApiEndPoints.trendingMovieAllWeek);
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         final loginPostersList = (response.data["results"] as List)
             .map((e) => LoginPoster.fromJson(e))

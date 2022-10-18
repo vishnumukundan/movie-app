@@ -10,7 +10,7 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../../../data/bloc/home/image_slider/image_slider_bloc.dart' as _i9;
 import '../../../data/bloc/login/login_poster/login_poster_bloc.dart' as _i10;
-import '../../../data/bloc/movie_details/bloc/movie_details_bloc.dart' as _i11;
+import '../../../data/bloc/movie_details/movie_details_bloc.dart' as _i11;
 import '../../../data/repositories/home/image_slider/image_slider_repo.dart'
     as _i4;
 import '../../../data/repositories/login/login_poster_repo.dart' as _i6;

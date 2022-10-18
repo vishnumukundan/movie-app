@@ -14,10 +14,8 @@ class MovieDetailsState with _$MovieDetailsState {
       isError: false,
       movieDetailsData: MovieDetails(
         id: 0,
-        title: '',
         backdropPath: '',
         genres: [],
-        originalLanguage: '',
         overview: '',
         popularity: 0.0,
         posterPath: '',
@@ -25,7 +23,16 @@ class MovieDetailsState with _$MovieDetailsState {
         runtime: 0,
         status: '',
         tagline: '',
+        title: '',
         voteAverage: 0.0,
+        videos: Videos(results: []),
+        casts: Casts(cast: []),
+        reviews: Reviews(
+          page: 0,
+          results: [],
+          totalPages: 0,
+          totalResults: 0,
+        ),
       ),
     );
   }

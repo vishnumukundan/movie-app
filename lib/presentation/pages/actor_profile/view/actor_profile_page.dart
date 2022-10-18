@@ -19,13 +19,13 @@ import '../../../components/inner_appbars/appbar_with_back_button.dart';
 
 final List _dataList = personDetailsDummyData;
 
-class ActorProfilePage__widget extends StatelessWidget {
-  const ActorProfilePage__widget({
+class ActorProfilePage extends StatelessWidget {
+  const ActorProfilePage({
     Key? key,
-    // required this.id,
+    required this.personId,
   }) : super(key: key);
 
-  // final int id;
+  final int personId;
 
   @override
   Widget build(BuildContext context) {

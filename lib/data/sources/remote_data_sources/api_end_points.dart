@@ -11,11 +11,36 @@ class ApiEndPoints {
   static String popularTv =
       '$kBaseUrl/tv/popular?api_key=$apiKey&language=en-US';
   static String movieDetils(movieId) =>
-      '$kBaseUrl/movie/$movieId?api_key=$apiKey&language=en-US';
+      '$kBaseUrl/movie/$movieId?api_key=$apiKey&append_to_response=videos,casts,reviews';
+  static String movieCast(movieId) =>
+      '$kBaseUrl/movie/$movieId/credits?api_key=$apiKey&language=en-US';
 }
 
+enum ImageWidth { w92, w154, w185, w342, w500, w780, original }
+
 class ApiDataFetching {
-  static String image(String imageUrl) => '$kImageBaseUrl$imageUrl';
+  static String image(String imageUrl, ImageWidth width) {
+    if (width == ImageWidth.w92) {
+      return '$kImageBaseUrl/w92$imageUrl';
+    }
+    if (width == ImageWidth.w154) {
+      return '$kImageBaseUrl/w154$imageUrl';
+    }
+    if (width == ImageWidth.w185) {
+      return '$kImageBaseUrl/w185$imageUrl';
+    }
+    if (width == ImageWidth.w342) {
+      return '$kImageBaseUrl/w342$imageUrl';
+    }
+    if (width == ImageWidth.w500) {
+      return '$kImageBaseUrl/w500$imageUrl';
+    }
+    if (width == ImageWidth.w780) {
+      return '$kImageBaseUrl/w780$imageUrl';
+    }
+    return '$kImageBaseUrl/original$imageUrl';
+  }
+
   static String youtubeTumbnail(String youtubeKey) =>
       '$kYoutubeImageBaseUrl$youtubeKey/0.jpg';
 }

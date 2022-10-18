@@ -36,7 +36,6 @@ class CustomListViewBuilder extends StatelessWidget {
   final ScrollPhysics scrollPhysics;
 
   final items = <Widget>[];
-  late Widget finalWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -50,22 +49,21 @@ class CustomListViewBuilder extends StatelessWidget {
           }
         }
       }
-
-      finalWidget = SizedBox(
-        height: height,
-        width: width,
-        child: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          scrollDirection: scrollDirection,
-          padding: padding,
-          controller: controller,
-          clipBehavior: clipBehavior,
-          physics: scrollPhysics,
-          child: getDirection(scrollDirection, items),
-        ),
-      );
     }
-    return finalWidget;
+
+    return SizedBox(
+      height: height,
+      width: width,
+      child: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        scrollDirection: scrollDirection,
+        padding: padding,
+        controller: controller,
+        clipBehavior: clipBehavior,
+        physics: scrollPhysics,
+        child: getDirection(scrollDirection, items),
+      ),
+    );
   }
 
   getDirection(Axis direction, List<Widget> items) {

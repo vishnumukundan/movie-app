@@ -14,6 +14,7 @@ import '../../../themes/values.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +66,7 @@ class ProfilePage extends StatelessWidget {
                         textOverflow: TextOverflow.ellipsis,
                         image: userDummyData[index]["profile_path"],
                         name: userDummyData[index]["name"],
+                        isLoading: true,
                         onTap: () {},
                       ),
                     );

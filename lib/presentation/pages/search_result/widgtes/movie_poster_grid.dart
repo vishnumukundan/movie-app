@@ -47,6 +47,7 @@ class MoviePosterGrid__widget extends StatelessWidget {
                   image: NetworkImage(
                     ApiDataFetching.image(
                       upcomingMoviesDummyData[index]["poster_path"],
+                      ImageWidth.w154,
                     ),
                   ),
                   fit: BoxFit.cover),

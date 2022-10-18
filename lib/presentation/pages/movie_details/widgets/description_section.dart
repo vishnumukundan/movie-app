@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/minute_to_hour_convertion.dart';
-import 'package:movie_app/data/bloc/movie_details/bloc/movie_details_bloc.dart';
-import 'package:movie_app/data/models/discover/genre/genre_model.dart';
+import 'package:movie_app/data/bloc/movie_details/movie_details_bloc.dart';
+import 'package:movie_app/data/models/movie_details/movie_details_model.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 
 import '../../../../gen/assets.gen.dart';
@@ -30,9 +30,10 @@ class DescriptionSection__widget extends StatelessWidget {
               Assets.icons.time.svg(height: 16),
               const SizedBox(width: kDefaultPadding / 3),
               Regular__text(
-                text: state.isLoading
-                    ? '0h 00m'
-                    // : minToHourConvertion(state.movieDetailsData.runtime),
+                text: state.isLoading ||
+                        state.isError ||
+                        state.movieDetailsData.runtime == null
+                    ? '00h 00m'
                     : minToHourConvertion(state.movieDetailsData.runtime),
                 fontSize: 14.0,
                 height: 1.5,
@@ -49,14 +50,26 @@ class DescriptionSection__widget extends StatelessWidget {
                 child: Assets.icons.film.svg(height: 16),
               ),
               const SizedBox(width: kDefaultPadding / 3),
-              Expanded(
-                child: Regular__text(
-                  text: genresList(state.movieDetailsData.genres),
-                  fontSize: 14.0,
-                  height: 1.5,
-                  color: kColorWhite80,
+              if (state.isLoading ||
+                  state.isError ||
+                  state.movieDetailsData.genres.isEmpty)
+                const Expanded(
+                  child: Regular__text(
+                    text: 'No Genres',
+                    fontSize: 14.0,
+                    height: 1.5,
+                    color: kColorWhite80,
+                  ),
                 ),
-              ),
+              if (state.movieDetailsData.genres.isNotEmpty)
+                Expanded(
+                  child: Regular__text(
+                    text: genresList(state.movieDetailsData.genres),
+                    fontSize: 14.0,
+                    height: 1.5,
+                    color: kColorWhite80,
+                  ),
+                ),
             ],
           ),
         ],
