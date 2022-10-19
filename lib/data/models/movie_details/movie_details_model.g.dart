@@ -17,7 +17,7 @@ _$_MovieDetails _$$_MovieDetailsFromJson(Map<String, dynamic> json) =>
       popularity: (json['popularity'] as num).toDouble(),
       posterPath: json['poster_path'] as String,
       releaseDate: json['release_date'] as String,
-      runtime: json['runtime'] as int,
+      runtime: json['runtime'] as int?,
       status: json['status'] as String,
       tagline: json['tagline'] as String,
       title: json['title'] as String,
@@ -64,23 +64,13 @@ _$_Cast _$$_CastFromJson(Map<String, dynamic> json) => _$_Cast(
       order: json['order'] as int,
     );
 
-Map<String, dynamic> _$$_CastToJson(_$_Cast instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'known_for_department': instance.knownForDepartment,
-    'name': instance.name,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('profile_path', instance.profilePath);
-  val['order'] = instance.order;
-  return val;
-}
+Map<String, dynamic> _$$_CastToJson(_$_Cast instance) => <String, dynamic>{
+      'id': instance.id,
+      'known_for_department': instance.knownForDepartment,
+      'name': instance.name,
+      'profile_path': instance.profilePath,
+      'order': instance.order,
+    };
 
 _$_Genre _$$_GenreFromJson(Map<String, dynamic> json) => _$_Genre(
       id: json['id'] as int,
@@ -94,8 +84,8 @@ Map<String, dynamic> _$$_GenreToJson(_$_Genre instance) => <String, dynamic>{
 
 _$_Reviews _$$_ReviewsFromJson(Map<String, dynamic> json) => _$_Reviews(
       page: json['page'] as int,
-      results: (json['results'] as List<dynamic>)
-          .map((e) => ReviewsResult.fromJson(e as Map<String, dynamic>))
+      results: (json['results'] as List<dynamic>?)
+          ?.map((e) => ReviewsResult.fromJson(e as Map<String, dynamic>))
           .toList(),
       totalPages: json['total_pages'] as int,
       totalResults: json['total_results'] as int,
@@ -104,7 +94,7 @@ _$_Reviews _$$_ReviewsFromJson(Map<String, dynamic> json) => _$_Reviews(
 Map<String, dynamic> _$$_ReviewsToJson(_$_Reviews instance) =>
     <String, dynamic>{
       'page': instance.page,
-      'results': instance.results.map((e) => e.toJson()).toList(),
+      'results': instance.results?.map((e) => e.toJson()).toList(),
       'total_pages': instance.totalPages,
       'total_results': instance.totalResults,
     };
@@ -120,54 +110,26 @@ _$_ReviewsResult _$$_ReviewsResultFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] as String,
     );
 
-Map<String, dynamic> _$$_ReviewsResultToJson(_$_ReviewsResult instance) {
-  final val = <String, dynamic>{
-    'author': instance.author,
-    'author_details': instance.authorDetails.toJson(),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('content', instance.content);
-  val['created_at'] = instance.createdAt;
-  val['id'] = instance.id;
-  val['updated_at'] = instance.updatedAt;
-  return val;
-}
+Map<String, dynamic> _$$_ReviewsResultToJson(_$_ReviewsResult instance) =>
+    <String, dynamic>{
+      'author': instance.author,
+      'author_details': instance.authorDetails.toJson(),
+      'content': instance.content,
+      'created_at': instance.createdAt,
+      'id': instance.id,
+      'updated_at': instance.updatedAt,
+    };
 
 _$_AuthorDetails _$$_AuthorDetailsFromJson(Map<String, dynamic> json) =>
     _$_AuthorDetails(
       username: json['username'] as String,
-      rating: json['rating'] == null
-          ? null
-          : Rating.fromJson(json['rating'] as Map<String, dynamic>),
+      rating: (json['rating'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_AuthorDetailsToJson(_$_AuthorDetails instance) {
-  final val = <String, dynamic>{
-    'username': instance.username,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('rating', instance.rating?.toJson());
-  return val;
-}
-
-_$_Rating _$$_RatingFromJson(Map<String, dynamic> json) => _$_Rating(
-      value: json['value'] as String,
-    );
-
-Map<String, dynamic> _$$_RatingToJson(_$_Rating instance) => <String, dynamic>{
-      'value': instance.value,
+Map<String, dynamic> _$$_AuthorDetailsToJson(_$_AuthorDetails instance) =>
+    <String, dynamic>{
+      'username': instance.username,
+      'rating': instance.rating,
     };
 
 _$_Videos _$$_VideosFromJson(Map<String, dynamic> json) => _$_Videos(

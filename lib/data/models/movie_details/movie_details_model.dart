@@ -15,7 +15,7 @@ class MovieDetails with _$MovieDetails {
     required double popularity,
     @JsonKey(name: 'poster_path') required String posterPath,
     @JsonKey(name: 'release_date') required String releaseDate,
-    required int runtime,
+    int? runtime,
     required String status,
     required String tagline,
     required String title,
@@ -29,8 +29,7 @@ class MovieDetails with _$MovieDetails {
       _$MovieDetailsFromJson(json);
 }
 
-//
-
+// casts
 @freezed
 class Casts with _$Casts {
   const factory Casts({
@@ -53,8 +52,8 @@ class Cast with _$Cast {
 
   factory Cast.fromJson(Map<String, dynamic> json) => _$CastFromJson(json);
 }
-//
 
+// genres
 @freezed
 class Genre with _$Genre {
   const factory Genre({
@@ -65,11 +64,12 @@ class Genre with _$Genre {
   factory Genre.fromJson(Map<String, dynamic> json) => _$GenreFromJson(json);
 }
 
+// reviews
 @freezed
 class Reviews with _$Reviews {
   const factory Reviews({
     required int page,
-    required List<ReviewsResult> results,
+    List<ReviewsResult>? results,
     @JsonKey(name: 'total_pages') required int totalPages,
     @JsonKey(name: 'total_results') required int totalResults,
   }) = _Reviews;
@@ -98,23 +98,14 @@ class ReviewsResult with _$ReviewsResult {
 class AuthorDetails with _$AuthorDetails {
   const factory AuthorDetails({
     required String username,
-    @JsonKey(name: 'rating', nullable: true, disallowNullValue: false)
-        Rating? rating,
+    double? rating,
   }) = _AuthorDetails;
 
   factory AuthorDetails.fromJson(Map<String, dynamic> json) =>
       _$AuthorDetailsFromJson(json);
 }
 
-@freezed
-abstract class Rating with _$Rating {
-  const factory Rating({
-    required String value,
-  }) = _Rating;
-
-  factory Rating.fromJson(Map<String, dynamic> json) => _$RatingFromJson(json);
-}
-
+// videos
 @freezed
 class Videos with _$Videos {
   const factory Videos({

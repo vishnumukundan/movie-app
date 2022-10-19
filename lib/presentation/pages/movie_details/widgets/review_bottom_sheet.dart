@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/generics/string_date_manipulation.dart';
+import '../../../../core/utils/generics/string_manipulation.dart';
 import '../../../components/basic_bottomsheet.dart';
 import '../../../components/rating_indicator.dart';
 import '../../../components/text.dart';
@@ -20,7 +20,7 @@ class ReviewBottomSheet__widget extends StatelessWidget {
 
   final String user;
   final String date;
-  final int rating;
+  final double rating;
   final String content;
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class ReviewBottomSheet__widget extends StatelessWidget {
       children: [
         Row(
           children: <Widget>[
-            RatingIndicator__widget(ratingValue: rating.toDouble()),
+            RatingIndicator__widget(ratingValue: rating),
             const SizedBox(width: kDefaultPadding),
             Expanded(
               child: Column(

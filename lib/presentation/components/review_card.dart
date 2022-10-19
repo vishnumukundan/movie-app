@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/utils/generics/string_date_manipulation.dart';
+import 'package:movie_app/core/utils/generics/string_manipulation.dart';
 import 'package:movie_app/presentation/components/rating_indicator.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
@@ -19,7 +19,7 @@ class ReviewCard__widget extends StatelessWidget {
 
   final String user;
   final String date;
-  final int rating;
+  final double rating;
   final String content;
   final VoidCallback onTap;
 
@@ -43,7 +43,7 @@ class ReviewCard__widget extends StatelessWidget {
               children: [
                 Row(
                   children: <Widget>[
-                    RatingIndicator__widget(ratingValue: rating.toDouble()),
+                    RatingIndicator__widget(ratingValue: rating),
                     const SizedBox(width: kDefaultPadding),
                     Expanded(
                       child: Column(

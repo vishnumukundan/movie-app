@@ -19,12 +19,12 @@ class MovieDetailsRepository implements IMovieDetailsRepo {
       final response =
           await Dio(BaseOptions()).get(ApiEndPoints.movieDetils(movieId));
 
-      // log(jsonEncode(response.data).toString());
+      log(jsonEncode(response.data).toString());
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = MovieDetails.fromJson(response.data);
 
-        log(dataList.toString());
+        log(jsonEncode(dataList).toString());
         return Right(dataList);
       } else {
         log(const Left(NetworkError.serverError()).toString());

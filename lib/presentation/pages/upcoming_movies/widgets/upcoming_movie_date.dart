@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/utils/generics/string_date_manipulation.dart';
+import 'package:movie_app/core/utils/generics/string_manipulation.dart';
 
 import '../../../components/text.dart';
 import '../../../themes/colors.dart';

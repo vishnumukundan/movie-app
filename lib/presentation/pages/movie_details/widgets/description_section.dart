@@ -34,7 +34,7 @@ class DescriptionSection__widget extends StatelessWidget {
                         state.isError ||
                         state.movieDetailsData.runtime == null
                     ? '00h 00m'
-                    : minToHourConvertion(state.movieDetailsData.runtime),
+                    : minToHourConvertion(state.movieDetailsData.runtime!),
                 fontSize: 14.0,
                 height: 1.5,
                 color: kColorWhite80,

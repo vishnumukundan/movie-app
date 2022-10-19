@@ -30,7 +30,7 @@ mixin _$MovieDetails {
   String get posterPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'release_date')
   String get releaseDate => throw _privateConstructorUsedError;
-  int get runtime => throw _privateConstructorUsedError;
+  int? get runtime => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   String get tagline => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
@@ -62,7 +62,7 @@ abstract class $MovieDetailsCopyWith<$Res> {
       double popularity,
       @JsonKey(name: 'poster_path') String posterPath,
       @JsonKey(name: 'release_date') String releaseDate,
-      int runtime,
+      int? runtime,
       String status,
       String tagline,
       String title,
@@ -134,7 +134,7 @@ class _$MovieDetailsCopyWithImpl<$Res> implements $MovieDetailsCopyWith<$Res> {
       runtime: runtime == freezed
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -203,7 +203,7 @@ abstract class _$$_MovieDetailsCopyWith<$Res>
       double popularity,
       @JsonKey(name: 'poster_path') String posterPath,
       @JsonKey(name: 'release_date') String releaseDate,
-      int runtime,
+      int? runtime,
       String status,
       String tagline,
       String title,
@@ -281,7 +281,7 @@ class __$$_MovieDetailsCopyWithImpl<$Res>
       runtime: runtime == freezed
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -325,7 +325,7 @@ class _$_MovieDetails implements _MovieDetails {
       required this.popularity,
       @JsonKey(name: 'poster_path') required this.posterPath,
       @JsonKey(name: 'release_date') required this.releaseDate,
-      required this.runtime,
+      this.runtime,
       required this.status,
       required this.tagline,
       required this.title,
@@ -361,7 +361,7 @@ class _$_MovieDetails implements _MovieDetails {
   @JsonKey(name: 'release_date')
   final String releaseDate;
   @override
-  final int runtime;
+  final int? runtime;
   @override
   final String status;
   @override
@@ -455,7 +455,7 @@ abstract class _MovieDetails implements MovieDetails {
           required final double popularity,
           @JsonKey(name: 'poster_path') required final String posterPath,
           @JsonKey(name: 'release_date') required final String releaseDate,
-          required final int runtime,
+          final int? runtime,
           required final String status,
           required final String tagline,
           required final String title,
@@ -486,7 +486,7 @@ abstract class _MovieDetails implements MovieDetails {
   @JsonKey(name: 'release_date')
   String get releaseDate;
   @override
-  int get runtime;
+  int? get runtime;
   @override
   String get status;
   @override
@@ -1027,7 +1027,7 @@ Reviews _$ReviewsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Reviews {
   int get page => throw _privateConstructorUsedError;
-  List<ReviewsResult> get results => throw _privateConstructorUsedError;
+  List<ReviewsResult>? get results => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_pages')
   int get totalPages => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_results')
@@ -1044,7 +1044,7 @@ abstract class $ReviewsCopyWith<$Res> {
       _$ReviewsCopyWithImpl<$Res>;
   $Res call(
       {int page,
-      List<ReviewsResult> results,
+      List<ReviewsResult>? results,
       @JsonKey(name: 'total_pages') int totalPages,
       @JsonKey(name: 'total_results') int totalResults});
 }
@@ -1072,7 +1072,7 @@ class _$ReviewsCopyWithImpl<$Res> implements $ReviewsCopyWith<$Res> {
       results: results == freezed
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<ReviewsResult>,
+              as List<ReviewsResult>?,
       totalPages: totalPages == freezed
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
@@ -1093,7 +1093,7 @@ abstract class _$$_ReviewsCopyWith<$Res> implements $ReviewsCopyWith<$Res> {
   @override
   $Res call(
       {int page,
-      List<ReviewsResult> results,
+      List<ReviewsResult>? results,
       @JsonKey(name: 'total_pages') int totalPages,
       @JsonKey(name: 'total_results') int totalResults});
 }
@@ -1122,7 +1122,7 @@ class __$$_ReviewsCopyWithImpl<$Res> extends _$ReviewsCopyWithImpl<$Res>
       results: results == freezed
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<ReviewsResult>,
+              as List<ReviewsResult>?,
       totalPages: totalPages == freezed
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
@@ -1140,7 +1140,7 @@ class __$$_ReviewsCopyWithImpl<$Res> extends _$ReviewsCopyWithImpl<$Res>
 class _$_Reviews implements _Reviews {
   const _$_Reviews(
       {required this.page,
-      required final List<ReviewsResult> results,
+      final List<ReviewsResult>? results,
       @JsonKey(name: 'total_pages') required this.totalPages,
       @JsonKey(name: 'total_results') required this.totalResults})
       : _results = results;
@@ -1150,11 +1150,13 @@ class _$_Reviews implements _Reviews {
 
   @override
   final int page;
-  final List<ReviewsResult> _results;
+  final List<ReviewsResult>? _results;
   @override
-  List<ReviewsResult> get results {
+  List<ReviewsResult>? get results {
+    final value = _results;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_results);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -1207,7 +1209,7 @@ class _$_Reviews implements _Reviews {
 abstract class _Reviews implements Reviews {
   const factory _Reviews(
           {required final int page,
-          required final List<ReviewsResult> results,
+          final List<ReviewsResult>? results,
           @JsonKey(name: 'total_pages') required final int totalPages,
           @JsonKey(name: 'total_results') required final int totalResults}) =
       _$_Reviews;
@@ -1217,7 +1219,7 @@ abstract class _Reviews implements Reviews {
   @override
   int get page;
   @override
-  List<ReviewsResult> get results;
+  List<ReviewsResult>? get results;
   @override
   @JsonKey(name: 'total_pages')
   int get totalPages;
@@ -1522,8 +1524,7 @@ AuthorDetails _$AuthorDetailsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AuthorDetails {
   String get username => throw _privateConstructorUsedError;
-  @JsonKey(name: 'rating', nullable: true, disallowNullValue: false)
-  Rating? get rating => throw _privateConstructorUsedError;
+  double? get rating => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1536,12 +1537,7 @@ abstract class $AuthorDetailsCopyWith<$Res> {
   factory $AuthorDetailsCopyWith(
           AuthorDetails value, $Res Function(AuthorDetails) then) =
       _$AuthorDetailsCopyWithImpl<$Res>;
-  $Res call(
-      {String username,
-      @JsonKey(name: 'rating', nullable: true, disallowNullValue: false)
-          Rating? rating});
-
-  $RatingCopyWith<$Res>? get rating;
+  $Res call({String username, double? rating});
 }
 
 /// @nodoc
@@ -1566,19 +1562,8 @@ class _$AuthorDetailsCopyWithImpl<$Res>
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as Rating?,
+              as double?,
     ));
-  }
-
-  @override
-  $RatingCopyWith<$Res>? get rating {
-    if (_value.rating == null) {
-      return null;
-    }
-
-    return $RatingCopyWith<$Res>(_value.rating!, (value) {
-      return _then(_value.copyWith(rating: value));
-    });
   }
 }
 
@@ -1589,13 +1574,7 @@ abstract class _$$_AuthorDetailsCopyWith<$Res>
           _$_AuthorDetails value, $Res Function(_$_AuthorDetails) then) =
       __$$_AuthorDetailsCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String username,
-      @JsonKey(name: 'rating', nullable: true, disallowNullValue: false)
-          Rating? rating});
-
-  @override
-  $RatingCopyWith<$Res>? get rating;
+  $Res call({String username, double? rating});
 }
 
 /// @nodoc
@@ -1622,7 +1601,7 @@ class __$$_AuthorDetailsCopyWithImpl<$Res>
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as Rating?,
+              as double?,
     ));
   }
 }
@@ -1630,10 +1609,7 @@ class __$$_AuthorDetailsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AuthorDetails implements _AuthorDetails {
-  const _$_AuthorDetails(
-      {required this.username,
-      @JsonKey(name: 'rating', nullable: true, disallowNullValue: false)
-          this.rating});
+  const _$_AuthorDetails({required this.username, this.rating});
 
   factory _$_AuthorDetails.fromJson(Map<String, dynamic> json) =>
       _$$_AuthorDetailsFromJson(json);
@@ -1641,8 +1617,7 @@ class _$_AuthorDetails implements _AuthorDetails {
   @override
   final String username;
   @override
-  @JsonKey(name: 'rating', nullable: true, disallowNullValue: false)
-  final Rating? rating;
+  final double? rating;
 
   @override
   String toString() {
@@ -1681,8 +1656,7 @@ class _$_AuthorDetails implements _AuthorDetails {
 abstract class _AuthorDetails implements AuthorDetails {
   const factory _AuthorDetails(
       {required final String username,
-      @JsonKey(name: 'rating', nullable: true, disallowNullValue: false)
-          final Rating? rating}) = _$_AuthorDetails;
+      final double? rating}) = _$_AuthorDetails;
 
   factory _AuthorDetails.fromJson(Map<String, dynamic> json) =
       _$_AuthorDetails.fromJson;
@@ -1690,137 +1664,10 @@ abstract class _AuthorDetails implements AuthorDetails {
   @override
   String get username;
   @override
-  @JsonKey(name: 'rating', nullable: true, disallowNullValue: false)
-  Rating? get rating;
+  double? get rating;
   @override
   @JsonKey(ignore: true)
   _$$_AuthorDetailsCopyWith<_$_AuthorDetails> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Rating _$RatingFromJson(Map<String, dynamic> json) {
-  return _Rating.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Rating {
-  String get value => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $RatingCopyWith<Rating> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $RatingCopyWith<$Res> {
-  factory $RatingCopyWith(Rating value, $Res Function(Rating) then) =
-      _$RatingCopyWithImpl<$Res>;
-  $Res call({String value});
-}
-
-/// @nodoc
-class _$RatingCopyWithImpl<$Res> implements $RatingCopyWith<$Res> {
-  _$RatingCopyWithImpl(this._value, this._then);
-
-  final Rating _value;
-  // ignore: unused_field
-  final $Res Function(Rating) _then;
-
-  @override
-  $Res call({
-    Object? value = freezed,
-  }) {
-    return _then(_value.copyWith(
-      value: value == freezed
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_RatingCopyWith<$Res> implements $RatingCopyWith<$Res> {
-  factory _$$_RatingCopyWith(_$_Rating value, $Res Function(_$_Rating) then) =
-      __$$_RatingCopyWithImpl<$Res>;
-  @override
-  $Res call({String value});
-}
-
-/// @nodoc
-class __$$_RatingCopyWithImpl<$Res> extends _$RatingCopyWithImpl<$Res>
-    implements _$$_RatingCopyWith<$Res> {
-  __$$_RatingCopyWithImpl(_$_Rating _value, $Res Function(_$_Rating) _then)
-      : super(_value, (v) => _then(v as _$_Rating));
-
-  @override
-  _$_Rating get _value => super._value as _$_Rating;
-
-  @override
-  $Res call({
-    Object? value = freezed,
-  }) {
-    return _then(_$_Rating(
-      value: value == freezed
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_Rating implements _Rating {
-  const _$_Rating({required this.value});
-
-  factory _$_Rating.fromJson(Map<String, dynamic> json) =>
-      _$$_RatingFromJson(json);
-
-  @override
-  final String value;
-
-  @override
-  String toString() {
-    return 'Rating(value: $value)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Rating &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_RatingCopyWith<_$_Rating> get copyWith =>
-      __$$_RatingCopyWithImpl<_$_Rating>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_RatingToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Rating implements Rating {
-  const factory _Rating({required final String value}) = _$_Rating;
-
-  factory _Rating.fromJson(Map<String, dynamic> json) = _$_Rating.fromJson;
-
-  @override
-  String get value;
-  @override
-  @JsonKey(ignore: true)
-  _$$_RatingCopyWith<_$_Rating> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

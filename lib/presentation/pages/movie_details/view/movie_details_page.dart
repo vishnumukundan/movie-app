@@ -13,6 +13,7 @@ import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/components/icon_button.dart';
 import 'package:movie_app/presentation/components/image_container.dart';
 import 'package:movie_app/presentation/pages/movie_details/widgets/button_group_section.dart';
+import 'package:movie_app/presentation/pages/movie_details/widgets/cast_section.dart';
 import 'package:movie_app/presentation/pages/movie_details/widgets/description_section.dart';
 import 'package:movie_app/presentation/pages/movie_details/widgets/movie_title_section.dart';
 import 'package:movie_app/presentation/pages/movie_details/widgets/review_section.dart';
@@ -23,8 +24,6 @@ import 'package:movie_app/presentation/themes/screen_size_config.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
 import '../../../components/text.dart';
-
-final List _dataList = movieDetailsDummyData;
 
 class MovieDetailsPage extends StatelessWidget {
   const MovieDetailsPage({Key? key, required this.id}) : super(key: key);
@@ -132,7 +131,7 @@ class MovieDetailsPage extends StatelessWidget {
                             BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
                               builder: (context, state) =>
                                   ButtonGroupSection__widget(
-                                ratingvalue: state.isLoading
+                                ratingValue: state.isLoading
                                     ? 0.0
                                     : state.movieDetailsData.voteAverage,
                               ),
@@ -157,8 +156,7 @@ class MovieDetailsPage extends StatelessWidget {
                                     color: kColorWhite80,
                                   );
                                 }
-                                if (state.isError ||
-                                    state.movieDetailsData.overview == null) {
+                                if (state.isError) {
                                   return const Medium__text(
                                     text: 'No overview yet.',
                                     fontSize: 12.0,
@@ -176,7 +174,7 @@ class MovieDetailsPage extends StatelessWidget {
                             ),
                             const SizedBox(height: kDefaultPadding * 2),
                             // cast section
-                            // const CastSection__widget(),
+                            const CastSection__widget(),
 
                             const SizedBox(height: kDefaultPadding * 3),
                             // video section

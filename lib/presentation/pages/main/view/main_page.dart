@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
-import 'package:movie_app/presentation/pages/discover/view/discover_page.dart';
+import 'package:movie_app/presentation/pages/home/widgets/upcoming_movies/discover/view/discover_page.dart';
 import 'package:movie_app/presentation/pages/home/view/home_page.dart';
 import 'package:movie_app/presentation/pages/main/widgets/bottom_navbar/bottom_navbar.dart';
 import 'package:movie_app/presentation/pages/profile/view/profile_page.dart';

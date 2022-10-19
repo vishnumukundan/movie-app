@@ -9,7 +9,6 @@ import 'package:movie_app/presentation/components/rating_indicator.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
 
-import '../../data/sources/dummy/dummy_data.dart';
 import '../themes/values.dart';
 
 class MovieListScroll__widget extends StatelessWidget {
@@ -76,11 +75,10 @@ class MovieListScroll__widget extends StatelessWidget {
                       radius: 8.0,
                       boxshadow: kDefaultBoxShadow,
                     ),
-                    Positioned(
+                    const Positioned(
                       bottom: -25,
                       child: RatingIndicator__widget(
-                        ratingValue: moviePosterDummyData[index]
-                            ["vote_average"],
+                        ratingValue: 0.0,
                       ),
                     ),
                   ],

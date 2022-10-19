@@ -9,15 +9,14 @@ import '../../../themes/colors.dart';
 import '../../../themes/values.dart';
 
 class ButtonGroupSection__widget extends StatelessWidget {
-  const ButtonGroupSection__widget({Key? key, required this.ratingvalue})
+  const ButtonGroupSection__widget({Key? key, required this.ratingValue})
       : super(key: key);
 
-  final ratingvalue;
+  final ratingValue;
 
   @override
   Widget build(BuildContext context) {
-    final double doubleValue = ratingvalue;
-    final String stringValue = doubleValue.toStringAsFixed(1);
+    final String stringValue = ratingValue.toStringAsFixed(1);
     final double finalValue = double.parse(stringValue);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
