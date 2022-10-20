@@ -1,6 +1,5 @@
 // ignore_for_file: camel_case_types
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
@@ -42,7 +41,7 @@ class VideoCardItem__widget extends StatelessWidget {
                   color: kColorPrimary.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                    image: CachedNetworkImageProvider(
+                    image: NetworkImage(
                       ApiDataFetching.youtubeTumbnail(youtubeKey),
                     ),
                     fit: BoxFit.cover,

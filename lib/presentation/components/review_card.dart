@@ -72,7 +72,7 @@ class ReviewCard__widget extends StatelessWidget {
                   fontSize: 12.0,
                   maxLines: 9,
                   textOverFlow: TextOverflow.ellipsis,
-                  color: kColorWhite80,
+                  color: kColorWhite,
                   height: 1.4,
                 ),
               ],

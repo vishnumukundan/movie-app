@@ -2,11 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/core/services/sort_list_by.dart';
 import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
 import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/data/bloc/movie_details/movie_details_bloc.dart';
-import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/background.dart';
@@ -178,10 +176,7 @@ class MovieDetailsPage extends StatelessWidget {
 
                             const SizedBox(height: kDefaultPadding * 3),
                             // video section
-                            VideoSection__widget(
-                              dataList: SortListBy.asce(
-                                  movieVideoDummyData, 'published_at'),
-                            ),
+                            const VideoSection__widget(),
                             const SizedBox(height: kDefaultPadding * 3),
                             const ReviewSection__widget(),
                           ],

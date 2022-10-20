@@ -6,9 +6,10 @@ import 'package:movie_app/presentation/components/text.dart';
 import '../themes/colors.dart';
 
 class RatingIndicator__widget extends StatelessWidget {
-  const RatingIndicator__widget({Key? key, this.ratingValue}) : super(key: key);
+  const RatingIndicator__widget({Key? key, required this.ratingValue})
+      : super(key: key);
 
-  final double? ratingValue;
+  final double ratingValue;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +23,9 @@ class RatingIndicator__widget extends StatelessWidget {
             Center(
               child: CircularProgressIndicator(
                 backgroundColor: kColorWhite50,
-                color: getColor(ratingValue!),
+                color: getColor(ratingValue),
                 strokeWidth: 3,
-                value: ratingValue != null ? ratingValue! / 10 : 0.0,
+                value: ratingValue != null ? ratingValue / 10 : 0.0,
               ),
             ),
             Center(

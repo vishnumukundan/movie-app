@@ -67,7 +67,7 @@ class ReviewSection__widget extends StatelessWidget {
               builder: (context, index) => ReviewCard__widget(
                 user: dataList[index].author,
                 date: dataList[index].createdAt,
-                rating: dataList[index].authorDetails.rating!,
+                rating: dataList[index].authorDetails.rating ?? 0.0,
                 content: dataList[index].content ?? '',
                 onTap: () {
                   showModalBottomSheet(
@@ -78,7 +78,7 @@ class ReviewSection__widget extends StatelessWidget {
                       return ReviewBottomSheet__widget(
                         user: dataList[index].author,
                         date: dataList[index].createdAt,
-                        rating: dataList[index].authorDetails.rating!,
+                        rating: dataList[index].authorDetails.rating ?? 0.0,
                         content: dataList[index].content ?? '',
                       );
                     },

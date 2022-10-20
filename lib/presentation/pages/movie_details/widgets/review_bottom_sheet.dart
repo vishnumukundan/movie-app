@@ -59,7 +59,7 @@ class ReviewBottomSheet__widget extends StatelessWidget {
         Medium__text(
           text: content,
           fontSize: 12.0,
-          color: kColorWhite80,
+          color: kColorWhite,
           height: 1.4,
         ),
       ],

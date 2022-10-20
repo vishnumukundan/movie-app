@@ -20,6 +20,8 @@ class CustomListViewBuilder extends StatelessWidget {
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.scrollPhysics = const ScrollPhysics(),
+    this.reverse,
+    this.reverseList = false,
   }) : super(key: key);
 
   final Axis scrollDirection;
@@ -34,6 +36,8 @@ class CustomListViewBuilder extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
   final ScrollPhysics scrollPhysics;
+  final bool? reverse;
+  final bool reverseList;
 
   final items = <Widget>[];
 
@@ -61,7 +65,9 @@ class CustomListViewBuilder extends StatelessWidget {
         controller: controller,
         clipBehavior: clipBehavior,
         physics: scrollPhysics,
-        child: getDirection(scrollDirection, items),
+        reverse: reverse ?? false,
+        child: getDirection(
+            scrollDirection, reverseList ? items.reversed.toList() : items),
       ),
     );
   }
@@ -123,6 +129,7 @@ class CustomGridViewBuilder extends StatelessWidget {
     required this.dataList,
     required this.itemCount,
     required this.builder,
+    this.reverseList = false,
   }) : super(key: key);
 
   final Axis scrollDirection;
@@ -149,6 +156,8 @@ class CustomGridViewBuilder extends StatelessWidget {
   final List dataList;
   final int itemCount;
   final IndexedWidgetBuilder builder;
+  final bool reverseList;
+
   final items = <Widget>[];
 
   @override
@@ -178,7 +187,7 @@ class CustomGridViewBuilder extends StatelessWidget {
         restorationId: restorationId,
         clipBehavior: clipBehavior,
         dragStartBehavior: dragStartBehavior,
-        children: items,
+        children: reverseList ? items.reversed.toList() : items,
       );
     } else {
       return Container();
