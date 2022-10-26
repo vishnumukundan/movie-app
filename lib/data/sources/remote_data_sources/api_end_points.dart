@@ -14,6 +14,10 @@ class ApiEndPoints {
       '$kBaseUrl/movie/$movieId?api_key=$apiKey&append_to_response=videos,casts,reviews';
   static String movieCast(movieId) =>
       '$kBaseUrl/movie/$movieId/credits?api_key=$apiKey&language=en-US';
+  static String personDetails(personId) =>
+      '$kBaseUrl/person/$personId?api_key=$apiKey';
+  static String personMovies(personId) =>
+      '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc&with_cast=$personId';
 }
 
 enum ImageWidth { w92, w154, w185, w342, w500, w780, original }

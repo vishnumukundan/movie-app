@@ -169,7 +169,7 @@ abstract class _GetImageSliderData implements ImageSliderEvent {
 /// @nodoc
 mixin _$ImageSliderState {
   bool get isLoading => throw _privateConstructorUsedError;
-  bool get isError => throw _privateConstructorUsedError;
+  bool get hasError => throw _privateConstructorUsedError;
   List<ImageSlider> get imageSliderDataList =>
       throw _privateConstructorUsedError;
 
@@ -184,7 +184,7 @@ abstract class $ImageSliderStateCopyWith<$Res> {
           ImageSliderState value, $Res Function(ImageSliderState) then) =
       _$ImageSliderStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isLoading, bool isError, List<ImageSlider> imageSliderDataList});
+      {bool isLoading, bool hasError, List<ImageSlider> imageSliderDataList});
 }
 
 /// @nodoc
@@ -199,7 +199,7 @@ class _$ImageSliderStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
-    Object? isError = freezed,
+    Object? hasError = freezed,
     Object? imageSliderDataList = freezed,
   }) {
     return _then(_value.copyWith(
@@ -207,9 +207,9 @@ class _$ImageSliderStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isError: isError == freezed
-          ? _value.isError
-          : isError // ignore: cast_nullable_to_non_nullable
+      hasError: hasError == freezed
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
       imageSliderDataList: imageSliderDataList == freezed
           ? _value.imageSliderDataList
@@ -227,7 +227,7 @@ abstract class _$$_ImageSliderStateCopyWith<$Res>
       __$$_ImageSliderStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isLoading, bool isError, List<ImageSlider> imageSliderDataList});
+      {bool isLoading, bool hasError, List<ImageSlider> imageSliderDataList});
 }
 
 /// @nodoc
@@ -244,7 +244,7 @@ class __$$_ImageSliderStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
-    Object? isError = freezed,
+    Object? hasError = freezed,
     Object? imageSliderDataList = freezed,
   }) {
     return _then(_$_ImageSliderState(
@@ -252,9 +252,9 @@ class __$$_ImageSliderStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isError: isError == freezed
-          ? _value.isError
-          : isError // ignore: cast_nullable_to_non_nullable
+      hasError: hasError == freezed
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
       imageSliderDataList: imageSliderDataList == freezed
           ? _value._imageSliderDataList
@@ -269,14 +269,14 @@ class __$$_ImageSliderStateCopyWithImpl<$Res>
 class _$_ImageSliderState implements _ImageSliderState {
   const _$_ImageSliderState(
       {required this.isLoading,
-      required this.isError,
+      required this.hasError,
       required final List<ImageSlider> imageSliderDataList})
       : _imageSliderDataList = imageSliderDataList;
 
   @override
   final bool isLoading;
   @override
-  final bool isError;
+  final bool hasError;
   final List<ImageSlider> _imageSliderDataList;
   @override
   List<ImageSlider> get imageSliderDataList {
@@ -286,7 +286,7 @@ class _$_ImageSliderState implements _ImageSliderState {
 
   @override
   String toString() {
-    return 'ImageSliderState(isLoading: $isLoading, isError: $isError, imageSliderDataList: $imageSliderDataList)';
+    return 'ImageSliderState(isLoading: $isLoading, hasError: $hasError, imageSliderDataList: $imageSliderDataList)';
   }
 
   @override
@@ -295,7 +295,7 @@ class _$_ImageSliderState implements _ImageSliderState {
         (other.runtimeType == runtimeType &&
             other is _$_ImageSliderState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.isError, isError) &&
+            const DeepCollectionEquality().equals(other.hasError, hasError) &&
             const DeepCollectionEquality()
                 .equals(other._imageSliderDataList, _imageSliderDataList));
   }
@@ -304,7 +304,7 @@ class _$_ImageSliderState implements _ImageSliderState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isError),
+      const DeepCollectionEquality().hash(hasError),
       const DeepCollectionEquality().hash(_imageSliderDataList));
 
   @JsonKey(ignore: true)
@@ -316,14 +316,14 @@ class _$_ImageSliderState implements _ImageSliderState {
 abstract class _ImageSliderState implements ImageSliderState {
   const factory _ImageSliderState(
           {required final bool isLoading,
-          required final bool isError,
+          required final bool hasError,
           required final List<ImageSlider> imageSliderDataList}) =
       _$_ImageSliderState;
 
   @override
   bool get isLoading;
   @override
-  bool get isError;
+  bool get hasError;
   @override
   List<ImageSlider> get imageSliderDataList;
   @override

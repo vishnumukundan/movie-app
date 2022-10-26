@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/presentation/components/blurred_background.dart';
 import 'package:movie_app/presentation/components/person_image_and_name_card.dart';

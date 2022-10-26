@@ -30,7 +30,8 @@ class ImageStack__widget extends StatelessWidget {
                   child: state.isLoading
                       ? _skelton
                       : ImageContainer__widget(
-                          imageData: state.loginPosterDataList[1].posterPath,
+                          imageData:
+                              state.loginPosterDataList[1].posterPath ?? '',
                           height: getScreenHeightPercentage(30.0),
                           width: getScreenHeightPercentage(20.0),
                           radius: 8.0,
@@ -45,7 +46,8 @@ class ImageStack__widget extends StatelessWidget {
                   child: state.isLoading
                       ? _skelton
                       : ImageContainer__widget(
-                          imageData: state.loginPosterDataList[2].posterPath,
+                          imageData:
+                              state.loginPosterDataList[2].posterPath ?? '',
                           height: getScreenHeightPercentage(30.0),
                           width: getScreenHeightPercentage(20.0),
                           radius: 8.0,
@@ -56,7 +58,7 @@ class ImageStack__widget extends StatelessWidget {
               state.isLoading
                   ? _skelton
                   : ImageContainer__widget(
-                      imageData: state.loginPosterDataList[0].posterPath,
+                      imageData: state.loginPosterDataList[0].posterPath ?? '',
                       height: getScreenHeightPercentage(30.0),
                       width: getScreenHeightPercentage(20.0),
                       radius: 8.0,

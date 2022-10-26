@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/pages/video_playback/widgets/youtube_player_iframe.dart';
 import 'package:movie_app/presentation/themes/colors.dart';

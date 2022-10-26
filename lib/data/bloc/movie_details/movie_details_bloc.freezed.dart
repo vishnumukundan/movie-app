@@ -221,7 +221,7 @@ abstract class _GetMovieDetails implements MovieDetailsEvent {
 /// @nodoc
 mixin _$MovieDetailsState {
   bool get isLoading => throw _privateConstructorUsedError;
-  bool get isError => throw _privateConstructorUsedError;
+  bool get hasError => throw _privateConstructorUsedError;
   MovieDetails get movieDetailsData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -234,7 +234,7 @@ abstract class $MovieDetailsStateCopyWith<$Res> {
   factory $MovieDetailsStateCopyWith(
           MovieDetailsState value, $Res Function(MovieDetailsState) then) =
       _$MovieDetailsStateCopyWithImpl<$Res>;
-  $Res call({bool isLoading, bool isError, MovieDetails movieDetailsData});
+  $Res call({bool isLoading, bool hasError, MovieDetails movieDetailsData});
 
   $MovieDetailsCopyWith<$Res> get movieDetailsData;
 }
@@ -251,7 +251,7 @@ class _$MovieDetailsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
-    Object? isError = freezed,
+    Object? hasError = freezed,
     Object? movieDetailsData = freezed,
   }) {
     return _then(_value.copyWith(
@@ -259,9 +259,9 @@ class _$MovieDetailsStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isError: isError == freezed
-          ? _value.isError
-          : isError // ignore: cast_nullable_to_non_nullable
+      hasError: hasError == freezed
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
       movieDetailsData: movieDetailsData == freezed
           ? _value.movieDetailsData
@@ -285,7 +285,7 @@ abstract class _$$_MovieDetailsStateCopyWith<$Res>
           $Res Function(_$_MovieDetailsState) then) =
       __$$_MovieDetailsStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isLoading, bool isError, MovieDetails movieDetailsData});
+  $Res call({bool isLoading, bool hasError, MovieDetails movieDetailsData});
 
   @override
   $MovieDetailsCopyWith<$Res> get movieDetailsData;
@@ -305,7 +305,7 @@ class __$$_MovieDetailsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
-    Object? isError = freezed,
+    Object? hasError = freezed,
     Object? movieDetailsData = freezed,
   }) {
     return _then(_$_MovieDetailsState(
@@ -313,9 +313,9 @@ class __$$_MovieDetailsStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isError: isError == freezed
-          ? _value.isError
-          : isError // ignore: cast_nullable_to_non_nullable
+      hasError: hasError == freezed
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
       movieDetailsData: movieDetailsData == freezed
           ? _value.movieDetailsData
@@ -330,19 +330,19 @@ class __$$_MovieDetailsStateCopyWithImpl<$Res>
 class _$_MovieDetailsState implements _MovieDetailsState {
   const _$_MovieDetailsState(
       {required this.isLoading,
-      required this.isError,
+      required this.hasError,
       required this.movieDetailsData});
 
   @override
   final bool isLoading;
   @override
-  final bool isError;
+  final bool hasError;
   @override
   final MovieDetails movieDetailsData;
 
   @override
   String toString() {
-    return 'MovieDetailsState(isLoading: $isLoading, isError: $isError, movieDetailsData: $movieDetailsData)';
+    return 'MovieDetailsState(isLoading: $isLoading, hasError: $hasError, movieDetailsData: $movieDetailsData)';
   }
 
   @override
@@ -351,7 +351,7 @@ class _$_MovieDetailsState implements _MovieDetailsState {
         (other.runtimeType == runtimeType &&
             other is _$_MovieDetailsState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.isError, isError) &&
+            const DeepCollectionEquality().equals(other.hasError, hasError) &&
             const DeepCollectionEquality()
                 .equals(other.movieDetailsData, movieDetailsData));
   }
@@ -360,7 +360,7 @@ class _$_MovieDetailsState implements _MovieDetailsState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isError),
+      const DeepCollectionEquality().hash(hasError),
       const DeepCollectionEquality().hash(movieDetailsData));
 
   @JsonKey(ignore: true)
@@ -373,13 +373,13 @@ class _$_MovieDetailsState implements _MovieDetailsState {
 abstract class _MovieDetailsState implements MovieDetailsState {
   const factory _MovieDetailsState(
       {required final bool isLoading,
-      required final bool isError,
+      required final bool hasError,
       required final MovieDetails movieDetailsData}) = _$_MovieDetailsState;
 
   @override
   bool get isLoading;
   @override
-  bool get isError;
+  bool get hasError;
   @override
   MovieDetails get movieDetailsData;
   @override

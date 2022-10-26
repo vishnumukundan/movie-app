@@ -31,7 +31,7 @@ class DescriptionSection__widget extends StatelessWidget {
               const SizedBox(width: kDefaultPadding / 3),
               Regular__text(
                 text: state.isLoading ||
-                        state.isError ||
+                        state.hasError ||
                         state.movieDetailsData.runtime == null
                     ? '00h 00m'
                     : minToHourConvertion(state.movieDetailsData.runtime!),
@@ -51,8 +51,8 @@ class DescriptionSection__widget extends StatelessWidget {
               ),
               const SizedBox(width: kDefaultPadding / 3),
               if (state.isLoading ||
-                  state.isError ||
-                  state.movieDetailsData.genres.isEmpty)
+                  state.hasError ||
+                  state.movieDetailsData.genres!.isEmpty)
                 const Expanded(
                   child: Regular__text(
                     text: 'No Genres',
@@ -61,10 +61,10 @@ class DescriptionSection__widget extends StatelessWidget {
                     color: kColorWhite80,
                   ),
                 ),
-              if (state.movieDetailsData.genres.isNotEmpty)
+              if (state.movieDetailsData.genres!.isNotEmpty)
                 Expanded(
                   child: Regular__text(
-                    text: genresList(state.movieDetailsData.genres),
+                    text: genresList(state.movieDetailsData.genres!),
                     fontSize: 14.0,
                     height: 1.5,
                     color: kColorWhite80,

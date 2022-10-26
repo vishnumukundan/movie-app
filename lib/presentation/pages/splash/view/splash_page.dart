@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/pages/login/view/login_page.dart';
 

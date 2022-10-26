@@ -3,8 +3,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/services/sort_list_by.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
+import 'package:movie_app/core/services/navigator.dart';
+import 'package:movie_app/core/utils/generics/sort_list_by.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/text.dart';

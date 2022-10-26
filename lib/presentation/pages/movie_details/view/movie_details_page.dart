@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
+import 'package:movie_app/core/services/navigator.dart';
+import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
+import 'package:movie_app/core/utils/generics/double_to_fractional_digit.dart';
 import 'package:movie_app/data/bloc/movie_details/movie_details_bloc.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/gen/assets.gen.dart';
@@ -52,7 +53,7 @@ class MovieDetailsPage extends StatelessWidget {
                         if (state.isLoading) {
                           return const PosterImageSkelton__widget();
                         }
-                        if (state.isError) {
+                        if (state.hasError) {
                           return Container(
                             height: getScreenHeightPercentage(80.0),
                             width: ScreenConfig.screenWidth,
@@ -80,7 +81,7 @@ class MovieDetailsPage extends StatelessWidget {
                         } else {
                           return ImageContainer__widget(
                             imageWidth: ImageWidth.w780,
-                            imageData: state.movieDetailsData.posterPath,
+                            imageData: state.movieDetailsData.posterPath!,
                             height: getScreenHeightPercentage(80.0),
                             width: ScreenConfig.screenWidth,
                           );
@@ -112,15 +113,15 @@ class MovieDetailsPage extends StatelessWidget {
                                   tagline: 'Loading.....',
                                 );
                               }
-                              if (state.isError) {
+                              if (state.hasError) {
                                 return const MovieTitleSection__widget(
                                   title: 'No Title',
                                   tagline: 'Error while loading data',
                                 );
                               } else {
                                 return MovieTitleSection__widget(
-                                  title: state.movieDetailsData.title,
-                                  tagline: state.movieDetailsData.tagline,
+                                  title: state.movieDetailsData.title!,
+                                  tagline: state.movieDetailsData.tagline!,
                                 );
                               }
                             }),
@@ -131,7 +132,8 @@ class MovieDetailsPage extends StatelessWidget {
                                   ButtonGroupSection__widget(
                                 ratingValue: state.isLoading
                                     ? 0.0
-                                    : state.movieDetailsData.voteAverage,
+                                    : doubleToFactionalDigit(
+                                        state.movieDetailsData.voteAverage!, 1),
                               ),
                             ),
                             const SizedBox(height: kDefaultPadding * 2),
@@ -154,7 +156,7 @@ class MovieDetailsPage extends StatelessWidget {
                                     color: kColorWhite80,
                                   );
                                 }
-                                if (state.isError) {
+                                if (state.hasError) {
                                   return const Medium__text(
                                     text: 'No overview yet.',
                                     fontSize: 12.0,
@@ -163,7 +165,7 @@ class MovieDetailsPage extends StatelessWidget {
                                   );
                                 }
                                 return Medium__text(
-                                  text: state.movieDetailsData.overview,
+                                  text: state.movieDetailsData.overview!,
                                   fontSize: 12.0,
                                   height: 1.5,
                                   color: kColorWhite80,

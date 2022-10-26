@@ -9,20 +9,20 @@ part 'movie_details_model.g.dart';
 class MovieDetails with _$MovieDetails {
   const factory MovieDetails({
     required int id,
-    @JsonKey(name: 'backdrop_path') required String backdropPath,
-    required List<Genre> genres,
-    required String overview,
-    required double popularity,
-    @JsonKey(name: 'poster_path') required String posterPath,
-    @JsonKey(name: 'release_date') required String releaseDate,
+    @JsonKey(name: 'backdrop_path') String? backdropPath,
+    @Default([]) List<Genre>? genres,
+    String? overview,
+    double? popularity,
+    @JsonKey(name: 'poster_path') String? posterPath,
+    @JsonKey(name: 'release_date') String? releaseDate,
     int? runtime,
-    required String status,
-    required String tagline,
-    required String title,
-    @JsonKey(name: 'vote_average') required double voteAverage,
-    @JsonKey(name: 'videos') required Videos videos,
-    @JsonKey(name: 'casts') required Casts casts,
-    @JsonKey(name: 'reviews') required Reviews reviews,
+    String? status,
+    String? tagline,
+    String? title,
+    @JsonKey(name: 'vote_average') double? voteAverage,
+    @JsonKey(name: 'videos') Videos? videos,
+    @JsonKey(name: 'casts') Casts? casts,
+    @JsonKey(name: 'reviews') Reviews? reviews,
   }) = _MovieDetails;
 
   factory MovieDetails.fromJson(Map<String, dynamic> json) =>
@@ -33,7 +33,7 @@ class MovieDetails with _$MovieDetails {
 @freezed
 class Casts with _$Casts {
   const factory Casts({
-    @JsonKey(name: 'cast') required List<Cast> cast,
+    @Default([]) @JsonKey(name: 'cast') List<Cast>? cast,
   }) = _Casts;
 
   factory Casts.fromJson(Map<String, dynamic> json) => _$CastsFromJson(json);
@@ -43,11 +43,14 @@ class Casts with _$Casts {
 class Cast with _$Cast {
   const factory Cast({
     required int id,
-    @JsonKey(name: 'known_for_department') required String knownForDepartment,
-    required String name,
-    @JsonKey(name: 'profile_path', nullable: true, disallowNullValue: false)
+    @JsonKey(name: 'known_for_department')
+        String? knownForDepartment,
+    String? name,
+    @JsonKey(
+      name: 'profile_path',
+    )
         String? profilePath,
-    required int order,
+    int? order,
   }) = _Cast;
 
   factory Cast.fromJson(Map<String, dynamic> json) => _$CastFromJson(json);
@@ -57,8 +60,8 @@ class Cast with _$Cast {
 @freezed
 class Genre with _$Genre {
   const factory Genre({
-    required int id,
-    required String name,
+    int? id,
+    String? name,
   }) = _Genre;
 
   factory Genre.fromJson(Map<String, dynamic> json) => _$GenreFromJson(json);
@@ -68,10 +71,10 @@ class Genre with _$Genre {
 @freezed
 class Reviews with _$Reviews {
   const factory Reviews({
-    required int page,
+    int? page,
     List<ReviewsResult>? results,
-    @JsonKey(name: 'total_pages') required int totalPages,
-    @JsonKey(name: 'total_results') required int totalResults,
+    @JsonKey(name: 'total_pages') int? totalPages,
+    @JsonKey(name: 'total_results') int? totalResults,
   }) = _Reviews;
 
   factory Reviews.fromJson(Map<String, dynamic> json) =>
@@ -81,13 +84,12 @@ class Reviews with _$Reviews {
 @freezed
 class ReviewsResult with _$ReviewsResult {
   const factory ReviewsResult({
-    required String author,
-    @JsonKey(name: 'author_details') required AuthorDetails authorDetails,
-    @JsonKey(name: 'content', nullable: true, disallowNullValue: false)
-        String? content,
-    @JsonKey(name: 'created_at') required String createdAt,
-    required String id,
-    @JsonKey(name: 'updated_at') required String updatedAt,
+    String? author,
+    @JsonKey(name: 'author_details') AuthorDetails? authorDetails,
+    @JsonKey(name: 'content') String? content,
+    @JsonKey(name: 'created_at') String? createdAt,
+    String? id,
+    @JsonKey(name: 'updated_at') String? updatedAt,
   }) = _ReviewsResult;
 
   factory ReviewsResult.fromJson(Map<String, dynamic> json) =>
@@ -97,7 +99,7 @@ class ReviewsResult with _$ReviewsResult {
 @freezed
 class AuthorDetails with _$AuthorDetails {
   const factory AuthorDetails({
-    required String username,
+    String? username,
     double? rating,
   }) = _AuthorDetails;
 
@@ -109,7 +111,7 @@ class AuthorDetails with _$AuthorDetails {
 @freezed
 class Videos with _$Videos {
   const factory Videos({
-    required List<VideosResult> results,
+    @Default([]) List<VideosResult>? results,
   }) = _Videos;
 
   factory Videos.fromJson(Map<String, dynamic> json) => _$VideosFromJson(json);
@@ -118,11 +120,11 @@ class Videos with _$Videos {
 @freezed
 class VideosResult with _$VideosResult {
   const factory VideosResult({
-    required String id,
-    required String name,
-    required String key,
-    @JsonKey(name: 'published_at') required String publishedAt,
-    required String type,
+    String? id,
+    String? name,
+    String? key,
+    @JsonKey(name: 'published_at') String? publishedAt,
+    String? type,
   }) = _VideosResult;
 
   factory VideosResult.fromJson(Map<String, dynamic> json) =>

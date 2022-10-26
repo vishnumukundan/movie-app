@@ -4,14 +4,14 @@ part of 'movie_details_bloc.dart';
 class MovieDetailsState with _$MovieDetailsState {
   const factory MovieDetailsState({
     required bool isLoading,
-    required bool isError,
+    required bool hasError,
     required MovieDetails movieDetailsData,
   }) = _MovieDetailsState;
 
   factory MovieDetailsState.initial() {
     return const MovieDetailsState(
       isLoading: true,
-      isError: false,
+      hasError: false,
       movieDetailsData: MovieDetails(
         id: 0,
         backdropPath: '',

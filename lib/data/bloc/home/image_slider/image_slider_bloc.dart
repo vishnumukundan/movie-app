@@ -9,9 +9,9 @@ import 'package:movie_app/domain/repositories/home/image_slider/i_image_slider_r
 
 import '../../../../core/errors/network_error/network_error.dart';
 
+part 'image_slider_bloc.freezed.dart';
 part 'image_slider_event.dart';
 part 'image_slider_state.dart';
-part 'image_slider_bloc.freezed.dart';
 
 @injectable
 class ImageSliderBloc extends Bloc<ImageSliderEvent, ImageSliderState> {
@@ -21,7 +21,7 @@ class ImageSliderBloc extends Bloc<ImageSliderEvent, ImageSliderState> {
       if (state.imageSliderDataList.isNotEmpty) {
         emit(ImageSliderState(
           isLoading: false,
-          isError: false,
+          hasError: false,
           imageSliderDataList: state.imageSliderDataList,
         ));
       }
@@ -32,12 +32,12 @@ class ImageSliderBloc extends Bloc<ImageSliderEvent, ImageSliderState> {
       final _state = imageSliderOption.fold(
           (failure) => const ImageSliderState(
                 isLoading: false,
-                isError: true,
+                hasError: true,
                 imageSliderDataList: [],
               ),
           (success) => ImageSliderState(
                 isLoading: false,
-                isError: false,
+                hasError: false,
                 imageSliderDataList: success,
               ));
       emit(_state);

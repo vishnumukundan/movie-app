@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/data/bloc/movie_details/movie_details_bloc.dart';
 import 'package:movie_app/presentation/components/person_image_and_name_card.dart';
 import 'package:movie_app/presentation/components/text.dart';
@@ -26,31 +26,33 @@ class CastSection__widget extends StatelessWidget {
         const SizedBox(height: kDefaultPadding),
         BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
           builder: (context, state) {
-            final dataList = state.movieDetailsData.casts.cast;
+            final dataList = state.movieDetailsData.casts!.cast;
             return CustomListViewBuilder(
-                clipBehavior: Clip.none,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                itemCount: dataList.length,
-                contentSpacing: kDefaultPadding,
-                scrollDirection: Axis.horizontal,
-                builder: (context, index) {
-                  if (dataList[index].knownForDepartment == 'Acting') {
-                    if (state.isLoading) {
-                      return CastSectionSkelton__widget();
-                    } else {
-                      return PersonImageAndNameCard__widget(
+              clipBehavior: Clip.none,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              itemCount: dataList!.length,
+              contentSpacing: kDefaultPadding,
+              scrollDirection: Axis.horizontal,
+              builder: (context, index) {
+                if (dataList[index].knownForDepartment == 'Acting') {
+                  if (state.isLoading) {
+                    return CastSectionSkelton__widget();
+                  } else {
+                    return PersonImageAndNameCard__widget(
                         image: dataList[index].profilePath,
-                        name: dataList[index].name,
+                        name: dataList[index].name!,
                         isLoading: state.isLoading,
-                        onTap: () => PageNav.push(
-                          context,
-                          ActorProfilePage(personId: dataList[index].id),
-                        ),
-                      );
-                    }
+                        onTap: () {
+                          PageNav.push(
+                            context,
+                            ActorProfilePage(personId: dataList[index].id),
+                          );
+                        });
                   }
-                  return const SizedBox();
-                });
+                }
+                return const SizedBox();
+              },
+            );
           },
         ),
       ],

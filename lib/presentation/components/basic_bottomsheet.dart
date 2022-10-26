@@ -1,8 +1,8 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
+import 'package:movie_app/core/services/navigator.dart';
+import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/components/blurred_background.dart';

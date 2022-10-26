@@ -7,9 +7,9 @@ import 'package:movie_app/domain/repositories/login/i_login_poster_repo.dart';
 
 import '../../../models/login/login_poster_model.dart';
 
+part 'login_poster_bloc.freezed.dart';
 part 'login_poster_event.dart';
 part 'login_poster_state.dart';
-part 'login_poster_bloc.freezed.dart';
 
 @injectable
 class LoginPosterBloc extends Bloc<LoginPosterEvent, LoginPosterState> {
@@ -25,6 +25,7 @@ class LoginPosterBloc extends Bloc<LoginPosterEvent, LoginPosterState> {
       emit(loginPosterOption.fold(
         (failure) => state.copyWith(
           isLoading: false,
+          hasError: true,
           loginPosterFailureOrSuccessOption: some(left(failure)),
         ),
         (success) => state.copyWith(

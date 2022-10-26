@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/presentation/bloc/main/appbar/appbar_bloc.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/search_result/view/search_result_page.dart';
@@ -16,7 +16,6 @@ class Appbar__widget extends StatelessWidget {
   const Appbar__widget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    
     return BlurredBackground__widget(
       child: Padding(
         padding: const EdgeInsets.only(

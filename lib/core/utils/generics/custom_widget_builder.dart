@@ -44,14 +44,17 @@ class CustomListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (itemCount! > 0) {
-      for (int i = 0; i < itemCount!; i++) {
+      int i = 0;
+      for (i; i < itemCount! - 1; i++) {
+        items.add(Padding(
+          padding: scrollDirection == Axis.vertical
+              ? EdgeInsets.only(bottom: contentSpacing)
+              : EdgeInsets.only(right: contentSpacing),
+          child: builder(context, i),
+        ));
+      }
+      if (i == itemCount! - 1) {
         items.add(builder(context, i));
-        if (i < itemCount! - 1) {
-          for (int j = 0; j < (itemCount! - 1); j++) {
-            items.add(SizedBox.square(dimension: contentSpacing));
-            break;
-          }
-        }
       }
     }
 

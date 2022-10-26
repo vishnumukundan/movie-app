@@ -169,6 +169,7 @@ abstract class _GetLoginPosterImages implements LoginPosterEvent {
 /// @nodoc
 mixin _$LoginPosterState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get hasError => throw _privateConstructorUsedError;
   List<LoginPoster> get loginPosterDataList =>
       throw _privateConstructorUsedError;
   Option<Either<NetworkError, List<LoginPoster>>>
@@ -187,6 +188,7 @@ abstract class $LoginPosterStateCopyWith<$Res> {
       _$LoginPosterStateCopyWithImpl<$Res>;
   $Res call(
       {bool isLoading,
+      bool hasError,
       List<LoginPoster> loginPosterDataList,
       Option<Either<NetworkError, List<LoginPoster>>>
           loginPosterFailureOrSuccessOption});
@@ -204,6 +206,7 @@ class _$LoginPosterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? hasError = freezed,
     Object? loginPosterDataList = freezed,
     Object? loginPosterFailureOrSuccessOption = freezed,
   }) {
@@ -211,6 +214,10 @@ class _$LoginPosterStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasError: hasError == freezed
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
       loginPosterDataList: loginPosterDataList == freezed
           ? _value.loginPosterDataList
@@ -234,6 +241,7 @@ abstract class _$$_LoginPosterStateCopyWith<$Res>
   @override
   $Res call(
       {bool isLoading,
+      bool hasError,
       List<LoginPoster> loginPosterDataList,
       Option<Either<NetworkError, List<LoginPoster>>>
           loginPosterFailureOrSuccessOption});
@@ -253,6 +261,7 @@ class __$$_LoginPosterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? hasError = freezed,
     Object? loginPosterDataList = freezed,
     Object? loginPosterFailureOrSuccessOption = freezed,
   }) {
@@ -260,6 +269,10 @@ class __$$_LoginPosterStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasError: hasError == freezed
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
       loginPosterDataList: loginPosterDataList == freezed
           ? _value._loginPosterDataList
@@ -279,12 +292,15 @@ class __$$_LoginPosterStateCopyWithImpl<$Res>
 class _$_LoginPosterState implements _LoginPosterState {
   const _$_LoginPosterState(
       {required this.isLoading,
+      required this.hasError,
       required final List<LoginPoster> loginPosterDataList,
       required this.loginPosterFailureOrSuccessOption})
       : _loginPosterDataList = loginPosterDataList;
 
   @override
   final bool isLoading;
+  @override
+  final bool hasError;
   final List<LoginPoster> _loginPosterDataList;
   @override
   List<LoginPoster> get loginPosterDataList {
@@ -298,7 +314,7 @@ class _$_LoginPosterState implements _LoginPosterState {
 
   @override
   String toString() {
-    return 'LoginPosterState(isLoading: $isLoading, loginPosterDataList: $loginPosterDataList, loginPosterFailureOrSuccessOption: $loginPosterFailureOrSuccessOption)';
+    return 'LoginPosterState(isLoading: $isLoading, hasError: $hasError, loginPosterDataList: $loginPosterDataList, loginPosterFailureOrSuccessOption: $loginPosterFailureOrSuccessOption)';
   }
 
   @override
@@ -307,6 +323,7 @@ class _$_LoginPosterState implements _LoginPosterState {
         (other.runtimeType == runtimeType &&
             other is _$_LoginPosterState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.hasError, hasError) &&
             const DeepCollectionEquality()
                 .equals(other._loginPosterDataList, _loginPosterDataList) &&
             const DeepCollectionEquality().equals(
@@ -318,6 +335,7 @@ class _$_LoginPosterState implements _LoginPosterState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(hasError),
       const DeepCollectionEquality().hash(_loginPosterDataList),
       const DeepCollectionEquality().hash(loginPosterFailureOrSuccessOption));
 
@@ -330,12 +348,15 @@ class _$_LoginPosterState implements _LoginPosterState {
 abstract class _LoginPosterState implements LoginPosterState {
   const factory _LoginPosterState(
       {required final bool isLoading,
+      required final bool hasError,
       required final List<LoginPoster> loginPosterDataList,
       required final Option<Either<NetworkError, List<LoginPoster>>>
           loginPosterFailureOrSuccessOption}) = _$_LoginPosterState;
 
   @override
   bool get isLoading;
+  @override
+  bool get hasError;
   @override
   List<LoginPoster> get loginPosterDataList;
   @override

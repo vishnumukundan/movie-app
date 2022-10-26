@@ -1,6 +1,5 @@
 // ignore_for_file: camel_case_types
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 
@@ -17,7 +16,7 @@ class ImageContainer__widget extends StatelessWidget {
     this.imageWidth = ImageWidth.w500,
   }) : super(key: key);
 
-  final dynamic imageData;
+  final String imageData;
   final double height;
   final double width;
   final double? radius;
@@ -26,23 +25,18 @@ class ImageContainer__widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: ApiDataFetching.image(imageData, imageWidth!),
-      imageBuilder: (context, imageProvider) => Container(
-        height: height,
-        width: width,
-        decoration: BoxDecoration(
-          color: kColorPrimary,
-          boxShadow: boxshadow,
-          borderRadius: BorderRadius.circular(radius ?? 0.0),
-          image: DecorationImage(
-            image: imageProvider,
-            fit: BoxFit.cover,
-          ),
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: kColorPrimary,
+        boxShadow: boxshadow,
+        borderRadius: BorderRadius.circular(radius ?? 0.0),
+        image: DecorationImage(
+          image: NetworkImage(ApiDataFetching.image(imageData, imageWidth!)),
+          fit: BoxFit.cover,
         ),
       ),
-      // placeholder: (context, url) =>
-      //     const Skelton__widget(child: ImageStackSkelton__widget()),
     );
   }
 }

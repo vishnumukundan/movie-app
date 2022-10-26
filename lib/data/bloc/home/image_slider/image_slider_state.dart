@@ -4,14 +4,14 @@ part of 'image_slider_bloc.dart';
 class ImageSliderState with _$ImageSliderState {
   const factory ImageSliderState({
     required bool isLoading,
-    required bool isError,
+    required bool hasError,
     required List<ImageSlider> imageSliderDataList,
   }) = _ImageSliderState;
 
   factory ImageSliderState.initial() {
     return const ImageSliderState(
       isLoading: true,
-      isError: false,
+      hasError: false,
       imageSliderDataList: [],
     );
   }

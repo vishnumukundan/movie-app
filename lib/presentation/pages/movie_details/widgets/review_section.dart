@@ -18,7 +18,7 @@ class ReviewSection__widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
       builder: (context, state) {
-        final dataList = state.movieDetailsData.reviews.results;
+        final dataList = state.movieDetailsData.reviews!.results;
         if (state.isLoading) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +33,8 @@ class ReviewSection__widget extends StatelessWidget {
             ],
           );
         }
-        if (state.isError || state.movieDetailsData.reviews.results!.isEmpty) {
+        if (state.hasError ||
+            state.movieDetailsData.reviews!.results!.isEmpty) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -65,9 +66,9 @@ class ReviewSection__widget extends StatelessWidget {
             CustomListViewBuilder(
               itemCount: dataList!.length < 10 ? dataList.length : 10,
               builder: (context, index) => ReviewCard__widget(
-                user: dataList[index].author,
-                date: dataList[index].createdAt,
-                rating: dataList[index].authorDetails.rating ?? 0.0,
+                user: dataList[index].author!,
+                date: dataList[index].createdAt!,
+                rating: dataList[index].authorDetails!.rating ?? 0.0,
                 content: dataList[index].content ?? '',
                 onTap: () {
                   showModalBottomSheet(
@@ -76,9 +77,9 @@ class ReviewSection__widget extends StatelessWidget {
                     barrierColor: kColorPrimary.withOpacity(0.5),
                     builder: (context) {
                       return ReviewBottomSheet__widget(
-                        user: dataList[index].author,
-                        date: dataList[index].createdAt,
-                        rating: dataList[index].authorDetails.rating ?? 0.0,
+                        user: dataList[index].author!,
+                        date: dataList[index].createdAt!,
+                        rating: dataList[index].authorDetails!.rating ?? 0.0,
                         content: dataList[index].content ?? '',
                       );
                     },

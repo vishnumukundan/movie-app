@@ -16,13 +16,11 @@ class ButtonGroupSection__widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String stringValue = ratingValue.toStringAsFixed(1);
-    final double finalValue = double.parse(stringValue);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         RatingIndicator__widget(
-          ratingValue: finalValue,
+          ratingValue: ratingValue,
         ),
         const SizedBox(width: kDefaultPadding / 2),
         Primary_Medium__IconButton(

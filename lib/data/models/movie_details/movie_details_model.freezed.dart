@@ -22,26 +22,26 @@ MovieDetails _$MovieDetailsFromJson(Map<String, dynamic> json) {
 mixin _$MovieDetails {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
-  String get backdropPath => throw _privateConstructorUsedError;
-  List<Genre> get genres => throw _privateConstructorUsedError;
-  String get overview => throw _privateConstructorUsedError;
-  double get popularity => throw _privateConstructorUsedError;
+  String? get backdropPath => throw _privateConstructorUsedError;
+  List<Genre>? get genres => throw _privateConstructorUsedError;
+  String? get overview => throw _privateConstructorUsedError;
+  double? get popularity => throw _privateConstructorUsedError;
   @JsonKey(name: 'poster_path')
-  String get posterPath => throw _privateConstructorUsedError;
+  String? get posterPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'release_date')
-  String get releaseDate => throw _privateConstructorUsedError;
+  String? get releaseDate => throw _privateConstructorUsedError;
   int? get runtime => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
-  String get tagline => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
+  String? get tagline => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'vote_average')
-  double get voteAverage => throw _privateConstructorUsedError;
+  double? get voteAverage => throw _privateConstructorUsedError;
   @JsonKey(name: 'videos')
-  Videos get videos => throw _privateConstructorUsedError;
+  Videos? get videos => throw _privateConstructorUsedError;
   @JsonKey(name: 'casts')
-  Casts get casts => throw _privateConstructorUsedError;
+  Casts? get casts => throw _privateConstructorUsedError;
   @JsonKey(name: 'reviews')
-  Reviews get reviews => throw _privateConstructorUsedError;
+  Reviews? get reviews => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,24 +56,24 @@ abstract class $MovieDetailsCopyWith<$Res> {
       _$MovieDetailsCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      @JsonKey(name: 'backdrop_path') String backdropPath,
-      List<Genre> genres,
-      String overview,
-      double popularity,
-      @JsonKey(name: 'poster_path') String posterPath,
-      @JsonKey(name: 'release_date') String releaseDate,
+      @JsonKey(name: 'backdrop_path') String? backdropPath,
+      List<Genre>? genres,
+      String? overview,
+      double? popularity,
+      @JsonKey(name: 'poster_path') String? posterPath,
+      @JsonKey(name: 'release_date') String? releaseDate,
       int? runtime,
-      String status,
-      String tagline,
-      String title,
-      @JsonKey(name: 'vote_average') double voteAverage,
-      @JsonKey(name: 'videos') Videos videos,
-      @JsonKey(name: 'casts') Casts casts,
-      @JsonKey(name: 'reviews') Reviews reviews});
+      String? status,
+      String? tagline,
+      String? title,
+      @JsonKey(name: 'vote_average') double? voteAverage,
+      @JsonKey(name: 'videos') Videos? videos,
+      @JsonKey(name: 'casts') Casts? casts,
+      @JsonKey(name: 'reviews') Reviews? reviews});
 
-  $VideosCopyWith<$Res> get videos;
-  $CastsCopyWith<$Res> get casts;
-  $ReviewsCopyWith<$Res> get reviews;
+  $VideosCopyWith<$Res>? get videos;
+  $CastsCopyWith<$Res>? get casts;
+  $ReviewsCopyWith<$Res>? get reviews;
 }
 
 /// @nodoc
@@ -110,27 +110,27 @@ class _$MovieDetailsCopyWithImpl<$Res> implements $MovieDetailsCopyWith<$Res> {
       backdropPath: backdropPath == freezed
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       genres: genres == freezed
           ? _value.genres
           : genres // ignore: cast_nullable_to_non_nullable
-              as List<Genre>,
+              as List<Genre>?,
       overview: overview == freezed
           ? _value.overview
           : overview // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       popularity: popularity == freezed
           ? _value.popularity
           : popularity // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       releaseDate: releaseDate == freezed
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       runtime: runtime == freezed
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
@@ -138,51 +138,63 @@ class _$MovieDetailsCopyWithImpl<$Res> implements $MovieDetailsCopyWith<$Res> {
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       tagline: tagline == freezed
           ? _value.tagline
           : tagline // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       voteAverage: voteAverage == freezed
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       videos: videos == freezed
           ? _value.videos
           : videos // ignore: cast_nullable_to_non_nullable
-              as Videos,
+              as Videos?,
       casts: casts == freezed
           ? _value.casts
           : casts // ignore: cast_nullable_to_non_nullable
-              as Casts,
+              as Casts?,
       reviews: reviews == freezed
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
-              as Reviews,
+              as Reviews?,
     ));
   }
 
   @override
-  $VideosCopyWith<$Res> get videos {
-    return $VideosCopyWith<$Res>(_value.videos, (value) {
+  $VideosCopyWith<$Res>? get videos {
+    if (_value.videos == null) {
+      return null;
+    }
+
+    return $VideosCopyWith<$Res>(_value.videos!, (value) {
       return _then(_value.copyWith(videos: value));
     });
   }
 
   @override
-  $CastsCopyWith<$Res> get casts {
-    return $CastsCopyWith<$Res>(_value.casts, (value) {
+  $CastsCopyWith<$Res>? get casts {
+    if (_value.casts == null) {
+      return null;
+    }
+
+    return $CastsCopyWith<$Res>(_value.casts!, (value) {
       return _then(_value.copyWith(casts: value));
     });
   }
 
   @override
-  $ReviewsCopyWith<$Res> get reviews {
-    return $ReviewsCopyWith<$Res>(_value.reviews, (value) {
+  $ReviewsCopyWith<$Res>? get reviews {
+    if (_value.reviews == null) {
+      return null;
+    }
+
+    return $ReviewsCopyWith<$Res>(_value.reviews!, (value) {
       return _then(_value.copyWith(reviews: value));
     });
   }
@@ -197,27 +209,27 @@ abstract class _$$_MovieDetailsCopyWith<$Res>
   @override
   $Res call(
       {int id,
-      @JsonKey(name: 'backdrop_path') String backdropPath,
-      List<Genre> genres,
-      String overview,
-      double popularity,
-      @JsonKey(name: 'poster_path') String posterPath,
-      @JsonKey(name: 'release_date') String releaseDate,
+      @JsonKey(name: 'backdrop_path') String? backdropPath,
+      List<Genre>? genres,
+      String? overview,
+      double? popularity,
+      @JsonKey(name: 'poster_path') String? posterPath,
+      @JsonKey(name: 'release_date') String? releaseDate,
       int? runtime,
-      String status,
-      String tagline,
-      String title,
-      @JsonKey(name: 'vote_average') double voteAverage,
-      @JsonKey(name: 'videos') Videos videos,
-      @JsonKey(name: 'casts') Casts casts,
-      @JsonKey(name: 'reviews') Reviews reviews});
+      String? status,
+      String? tagline,
+      String? title,
+      @JsonKey(name: 'vote_average') double? voteAverage,
+      @JsonKey(name: 'videos') Videos? videos,
+      @JsonKey(name: 'casts') Casts? casts,
+      @JsonKey(name: 'reviews') Reviews? reviews});
 
   @override
-  $VideosCopyWith<$Res> get videos;
+  $VideosCopyWith<$Res>? get videos;
   @override
-  $CastsCopyWith<$Res> get casts;
+  $CastsCopyWith<$Res>? get casts;
   @override
-  $ReviewsCopyWith<$Res> get reviews;
+  $ReviewsCopyWith<$Res>? get reviews;
 }
 
 /// @nodoc
@@ -257,27 +269,27 @@ class __$$_MovieDetailsCopyWithImpl<$Res>
       backdropPath: backdropPath == freezed
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       genres: genres == freezed
           ? _value._genres
           : genres // ignore: cast_nullable_to_non_nullable
-              as List<Genre>,
+              as List<Genre>?,
       overview: overview == freezed
           ? _value.overview
           : overview // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       popularity: popularity == freezed
           ? _value.popularity
           : popularity // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       releaseDate: releaseDate == freezed
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       runtime: runtime == freezed
           ? _value.runtime
           : runtime // ignore: cast_nullable_to_non_nullable
@@ -285,31 +297,31 @@ class __$$_MovieDetailsCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       tagline: tagline == freezed
           ? _value.tagline
           : tagline // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       voteAverage: voteAverage == freezed
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       videos: videos == freezed
           ? _value.videos
           : videos // ignore: cast_nullable_to_non_nullable
-              as Videos,
+              as Videos?,
       casts: casts == freezed
           ? _value.casts
           : casts // ignore: cast_nullable_to_non_nullable
-              as Casts,
+              as Casts?,
       reviews: reviews == freezed
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
-              as Reviews,
+              as Reviews?,
     ));
   }
 }
@@ -319,20 +331,20 @@ class __$$_MovieDetailsCopyWithImpl<$Res>
 class _$_MovieDetails implements _MovieDetails {
   const _$_MovieDetails(
       {required this.id,
-      @JsonKey(name: 'backdrop_path') required this.backdropPath,
-      required final List<Genre> genres,
-      required this.overview,
-      required this.popularity,
-      @JsonKey(name: 'poster_path') required this.posterPath,
-      @JsonKey(name: 'release_date') required this.releaseDate,
+      @JsonKey(name: 'backdrop_path') this.backdropPath,
+      final List<Genre>? genres = const [],
+      this.overview,
+      this.popularity,
+      @JsonKey(name: 'poster_path') this.posterPath,
+      @JsonKey(name: 'release_date') this.releaseDate,
       this.runtime,
-      required this.status,
-      required this.tagline,
-      required this.title,
-      @JsonKey(name: 'vote_average') required this.voteAverage,
-      @JsonKey(name: 'videos') required this.videos,
-      @JsonKey(name: 'casts') required this.casts,
-      @JsonKey(name: 'reviews') required this.reviews})
+      this.status,
+      this.tagline,
+      this.title,
+      @JsonKey(name: 'vote_average') this.voteAverage,
+      @JsonKey(name: 'videos') this.videos,
+      @JsonKey(name: 'casts') this.casts,
+      @JsonKey(name: 'reviews') this.reviews})
       : _genres = genres;
 
   factory _$_MovieDetails.fromJson(Map<String, dynamic> json) =>
@@ -342,44 +354,47 @@ class _$_MovieDetails implements _MovieDetails {
   final int id;
   @override
   @JsonKey(name: 'backdrop_path')
-  final String backdropPath;
-  final List<Genre> _genres;
+  final String? backdropPath;
+  final List<Genre>? _genres;
   @override
-  List<Genre> get genres {
+  @JsonKey()
+  List<Genre>? get genres {
+    final value = _genres;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_genres);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String overview;
+  final String? overview;
   @override
-  final double popularity;
+  final double? popularity;
   @override
   @JsonKey(name: 'poster_path')
-  final String posterPath;
+  final String? posterPath;
   @override
   @JsonKey(name: 'release_date')
-  final String releaseDate;
+  final String? releaseDate;
   @override
   final int? runtime;
   @override
-  final String status;
+  final String? status;
   @override
-  final String tagline;
+  final String? tagline;
   @override
-  final String title;
+  final String? title;
   @override
   @JsonKey(name: 'vote_average')
-  final double voteAverage;
+  final double? voteAverage;
   @override
   @JsonKey(name: 'videos')
-  final Videos videos;
+  final Videos? videos;
   @override
   @JsonKey(name: 'casts')
-  final Casts casts;
+  final Casts? casts;
   @override
   @JsonKey(name: 'reviews')
-  final Reviews reviews;
+  final Reviews? reviews;
 
   @override
   String toString() {
@@ -448,22 +463,21 @@ class _$_MovieDetails implements _MovieDetails {
 
 abstract class _MovieDetails implements MovieDetails {
   const factory _MovieDetails(
-          {required final int id,
-          @JsonKey(name: 'backdrop_path') required final String backdropPath,
-          required final List<Genre> genres,
-          required final String overview,
-          required final double popularity,
-          @JsonKey(name: 'poster_path') required final String posterPath,
-          @JsonKey(name: 'release_date') required final String releaseDate,
-          final int? runtime,
-          required final String status,
-          required final String tagline,
-          required final String title,
-          @JsonKey(name: 'vote_average') required final double voteAverage,
-          @JsonKey(name: 'videos') required final Videos videos,
-          @JsonKey(name: 'casts') required final Casts casts,
-          @JsonKey(name: 'reviews') required final Reviews reviews}) =
-      _$_MovieDetails;
+      {required final int id,
+      @JsonKey(name: 'backdrop_path') final String? backdropPath,
+      final List<Genre>? genres,
+      final String? overview,
+      final double? popularity,
+      @JsonKey(name: 'poster_path') final String? posterPath,
+      @JsonKey(name: 'release_date') final String? releaseDate,
+      final int? runtime,
+      final String? status,
+      final String? tagline,
+      final String? title,
+      @JsonKey(name: 'vote_average') final double? voteAverage,
+      @JsonKey(name: 'videos') final Videos? videos,
+      @JsonKey(name: 'casts') final Casts? casts,
+      @JsonKey(name: 'reviews') final Reviews? reviews}) = _$_MovieDetails;
 
   factory _MovieDetails.fromJson(Map<String, dynamic> json) =
       _$_MovieDetails.fromJson;
@@ -472,39 +486,39 @@ abstract class _MovieDetails implements MovieDetails {
   int get id;
   @override
   @JsonKey(name: 'backdrop_path')
-  String get backdropPath;
+  String? get backdropPath;
   @override
-  List<Genre> get genres;
+  List<Genre>? get genres;
   @override
-  String get overview;
+  String? get overview;
   @override
-  double get popularity;
+  double? get popularity;
   @override
   @JsonKey(name: 'poster_path')
-  String get posterPath;
+  String? get posterPath;
   @override
   @JsonKey(name: 'release_date')
-  String get releaseDate;
+  String? get releaseDate;
   @override
   int? get runtime;
   @override
-  String get status;
+  String? get status;
   @override
-  String get tagline;
+  String? get tagline;
   @override
-  String get title;
+  String? get title;
   @override
   @JsonKey(name: 'vote_average')
-  double get voteAverage;
+  double? get voteAverage;
   @override
   @JsonKey(name: 'videos')
-  Videos get videos;
+  Videos? get videos;
   @override
   @JsonKey(name: 'casts')
-  Casts get casts;
+  Casts? get casts;
   @override
   @JsonKey(name: 'reviews')
-  Reviews get reviews;
+  Reviews? get reviews;
   @override
   @JsonKey(ignore: true)
   _$$_MovieDetailsCopyWith<_$_MovieDetails> get copyWith =>
@@ -518,7 +532,7 @@ Casts _$CastsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Casts {
   @JsonKey(name: 'cast')
-  List<Cast> get cast => throw _privateConstructorUsedError;
+  List<Cast>? get cast => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -529,7 +543,7 @@ mixin _$Casts {
 abstract class $CastsCopyWith<$Res> {
   factory $CastsCopyWith(Casts value, $Res Function(Casts) then) =
       _$CastsCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'cast') List<Cast> cast});
+  $Res call({@JsonKey(name: 'cast') List<Cast>? cast});
 }
 
 /// @nodoc
@@ -548,7 +562,7 @@ class _$CastsCopyWithImpl<$Res> implements $CastsCopyWith<$Res> {
       cast: cast == freezed
           ? _value.cast
           : cast // ignore: cast_nullable_to_non_nullable
-              as List<Cast>,
+              as List<Cast>?,
     ));
   }
 }
@@ -558,7 +572,7 @@ abstract class _$$_CastsCopyWith<$Res> implements $CastsCopyWith<$Res> {
   factory _$$_CastsCopyWith(_$_Casts value, $Res Function(_$_Casts) then) =
       __$$_CastsCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'cast') List<Cast> cast});
+  $Res call({@JsonKey(name: 'cast') List<Cast>? cast});
 }
 
 /// @nodoc
@@ -578,7 +592,7 @@ class __$$_CastsCopyWithImpl<$Res> extends _$CastsCopyWithImpl<$Res>
       cast: cast == freezed
           ? _value._cast
           : cast // ignore: cast_nullable_to_non_nullable
-              as List<Cast>,
+              as List<Cast>?,
     ));
   }
 }
@@ -586,18 +600,20 @@ class __$$_CastsCopyWithImpl<$Res> extends _$CastsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Casts implements _Casts {
-  const _$_Casts({@JsonKey(name: 'cast') required final List<Cast> cast})
+  const _$_Casts({@JsonKey(name: 'cast') final List<Cast>? cast = const []})
       : _cast = cast;
 
   factory _$_Casts.fromJson(Map<String, dynamic> json) =>
       _$$_CastsFromJson(json);
 
-  final List<Cast> _cast;
+  final List<Cast>? _cast;
   @override
   @JsonKey(name: 'cast')
-  List<Cast> get cast {
+  List<Cast>? get cast {
+    final value = _cast;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_cast);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -632,14 +648,14 @@ class _$_Casts implements _Casts {
 }
 
 abstract class _Casts implements Casts {
-  const factory _Casts(
-      {@JsonKey(name: 'cast') required final List<Cast> cast}) = _$_Casts;
+  const factory _Casts({@JsonKey(name: 'cast') final List<Cast>? cast}) =
+      _$_Casts;
 
   factory _Casts.fromJson(Map<String, dynamic> json) = _$_Casts.fromJson;
 
   @override
   @JsonKey(name: 'cast')
-  List<Cast> get cast;
+  List<Cast>? get cast;
   @override
   @JsonKey(ignore: true)
   _$$_CastsCopyWith<_$_Casts> get copyWith =>
@@ -654,11 +670,11 @@ Cast _$CastFromJson(Map<String, dynamic> json) {
 mixin _$Cast {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'known_for_department')
-  String get knownForDepartment => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'profile_path', nullable: true, disallowNullValue: false)
+  String? get knownForDepartment => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_path')
   String? get profilePath => throw _privateConstructorUsedError;
-  int get order => throw _privateConstructorUsedError;
+  int? get order => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -671,12 +687,10 @@ abstract class $CastCopyWith<$Res> {
       _$CastCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      @JsonKey(name: 'known_for_department')
-          String knownForDepartment,
-      String name,
-      @JsonKey(name: 'profile_path', nullable: true, disallowNullValue: false)
-          String? profilePath,
-      int order});
+      @JsonKey(name: 'known_for_department') String? knownForDepartment,
+      String? name,
+      @JsonKey(name: 'profile_path') String? profilePath,
+      int? order});
 }
 
 /// @nodoc
@@ -703,11 +717,11 @@ class _$CastCopyWithImpl<$Res> implements $CastCopyWith<$Res> {
       knownForDepartment: knownForDepartment == freezed
           ? _value.knownForDepartment
           : knownForDepartment // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profilePath: profilePath == freezed
           ? _value.profilePath
           : profilePath // ignore: cast_nullable_to_non_nullable
@@ -715,7 +729,7 @@ class _$CastCopyWithImpl<$Res> implements $CastCopyWith<$Res> {
       order: order == freezed
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -727,12 +741,10 @@ abstract class _$$_CastCopyWith<$Res> implements $CastCopyWith<$Res> {
   @override
   $Res call(
       {int id,
-      @JsonKey(name: 'known_for_department')
-          String knownForDepartment,
-      String name,
-      @JsonKey(name: 'profile_path', nullable: true, disallowNullValue: false)
-          String? profilePath,
-      int order});
+      @JsonKey(name: 'known_for_department') String? knownForDepartment,
+      String? name,
+      @JsonKey(name: 'profile_path') String? profilePath,
+      int? order});
 }
 
 /// @nodoc
@@ -760,11 +772,11 @@ class __$$_CastCopyWithImpl<$Res> extends _$CastCopyWithImpl<$Res>
       knownForDepartment: knownForDepartment == freezed
           ? _value.knownForDepartment
           : knownForDepartment // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profilePath: profilePath == freezed
           ? _value.profilePath
           : profilePath // ignore: cast_nullable_to_non_nullable
@@ -772,7 +784,7 @@ class __$$_CastCopyWithImpl<$Res> extends _$CastCopyWithImpl<$Res>
       order: order == freezed
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -782,12 +794,10 @@ class __$$_CastCopyWithImpl<$Res> extends _$CastCopyWithImpl<$Res>
 class _$_Cast implements _Cast {
   const _$_Cast(
       {required this.id,
-      @JsonKey(name: 'known_for_department')
-          required this.knownForDepartment,
-      required this.name,
-      @JsonKey(name: 'profile_path', nullable: true, disallowNullValue: false)
-          this.profilePath,
-      required this.order});
+      @JsonKey(name: 'known_for_department') this.knownForDepartment,
+      this.name,
+      @JsonKey(name: 'profile_path') this.profilePath,
+      this.order});
 
   factory _$_Cast.fromJson(Map<String, dynamic> json) => _$$_CastFromJson(json);
 
@@ -795,14 +805,14 @@ class _$_Cast implements _Cast {
   final int id;
   @override
   @JsonKey(name: 'known_for_department')
-  final String knownForDepartment;
+  final String? knownForDepartment;
   @override
-  final String name;
+  final String? name;
   @override
-  @JsonKey(name: 'profile_path', nullable: true, disallowNullValue: false)
+  @JsonKey(name: 'profile_path')
   final String? profilePath;
   @override
-  final int order;
+  final int? order;
 
   @override
   String toString() {
@@ -849,12 +859,10 @@ class _$_Cast implements _Cast {
 abstract class _Cast implements Cast {
   const factory _Cast(
       {required final int id,
-      @JsonKey(name: 'known_for_department')
-          required final String knownForDepartment,
-      required final String name,
-      @JsonKey(name: 'profile_path', nullable: true, disallowNullValue: false)
-          final String? profilePath,
-      required final int order}) = _$_Cast;
+      @JsonKey(name: 'known_for_department') final String? knownForDepartment,
+      final String? name,
+      @JsonKey(name: 'profile_path') final String? profilePath,
+      final int? order}) = _$_Cast;
 
   factory _Cast.fromJson(Map<String, dynamic> json) = _$_Cast.fromJson;
 
@@ -862,14 +870,14 @@ abstract class _Cast implements Cast {
   int get id;
   @override
   @JsonKey(name: 'known_for_department')
-  String get knownForDepartment;
+  String? get knownForDepartment;
   @override
-  String get name;
+  String? get name;
   @override
-  @JsonKey(name: 'profile_path', nullable: true, disallowNullValue: false)
+  @JsonKey(name: 'profile_path')
   String? get profilePath;
   @override
-  int get order;
+  int? get order;
   @override
   @JsonKey(ignore: true)
   _$$_CastCopyWith<_$_Cast> get copyWith => throw _privateConstructorUsedError;
@@ -881,8 +889,8 @@ Genre _$GenreFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Genre {
-  int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -893,7 +901,7 @@ mixin _$Genre {
 abstract class $GenreCopyWith<$Res> {
   factory $GenreCopyWith(Genre value, $Res Function(Genre) then) =
       _$GenreCopyWithImpl<$Res>;
-  $Res call({int id, String name});
+  $Res call({int? id, String? name});
 }
 
 /// @nodoc
@@ -913,11 +921,11 @@ class _$GenreCopyWithImpl<$Res> implements $GenreCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -927,7 +935,7 @@ abstract class _$$_GenreCopyWith<$Res> implements $GenreCopyWith<$Res> {
   factory _$$_GenreCopyWith(_$_Genre value, $Res Function(_$_Genre) then) =
       __$$_GenreCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name});
+  $Res call({int? id, String? name});
 }
 
 /// @nodoc
@@ -948,11 +956,11 @@ class __$$_GenreCopyWithImpl<$Res> extends _$GenreCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -960,15 +968,15 @@ class __$$_GenreCopyWithImpl<$Res> extends _$GenreCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Genre implements _Genre {
-  const _$_Genre({required this.id, required this.name});
+  const _$_Genre({this.id, this.name});
 
   factory _$_Genre.fromJson(Map<String, dynamic> json) =>
       _$$_GenreFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String name;
+  final String? name;
 
   @override
   String toString() {
@@ -1005,15 +1013,14 @@ class _$_Genre implements _Genre {
 }
 
 abstract class _Genre implements Genre {
-  const factory _Genre({required final int id, required final String name}) =
-      _$_Genre;
+  const factory _Genre({final int? id, final String? name}) = _$_Genre;
 
   factory _Genre.fromJson(Map<String, dynamic> json) = _$_Genre.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get name;
+  String? get name;
   @override
   @JsonKey(ignore: true)
   _$$_GenreCopyWith<_$_Genre> get copyWith =>
@@ -1026,12 +1033,12 @@ Reviews _$ReviewsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Reviews {
-  int get page => throw _privateConstructorUsedError;
+  int? get page => throw _privateConstructorUsedError;
   List<ReviewsResult>? get results => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_pages')
-  int get totalPages => throw _privateConstructorUsedError;
+  int? get totalPages => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_results')
-  int get totalResults => throw _privateConstructorUsedError;
+  int? get totalResults => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1043,10 +1050,10 @@ abstract class $ReviewsCopyWith<$Res> {
   factory $ReviewsCopyWith(Reviews value, $Res Function(Reviews) then) =
       _$ReviewsCopyWithImpl<$Res>;
   $Res call(
-      {int page,
+      {int? page,
       List<ReviewsResult>? results,
-      @JsonKey(name: 'total_pages') int totalPages,
-      @JsonKey(name: 'total_results') int totalResults});
+      @JsonKey(name: 'total_pages') int? totalPages,
+      @JsonKey(name: 'total_results') int? totalResults});
 }
 
 /// @nodoc
@@ -1068,7 +1075,7 @@ class _$ReviewsCopyWithImpl<$Res> implements $ReviewsCopyWith<$Res> {
       page: page == freezed
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       results: results == freezed
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
@@ -1076,11 +1083,11 @@ class _$ReviewsCopyWithImpl<$Res> implements $ReviewsCopyWith<$Res> {
       totalPages: totalPages == freezed
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       totalResults: totalResults == freezed
           ? _value.totalResults
           : totalResults // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -1092,10 +1099,10 @@ abstract class _$$_ReviewsCopyWith<$Res> implements $ReviewsCopyWith<$Res> {
       __$$_ReviewsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int page,
+      {int? page,
       List<ReviewsResult>? results,
-      @JsonKey(name: 'total_pages') int totalPages,
-      @JsonKey(name: 'total_results') int totalResults});
+      @JsonKey(name: 'total_pages') int? totalPages,
+      @JsonKey(name: 'total_results') int? totalResults});
 }
 
 /// @nodoc
@@ -1118,7 +1125,7 @@ class __$$_ReviewsCopyWithImpl<$Res> extends _$ReviewsCopyWithImpl<$Res>
       page: page == freezed
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       results: results == freezed
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
@@ -1126,11 +1133,11 @@ class __$$_ReviewsCopyWithImpl<$Res> extends _$ReviewsCopyWithImpl<$Res>
       totalPages: totalPages == freezed
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       totalResults: totalResults == freezed
           ? _value.totalResults
           : totalResults // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -1139,17 +1146,17 @@ class __$$_ReviewsCopyWithImpl<$Res> extends _$ReviewsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Reviews implements _Reviews {
   const _$_Reviews(
-      {required this.page,
+      {this.page,
       final List<ReviewsResult>? results,
-      @JsonKey(name: 'total_pages') required this.totalPages,
-      @JsonKey(name: 'total_results') required this.totalResults})
+      @JsonKey(name: 'total_pages') this.totalPages,
+      @JsonKey(name: 'total_results') this.totalResults})
       : _results = results;
 
   factory _$_Reviews.fromJson(Map<String, dynamic> json) =>
       _$$_ReviewsFromJson(json);
 
   @override
-  final int page;
+  final int? page;
   final List<ReviewsResult>? _results;
   @override
   List<ReviewsResult>? get results {
@@ -1161,10 +1168,10 @@ class _$_Reviews implements _Reviews {
 
   @override
   @JsonKey(name: 'total_pages')
-  final int totalPages;
+  final int? totalPages;
   @override
   @JsonKey(name: 'total_results')
-  final int totalResults;
+  final int? totalResults;
 
   @override
   String toString() {
@@ -1208,24 +1215,23 @@ class _$_Reviews implements _Reviews {
 
 abstract class _Reviews implements Reviews {
   const factory _Reviews(
-          {required final int page,
-          final List<ReviewsResult>? results,
-          @JsonKey(name: 'total_pages') required final int totalPages,
-          @JsonKey(name: 'total_results') required final int totalResults}) =
-      _$_Reviews;
+      {final int? page,
+      final List<ReviewsResult>? results,
+      @JsonKey(name: 'total_pages') final int? totalPages,
+      @JsonKey(name: 'total_results') final int? totalResults}) = _$_Reviews;
 
   factory _Reviews.fromJson(Map<String, dynamic> json) = _$_Reviews.fromJson;
 
   @override
-  int get page;
+  int? get page;
   @override
   List<ReviewsResult>? get results;
   @override
   @JsonKey(name: 'total_pages')
-  int get totalPages;
+  int? get totalPages;
   @override
   @JsonKey(name: 'total_results')
-  int get totalResults;
+  int? get totalResults;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewsCopyWith<_$_Reviews> get copyWith =>
@@ -1238,16 +1244,16 @@ ReviewsResult _$ReviewsResultFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReviewsResult {
-  String get author => throw _privateConstructorUsedError;
+  String? get author => throw _privateConstructorUsedError;
   @JsonKey(name: 'author_details')
-  AuthorDetails get authorDetails => throw _privateConstructorUsedError;
-  @JsonKey(name: 'content', nullable: true, disallowNullValue: false)
+  AuthorDetails? get authorDetails => throw _privateConstructorUsedError;
+  @JsonKey(name: 'content')
   String? get content => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
-  String get createdAt => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  String? get createdAt => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
-  String get updatedAt => throw _privateConstructorUsedError;
+  String? get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1261,18 +1267,14 @@ abstract class $ReviewsResultCopyWith<$Res> {
           ReviewsResult value, $Res Function(ReviewsResult) then) =
       _$ReviewsResultCopyWithImpl<$Res>;
   $Res call(
-      {String author,
-      @JsonKey(name: 'author_details')
-          AuthorDetails authorDetails,
-      @JsonKey(name: 'content', nullable: true, disallowNullValue: false)
-          String? content,
-      @JsonKey(name: 'created_at')
-          String createdAt,
-      String id,
-      @JsonKey(name: 'updated_at')
-          String updatedAt});
+      {String? author,
+      @JsonKey(name: 'author_details') AuthorDetails? authorDetails,
+      @JsonKey(name: 'content') String? content,
+      @JsonKey(name: 'created_at') String? createdAt,
+      String? id,
+      @JsonKey(name: 'updated_at') String? updatedAt});
 
-  $AuthorDetailsCopyWith<$Res> get authorDetails;
+  $AuthorDetailsCopyWith<$Res>? get authorDetails;
 }
 
 /// @nodoc
@@ -1297,11 +1299,11 @@ class _$ReviewsResultCopyWithImpl<$Res>
       author: author == freezed
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       authorDetails: authorDetails == freezed
           ? _value.authorDetails
           : authorDetails // ignore: cast_nullable_to_non_nullable
-              as AuthorDetails,
+              as AuthorDetails?,
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -1309,21 +1311,25 @@ class _$ReviewsResultCopyWithImpl<$Res>
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 
   @override
-  $AuthorDetailsCopyWith<$Res> get authorDetails {
-    return $AuthorDetailsCopyWith<$Res>(_value.authorDetails, (value) {
+  $AuthorDetailsCopyWith<$Res>? get authorDetails {
+    if (_value.authorDetails == null) {
+      return null;
+    }
+
+    return $AuthorDetailsCopyWith<$Res>(_value.authorDetails!, (value) {
       return _then(_value.copyWith(authorDetails: value));
     });
   }
@@ -1337,19 +1343,15 @@ abstract class _$$_ReviewsResultCopyWith<$Res>
       __$$_ReviewsResultCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String author,
-      @JsonKey(name: 'author_details')
-          AuthorDetails authorDetails,
-      @JsonKey(name: 'content', nullable: true, disallowNullValue: false)
-          String? content,
-      @JsonKey(name: 'created_at')
-          String createdAt,
-      String id,
-      @JsonKey(name: 'updated_at')
-          String updatedAt});
+      {String? author,
+      @JsonKey(name: 'author_details') AuthorDetails? authorDetails,
+      @JsonKey(name: 'content') String? content,
+      @JsonKey(name: 'created_at') String? createdAt,
+      String? id,
+      @JsonKey(name: 'updated_at') String? updatedAt});
 
   @override
-  $AuthorDetailsCopyWith<$Res> get authorDetails;
+  $AuthorDetailsCopyWith<$Res>? get authorDetails;
 }
 
 /// @nodoc
@@ -1376,11 +1378,11 @@ class __$$_ReviewsResultCopyWithImpl<$Res>
       author: author == freezed
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       authorDetails: authorDetails == freezed
           ? _value.authorDetails
           : authorDetails // ignore: cast_nullable_to_non_nullable
-              as AuthorDetails,
+              as AuthorDetails?,
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -1388,15 +1390,15 @@ class __$$_ReviewsResultCopyWithImpl<$Res>
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1405,36 +1407,32 @@ class __$$_ReviewsResultCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ReviewsResult implements _ReviewsResult {
   const _$_ReviewsResult(
-      {required this.author,
-      @JsonKey(name: 'author_details')
-          required this.authorDetails,
-      @JsonKey(name: 'content', nullable: true, disallowNullValue: false)
-          this.content,
-      @JsonKey(name: 'created_at')
-          required this.createdAt,
-      required this.id,
-      @JsonKey(name: 'updated_at')
-          required this.updatedAt});
+      {this.author,
+      @JsonKey(name: 'author_details') this.authorDetails,
+      @JsonKey(name: 'content') this.content,
+      @JsonKey(name: 'created_at') this.createdAt,
+      this.id,
+      @JsonKey(name: 'updated_at') this.updatedAt});
 
   factory _$_ReviewsResult.fromJson(Map<String, dynamic> json) =>
       _$$_ReviewsResultFromJson(json);
 
   @override
-  final String author;
+  final String? author;
   @override
   @JsonKey(name: 'author_details')
-  final AuthorDetails authorDetails;
+  final AuthorDetails? authorDetails;
   @override
-  @JsonKey(name: 'content', nullable: true, disallowNullValue: false)
+  @JsonKey(name: 'content')
   final String? content;
   @override
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final String? createdAt;
   @override
-  final String id;
+  final String? id;
   @override
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final String? updatedAt;
 
   @override
   String toString() {
@@ -1481,36 +1479,32 @@ class _$_ReviewsResult implements _ReviewsResult {
 
 abstract class _ReviewsResult implements ReviewsResult {
   const factory _ReviewsResult(
-      {required final String author,
-      @JsonKey(name: 'author_details')
-          required final AuthorDetails authorDetails,
-      @JsonKey(name: 'content', nullable: true, disallowNullValue: false)
-          final String? content,
-      @JsonKey(name: 'created_at')
-          required final String createdAt,
-      required final String id,
-      @JsonKey(name: 'updated_at')
-          required final String updatedAt}) = _$_ReviewsResult;
+      {final String? author,
+      @JsonKey(name: 'author_details') final AuthorDetails? authorDetails,
+      @JsonKey(name: 'content') final String? content,
+      @JsonKey(name: 'created_at') final String? createdAt,
+      final String? id,
+      @JsonKey(name: 'updated_at') final String? updatedAt}) = _$_ReviewsResult;
 
   factory _ReviewsResult.fromJson(Map<String, dynamic> json) =
       _$_ReviewsResult.fromJson;
 
   @override
-  String get author;
+  String? get author;
   @override
   @JsonKey(name: 'author_details')
-  AuthorDetails get authorDetails;
+  AuthorDetails? get authorDetails;
   @override
-  @JsonKey(name: 'content', nullable: true, disallowNullValue: false)
+  @JsonKey(name: 'content')
   String? get content;
   @override
   @JsonKey(name: 'created_at')
-  String get createdAt;
+  String? get createdAt;
   @override
-  String get id;
+  String? get id;
   @override
   @JsonKey(name: 'updated_at')
-  String get updatedAt;
+  String? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewsResultCopyWith<_$_ReviewsResult> get copyWith =>
@@ -1523,7 +1517,7 @@ AuthorDetails _$AuthorDetailsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthorDetails {
-  String get username => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
   double? get rating => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1537,7 +1531,7 @@ abstract class $AuthorDetailsCopyWith<$Res> {
   factory $AuthorDetailsCopyWith(
           AuthorDetails value, $Res Function(AuthorDetails) then) =
       _$AuthorDetailsCopyWithImpl<$Res>;
-  $Res call({String username, double? rating});
+  $Res call({String? username, double? rating});
 }
 
 /// @nodoc
@@ -1558,7 +1552,7 @@ class _$AuthorDetailsCopyWithImpl<$Res>
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -1574,7 +1568,7 @@ abstract class _$$_AuthorDetailsCopyWith<$Res>
           _$_AuthorDetails value, $Res Function(_$_AuthorDetails) then) =
       __$$_AuthorDetailsCopyWithImpl<$Res>;
   @override
-  $Res call({String username, double? rating});
+  $Res call({String? username, double? rating});
 }
 
 /// @nodoc
@@ -1597,7 +1591,7 @@ class __$$_AuthorDetailsCopyWithImpl<$Res>
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -1609,13 +1603,13 @@ class __$$_AuthorDetailsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AuthorDetails implements _AuthorDetails {
-  const _$_AuthorDetails({required this.username, this.rating});
+  const _$_AuthorDetails({this.username, this.rating});
 
   factory _$_AuthorDetails.fromJson(Map<String, dynamic> json) =>
       _$$_AuthorDetailsFromJson(json);
 
   @override
-  final String username;
+  final String? username;
   @override
   final double? rating;
 
@@ -1654,15 +1648,14 @@ class _$_AuthorDetails implements _AuthorDetails {
 }
 
 abstract class _AuthorDetails implements AuthorDetails {
-  const factory _AuthorDetails(
-      {required final String username,
-      final double? rating}) = _$_AuthorDetails;
+  const factory _AuthorDetails({final String? username, final double? rating}) =
+      _$_AuthorDetails;
 
   factory _AuthorDetails.fromJson(Map<String, dynamic> json) =
       _$_AuthorDetails.fromJson;
 
   @override
-  String get username;
+  String? get username;
   @override
   double? get rating;
   @override
@@ -1677,7 +1670,7 @@ Videos _$VideosFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Videos {
-  List<VideosResult> get results => throw _privateConstructorUsedError;
+  List<VideosResult>? get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1688,7 +1681,7 @@ mixin _$Videos {
 abstract class $VideosCopyWith<$Res> {
   factory $VideosCopyWith(Videos value, $Res Function(Videos) then) =
       _$VideosCopyWithImpl<$Res>;
-  $Res call({List<VideosResult> results});
+  $Res call({List<VideosResult>? results});
 }
 
 /// @nodoc
@@ -1707,7 +1700,7 @@ class _$VideosCopyWithImpl<$Res> implements $VideosCopyWith<$Res> {
       results: results == freezed
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<VideosResult>,
+              as List<VideosResult>?,
     ));
   }
 }
@@ -1717,7 +1710,7 @@ abstract class _$$_VideosCopyWith<$Res> implements $VideosCopyWith<$Res> {
   factory _$$_VideosCopyWith(_$_Videos value, $Res Function(_$_Videos) then) =
       __$$_VideosCopyWithImpl<$Res>;
   @override
-  $Res call({List<VideosResult> results});
+  $Res call({List<VideosResult>? results});
 }
 
 /// @nodoc
@@ -1737,7 +1730,7 @@ class __$$_VideosCopyWithImpl<$Res> extends _$VideosCopyWithImpl<$Res>
       results: results == freezed
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<VideosResult>,
+              as List<VideosResult>?,
     ));
   }
 }
@@ -1745,17 +1738,20 @@ class __$$_VideosCopyWithImpl<$Res> extends _$VideosCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Videos implements _Videos {
-  const _$_Videos({required final List<VideosResult> results})
+  const _$_Videos({final List<VideosResult>? results = const []})
       : _results = results;
 
   factory _$_Videos.fromJson(Map<String, dynamic> json) =>
       _$$_VideosFromJson(json);
 
-  final List<VideosResult> _results;
+  final List<VideosResult>? _results;
   @override
-  List<VideosResult> get results {
+  @JsonKey()
+  List<VideosResult>? get results {
+    final value = _results;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_results);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -1790,13 +1786,12 @@ class _$_Videos implements _Videos {
 }
 
 abstract class _Videos implements Videos {
-  const factory _Videos({required final List<VideosResult> results}) =
-      _$_Videos;
+  const factory _Videos({final List<VideosResult>? results}) = _$_Videos;
 
   factory _Videos.fromJson(Map<String, dynamic> json) = _$_Videos.fromJson;
 
   @override
-  List<VideosResult> get results;
+  List<VideosResult>? get results;
   @override
   @JsonKey(ignore: true)
   _$$_VideosCopyWith<_$_Videos> get copyWith =>
@@ -1809,12 +1804,12 @@ VideosResult _$VideosResultFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VideosResult {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get key => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get key => throw _privateConstructorUsedError;
   @JsonKey(name: 'published_at')
-  String get publishedAt => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
+  String? get publishedAt => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1828,11 +1823,11 @@ abstract class $VideosResultCopyWith<$Res> {
           VideosResult value, $Res Function(VideosResult) then) =
       _$VideosResultCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String name,
-      String key,
-      @JsonKey(name: 'published_at') String publishedAt,
-      String type});
+      {String? id,
+      String? name,
+      String? key,
+      @JsonKey(name: 'published_at') String? publishedAt,
+      String? type});
 }
 
 /// @nodoc
@@ -1855,23 +1850,23 @@ class _$VideosResultCopyWithImpl<$Res> implements $VideosResultCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       key: key == freezed
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       publishedAt: publishedAt == freezed
           ? _value.publishedAt
           : publishedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1884,11 +1879,11 @@ abstract class _$$_VideosResultCopyWith<$Res>
       __$$_VideosResultCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String name,
-      String key,
-      @JsonKey(name: 'published_at') String publishedAt,
-      String type});
+      {String? id,
+      String? name,
+      String? key,
+      @JsonKey(name: 'published_at') String? publishedAt,
+      String? type});
 }
 
 /// @nodoc
@@ -1914,23 +1909,23 @@ class __$$_VideosResultCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       key: key == freezed
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       publishedAt: publishedAt == freezed
           ? _value.publishedAt
           : publishedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1939,26 +1934,26 @@ class __$$_VideosResultCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_VideosResult implements _VideosResult {
   const _$_VideosResult(
-      {required this.id,
-      required this.name,
-      required this.key,
-      @JsonKey(name: 'published_at') required this.publishedAt,
-      required this.type});
+      {this.id,
+      this.name,
+      this.key,
+      @JsonKey(name: 'published_at') this.publishedAt,
+      this.type});
 
   factory _$_VideosResult.fromJson(Map<String, dynamic> json) =>
       _$$_VideosResultFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String key;
+  final String? key;
   @override
   @JsonKey(name: 'published_at')
-  final String publishedAt;
+  final String? publishedAt;
   @override
-  final String type;
+  final String? type;
 
   @override
   String toString() {
@@ -2003,26 +1998,26 @@ class _$_VideosResult implements _VideosResult {
 
 abstract class _VideosResult implements VideosResult {
   const factory _VideosResult(
-      {required final String id,
-      required final String name,
-      required final String key,
-      @JsonKey(name: 'published_at') required final String publishedAt,
-      required final String type}) = _$_VideosResult;
+      {final String? id,
+      final String? name,
+      final String? key,
+      @JsonKey(name: 'published_at') final String? publishedAt,
+      final String? type}) = _$_VideosResult;
 
   factory _VideosResult.fromJson(Map<String, dynamic> json) =
       _$_VideosResult.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
-  String get name;
+  String? get name;
   @override
-  String get key;
+  String? get key;
   @override
   @JsonKey(name: 'published_at')
-  String get publishedAt;
+  String? get publishedAt;
   @override
-  String get type;
+  String? get type;
   @override
   @JsonKey(ignore: true)
   _$$_VideosResultCopyWith<_$_VideosResult> get copyWith =>

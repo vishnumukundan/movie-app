@@ -35,45 +35,22 @@ class ReviewSectionSkelton__widget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const <Widget>[
-                      Content(height: 16),
+                      SkeltonContent(height: 16),
                       SizedBox(height: kDefaultPadding / 3),
-                      Content(height: 10, width: 100),
+                      SkeltonContent(height: 10, width: 100),
                     ],
                   ),
                 ),
               ],
             ),
             const SizedBox(height: kDefaultPadding),
-            const Content(height: 10),
+            const SkeltonContent(height: 10),
             const SizedBox(height: kDefaultPadding / 2),
-            Content(height: 10, width: getScreenWidthPercentage(70.0)),
+            SkeltonContent(height: 10, width: getScreenWidthPercentage(70.0)),
             const SizedBox(height: kDefaultPadding / 2),
-            Content(height: 10, width: getScreenWidthPercentage(50.0)),
+            SkeltonContent(height: 10, width: getScreenWidthPercentage(50.0)),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class Content extends StatelessWidget {
-  const Content({
-    Key? key,
-    required this.height,
-    this.width,
-  }) : super(key: key);
-
-  final double height;
-  final double? width;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      decoration: BoxDecoration(
-        color: kColorWhite,
-        borderRadius: BorderRadius.circular(8),
       ),
     );
   }

@@ -22,12 +22,12 @@ class VideoSection__widget extends StatelessWidget {
         const SizedBox(height: kDefaultPadding),
         BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
           builder: (context, state) {
-            final List dataList = state.movieDetailsData.videos.results;
+            final List dataList = state.movieDetailsData.videos!.results!;
 
             if (state.isLoading) const VideoSectionSkelton__widget();
 
-            if (state.isError ||
-                state.movieDetailsData.videos.results.isEmpty) {}
+            if (state.hasError ||
+                state.movieDetailsData.videos!.results!.isEmpty) {}
             return CustomListViewBuilder(
               clipBehavior: Clip.none,
               itemCount: dataList.length,

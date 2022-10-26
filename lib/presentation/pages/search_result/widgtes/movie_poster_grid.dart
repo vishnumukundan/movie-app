@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';

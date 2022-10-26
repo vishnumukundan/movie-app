@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+
 import 'colors.dart';
 
 const kFontFamily = 'Poppins';
@@ -41,3 +42,7 @@ const TextStyle kLabelTextStyle = TextStyle(
 const kSkeltonColor = kColorWhite;
 const kSkeltonBaseColor = kColorPrimaryTint_2;
 const kSkeltonHighlightColor = kColorPrimaryTint_3;
+
+
+//enums
+

@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/presentation/pages/video_playback/view/video_playback_page.dart';
 
 import '../../../../gen/assets.gen.dart';

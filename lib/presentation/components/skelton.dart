@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -33,6 +34,31 @@ class Skelton__widget extends StatelessWidget {
       loop: loop ?? 0,
       enabled: enabled ?? true,
       child: child,
+    );
+  }
+}
+
+class SkeltonContent extends StatelessWidget {
+  const SkeltonContent({
+    Key? key,
+    required this.height,
+    this.width,
+    this.radius,
+  }) : super(key: key);
+
+  final double height;
+  final double? width;
+  final double? radius;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width ?? double.infinity,
+      decoration: BoxDecoration(
+        color: kColorWhite,
+        borderRadius: BorderRadius.circular(radius ?? 8),
+      ),
     );
   }
 }

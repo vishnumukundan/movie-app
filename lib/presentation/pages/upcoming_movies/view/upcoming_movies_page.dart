@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/utils/generics/app_route/custom_scroll_behavior.dart';
+import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/components/inner_appbars/appbar_with_back_button.dart';
 import 'package:movie_app/presentation/pages/upcoming_movies/widgets/upcoming_list_item.dart';
 
-import '../../../../core/services/sort_list_by.dart';
+import '../../../../core/utils/generics/sort_list_by.dart';
 import '../../../../data/sources/dummy/dummy_data.dart';
 import '../../../themes/screen_size_config.dart';
 

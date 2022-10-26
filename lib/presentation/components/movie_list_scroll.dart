@@ -1,8 +1,10 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
-import 'package:movie_app/core/utils/generics/navigator.dart';
+import 'package:movie_app/core/utils/generics/double_to_fractional_digit.dart';
+import 'package:movie_app/data/models/home/movie_list/movie_list_model.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/image_container.dart';
 import 'package:movie_app/presentation/components/rating_indicator.dart';
@@ -16,12 +18,14 @@ class MovieListScroll__widget extends StatelessWidget {
     Key? key,
     required this.title,
     required this.dataList,
+    this.itemCount,
     this.buttonVisibility = false,
   }) : super(key: key);
 
   final String title;
-  final dynamic dataList;
+  final List<Result> dataList;
   final bool buttonVisibility;
+  final int? itemCount;
 
   @override
   Widget build(BuildContext context) {
@@ -50,41 +54,47 @@ class MovieListScroll__widget extends StatelessWidget {
             vertical: kDefaultPadding,
             horizontal: kDefaultPadding * 2,
           ),
-          itemCount: 10,
+          itemCount: itemCount ?? 10,
           contentSpacing: kDefaultPadding,
           builder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                PageNav.push(
-                  context,
-                  MovieDetailsPage(
-                    id: dataList[index]["id"],
-                  ),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.only(bottom: 25),
-                child: Stack(
-                  alignment: AlignmentDirectional.topCenter,
-                  clipBehavior: Clip.none,
-                  children: [
-                    ImageContainer__widget(
-                      imageData: dataList[index]["poster_path"],
-                      height: 200.0,
-                      width: 130.0,
-                      radius: 8.0,
-                      boxshadow: kDefaultBoxShadow,
+            if (dataList[index].posterPath == null ||
+                dataList[index].voteAverage == 0) {
+              return Container();
+            } else {
+              return GestureDetector(
+                onTap: () {
+                  PageNav.push(
+                    context,
+                    MovieDetailsPage(
+                      id: dataList[index].id,
                     ),
-                    const Positioned(
-                      bottom: -25,
-                      child: RatingIndicator__widget(
-                        ratingValue: 0.0,
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.only(bottom: 25),
+                  child: Stack(
+                    alignment: AlignmentDirectional.topCenter,
+                    clipBehavior: Clip.none,
+                    children: [
+                      ImageContainer__widget(
+                        imageData: dataList[index].posterPath ?? '',
+                        height: 200.0,
+                        width: 130.0,
+                        radius: 8.0,
+                        boxshadow: kDefaultBoxShadow,
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        bottom: -25,
+                        child: RatingIndicator__widget(
+                          ratingValue: doubleToFactionalDigit(
+                              dataList[index].voteAverage!, 1),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
+              );
+            }
           },
         ),
       ],
