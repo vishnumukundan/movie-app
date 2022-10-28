@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/services/navigator.dart';
@@ -29,6 +29,17 @@ class MovieListScroll__widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //
+    final List<Result> newList = [];
+    final List<Result> _data = dataList.toList();
+
+    for (var i = 0; i < _data.length; i++) {
+      if (_data[i].posterPath == null || _data[i].voteAverage == 0.0) {
+      } else {
+        newList.add(_data[i]);
+      }
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -54,47 +65,42 @@ class MovieListScroll__widget extends StatelessWidget {
             vertical: kDefaultPadding,
             horizontal: kDefaultPadding * 2,
           ),
-          itemCount: itemCount ?? 10,
+          itemCount: newList.length < 10 ? newList.length : 10,
           contentSpacing: kDefaultPadding,
           builder: (context, index) {
-            if (dataList[index].posterPath == null ||
-                dataList[index].voteAverage == 0) {
-              return Container();
-            } else {
-              return GestureDetector(
-                onTap: () {
-                  PageNav.push(
-                    context,
-                    MovieDetailsPage(
-                      id: dataList[index].id,
-                    ),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.only(bottom: 25),
-                  child: Stack(
-                    alignment: AlignmentDirectional.topCenter,
-                    clipBehavior: Clip.none,
-                    children: [
-                      ImageContainer__widget(
-                        imageData: dataList[index].posterPath ?? '',
-                        height: 200.0,
-                        width: 130.0,
-                        radius: 8.0,
-                        boxshadow: kDefaultBoxShadow,
-                      ),
-                      Positioned(
-                        bottom: -25,
-                        child: RatingIndicator__widget(
-                          ratingValue: doubleToFactionalDigit(
-                              dataList[index].voteAverage!, 1),
-                        ),
-                      ),
-                    ],
+            return GestureDetector(
+              onTap: () {
+                PageNav.push(
+                  context,
+                  MovieDetailsPage(
+                    id: dataList[index].id,
                   ),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.only(bottom: 25),
+                child: Stack(
+                  alignment: AlignmentDirectional.topCenter,
+                  clipBehavior: Clip.none,
+                  children: [
+                    ImageContainer__widget(
+                      imageData: dataList[index].posterPath ?? '',
+                      height: 200.0,
+                      width: 130.0,
+                      radius: 8.0,
+                      boxshadow: kDefaultBoxShadow,
+                    ),
+                    Positioned(
+                      bottom: -25,
+                      child: RatingIndicator__widget(
+                        ratingValue: doubleToFactionalDigit(
+                            dataList[index].voteAverage!, 1),
+                      ),
+                    ),
+                  ],
                 ),
-              );
-            }
+              ),
+            );
           },
         ),
       ],

@@ -44,8 +44,8 @@ class CustomListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (itemCount! > 0) {
-      int i = 0;
-      for (i; i < itemCount! - 1; i++) {
+      late int i;
+      for (i = 0; i < itemCount! - 1; i++) {
         items.add(Padding(
           padding: scrollDirection == Axis.vertical
               ? EdgeInsets.only(bottom: contentSpacing)

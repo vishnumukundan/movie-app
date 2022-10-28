@@ -140,6 +140,7 @@ class MovieDetailsPage extends StatelessWidget {
                             // desctiption section
                             const DescriptionSection__widget(),
                             const SizedBox(height: kDefaultPadding * 2),
+
                             // overview section
                             const Medium__text(
                               text: 'Overview',

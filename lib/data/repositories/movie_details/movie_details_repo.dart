@@ -23,7 +23,7 @@ class MovieDetailsRepository implements IMovieDetailsRepo {
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = MovieDetails.fromJson(response.data);
 
-        // log(jsonEncode(dataList).toString());
+        // log(jsonEncode(dataList.casts!.cast).toString());
         return Right(dataList);
       } else {
         log(const Left(NetworkError.serverError()).toString());

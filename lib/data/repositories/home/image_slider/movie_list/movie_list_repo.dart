@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
@@ -22,7 +21,7 @@ class MovieScrollListRepository implements IMovieListRepo {
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = MovieList.fromJson(response.data);
 
-        log(jsonEncode(dataList).toString());
+        // log(jsonEncode(dataList).toString());
         return Right(dataList);
       } else {
         log(const Left(NetworkError.serverError()).toString());

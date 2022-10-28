@@ -13,7 +13,7 @@ class ImageContainer__widget extends StatelessWidget {
     required this.width,
     this.radius,
     this.boxshadow,
-    this.imageWidth = ImageWidth.w500,
+    this.imageWidth = ImageWidth.w342,
   }) : super(key: key);
 
   final String imageData;
