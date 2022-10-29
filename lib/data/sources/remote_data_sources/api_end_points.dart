@@ -19,9 +19,7 @@ class ApiEndPoints {
   static String personMovies(personId) =>
       '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc&with_cast=$personId';
   static String upcomingMovies =
-      '$kBaseUrl/movie/upcoming?api_key=$apiKey&page=1';
-
-  //https://api.themoviedb.org/3/movie/upcoming?api_key=7e301a7293c632510974b323dc7a860f&page=1
+      '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=primary_release_date.asc&page=1&primary_release_date.gte=2022-11-01';
 }
 
 enum ImageWidth { w92, w154, w185, w342, w500, w780, original }

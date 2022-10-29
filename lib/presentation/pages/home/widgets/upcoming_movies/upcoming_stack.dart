@@ -5,9 +5,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/services/navigator.dart';
-import 'package:movie_app/core/utils/generics/sort_list_by.dart';
 import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
-import 'package:movie_app/data/sources/dummy/dummy_data.dart';
+import 'package:movie_app/data/models/upcoming_movies/upcoming_movies_model.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/home/widgets/upcoming_movies/upcoming_movies_single_poster.dart';
@@ -15,8 +14,6 @@ import 'package:movie_app/presentation/pages/upcoming_movies/view/upcoming_movie
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 import '../../../../themes/values.dart';
-
-final _dataList = SortListBy.desc(upcomingMoviesDummyData, 'release_date');
 
 class UpcomingStack__widget extends StatelessWidget {
   const UpcomingStack__widget({Key? key}) : super(key: key);
@@ -32,6 +29,17 @@ class UpcomingStack__widget extends StatelessWidget {
           const SizedBox(height: kDefaultPadding * 1.5),
           BlocBuilder<UpcomingMoviesBloc, UpcomingMoviesState>(
             builder: (context, state) {
+              //
+              final int count = state.dataList.length;
+              final List<UpcomingMovies> newList = [];
+              final data = state.dataList.toList();
+              for (var i = 0; i < count; i++) {
+                if (data[i].posterPath != null) {
+                  newList.add(data[i]);
+                }
+              }
+
+              //
               return SizedBox(
                 child: Stack(
                   clipBehavior: Clip.none,
@@ -45,7 +53,7 @@ class UpcomingStack__widget extends StatelessWidget {
                         child: Transform.rotate(
                           angle: -pi / 15,
                           child: UpcomingMoviesSinglePoster__widget(
-                              dataList: state.dataList, index: 1),
+                              dataList: newList, index: 1),
                         ),
                       ),
                     ),
@@ -56,12 +64,12 @@ class UpcomingStack__widget extends StatelessWidget {
                         child: Transform.rotate(
                           angle: pi / 15,
                           child: UpcomingMoviesSinglePoster__widget(
-                              dataList: state.dataList, index: 2),
+                              dataList: newList, index: 2),
                         ),
                       ),
                     ),
                     UpcomingMoviesSinglePoster__widget(
-                        dataList: state.dataList, index: 0),
+                        dataList: newList, index: 0),
                   ],
                 ),
               );
