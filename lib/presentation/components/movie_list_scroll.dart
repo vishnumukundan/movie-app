@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/double_to_fractional_digit.dart';
@@ -70,6 +71,7 @@ class MovieListScroll__widget extends StatelessWidget {
           builder: (context, index) {
             return GestureDetector(
               onTap: () {
+                Get.close(2);
                 PageNav.push(
                   context,
                   MovieDetailsPage(

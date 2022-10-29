@@ -36,6 +36,7 @@ class MovieDetailsPage extends StatelessWidget {
           .read<MovieDetailsBloc>()
           .add(MovieDetailsEvent.getMovieDetails(movieId: id.toString()));
     });
+
     return Scaffold(
       body: Stack(
         children: [

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:movie_app/data/bloc/actor_profile/person_details_bloc.dart';
 import 'package:movie_app/data/bloc/login/login_poster/login_poster_bloc.dart';
 import 'package:movie_app/data/bloc/movie_details/movie_details_bloc.dart';
@@ -55,12 +57,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<MovieDetailsBloc>()),
         BlocProvider(create: (context) => getIt<PersonDetailsBloc>()),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Poppins'),
         themeMode: ThemeMode.dark,
         darkTheme: ThemeData.dark(),
-        home: const SplashPage(),
+        initialRoute: '/splash',
+        getPages: [GetPage(name: '/splash', page: () => const SplashPage())],
       ),
     );
   }
