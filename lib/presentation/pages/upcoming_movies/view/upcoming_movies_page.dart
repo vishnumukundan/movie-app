@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
+import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/components/inner_appbars/appbar_with_back_button.dart';
 import 'package:movie_app/presentation/pages/upcoming_movies/widgets/upcoming_list_item.dart';
 
-import '../../../../core/utils/generics/sort_list_by.dart';
-import '../../../../data/sources/dummy/dummy_data.dart';
 import '../../../themes/screen_size_config.dart';
-
-final List _dataList = SortListBy.desc(upcomingMoviesDummyData, 'release_date');
 
 class UpcomingMoviesPage extends StatelessWidget {
   const UpcomingMoviesPage({Key? key}) : super(key: key);
@@ -27,15 +25,17 @@ class UpcomingMoviesPage extends StatelessWidget {
                   top: getScreenHeightPercentage(8.0) + 64,
                   right: 32,
                 ),
-                itemCount: _dataList.length,
+                itemCount: 20,
                 builder: (context, index) {
-                  return UpcomingListItem__widget(
-                      index: index,
-                      dataList: _dataList,
-                      image: _dataList[index]["poster_path"],
-                      date: _dataList[index]["release_date"],
-                      title: _dataList[index]["title"],
-                      overview: _dataList[index]["overview"]);
+                  return BlocBuilder<UpcomingMoviesBloc, UpcomingMoviesState>(
+                      builder: (context, state) {
+                    final dataList = state.dataList;
+                    return UpcomingListItem__widget(
+                        image: dataList[index].posterPath!,
+                        date: dataList[index].releaseDate!,
+                        title: dataList[index].title!,
+                        overview: dataList[index].overview!);
+                  });
                 },
               ),
               const AppbarWithBackButton__widget(text: 'Upcoming Movies'),

@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:movie_app/data/models/upcoming_movies/upcoming_movies_model.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 import '../../../../components/blurred_background.dart';
@@ -16,7 +17,7 @@ class UpcomingMoviesSinglePoster__widget extends StatelessWidget {
     required this.index,
   }) : super(key: key);
 
-  final dynamic dataList;
+  final List<UpcomingMovies> dataList;
   final int index;
 
   @override
@@ -27,7 +28,7 @@ class UpcomingMoviesSinglePoster__widget extends StatelessWidget {
         alignment: AlignmentDirectional.bottomCenter,
         children: [
           ImageContainer__widget(
-            imageData: dataList[index]["poster_path"],
+            imageData: dataList[index].posterPath!,
             height: getScreenWidthPercentage(70.0),
             width: double.infinity,
             radius: 8.0,
@@ -46,14 +47,14 @@ class UpcomingMoviesSinglePoster__widget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SemiBold__text(
-                    text: "${dataList[index]["title"]}",
+                    text: dataList[index].title!,
                     fontSize: 12.0,
                     maxLines: 1,
                     textOverFlow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: kDefaultPadding / 4),
                   Regular__text(
-                    text: "${dataList[index]["release_date"]}",
+                    text: dataList[index].releaseDate!,
                     fontSize: 10.0,
                   ),
                 ],

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:movie_app/data/bloc/actor_profile/person_details_bloc.dart';
 import 'package:movie_app/data/bloc/login/login_poster/login_poster_bloc.dart';
 import 'package:movie_app/data/bloc/movie_details/movie_details_bloc.dart';
+import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:movie_app/domain/usecase/dependancy_injection/injectable.dart';
 import 'package:movie_app/presentation/bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
 import 'package:movie_app/presentation/bloc/home/slider_image/slider_image_cubit.dart';
@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<ImageSliderBloc>()),
         BlocProvider(create: (context) => getIt<MovieDetailsBloc>()),
         BlocProvider(create: (context) => getIt<PersonDetailsBloc>()),
+        BlocProvider(create: (context) => getIt<UpcomingMoviesBloc>()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

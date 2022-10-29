@@ -3,8 +3,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/sort_list_by.dart';
+import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/text.dart';
@@ -28,35 +30,42 @@ class UpcomingStack__widget extends StatelessWidget {
         children: <Widget>[
           const Medium__text(text: 'Upcoming Movies', fontSize: 16.0),
           const SizedBox(height: kDefaultPadding * 1.5),
-          Stack(
-            clipBehavior: Clip.none,
-            alignment: AlignmentDirectional.center,
-            children: [
-              SizedBox(width: ScreenConfig.screenWidth),
-              Positioned(
-                left: -8,
-                child: Transform.scale(
-                  scale: 0.8,
-                  child: Transform.rotate(
-                    angle: -pi / 15,
-                    child: UpcomingMoviesSinglePoster__widget(
-                        dataList: _dataList, index: 1),
-                  ),
+          BlocBuilder<UpcomingMoviesBloc, UpcomingMoviesState>(
+            builder: (context, state) {
+              return SizedBox(
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    SizedBox(width: ScreenConfig.screenWidth),
+                    Positioned(
+                      left: -8,
+                      child: Transform.scale(
+                        scale: 0.8,
+                        child: Transform.rotate(
+                          angle: -pi / 15,
+                          child: UpcomingMoviesSinglePoster__widget(
+                              dataList: state.dataList, index: 1),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      right: -8,
+                      child: Transform.scale(
+                        scale: 0.8,
+                        child: Transform.rotate(
+                          angle: pi / 15,
+                          child: UpcomingMoviesSinglePoster__widget(
+                              dataList: state.dataList, index: 2),
+                        ),
+                      ),
+                    ),
+                    UpcomingMoviesSinglePoster__widget(
+                        dataList: state.dataList, index: 0),
+                  ],
                 ),
-              ),
-              Positioned(
-                right: -8,
-                child: Transform.scale(
-                  scale: 0.8,
-                  child: Transform.rotate(
-                    angle: pi / 15,
-                    child: UpcomingMoviesSinglePoster__widget(
-                        dataList: _dataList, index: 2),
-                  ),
-                ),
-              ),
-              UpcomingMoviesSinglePoster__widget(dataList: _dataList, index: 0),
-            ],
+              );
+            },
           ),
           const SizedBox(height: kDefaultPadding),
           SizedBox(

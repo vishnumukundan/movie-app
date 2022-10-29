@@ -8,6 +8,7 @@ import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/sort_list_by.dart';
 import 'package:movie_app/data/bloc/home/image_slider/image_slider_bloc.dart';
+import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/presentation/bloc/main/appbar/appbar_bloc.dart';
 import 'package:movie_app/presentation/components/movie_list_scroll.dart';
@@ -37,6 +38,10 @@ class HomePage extends StatelessWidget {
       context
           .read<ImageSliderBloc>()
           .add(const ImageSliderEvent.getImageSliderData());
+
+      context
+          .read<UpcomingMoviesBloc>()
+          .add(const UpcomingMoviesEvent.getUpcomingMovies());
     });
     return Stack(
       children: [

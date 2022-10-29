@@ -15,12 +15,8 @@ class UpcomingListItem__widget extends StatelessWidget {
     required this.date,
     required this.title,
     required this.overview,
-    required this.index,
-    required this.dataList,
   }) : super(key: key);
 
-  final int index;
-  final dynamic dataList;
   final String image;
   final String date;
   final String title;
@@ -36,7 +32,7 @@ class UpcomingListItem__widget extends StatelessWidget {
           children: <Widget>[
             ImageContainer__widget(
               radius: 8,
-              imageData: dataList[index]["poster_path"],
+              imageData: image,
               height: getScreenWidthPercentage(45.0),
               width: getScreenWidthPercentage(30.0),
               boxshadow: const [

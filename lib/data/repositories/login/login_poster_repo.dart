@@ -1,5 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_app/data/models/login/login_poster_model.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
