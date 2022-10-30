@@ -20,6 +20,8 @@ class ApiEndPoints {
       '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc&with_cast=$personId';
   static String upcomingMovies(date) =>
       '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=primary_release_date.asc&page=1&primary_release_date.gte=$date';
+  static String movieGenres = '$kBaseUrl/genre/movie/list?api_key=$apiKey';
+  static String popularPersons = '$kBaseUrl/person/popular?api_key=$apiKey';
 }
 
 enum ImageWidth { w92, w154, w185, w342, w500, w780, original }
