@@ -3,6 +3,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:intl/intl.dart';
 import 'package:movie_app/data/models/upcoming_movies/upcoming_movies_model.dart';
 import 'package:movie_app/domain/repositories/upcoming_movies/i_upcoming_movies_repo.dart';
 
@@ -19,7 +20,17 @@ class UpcomingMoviesBloc
     on<GetUpcomingMovies>((event, emit) async {
       emit(state.copyWith(isLoading: true));
 
-      final _result = await _iUpcomingMoviesRepo.getUpcomingMovies();
+      //date
+      final DateTime now = DateTime.now();
+
+      //add 3 days
+      final DateTime newDate = now.add(const Duration(days: 3));
+
+      final DateFormat formatter = DateFormat('yyyy-MM-dd');
+      final String formattedNewDate = formatter.format(newDate);
+
+      final _result =
+          await _iUpcomingMoviesRepo.getUpcomingMovies(date: formattedNewDate);
 
       final _state = _result.fold(
         (failure) => state.copyWith(

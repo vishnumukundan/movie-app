@@ -10,10 +10,12 @@ import '../../../core/errors/network_error/network_error.dart';
 @LazySingleton(as: IUpcomingMoviesRepo)
 class UpcomingMoviesRepository implements IUpcomingMoviesRepo {
   @override
-  Future<Either<NetworkError, List<UpcomingMovies>>> getUpcomingMovies() async {
+  Future<Either<NetworkError, List<UpcomingMovies>>> getUpcomingMovies({
+    required String date,
+  }) async {
     try {
       final response =
-          await Dio(BaseOptions()).get(ApiEndPoints.upcomingMovies);
+          await Dio(BaseOptions()).get(ApiEndPoints.upcomingMovies(date));
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = (response.data["results"] as List)

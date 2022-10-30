@@ -3,5 +3,7 @@ import 'package:movie_app/core/errors/network_error/network_error.dart';
 import 'package:movie_app/data/models/upcoming_movies/upcoming_movies_model.dart';
 
 abstract class IUpcomingMoviesRepo {
-  Future<Either<NetworkError, List<UpcomingMovies>>> getUpcomingMovies();
+  Future<Either<NetworkError, List<UpcomingMovies>>> getUpcomingMovies({
+    required String date,
+  });
 }
