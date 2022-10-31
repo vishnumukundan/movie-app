@@ -21,7 +21,7 @@ class MoviePosterGrid__widget extends StatelessWidget {
     required this.dataList,
   }) : super(key: key);
 
-  final int id;
+  final dynamic id;
   final MovieList dataList;
 
   @override

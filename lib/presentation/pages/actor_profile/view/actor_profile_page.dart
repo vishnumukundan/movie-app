@@ -25,7 +25,7 @@ class ActorProfilePage extends StatelessWidget {
     required this.personId,
   }) : super(key: key);
 
-  final int personId;
+  final String personId;
 
   @override
   Widget build(BuildContext context) {

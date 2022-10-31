@@ -4,6 +4,6 @@ import 'package:movie_app/data/models/home/movie_list/movie_list_model.dart';
 
 abstract class IMovieListRepo {
   Future<Either<NetworkError, MovieList>> getMovieListByPerson({
-    required int personId,
+    required String personId,
   });
 }

@@ -11,8 +11,9 @@ import 'package:movie_app/domain/repositories/home/movie_sroll_list/i_movie_list
 @LazySingleton(as: IMovieListRepo)
 class MovieScrollListRepository implements IMovieListRepo {
   @override
-  Future<Either<NetworkError, MovieList>> getMovieListByPerson(
-      {required int personId}) async {
+  Future<Either<NetworkError, MovieList>> getMovieListByPerson({
+    required String personId,
+  }) async {
     try {
       final response =
           await Dio(BaseOptions()).get(ApiEndPoints.personMovies(personId));

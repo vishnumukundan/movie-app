@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
 import 'package:movie_app/data/bloc/actor_profile/person_details_bloc.dart';
+import 'package:movie_app/data/bloc/movies_result_grid/movies_result_grid_bloc.dart';
 import 'package:movie_app/data/models/home/movie_list/movie_list_model.dart';
 import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/components/inner_appbars/appbar_with_back_button.dart';
@@ -20,7 +21,7 @@ class MoviesResultGridPage extends StatelessWidget {
     required this.title,
   }) : super(key: key);
 
-  final int id;
+  final String id;
   final NavigateFrom navigateFrom;
   final String title;
   @override
@@ -31,6 +32,11 @@ class MoviesResultGridPage extends StatelessWidget {
           context
               .read<PersonDetailsBloc>()
               .add(PersonDetailsEvent.getMovieList(personId: id));
+        }
+        if (navigateFrom == NavigateFrom.genre) {
+          context
+              .read<MoviesResultGridBloc>()
+              .add(MoviesResultGridEvent.getMovieByGenre(genre: id));
         }
       },
     );
@@ -46,17 +52,17 @@ class MoviesResultGridPage extends StatelessWidget {
         },
       );
     }
-    // if (navigateFrom == NavigateFrom.genre) {
-    //   return BlocBuilder<MoviesByGenreBloc, MoviesByGenreState>(
-    //     builder: (context, state) {
-    //       return pageWidget(
-    //         id: id,
-    //         title: title,
-    //         dataList: state.movieDataList,
-    //       );
-    //     },
-    //   );
-    // }
+    if (navigateFrom == NavigateFrom.genre) {
+      return BlocBuilder<MoviesResultGridBloc, MoviesResultGridState>(
+        builder: (context, state) {
+          return pageWidget(
+            id: id,
+            title: title,
+            dataList: state.movieDataList,
+          );
+        },
+      );
+    }
     return Scaffold(
       body: ScrollConfiguration(
         behavior: CustomScroll(),
@@ -84,7 +90,7 @@ class pageWidget extends StatelessWidget {
     required this.dataList,
   }) : super(key: key);
 
-  final int id;
+  final String id;
   final String title;
   final MovieList dataList;
 

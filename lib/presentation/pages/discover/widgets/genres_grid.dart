@@ -31,7 +31,7 @@ class GenresGrid__widget extends StatelessWidget {
               PageNav.push(
                 context,
                 MoviesResultGridPage(
-                  id: state.genresDataList[index].id,
+                  id: state.genresDataList[index].id.toString(),
                   navigateFrom: NavigateFrom.genre,
                   title: '${state.genresDataList[index].name} Movies',
                 ),

@@ -56,7 +56,8 @@ class CastSection__widget extends StatelessWidget {
                     onTap: () {
                       PageNav.push(
                         context,
-                        ActorProfilePage(personId: newList[index].id),
+                        ActorProfilePage(
+                            personId: newList[index].id.toString()),
                       );
                     });
               }

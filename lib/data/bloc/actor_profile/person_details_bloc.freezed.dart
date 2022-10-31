@@ -16,23 +16,23 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PersonDetailsEvent {
-  int get personId => throw _privateConstructorUsedError;
+  String get personId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int personId) getPersonDetails,
-    required TResult Function(int personId) getMovieList,
+    required TResult Function(String personId) getPersonDetails,
+    required TResult Function(String personId) getMovieList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int personId)? getPersonDetails,
-    TResult Function(int personId)? getMovieList,
+    TResult Function(String personId)? getPersonDetails,
+    TResult Function(String personId)? getMovieList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int personId)? getPersonDetails,
-    TResult Function(int personId)? getMovieList,
+    TResult Function(String personId)? getPersonDetails,
+    TResult Function(String personId)? getMovieList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,7 +66,7 @@ abstract class $PersonDetailsEventCopyWith<$Res> {
   factory $PersonDetailsEventCopyWith(
           PersonDetailsEvent value, $Res Function(PersonDetailsEvent) then) =
       _$PersonDetailsEventCopyWithImpl<$Res>;
-  $Res call({int personId});
+  $Res call({String personId});
 }
 
 /// @nodoc
@@ -86,7 +86,7 @@ class _$PersonDetailsEventCopyWithImpl<$Res>
       personId: personId == freezed
           ? _value.personId
           : personId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -98,7 +98,7 @@ abstract class _$$GetPersonDetailsCopyWith<$Res>
           _$GetPersonDetails value, $Res Function(_$GetPersonDetails) then) =
       __$$GetPersonDetailsCopyWithImpl<$Res>;
   @override
-  $Res call({int personId});
+  $Res call({String personId});
 }
 
 /// @nodoc
@@ -120,7 +120,7 @@ class __$$GetPersonDetailsCopyWithImpl<$Res>
       personId: personId == freezed
           ? _value.personId
           : personId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -131,7 +131,7 @@ class _$GetPersonDetails implements GetPersonDetails {
   const _$GetPersonDetails({required this.personId});
 
   @override
-  final int personId;
+  final String personId;
 
   @override
   String toString() {
@@ -158,8 +158,8 @@ class _$GetPersonDetails implements GetPersonDetails {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int personId) getPersonDetails,
-    required TResult Function(int personId) getMovieList,
+    required TResult Function(String personId) getPersonDetails,
+    required TResult Function(String personId) getMovieList,
   }) {
     return getPersonDetails(personId);
   }
@@ -167,8 +167,8 @@ class _$GetPersonDetails implements GetPersonDetails {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int personId)? getPersonDetails,
-    TResult Function(int personId)? getMovieList,
+    TResult Function(String personId)? getPersonDetails,
+    TResult Function(String personId)? getMovieList,
   }) {
     return getPersonDetails?.call(personId);
   }
@@ -176,8 +176,8 @@ class _$GetPersonDetails implements GetPersonDetails {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int personId)? getPersonDetails,
-    TResult Function(int personId)? getMovieList,
+    TResult Function(String personId)? getPersonDetails,
+    TResult Function(String personId)? getMovieList,
     required TResult orElse(),
   }) {
     if (getPersonDetails != null) {
@@ -219,11 +219,11 @@ class _$GetPersonDetails implements GetPersonDetails {
 }
 
 abstract class GetPersonDetails implements PersonDetailsEvent {
-  const factory GetPersonDetails({required final int personId}) =
+  const factory GetPersonDetails({required final String personId}) =
       _$GetPersonDetails;
 
   @override
-  int get personId;
+  String get personId;
   @override
   @JsonKey(ignore: true)
   _$$GetPersonDetailsCopyWith<_$GetPersonDetails> get copyWith =>
@@ -237,7 +237,7 @@ abstract class _$$GetMovieListCopyWith<$Res>
           _$GetMovieList value, $Res Function(_$GetMovieList) then) =
       __$$GetMovieListCopyWithImpl<$Res>;
   @override
-  $Res call({int personId});
+  $Res call({String personId});
 }
 
 /// @nodoc
@@ -259,7 +259,7 @@ class __$$GetMovieListCopyWithImpl<$Res>
       personId: personId == freezed
           ? _value.personId
           : personId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -270,7 +270,7 @@ class _$GetMovieList implements GetMovieList {
   const _$GetMovieList({required this.personId});
 
   @override
-  final int personId;
+  final String personId;
 
   @override
   String toString() {
@@ -297,8 +297,8 @@ class _$GetMovieList implements GetMovieList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int personId) getPersonDetails,
-    required TResult Function(int personId) getMovieList,
+    required TResult Function(String personId) getPersonDetails,
+    required TResult Function(String personId) getMovieList,
   }) {
     return getMovieList(personId);
   }
@@ -306,8 +306,8 @@ class _$GetMovieList implements GetMovieList {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int personId)? getPersonDetails,
-    TResult Function(int personId)? getMovieList,
+    TResult Function(String personId)? getPersonDetails,
+    TResult Function(String personId)? getMovieList,
   }) {
     return getMovieList?.call(personId);
   }
@@ -315,8 +315,8 @@ class _$GetMovieList implements GetMovieList {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int personId)? getPersonDetails,
-    TResult Function(int personId)? getMovieList,
+    TResult Function(String personId)? getPersonDetails,
+    TResult Function(String personId)? getMovieList,
     required TResult orElse(),
   }) {
     if (getMovieList != null) {
@@ -358,10 +358,10 @@ class _$GetMovieList implements GetMovieList {
 }
 
 abstract class GetMovieList implements PersonDetailsEvent {
-  const factory GetMovieList({required final int personId}) = _$GetMovieList;
+  const factory GetMovieList({required final String personId}) = _$GetMovieList;
 
   @override
-  int get personId;
+  String get personId;
   @override
   @JsonKey(ignore: true)
   _$$GetMovieListCopyWith<_$GetMovieList> get copyWith =>

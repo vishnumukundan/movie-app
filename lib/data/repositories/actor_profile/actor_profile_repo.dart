@@ -12,7 +12,7 @@ import 'package:movie_app/domain/repositories/actor_profile/i_actor_profile_repo
 class PersonDetailsRepository implements IPersonDetailsRepo {
   @override
   Future<Either<NetworkError, PersonDetails>> getPersonDetails({
-    required int personId,
+    required String personId,
   }) async {
     try {
       final response =

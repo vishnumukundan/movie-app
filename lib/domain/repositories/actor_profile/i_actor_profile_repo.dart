@@ -4,6 +4,6 @@ import 'package:movie_app/data/models/actor_profile/actor_profile_model.dart';
 
 abstract class IPersonDetailsRepo {
   Future<Either<NetworkError, PersonDetails>> getPersonDetails({
-    required int personId,
+    required String personId,
   });
 }

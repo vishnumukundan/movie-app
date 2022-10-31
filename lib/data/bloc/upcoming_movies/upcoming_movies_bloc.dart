@@ -29,6 +29,7 @@ class UpcomingMoviesBloc
       final DateFormat formatter = DateFormat('yyyy-MM-dd');
       final String formattedNewDate = formatter.format(newDate);
 
+      // fetching data
       final _result =
           await _iUpcomingMoviesRepo.getUpcomingMovies(date: formattedNewDate);
 

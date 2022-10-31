@@ -48,7 +48,7 @@ class PersonsGrid__widget extends StatelessWidget {
               PageNav.push(
                 context,
                 MoviesResultGridPage(
-                  id: newList[index].id,
+                  id: newList[index].id.toString(),
                   title: '${newList[index].name} Movies',
                   navigateFrom: NavigateFrom.person,
                 ),
