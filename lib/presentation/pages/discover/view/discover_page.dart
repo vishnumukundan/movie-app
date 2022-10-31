@@ -34,7 +34,7 @@ class DiscoverPage extends StatelessWidget {
               SizedBox(height: kDefaultPadding * 3),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
-                child: Medium__text(text: 'Actors', fontSize: 16.0),
+                child: Medium__text(text: 'Actors Popular Now', fontSize: 16.0),
               ),
               SizedBox(height: kDefaultPadding),
               PersonsGrid__widget(),

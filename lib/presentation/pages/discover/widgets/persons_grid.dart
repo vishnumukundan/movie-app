@@ -8,7 +8,7 @@ import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
 import 'package:movie_app/data/models/movie_details/movie_details_model.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/presentation/components/person_image_and_name_card.dart';
-import 'package:movie_app/presentation/pages/actor_profile/view/actor_profile_page.dart';
+import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
 class PersonsGrid__widget extends StatelessWidget {
@@ -45,11 +45,15 @@ class PersonsGrid__widget extends StatelessWidget {
             name: newList[index].name!,
             isLoading: true,
             onTap: () {
+              print(newList[index].id);
               PageNav.push(
-                  context,
-                  ActorProfilePage(
-                    personId: newList[index].id,
-                  ));
+                context,
+                MoviesResultGridPage(
+                  id: newList[index].id,
+                  title: '${newList[index].name} Movies',
+                  navigateFrom: NavigateFrom.person,
+                ),
+              );
             },
           );
         },

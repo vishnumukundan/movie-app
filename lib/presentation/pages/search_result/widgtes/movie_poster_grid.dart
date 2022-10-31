@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
+import 'package:movie_app/data/models/home/movie_list/movie_list_model.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
@@ -14,7 +15,15 @@ import '../../../../data/sources/dummy/dummy_data.dart';
 import '../../../bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
 
 class MoviePosterGrid__widget extends StatelessWidget {
-  const MoviePosterGrid__widget({Key? key}) : super(key: key);
+  const MoviePosterGrid__widget({
+    Key? key,
+    required this.id,
+    required this.dataList,
+  }) : super(key: key);
+
+  final int id;
+  final MovieList dataList;
+
   @override
   Widget build(BuildContext context) {
     final int _iconIndex = context.watch<AppbarSearchCubit>().state.iconIndex;
@@ -27,18 +36,17 @@ class MoviePosterGrid__widget extends StatelessWidget {
       ),
       crossAxisCount: _iconIndex == 0 ? 3 : 2,
       dataList: upcomingMoviesDummyData,
-      itemCount: upcomingMoviesDummyData.length,
+      itemCount: dataList.results.length,
       mainAxisSpacing: kDefaultPadding / 2,
       crossAxisSpacing: kDefaultPadding / 2,
       childAspectRatio: 6 / 10,
       builder: (context, index) {
         return GestureDetector(
           onTap: () => PageNav.push(
-            context,
-            MovieDetailsPage(
-              id: upcomingMoviesDummyData[index]["id"],
-            ),
-          ),
+              context,
+              MovieDetailsPage(
+                id: dataList.results[index].id,
+              )),
           child: Container(
             decoration: BoxDecoration(
               color: kColorWhite50,
@@ -46,7 +54,7 @@ class MoviePosterGrid__widget extends StatelessWidget {
               image: DecorationImage(
                   image: NetworkImage(
                     ApiDataFetching.image(
-                      upcomingMoviesDummyData[index]["poster_path"],
+                      dataList.results[index].posterPath!,
                       ImageWidth.w154,
                     ),
                   ),
