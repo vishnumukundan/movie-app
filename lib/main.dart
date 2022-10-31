@@ -6,6 +6,7 @@ import 'package:movie_app/data/bloc/actor_profile/person_details_bloc.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
 import 'package:movie_app/data/bloc/login/login_poster/login_poster_bloc.dart';
 import 'package:movie_app/data/bloc/movie_details/movie_details_bloc.dart';
+import 'package:movie_app/data/bloc/movies_result_grid/bloc/movies_by_genre_bloc.dart';
 import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:movie_app/domain/usecase/dependancy_injection/injectable.dart';
 import 'package:movie_app/presentation/bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<PersonDetailsBloc>()),
         BlocProvider(create: (context) => getIt<UpcomingMoviesBloc>()),
         BlocProvider(create: (context) => getIt<DiscoverBloc>()),
+        BlocProvider(create: (context) => getIt<MoviesByGenreBloc>()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

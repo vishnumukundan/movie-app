@@ -48,7 +48,7 @@ class PersonDetailsBloc extends Bloc<PersonDetailsEvent, PersonDetailsState> {
       emit(state.copyWith(isLoading: true));
       //get data
       final result =
-          await _iMovieListRepo.getMovieList(personId: event.personId);
+          await _iMovieListRepo.getMovieListByPerson(personId: event.personId);
 
       final _state = result.fold(
         (NetworkError failure) => state.copyWith(

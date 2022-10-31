@@ -60,7 +60,7 @@ class Cast with _$Cast {
 @freezed
 class Genre with _$Genre {
   const factory Genre({
-    int? id,
+    required int id,
     String? name,
   }) = _Genre;
 

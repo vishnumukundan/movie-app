@@ -81,7 +81,7 @@ Map<String, dynamic> _$$_CastToJson(_$_Cast instance) => <String, dynamic>{
     };
 
 _$_Genre _$$_GenreFromJson(Map<String, dynamic> json) => _$_Genre(
-      id: json['id'] as int?,
+      id: json['id'] as int,
       name: json['name'] as String?,
     );
 

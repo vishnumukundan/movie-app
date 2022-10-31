@@ -41,11 +41,10 @@ class PersonsGrid__widget extends StatelessWidget {
           }
 
           return PersonImageAndNameCard__widget(
-            image: newList[index].profilePath,
+            image: newList[index].profilePath!,
             name: newList[index].name!,
             isLoading: true,
             onTap: () {
-              print(newList[index].id);
               PageNav.push(
                 context,
                 MoviesResultGridPage(

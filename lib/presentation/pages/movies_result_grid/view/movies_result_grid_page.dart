@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,27 +39,40 @@ class MoviesResultGridPage extends StatelessWidget {
       return BlocBuilder<PersonDetailsBloc, PersonDetailsState>(
         builder: (context, state) {
           return pageWidget(
-              id: id, title: title, dataList: state.movieDataList!);
+            id: id,
+            title: title,
+            dataList: state.movieDataList!,
+          );
         },
       );
-    } else {
-      return Scaffold(
-        body: ScrollConfiguration(
-          behavior: CustomScroll(),
-          child: Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              const Background(
-                child: Center(
-                  child: Medium__text(text: 'No data ', fontSize: 32.0),
-                ),
-              ),
-              AppbarWithBackButton__widget(text: title),
-            ],
-          ),
-        ),
-      );
     }
+    // if (navigateFrom == NavigateFrom.genre) {
+    //   return BlocBuilder<MoviesByGenreBloc, MoviesByGenreState>(
+    //     builder: (context, state) {
+    //       return pageWidget(
+    //         id: id,
+    //         title: title,
+    //         dataList: state.movieDataList,
+    //       );
+    //     },
+    //   );
+    // }
+    return Scaffold(
+      body: ScrollConfiguration(
+        behavior: CustomScroll(),
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            const Background(
+              child: Center(
+                child: Medium__text(text: 'No data ', fontSize: 32.0),
+              ),
+            ),
+            AppbarWithBackButton__widget(text: title),
+          ],
+        ),
+      ),
+    );
   }
 }
 

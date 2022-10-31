@@ -2,10 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/presentation/components/text.dart';
+import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
@@ -25,7 +27,16 @@ class GenresGrid__widget extends StatelessWidget {
         shrinkWrap: true,
         builder: (context, index) {
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              PageNav.push(
+                context,
+                MoviesResultGridPage(
+                  id: state.genresDataList[index].id,
+                  navigateFrom: NavigateFrom.genre,
+                  title: '${state.genresDataList[index].name} Movies',
+                ),
+              );
+            },
             child: Container(
               height: 100,
               decoration: BoxDecoration(
