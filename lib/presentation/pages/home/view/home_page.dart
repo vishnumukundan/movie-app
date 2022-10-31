@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/sort_list_by.dart';
+import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
 import 'package:movie_app/data/bloc/home/image_slider/image_slider_bloc.dart';
 import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
@@ -42,6 +43,8 @@ class HomePage extends StatelessWidget {
       context
           .read<UpcomingMoviesBloc>()
           .add(const UpcomingMoviesEvent.getUpcomingMovies());
+
+      context.read<DiscoverBloc>().add(const DiscoverEvent.getMovieGenres());
     });
     return Stack(
       children: [
