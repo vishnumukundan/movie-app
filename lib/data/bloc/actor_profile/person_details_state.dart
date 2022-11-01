@@ -5,16 +5,16 @@ class PersonDetailsState with _$PersonDetailsState {
   const factory PersonDetailsState({
     required bool isLoading,
     required bool hasError,
-    required bool success,
-    PersonDetails? personData,
-    MovieList? movieDataList,
+    required bool isSuccess,
+    required PersonDetails personData,
+    required MovieList movieDataList,
   }) = _PersonDetailsState;
 
   factory PersonDetailsState.initial() {
     return const PersonDetailsState(
       isLoading: true,
       hasError: false,
-      success: false,
+      isSuccess: false,
       personData: PersonDetails(id: 0),
       movieDataList: MovieList(
         page: 0,

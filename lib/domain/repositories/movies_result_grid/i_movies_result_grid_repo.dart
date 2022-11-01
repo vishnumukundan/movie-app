@@ -6,4 +6,7 @@ abstract class IMoviesResultGridRepo {
   Future<Either<NetworkError, MovieList>> getMoviesByGenre({
     required String genre,
   });
+  Future<Either<NetworkError, MovieList>> getMoviesByPerson({
+    required String personId,
+  });
 }

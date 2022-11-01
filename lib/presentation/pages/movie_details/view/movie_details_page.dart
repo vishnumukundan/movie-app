@@ -55,37 +55,18 @@ class MovieDetailsPage extends StatelessWidget {
                           return const PosterImageSkelton__widget();
                         }
                         if (state.hasError) {
-                          return Container(
-                            height: getScreenHeightPercentage(80.0),
-                            width: ScreenConfig.screenWidth,
-                            decoration: const BoxDecoration(
-                              color: kColorPrimary,
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const [
-                                Icon(
-                                  Icons.info_outline_rounded,
-                                  color: kColorWhite50,
-                                  size: 128,
-                                ),
-                                SizedBox(height: kDefaultPadding / 2),
-                                Medium__text(
-                                  text: 'The image not found !',
-                                  color: kColorWhite,
-                                  fontSize: 16.0,
-                                ),
-                              ],
-                            ),
-                          );
+                          return const errorWidget();
                         } else {
-                          return ImageContainer__widget(
-                            imageWidth: ImageWidth.w780,
-                            imageData: state.movieDetailsData.posterPath!,
-                            height: getScreenHeightPercentage(80.0),
-                            width: ScreenConfig.screenWidth,
-                          );
+                          if (state.movieDetailsData.posterPath != null) {
+                            return ImageContainer__widget(
+                              imageWidth: ImageWidth.w780,
+                              imageData: state.movieDetailsData.posterPath!,
+                              height: getScreenHeightPercentage(80.0),
+                              width: ScreenConfig.screenWidth,
+                            );
+                          } else {
+                            return const errorWidget();
+                          }
                         }
                       },
                     ),
@@ -201,6 +182,40 @@ class MovieDetailsPage extends StatelessWidget {
               bgColor: kColorPrimary.withOpacity(0.8),
               onTap: () => PageNav.pop(context),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class errorWidget extends StatelessWidget {
+  const errorWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: getScreenHeightPercentage(80.0),
+      width: ScreenConfig.screenWidth,
+      decoration: const BoxDecoration(
+        color: kColorPrimary,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          Icon(
+            Icons.info_outline_rounded,
+            color: kColorWhite50,
+            size: 128,
+          ),
+          SizedBox(height: kDefaultPadding / 2),
+          Medium__text(
+            text: 'The image not found !',
+            color: kColorWhite,
+            fontSize: 16.0,
           ),
         ],
       ),

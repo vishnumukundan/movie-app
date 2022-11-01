@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
-import 'package:movie_app/data/bloc/actor_profile/person_details_bloc.dart';
 import 'package:movie_app/data/bloc/movies_result_grid/movies_result_grid_bloc.dart';
 import 'package:movie_app/data/models/home/movie_list/movie_list_model.dart';
 import 'package:movie_app/presentation/components/background.dart';
@@ -30,8 +29,8 @@ class MoviesResultGridPage extends StatelessWidget {
       (_) {
         if (navigateFrom == NavigateFrom.person) {
           context
-              .read<PersonDetailsBloc>()
-              .add(PersonDetailsEvent.getMovieList(personId: id));
+              .read<MoviesResultGridBloc>()
+              .add(MoviesResultGridEvent.getMovieByPerson(personId: id));
         }
         if (navigateFrom == NavigateFrom.genre) {
           context
@@ -42,27 +41,50 @@ class MoviesResultGridPage extends StatelessWidget {
     );
 
     if (navigateFrom == NavigateFrom.person) {
-      return BlocBuilder<PersonDetailsBloc, PersonDetailsState>(
+      return BlocBuilder<MoviesResultGridBloc, MoviesResultGridState>(
         builder: (context, state) {
-          return pageWidget(
-            id: id,
-            title: title,
-            dataList: state.movieDataList!,
-          );
+          if (state.hasError) {
+            return errorWidget(title: title);
+          } else {
+            return pageWidget(
+              id: id,
+              title: title,
+              dataList: state.movieDataList,
+            );
+          }
         },
       );
     }
     if (navigateFrom == NavigateFrom.genre) {
       return BlocBuilder<MoviesResultGridBloc, MoviesResultGridState>(
         builder: (context, state) {
-          return pageWidget(
-            id: id,
-            title: title,
-            dataList: state.movieDataList,
-          );
+          if (state.hasError) {
+            return errorWidget(title: title);
+          } else {
+            return pageWidget(
+              id: id,
+              title: title,
+              dataList: state.movieDataList,
+            );
+          }
         },
       );
     }
+    return errorWidget(title: title);
+  }
+}
+
+//
+class errorWidget extends StatelessWidget {
+  const errorWidget({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: ScrollConfiguration(
         behavior: CustomScroll(),

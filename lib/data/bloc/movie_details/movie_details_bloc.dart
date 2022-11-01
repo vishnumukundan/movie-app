@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
+// ignore_for_file: no_leading_underscores_for_local_identifiers, unnecessary_null_comparison
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,6 +16,14 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
   MovieDetailsBloc(this._iMovieDetailsRepo)
       : super(MovieDetailsState.initial()) {
     on<_GetMovieDetails>((event, emit) async {
+      if (state.movieDetailsData.id != null) {
+        emit(MovieDetailsState(
+          isLoading: false,
+          hasError: false,
+          movieDetailsData: state.movieDetailsData,
+        ));
+      }
+
       emit(state.copyWith(isLoading: true));
       final _result =
           await _iMovieDetailsRepo.getMovieDetails(movieId: event.movieId);

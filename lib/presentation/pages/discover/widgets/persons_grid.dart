@@ -40,6 +40,8 @@ class PersonsGrid__widget extends StatelessWidget {
             }
           }
 
+          if (state.hasError) {}
+          if (state.isLoading) {}
           return PersonImageAndNameCard__widget(
             image: newList[index].profilePath!,
             name: newList[index].name!,

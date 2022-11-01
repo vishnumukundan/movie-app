@@ -8,8 +8,8 @@ import 'package:movie_app/data/models/actor_profile/actor_profile_model.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/domain/repositories/actor_profile/i_actor_profile_repo.dart';
 
-@LazySingleton(as: IPersonDetailsRepo)
-class PersonDetailsRepository implements IPersonDetailsRepo {
+@LazySingleton(as: IActorProfileRepo)
+class PersonDetailsRepository implements IActorProfileRepo {
   @override
   Future<Either<NetworkError, PersonDetails>> getPersonDetails({
     required String personId,

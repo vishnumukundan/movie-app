@@ -16,13 +16,63 @@ class MoviesResultGridBloc
   final IMoviesResultGridRepo _iMoviesResultGridRepo;
   MoviesResultGridBloc(this._iMoviesResultGridRepo)
       : super(MoviesResultGridState.initial()) {
+    //
+    // getting movies by genre
     on<_GetMovieByGenre>((event, emit) async {
+      if (state.movieDataList.results.isNotEmpty) {
+        emit(
+          MoviesResultGridState(
+            isLoading: false,
+            hasError: false,
+            isSuccess: true,
+            movieDataList: state.movieDataList,
+          ),
+        );
+      }
       // loding
       emit(state.copyWith(isLoading: true));
 
       // fetching data
       final _result =
           await _iMoviesResultGridRepo.getMoviesByGenre(genre: event.genre);
+
+      // to state
+      final _state = _result.fold(
+        (failure) => state.copyWith(
+          isLoading: false,
+          hasError: true,
+          isSuccess: false,
+        ),
+        (success) => MoviesResultGridState(
+          isLoading: false,
+          hasError: false,
+          isSuccess: true,
+          movieDataList: success,
+        ),
+      );
+
+      emit(_state);
+    });
+
+    //
+    // getting movies by actors
+    on<_GetMovieByPerson>((event, emit) async {
+      if (state.movieDataList.results.isNotEmpty) {
+        emit(
+          MoviesResultGridState(
+            isLoading: false,
+            hasError: false,
+            isSuccess: true,
+            movieDataList: state.movieDataList,
+          ),
+        );
+      }
+      // loding
+      emit(state.copyWith(isLoading: true));
+
+      // fetching data
+      final _result = await _iMoviesResultGridRepo.getMoviesByPerson(
+          personId: event.personId);
 
       // to state
       final _state = _result.fold(

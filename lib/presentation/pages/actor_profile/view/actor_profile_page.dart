@@ -46,7 +46,7 @@ class ActorProfilePage extends StatelessWidget {
                     ScrollViewKeyboardDismissBehavior.onDrag,
                 child: BlocBuilder<PersonDetailsBloc, PersonDetailsState>(
                   builder: (context, state) {
-                    final _data = state.personData!;
+                    final _data = state.personData;
 
                     final bool hasErrorOrNull =
                         state.hasError || _data.profilePath == null;
@@ -85,7 +85,7 @@ class ActorProfilePage extends StatelessWidget {
                                   child: Assets.icons.person.svg(
                                       width: getScreenWidthPercentage(15.0)),
                                 ),
-                              if (state.success && _data.profilePath != null)
+                              if (state.isSuccess && _data.profilePath != null)
                                 ImageContainer__widget(
                                   radius: 8,
                                   imageData: _data.profilePath ?? '',
@@ -122,7 +122,7 @@ class ActorProfilePage extends StatelessWidget {
                                     ),
                                     TitleAndData__widget(
                                       title: 'Films',
-                                      data: state.movieDataList!.totalResults
+                                      data: state.movieDataList.totalResults
                                           .toString(),
                                     ),
                                     TitleAndData__widget(
@@ -161,7 +161,7 @@ class ActorProfilePage extends StatelessWidget {
                               const SizedBox(height: kDefaultPadding / 2),
                               Visibility(
                                 visible:
-                                    state.personData!.biography!.length > 400,
+                                    state.personData.biography!.length > 400,
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: GestureDetector(
@@ -191,10 +191,10 @@ class ActorProfilePage extends StatelessWidget {
                         ),
                         MovieListScroll__widget(
                           title: 'Known for',
-                          dataList: state.movieDataList!.results,
-                          itemCount: state.movieDataList!.totalResults >= 10
+                          dataList: state.movieDataList.results,
+                          itemCount: state.movieDataList.totalResults >= 10
                               ? 10
-                              : state.movieDataList!.totalResults,
+                              : state.movieDataList.totalResults,
                         ),
                         const SizedBox(height: kDefaultPadding),
                         Row(

@@ -15,16 +15,16 @@ part 'person_details_state.dart';
 
 @injectable
 class PersonDetailsBloc extends Bloc<PersonDetailsEvent, PersonDetailsState> {
-  final IPersonDetailsRepo _iPersonDetailsRepo;
+  final IActorProfileRepo _iActorProfileRepo;
   final IMovieListRepo _iMovieListRepo;
-  PersonDetailsBloc(this._iPersonDetailsRepo, this._iMovieListRepo)
+  PersonDetailsBloc(this._iActorProfileRepo, this._iMovieListRepo)
       : super(PersonDetailsState.initial()) {
     on<GetPersonDetails>((event, emit) async {
       // show loading
       emit(state.copyWith(isLoading: true));
       //get data
       final result =
-          await _iPersonDetailsRepo.getPersonDetails(personId: event.personId);
+          await _iActorProfileRepo.getPersonDetails(personId: event.personId);
 
       final _state = result.fold(
         (NetworkError failure) => state.copyWith(
@@ -34,7 +34,7 @@ class PersonDetailsBloc extends Bloc<PersonDetailsEvent, PersonDetailsState> {
         (PersonDetails success) => PersonDetailsState(
           isLoading: false,
           hasError: false,
-          success: true,
+          isSuccess: true,
           personData: success,
           movieDataList: state.movieDataList,
         ),
@@ -44,6 +44,15 @@ class PersonDetailsBloc extends Bloc<PersonDetailsEvent, PersonDetailsState> {
     });
 
     on<GetMovieList>((event, emit) async {
+      if (state.movieDataList.results.isNotEmpty) {
+        emit(state.copyWith(
+          isLoading: false,
+          hasError: false,
+          isSuccess: true,
+          movieDataList: state.movieDataList,
+        ));
+      }
+
       // show loading
       emit(state.copyWith(isLoading: true));
       //get data
@@ -51,18 +60,17 @@ class PersonDetailsBloc extends Bloc<PersonDetailsEvent, PersonDetailsState> {
           await _iMovieListRepo.getMovieListByPerson(personId: event.personId);
 
       final _state = result.fold(
-        (NetworkError failure) => state.copyWith(
-          isLoading: false,
-          hasError: true,
-        ),
-        (MovieList success) => PersonDetailsState(
-          isLoading: false,
-          hasError: false,
-          success: true,
-          personData: state.personData,
-          movieDataList: success,
-        ),
-      );
+          (NetworkError failure) => state.copyWith(
+                isLoading: false,
+                hasError: true,
+              ),
+          (MovieList success) => PersonDetailsState(
+                isLoading: false,
+                hasError: false,
+                isSuccess: true,
+                personData: state.personData,
+                movieDataList: success,
+              ));
       // show to ui
       emit(_state);
     });

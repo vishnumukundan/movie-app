@@ -6,6 +6,7 @@ import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/data/models/home/movie_list/movie_list_model.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
+import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
@@ -47,20 +48,46 @@ class MoviePosterGrid__widget extends StatelessWidget {
               MovieDetailsPage(
                 id: dataList.results[index].id,
               )),
-          child: Container(
-            decoration: BoxDecoration(
-              color: kColorWhite50,
-              borderRadius: BorderRadius.circular(8),
-              image: DecorationImage(
-                  image: NetworkImage(
-                    ApiDataFetching.image(
-                      dataList.results[index].posterPath!,
-                      ImageWidth.w154,
-                    ),
+          child: dataList.results[index].posterPath != null
+              ? Container(
+                  decoration: BoxDecoration(
+                    color: kColorWhite50,
+                    borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(
+                        image: NetworkImage(
+                          ApiDataFetching.image(
+                            dataList.results[index].posterPath!,
+                            ImageWidth.w154,
+                          ),
+                        ),
+                        fit: BoxFit.cover),
                   ),
-                  fit: BoxFit.cover),
-            ),
-          ),
+                )
+              : Container(
+                  decoration: BoxDecoration(
+                    color: kColorWhite50,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.info_outline_rounded,
+                        color: kColorWhite50,
+                        size: 64,
+                      ),
+                      SizedBox(height: kDefaultPadding / 2),
+                      Medium__text(
+                        text: 'Image not found !',
+                        color: kColorWhite,
+                        fontSize: 12.0,
+                        height: 1.4,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
         );
       },
     );

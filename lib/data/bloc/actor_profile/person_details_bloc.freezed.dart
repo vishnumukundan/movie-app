@@ -372,9 +372,9 @@ abstract class GetMovieList implements PersonDetailsEvent {
 mixin _$PersonDetailsState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
-  bool get success => throw _privateConstructorUsedError;
-  PersonDetails? get personData => throw _privateConstructorUsedError;
-  MovieList? get movieDataList => throw _privateConstructorUsedError;
+  bool get isSuccess => throw _privateConstructorUsedError;
+  PersonDetails get personData => throw _privateConstructorUsedError;
+  MovieList get movieDataList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PersonDetailsStateCopyWith<PersonDetailsState> get copyWith =>
@@ -389,12 +389,12 @@ abstract class $PersonDetailsStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool hasError,
-      bool success,
-      PersonDetails? personData,
-      MovieList? movieDataList});
+      bool isSuccess,
+      PersonDetails personData,
+      MovieList movieDataList});
 
-  $PersonDetailsCopyWith<$Res>? get personData;
-  $MovieListCopyWith<$Res>? get movieDataList;
+  $PersonDetailsCopyWith<$Res> get personData;
+  $MovieListCopyWith<$Res> get movieDataList;
 }
 
 /// @nodoc
@@ -410,7 +410,7 @@ class _$PersonDetailsStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? hasError = freezed,
-    Object? success = freezed,
+    Object? isSuccess = freezed,
     Object? personData = freezed,
     Object? movieDataList = freezed,
   }) {
@@ -423,39 +423,31 @@ class _$PersonDetailsStateCopyWithImpl<$Res>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      success: success == freezed
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
+      isSuccess: isSuccess == freezed
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
       personData: personData == freezed
           ? _value.personData
           : personData // ignore: cast_nullable_to_non_nullable
-              as PersonDetails?,
+              as PersonDetails,
       movieDataList: movieDataList == freezed
           ? _value.movieDataList
           : movieDataList // ignore: cast_nullable_to_non_nullable
-              as MovieList?,
+              as MovieList,
     ));
   }
 
   @override
-  $PersonDetailsCopyWith<$Res>? get personData {
-    if (_value.personData == null) {
-      return null;
-    }
-
-    return $PersonDetailsCopyWith<$Res>(_value.personData!, (value) {
+  $PersonDetailsCopyWith<$Res> get personData {
+    return $PersonDetailsCopyWith<$Res>(_value.personData, (value) {
       return _then(_value.copyWith(personData: value));
     });
   }
 
   @override
-  $MovieListCopyWith<$Res>? get movieDataList {
-    if (_value.movieDataList == null) {
-      return null;
-    }
-
-    return $MovieListCopyWith<$Res>(_value.movieDataList!, (value) {
+  $MovieListCopyWith<$Res> get movieDataList {
+    return $MovieListCopyWith<$Res>(_value.movieDataList, (value) {
       return _then(_value.copyWith(movieDataList: value));
     });
   }
@@ -471,14 +463,14 @@ abstract class _$$_PersonDetailsStateCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool hasError,
-      bool success,
-      PersonDetails? personData,
-      MovieList? movieDataList});
+      bool isSuccess,
+      PersonDetails personData,
+      MovieList movieDataList});
 
   @override
-  $PersonDetailsCopyWith<$Res>? get personData;
+  $PersonDetailsCopyWith<$Res> get personData;
   @override
-  $MovieListCopyWith<$Res>? get movieDataList;
+  $MovieListCopyWith<$Res> get movieDataList;
 }
 
 /// @nodoc
@@ -496,7 +488,7 @@ class __$$_PersonDetailsStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? hasError = freezed,
-    Object? success = freezed,
+    Object? isSuccess = freezed,
     Object? personData = freezed,
     Object? movieDataList = freezed,
   }) {
@@ -509,18 +501,18 @@ class __$$_PersonDetailsStateCopyWithImpl<$Res>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-      success: success == freezed
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
+      isSuccess: isSuccess == freezed
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
       personData: personData == freezed
           ? _value.personData
           : personData // ignore: cast_nullable_to_non_nullable
-              as PersonDetails?,
+              as PersonDetails,
       movieDataList: movieDataList == freezed
           ? _value.movieDataList
           : movieDataList // ignore: cast_nullable_to_non_nullable
-              as MovieList?,
+              as MovieList,
     ));
   }
 }
@@ -531,24 +523,24 @@ class _$_PersonDetailsState implements _PersonDetailsState {
   const _$_PersonDetailsState(
       {required this.isLoading,
       required this.hasError,
-      required this.success,
-      this.personData,
-      this.movieDataList});
+      required this.isSuccess,
+      required this.personData,
+      required this.movieDataList});
 
   @override
   final bool isLoading;
   @override
   final bool hasError;
   @override
-  final bool success;
+  final bool isSuccess;
   @override
-  final PersonDetails? personData;
+  final PersonDetails personData;
   @override
-  final MovieList? movieDataList;
+  final MovieList movieDataList;
 
   @override
   String toString() {
-    return 'PersonDetailsState(isLoading: $isLoading, hasError: $hasError, success: $success, personData: $personData, movieDataList: $movieDataList)';
+    return 'PersonDetailsState(isLoading: $isLoading, hasError: $hasError, isSuccess: $isSuccess, personData: $personData, movieDataList: $movieDataList)';
   }
 
   @override
@@ -558,7 +550,7 @@ class _$_PersonDetailsState implements _PersonDetailsState {
             other is _$_PersonDetailsState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.hasError, hasError) &&
-            const DeepCollectionEquality().equals(other.success, success) &&
+            const DeepCollectionEquality().equals(other.isSuccess, isSuccess) &&
             const DeepCollectionEquality()
                 .equals(other.personData, personData) &&
             const DeepCollectionEquality()
@@ -570,7 +562,7 @@ class _$_PersonDetailsState implements _PersonDetailsState {
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(hasError),
-      const DeepCollectionEquality().hash(success),
+      const DeepCollectionEquality().hash(isSuccess),
       const DeepCollectionEquality().hash(personData),
       const DeepCollectionEquality().hash(movieDataList));
 
@@ -585,20 +577,20 @@ abstract class _PersonDetailsState implements PersonDetailsState {
   const factory _PersonDetailsState(
       {required final bool isLoading,
       required final bool hasError,
-      required final bool success,
-      final PersonDetails? personData,
-      final MovieList? movieDataList}) = _$_PersonDetailsState;
+      required final bool isSuccess,
+      required final PersonDetails personData,
+      required final MovieList movieDataList}) = _$_PersonDetailsState;
 
   @override
   bool get isLoading;
   @override
   bool get hasError;
   @override
-  bool get success;
+  bool get isSuccess;
   @override
-  PersonDetails? get personData;
+  PersonDetails get personData;
   @override
-  MovieList? get movieDataList;
+  MovieList get movieDataList;
   @override
   @JsonKey(ignore: true)
   _$$_PersonDetailsStateCopyWith<_$_PersonDetailsState> get copyWith =>

@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MoviesResultGridEvent {
-  String get genre => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String genre) getMovieByGenre,
+    required TResult Function(String personId) getMovieByPerson,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String genre)? getMovieByGenre,
+    TResult Function(String personId)? getMovieByPerson,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String genre)? getMovieByGenre,
+    TResult Function(String personId)? getMovieByPerson,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMovieByGenre value) getMovieByGenre,
+    required TResult Function(_GetMovieByPerson value) getMovieByPerson,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetMovieByGenre value)? getMovieByGenre,
+    TResult Function(_GetMovieByPerson value)? getMovieByPerson,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMovieByGenre value)? getMovieByGenre,
+    TResult Function(_GetMovieByPerson value)? getMovieByPerson,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $MoviesResultGridEventCopyWith<MoviesResultGridEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,7 +61,6 @@ abstract class $MoviesResultGridEventCopyWith<$Res> {
   factory $MoviesResultGridEventCopyWith(MoviesResultGridEvent value,
           $Res Function(MoviesResultGridEvent) then) =
       _$MoviesResultGridEventCopyWithImpl<$Res>;
-  $Res call({String genre});
 }
 
 /// @nodoc
@@ -71,27 +71,13 @@ class _$MoviesResultGridEventCopyWithImpl<$Res>
   final MoviesResultGridEvent _value;
   // ignore: unused_field
   final $Res Function(MoviesResultGridEvent) _then;
-
-  @override
-  $Res call({
-    Object? genre = freezed,
-  }) {
-    return _then(_value.copyWith(
-      genre: genre == freezed
-          ? _value.genre
-          : genre // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$$_GetMovieByGenreCopyWith<$Res>
-    implements $MoviesResultGridEventCopyWith<$Res> {
+abstract class _$$_GetMovieByGenreCopyWith<$Res> {
   factory _$$_GetMovieByGenreCopyWith(
           _$_GetMovieByGenre value, $Res Function(_$_GetMovieByGenre) then) =
       __$$_GetMovieByGenreCopyWithImpl<$Res>;
-  @override
   $Res call({String genre});
 }
 
@@ -153,6 +139,7 @@ class _$_GetMovieByGenre implements _GetMovieByGenre {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String genre) getMovieByGenre,
+    required TResult Function(String personId) getMovieByPerson,
   }) {
     return getMovieByGenre(genre);
   }
@@ -161,6 +148,7 @@ class _$_GetMovieByGenre implements _GetMovieByGenre {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String genre)? getMovieByGenre,
+    TResult Function(String personId)? getMovieByPerson,
   }) {
     return getMovieByGenre?.call(genre);
   }
@@ -169,6 +157,7 @@ class _$_GetMovieByGenre implements _GetMovieByGenre {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String genre)? getMovieByGenre,
+    TResult Function(String personId)? getMovieByPerson,
     required TResult orElse(),
   }) {
     if (getMovieByGenre != null) {
@@ -181,6 +170,7 @@ class _$_GetMovieByGenre implements _GetMovieByGenre {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMovieByGenre value) getMovieByGenre,
+    required TResult Function(_GetMovieByPerson value) getMovieByPerson,
   }) {
     return getMovieByGenre(this);
   }
@@ -189,6 +179,7 @@ class _$_GetMovieByGenre implements _GetMovieByGenre {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetMovieByGenre value)? getMovieByGenre,
+    TResult Function(_GetMovieByPerson value)? getMovieByPerson,
   }) {
     return getMovieByGenre?.call(this);
   }
@@ -197,6 +188,7 @@ class _$_GetMovieByGenre implements _GetMovieByGenre {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMovieByGenre value)? getMovieByGenre,
+    TResult Function(_GetMovieByPerson value)? getMovieByPerson,
     required TResult orElse(),
   }) {
     if (getMovieByGenre != null) {
@@ -210,11 +202,144 @@ abstract class _GetMovieByGenre implements MoviesResultGridEvent {
   const factory _GetMovieByGenre({required final String genre}) =
       _$_GetMovieByGenre;
 
-  @override
   String get genre;
-  @override
   @JsonKey(ignore: true)
   _$$_GetMovieByGenreCopyWith<_$_GetMovieByGenre> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_GetMovieByPersonCopyWith<$Res> {
+  factory _$$_GetMovieByPersonCopyWith(
+          _$_GetMovieByPerson value, $Res Function(_$_GetMovieByPerson) then) =
+      __$$_GetMovieByPersonCopyWithImpl<$Res>;
+  $Res call({String personId});
+}
+
+/// @nodoc
+class __$$_GetMovieByPersonCopyWithImpl<$Res>
+    extends _$MoviesResultGridEventCopyWithImpl<$Res>
+    implements _$$_GetMovieByPersonCopyWith<$Res> {
+  __$$_GetMovieByPersonCopyWithImpl(
+      _$_GetMovieByPerson _value, $Res Function(_$_GetMovieByPerson) _then)
+      : super(_value, (v) => _then(v as _$_GetMovieByPerson));
+
+  @override
+  _$_GetMovieByPerson get _value => super._value as _$_GetMovieByPerson;
+
+  @override
+  $Res call({
+    Object? personId = freezed,
+  }) {
+    return _then(_$_GetMovieByPerson(
+      personId: personId == freezed
+          ? _value.personId
+          : personId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GetMovieByPerson implements _GetMovieByPerson {
+  const _$_GetMovieByPerson({required this.personId});
+
+  @override
+  final String personId;
+
+  @override
+  String toString() {
+    return 'MoviesResultGridEvent.getMovieByPerson(personId: $personId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GetMovieByPerson &&
+            const DeepCollectionEquality().equals(other.personId, personId));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(personId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_GetMovieByPersonCopyWith<_$_GetMovieByPerson> get copyWith =>
+      __$$_GetMovieByPersonCopyWithImpl<_$_GetMovieByPerson>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String genre) getMovieByGenre,
+    required TResult Function(String personId) getMovieByPerson,
+  }) {
+    return getMovieByPerson(personId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String genre)? getMovieByGenre,
+    TResult Function(String personId)? getMovieByPerson,
+  }) {
+    return getMovieByPerson?.call(personId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String genre)? getMovieByGenre,
+    TResult Function(String personId)? getMovieByPerson,
+    required TResult orElse(),
+  }) {
+    if (getMovieByPerson != null) {
+      return getMovieByPerson(personId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetMovieByGenre value) getMovieByGenre,
+    required TResult Function(_GetMovieByPerson value) getMovieByPerson,
+  }) {
+    return getMovieByPerson(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetMovieByGenre value)? getMovieByGenre,
+    TResult Function(_GetMovieByPerson value)? getMovieByPerson,
+  }) {
+    return getMovieByPerson?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetMovieByGenre value)? getMovieByGenre,
+    TResult Function(_GetMovieByPerson value)? getMovieByPerson,
+    required TResult orElse(),
+  }) {
+    if (getMovieByPerson != null) {
+      return getMovieByPerson(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetMovieByPerson implements MoviesResultGridEvent {
+  const factory _GetMovieByPerson({required final String personId}) =
+      _$_GetMovieByPerson;
+
+  String get personId;
+  @JsonKey(ignore: true)
+  _$$_GetMovieByPersonCopyWith<_$_GetMovieByPerson> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
