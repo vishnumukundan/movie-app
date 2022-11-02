@@ -21,12 +21,14 @@ class MovieListScroll__widget extends StatelessWidget {
     required this.dataList,
     this.itemCount,
     this.buttonVisibility = false,
+    this.replaceScreen = false,
   }) : super(key: key);
 
   final String title;
   final List<Result> dataList;
   final bool buttonVisibility;
   final int? itemCount;
+  final bool? replaceScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +73,9 @@ class MovieListScroll__widget extends StatelessWidget {
           builder: (context, index) {
             return GestureDetector(
               onTap: () {
-                Get.close(2);
+                if (replaceScreen == true) {
+                  Get.close(2);
+                }
                 PageNav.push(
                   context,
                   MovieDetailsPage(

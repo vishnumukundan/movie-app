@@ -41,7 +41,12 @@ class AppbarWithBackButton__widget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: kDefaultPadding),
-            Expanded(child: Regular__text(text: text, fontSize: 18.0)),
+            Expanded(
+                child: Regular__text(
+              text: text,
+              fontSize: 18.0,
+              height: 1.4,
+            )),
             Visibility(
               visible: trailingIcon,
               child: Assets.icons.column2

@@ -10,7 +10,19 @@ import 'package:movie_app/presentation/components/inner_appbars/appbar_with_back
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/search_result/widgtes/movie_poster_grid.dart';
 
-enum NavigateFrom { person, genre, searchPage }
+enum NavigateFrom {
+  none,
+  person,
+  genre,
+  searchPage,
+  actorProfile,
+
+  // navigate from posters that in sliders and any list except grid list in discover page
+  posterScroll,
+
+  // navigate from movie result grid in discover page
+  posterGrid,
+}
 
 class MoviesResultGridPage extends StatelessWidget {
   const MoviesResultGridPage({
@@ -27,7 +39,8 @@ class MoviesResultGridPage extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
-        if (navigateFrom == NavigateFrom.person) {
+        if (navigateFrom == NavigateFrom.person ||
+            navigateFrom == NavigateFrom.actorProfile) {
           context
               .read<MoviesResultGridBloc>()
               .add(MoviesResultGridEvent.getMovieByPerson(personId: id));
@@ -40,7 +53,8 @@ class MoviesResultGridPage extends StatelessWidget {
       },
     );
 
-    if (navigateFrom == NavigateFrom.person) {
+    if (navigateFrom == NavigateFrom.person ||
+        navigateFrom == NavigateFrom.actorProfile) {
       return BlocBuilder<MoviesResultGridBloc, MoviesResultGridState>(
         builder: (context, state) {
           if (state.hasError) {

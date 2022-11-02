@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
@@ -43,14 +42,12 @@ class MoviesResultGridRepository implements IMoviesResultGridRepo {
       final response =
           await Dio(BaseOptions()).get(ApiEndPoints.personMovies(personId));
 
-      print(ApiEndPoints.personMovies(personId));
-
       // log(jsonEncode(response.data).toString());
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = MovieList.fromJson(response.data);
 
-        log(jsonEncode(dataList).toString());
+        // log(jsonEncode(dataList).toString());
         return Right(dataList);
       } else {
         log(const Left(NetworkError.serverError()).toString());

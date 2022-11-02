@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
+import 'package:movie_app/presentation/bloc/bloc/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/blurred_background.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/discover/widgets/genres_grid.dart';
 import 'package:movie_app/presentation/pages/discover/widgets/persons_grid.dart';
+import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
@@ -16,7 +18,15 @@ class DiscoverPage extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<DiscoverBloc>().add(const DiscoverEvent.getPopularPersons());
     });
+    //
+    //
+    context.read<NavigationFromBloc>().add(
+        const NavigationFromEvent.setNavigationFrom(
+            navigateFrom: NavigateFrom.posterGrid));
 
+    final navigateFromState =
+        context.watch<NavigationFromBloc>().state.navigateFrom;
+    print('nav state-- $navigateFromState');
     return Stack(
       children: [
         SingleChildScrollView(

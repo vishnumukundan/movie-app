@@ -2,6 +2,7 @@
 
 import 'package:intl/intl.dart';
 
+//
 class StringExtraction {
   static toYear(String stringDate) {
     assert(stringDate.length >= 10, 'toYear: json data error');
@@ -37,4 +38,11 @@ class StringExtraction {
   }
 }
 
-// 2022-06-11
+// slipting text and picking the words from the list
+
+getFirstWord(String string) {
+  List<String> splitted = splitText(string);
+  return splitted[0];
+}
+
+splitText(String string) => string.split(' ');

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
+import 'package:movie_app/core/utils/generics/string_manipulation.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
 import 'package:movie_app/data/models/movie_details/movie_details_model.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
@@ -51,7 +52,7 @@ class PersonsGrid__widget extends StatelessWidget {
                 context,
                 MoviesResultGridPage(
                   id: newList[index].id.toString(),
-                  title: '${newList[index].name} Movies',
+                  title: '${getFirstWord(newList[index].name!)}\'s Movies',
                   navigateFrom: NavigateFrom.person,
                 ),
               );

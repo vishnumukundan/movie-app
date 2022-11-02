@@ -11,11 +11,13 @@ import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
 import 'package:movie_app/data/bloc/home/image_slider/image_slider_bloc.dart';
 import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
+import 'package:movie_app/presentation/bloc/bloc/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/bloc/main/appbar/appbar_bloc.dart';
 import 'package:movie_app/presentation/components/movie_list_scroll.dart';
 import 'package:movie_app/presentation/pages/home/widgets/genres_scroll.dart';
 import 'package:movie_app/presentation/pages/home/widgets/latest_trailers.dart';
 import 'package:movie_app/presentation/pages/home/widgets/upcoming_movies/upcoming_stack.dart';
+import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 
 import '../../../components/background.dart';
@@ -46,6 +48,17 @@ class HomePage extends StatelessWidget {
 
       context.read<DiscoverBloc>().add(const DiscoverEvent.getMovieGenres());
     });
+
+    //
+    //
+    context.read<NavigationFromBloc>().add(
+        const NavigationFromEvent.setNavigationFrom(
+            navigateFrom: NavigateFrom.posterScroll));
+
+    final navigateFromState =
+        context.watch<NavigationFromBloc>().state.navigateFrom;
+
+    print('nav state-- $navigateFromState');
     return Stack(
       children: [
         SingleChildScrollView(

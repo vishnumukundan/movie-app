@@ -2,9 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
+import 'package:movie_app/core/utils/generics/string_manipulation.dart';
 import 'package:movie_app/data/bloc/actor_profile/person_details_bloc.dart';
 import 'package:movie_app/gen/assets.gen.dart';
+import 'package:movie_app/presentation/bloc/bloc/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/image_container.dart';
@@ -13,6 +17,7 @@ import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/actor_profile/widgets/biogarphy_bottomsheet.dart';
 import 'package:movie_app/presentation/pages/actor_profile/widgets/skelton/actor_profile_skelton.dart';
 import 'package:movie_app/presentation/pages/actor_profile/widgets/title_and_data.dart';
+import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 import 'package:movie_app/presentation/themes/values.dart';
@@ -35,6 +40,12 @@ class ActorProfilePage extends StatelessWidget {
           .add(GetPersonDetails(personId: personId));
       context.read<PersonDetailsBloc>().add(GetMovieList(personId: personId));
     });
+
+    //
+    //
+    final navigateFromState =
+        context.watch<NavigationFromBloc>().state.navigateFrom;
+
     return Scaffold(
       body: Background(
         child: Stack(
@@ -195,6 +206,7 @@ class ActorProfilePage extends StatelessWidget {
                           itemCount: state.movieDataList.totalResults >= 10
                               ? 10
                               : state.movieDataList.totalResults,
+                          replaceScreen: true,
                         ),
                         const SizedBox(height: kDefaultPadding),
                         Row(
@@ -204,7 +216,21 @@ class ActorProfilePage extends StatelessWidget {
                               text: 'View All Movies',
                               cornerRadius: 60.0,
                               rightIcon: Assets.icons.arrowRight,
-                              onTap: () {},
+                              onTap: () {
+                                if (navigateFromState ==
+                                    NavigateFrom.posterGrid) {
+                                  Get.close(3);
+                                }
+                                PageNav.push(
+                                  context,
+                                  MoviesResultGridPage(
+                                    id: state.personData.id.toString(),
+                                    navigateFrom: NavigateFrom.actorProfile,
+                                    title:
+                                        '${getFirstWord(state.personData.name!)}\'s Movies',
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),
