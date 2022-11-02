@@ -24,9 +24,6 @@ class DiscoverPage extends StatelessWidget {
         const NavigationFromEvent.setNavigationFrom(
             navigateFrom: NavigateFrom.posterGrid));
 
-    final navigateFromState =
-        context.watch<NavigationFromBloc>().state.navigateFrom;
-    print('nav state-- $navigateFromState');
     return Stack(
       children: [
         SingleChildScrollView(

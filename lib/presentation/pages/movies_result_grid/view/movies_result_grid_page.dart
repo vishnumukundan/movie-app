@@ -12,6 +12,7 @@ import 'package:movie_app/presentation/pages/search_result/widgtes/movie_poster_
 
 enum NavigateFrom {
   none,
+  home,
   person,
   genre,
   searchPage,
