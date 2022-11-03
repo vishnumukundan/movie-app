@@ -35,13 +35,12 @@ class MovieScrollListRepository implements IMovieListRepo {
     }
   }
 
-  @override
   Future<Either<NetworkError, MovieList>> getMoviesByQuery({
     required String query,
   }) async {
     try {
-      final response =
-          await Dio(BaseOptions()).get(ApiEndPoints.moviesByGenre(query));
+      final response = await Dio(BaseOptions())
+          .get(ApiEndPoints.moviesByGenre(query, Language.malayalam));
 
       // log(jsonEncode(response.data).toString());
 

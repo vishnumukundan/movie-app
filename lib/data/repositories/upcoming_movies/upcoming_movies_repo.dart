@@ -14,8 +14,8 @@ class UpcomingMoviesRepository implements IUpcomingMoviesRepo {
     required String date,
   }) async {
     try {
-      final response =
-          await Dio(BaseOptions()).get(ApiEndPoints.upcomingMovies(date));
+      final response = await Dio(BaseOptions())
+          .get(ApiEndPoints.upcomingMovies(date, Language.malayalam));
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = (response.data["results"] as List)

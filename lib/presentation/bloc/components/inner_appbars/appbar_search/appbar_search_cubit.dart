@@ -1,16 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'appbar_search_state.dart';
 part 'appbar_search_cubit.freezed.dart';
+part 'appbar_search_state.dart';
 
 class AppbarSearchCubit extends Cubit<AppbarSearchState> {
   AppbarSearchCubit() : super(const AppbarSearchState.initial());
   void isFocused() {
     return emit(
-      const AppbarSearchState.initial(
-        focusEnabled: true,
-      ),
+      const AppbarSearchState.initial(focusEnabled: true),
     );
   }
 

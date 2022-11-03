@@ -24,10 +24,10 @@ class UpcomingMoviesBloc
       final DateTime now = DateTime.now();
 
       //add 2 days
-      final DateTime newDate = now.add(const Duration(days: 2));
+      // final DateTime newDate = now.add(const Duration(days: 2));
 
       final DateFormat formatter = DateFormat('yyyy-MM-dd');
-      final String formattedNewDate = formatter.format(newDate);
+      final String formattedNewDate = formatter.format(now);
 
       // fetching data
       final _result =

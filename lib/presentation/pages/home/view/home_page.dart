@@ -79,11 +79,13 @@ class HomePage extends StatelessWidget {
               const LatestTrailers__widget(),
               const SizedBox(height: kDefaultPadding),
               const MovieListScroll__widget(
-                  title: 'Top 10 Action Movies', dataList: []),
+                  title: 'Top 10 Tamil Movies', dataList: []),
               const MovieListScroll__widget(
-                  title: 'Top 10 Romantic Movies', dataList: []),
+                  title: 'Top 10 Hindi Movies', dataList: []),
               const MovieListScroll__widget(
-                  title: 'Top 10 Drama Movies', dataList: []),
+                  title: 'Top 10 Malayalam Movies', dataList: []),
+              const MovieListScroll__widget(
+                  title: 'Top 10 English Movies', dataList: []),
             ],
           ),
         ),

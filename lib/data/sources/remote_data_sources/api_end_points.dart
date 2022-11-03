@@ -1,6 +1,13 @@
 import 'package:movie_app/data/sources/remote_data_sources/constatnts.dart';
 import 'package:movie_app/domain/usecase/apiKey.dart';
 
+class Language {
+  static const String english = 'en';
+  static const String tamil = 'ta';
+  static const String malayalam = 'ml';
+  static const String hindi = 'hi';
+}
+
 class ApiEndPoints {
   static String trendingMovieAllWeek =
       '$kBaseUrl/trending/movie/week?api_key=$apiKey';
@@ -18,12 +25,16 @@ class ApiEndPoints {
       '$kBaseUrl/person/$personId?api_key=$apiKey';
   static String personMovies(personId) =>
       '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc&with_cast=$personId';
-  static String upcomingMovies(date) =>
-      '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=primary_release_date.asc&page=1&primary_release_date.gte=$date&with_original_language=en';
+  static String upcomingMovies(date, lang) =>
+      '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=primary_release_date.asc&page=1&primary_release_date.gte=$date&with_original_language=$lang';
   static String movieGenres = '$kBaseUrl/genre/movie/list?api_key=$apiKey';
   static String popularPersons = '$kBaseUrl/person/popular?api_key=$apiKey';
-  static String moviesByGenre(genre) =>
-      '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc&page=1&with_genres=$genre';
+  static String moviesByGenre(genre, lang) =>
+      '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc&page=1&with_genres=$genre&with_original_language=$lang';
+
+  //
+  static String popularMoviesWithOriginalLanguage(lang, fromDate, toDate) =>
+      '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc&page=1&primary_release_date.gte=$fromDate&primary_release_date.lte=$toDate&with_original_language=$lang';
 }
 
 enum ImageWidth { w92, w154, w185, w342, w500, w780, original }

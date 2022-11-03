@@ -5,7 +5,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/services/navigator.dart';
-import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/icon_button.dart';
@@ -26,6 +25,8 @@ class ImageSlider__widget extends StatelessWidget {
   Widget build(BuildContext context) {
     int _currentIndex = context.watch<SliderImageCubit>().state.currentIndex;
 
+    const int _carouselCount = 5;
+
     return BlocBuilder<ImageSliderBloc, ImageSliderState>(
       builder: (context, state) {
         return SizedBox(
@@ -33,7 +34,7 @@ class ImageSlider__widget extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               CarouselSlider.builder(
-                itemCount: sliderDummyData.length,
+                itemCount: _carouselCount,
                 options: CarouselOptions(
                   aspectRatio: 3 / 4,
                   autoPlay: true,
@@ -115,7 +116,7 @@ class ImageSlider__widget extends StatelessWidget {
                         const SizedBox(height: kDefaultPadding * 2),
                         Row(
                           children: List.generate(
-                            sliderDummyData.length,
+                            _carouselCount,
                             (int index) {
                               if (index == _currentIndex) {
                                 return const SingleIndicator(isActive: true);

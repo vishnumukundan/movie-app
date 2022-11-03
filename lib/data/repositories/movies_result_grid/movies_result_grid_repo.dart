@@ -14,8 +14,8 @@ class MoviesResultGridRepository implements IMoviesResultGridRepo {
   Future<Either<NetworkError, MovieList>> getMoviesByGenre(
       {required String genre}) async {
     try {
-      final response =
-          await Dio(BaseOptions()).get(ApiEndPoints.moviesByGenre(genre));
+      final response = await Dio(BaseOptions())
+          .get(ApiEndPoints.moviesByGenre(genre, Language.malayalam));
 
       // log(jsonEncode(response.data).toString());
 
