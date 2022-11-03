@@ -29,13 +29,12 @@ class ImageSliderRepository implements IImageSliderRepo {
 
     try {
       // popular Malayalam movies by popularity
-      final responseMalayalam = await Dio(BaseOptions()).get(
+      final response = await Dio(BaseOptions()).get(
           ApiEndPoints.popularMoviesWithOriginalLanguage(
               Language.malayalam, formatedPastDate, formattedTodayDate));
 
-      if (responseMalayalam.statusCode == 200 ||
-          responseMalayalam.statusCode == 201) {
-        final imageSliderData = (responseMalayalam.data["results"] as List)
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final imageSliderData = (response.data["results"] as List)
             .map((e) => ImageSlider.fromJson(e))
             .toList();
         return Right(imageSliderData);

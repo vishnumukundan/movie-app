@@ -14,7 +14,10 @@ class ApiEndPoints {
   static String trendingMovieToday =
       '$kBaseUrl/trending/movie/day?api_key=$apiKey';
   static String popularMovies =
-      '$kBaseUrl/movie/popular?api_key=$apiKey&language=en-US';
+      '$kDiscoverUrl&sort_by=popularity.desc&page=1&vote_count.gte=10&vote_average.gte=6';
+  static String topBestMovies(lang) =>
+      '$popularMovies&with_original_language=$lang';
+
   static String popularTv =
       '$kBaseUrl/tv/popular?api_key=$apiKey&language=en-US';
   static String movieDetils(movieId) =>

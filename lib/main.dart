@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/data/bloc/actor_profile/person_details_bloc.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
+import 'package:movie_app/data/bloc/home/home_data/home_data_bloc.dart';
 import 'package:movie_app/data/bloc/login/login_poster/login_poster_bloc.dart';
 import 'package:movie_app/data/bloc/movie_details/movie_details_bloc.dart';
 import 'package:movie_app/data/bloc/movies_result_grid/movies_result_grid_bloc.dart';
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<UpcomingMoviesBloc>()),
         BlocProvider(create: (context) => getIt<DiscoverBloc>()),
         BlocProvider(create: (context) => getIt<MoviesResultGridBloc>()),
+        BlocProvider(create: (context) => getIt<HomeDataBloc>()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

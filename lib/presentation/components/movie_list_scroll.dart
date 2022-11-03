@@ -42,7 +42,7 @@ class MovieListScroll__widget extends StatelessWidget {
         newList.add(_data[i]);
       }
     }
-
+    // log(dataList.toString());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

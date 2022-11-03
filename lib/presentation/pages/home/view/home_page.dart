@@ -8,6 +8,7 @@ import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/sort_list_by.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
+import 'package:movie_app/data/bloc/home/home_data/home_data_bloc.dart';
 import 'package:movie_app/data/bloc/home/image_slider/image_slider_bloc.dart';
 import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
@@ -47,6 +48,14 @@ class HomePage extends StatelessWidget {
           .add(const UpcomingMoviesEvent.getUpcomingMovies());
 
       context.read<DiscoverBloc>().add(const DiscoverEvent.getMovieGenres());
+
+      context.read<HomeDataBloc>().add(const HomeDataEvent.getPopularMovies());
+      context.read<HomeDataBloc>().add(const HomeDataEvent.getTopHindiMovies());
+      context
+          .read<HomeDataBloc>()
+          .add(const HomeDataEvent.getTopMalayalamMovies());
+      context.read<HomeDataBloc>().add(const HomeDataEvent.getTopTamilMovies());
+      context.read<HomeDataBloc>().add(const HomeDataEvent.getTrendingMovies());
     });
 
     //
@@ -66,26 +75,65 @@ class HomePage extends StatelessWidget {
               ImageSlider__widget(),
               const SizedBox(height: 92.0),
               const GenresScroll__widget(),
-              const MovieListScroll__widget(
-                  title: 'Popular Movies', dataList: []),
+
+              // Popular Movies
+              BlocBuilder<HomeDataBloc, HomeDataState>(
+                builder: (context, state) {
+                  return MovieListScroll__widget(
+                    title: 'Popular Movies',
+                    itemCount: 10,
+                    dataList: state.popularList,
+                  );
+                },
+              ),
+
               const SizedBox(height: kDefaultPadding * 2),
               const UpcomingStack__widget(),
-              const MovieListScroll__widget(
-                title: 'Trending ',
-                dataList: [],
-                buttonVisibility: true,
+
+              // Trending
+              BlocBuilder<HomeDataBloc, HomeDataState>(
+                builder: (context, state) {
+                  return MovieListScroll__widget(
+                    title: 'Trending ',
+                    dataList: state.trendingList,
+                    buttonVisibility: true,
+                  );
+                },
               ),
               const SizedBox(height: kDefaultPadding),
-              const LatestTrailers__widget(),
+
+              // const LatestTrailers__widget(),
               const SizedBox(height: kDefaultPadding),
-              const MovieListScroll__widget(
-                  title: 'Top 10 Tamil Movies', dataList: []),
-              const MovieListScroll__widget(
-                  title: 'Top 10 Hindi Movies', dataList: []),
-              const MovieListScroll__widget(
-                  title: 'Top 10 Malayalam Movies', dataList: []),
-              const MovieListScroll__widget(
-                  title: 'Top 10 English Movies', dataList: []),
+
+              // Top 10 Tamil Movies
+              BlocBuilder<HomeDataBloc, HomeDataState>(
+                builder: (context, state) {
+                  return MovieListScroll__widget(
+                    title: 'Top 10 Tamil Movies',
+                    dataList: state.topTamilList,
+                  );
+                },
+              ),
+
+              // Top 10 Hindi Movies
+              BlocBuilder<HomeDataBloc, HomeDataState>(
+                builder: (context, state) {
+                  return MovieListScroll__widget(
+                    title: 'Top 10 Hindi Movies',
+                    dataList: state.topHindiList,
+                  );
+                },
+              ),
+
+              // Top 10 Malayalam Movies
+              BlocBuilder<HomeDataBloc, HomeDataState>(
+                builder: (context, state) {
+                  return MovieListScroll__widget(
+                    title: 'Top 10 Malayalam Movies',
+                    dataList: state.topMalayalamList,
+                  );
+                },
+              ),
             ],
           ),
         ),
