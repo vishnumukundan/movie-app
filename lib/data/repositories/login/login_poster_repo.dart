@@ -12,8 +12,8 @@ class LoginPosterRepository implements ILoginImagesRepo {
   @override
   Future<Either<NetworkError, List<LoginPoster>>> getLoginPosterImages() async {
     try {
-      final response =
-          await Dio(BaseOptions()).get(ApiEndPoints.trendingMovieAllWeek);
+      final response = await Dio(BaseOptions())
+          .get(ApiEndPoints.trendingMovies(TrendigMovies.allDay));
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final loginPostersList = (response.data["results"] as List)

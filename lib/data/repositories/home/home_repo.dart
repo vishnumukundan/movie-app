@@ -94,10 +94,12 @@ class HomeRepository implements IHomeRepo {
   }
 
   @override
-  Future<Either<NetworkError, List<Result>>> getTrendingMovies() async {
+  Future<Either<NetworkError, List<Result>>> getTrendingMovies({
+    required String dayOrWeek,
+  }) async {
     try {
       final response =
-          await Dio(BaseOptions()).get(ApiEndPoints.trendingMovieAllWeek);
+          await Dio(BaseOptions()).get(ApiEndPoints.trendingMovies(dayOrWeek));
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = (response.data['results'] as List)

@@ -1,11 +1,14 @@
 // ignore_for_file: camel_case_types, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/double_to_fractional_digit.dart';
 import 'package:movie_app/data/models/home/movie_list/movie_list_model.dart';
+import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
+import 'package:movie_app/presentation/bloc/components/widgets_functionality/widgets_functionality_bloc.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/image_container.dart';
 import 'package:movie_app/presentation/components/rating_indicator.dart';
@@ -55,10 +58,42 @@ class MovieListScroll__widget extends StatelessWidget {
               Medium__text(text: title, fontSize: 16.0),
               const Spacer(),
               if (buttonVisibility)
-                Accent_Small__button(text: 'Today', onTap: () {}),
-              const SizedBox(width: kDefaultPadding / 2),
-              if (buttonVisibility)
-                Primary_Small__button(text: 'This Week', onTap: () {}),
+                BlocBuilder<WidgetsFunctionalityBloc,
+                    WidgetsFunctionalityState>(
+                  builder: (context, state) {
+                    final _currentIndex =
+                        state.movieListScrollButtonCurrentIndex;
+                    return Row(
+                      children: [
+                        TopButton(
+                          text: 'Today',
+                          isActive: _currentIndex == 0,
+                          onTap: () {
+                            context.read<WidgetsFunctionalityBloc>().add(
+                                    const WidgetsFunctionalityEvent
+                                        .listScrollButtonPress(
+                                  dayOrWeek: TrendigMovies.allDay,
+                                  buttonIndex: 0,
+                                ));
+                          },
+                        ),
+                        const SizedBox(width: kDefaultPadding / 2),
+                        TopButton(
+                          text: 'This Week',
+                          isActive: _currentIndex == 1,
+                          onTap: () {
+                            context.read<WidgetsFunctionalityBloc>().add(
+                                    const WidgetsFunctionalityEvent
+                                        .listScrollButtonPress(
+                                  dayOrWeek: TrendigMovies.allWeek,
+                                  buttonIndex: 1,
+                                ));
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                ),
             ],
           ),
         ),
@@ -111,5 +146,27 @@ class MovieListScroll__widget extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class TopButton extends StatelessWidget {
+  const TopButton({
+    Key? key,
+    required this.text,
+    required this.onTap,
+    this.isActive = false,
+  }) : super(key: key);
+
+  final String text;
+  final VoidCallback onTap;
+  final bool isActive;
+
+  @override
+  Widget build(BuildContext context) {
+    if (isActive) {
+      return Accent_Small__button(text: text, onTap: onTap);
+    } else {
+      return Primary_Small__button(text: text, onTap: onTap);
+    }
   }
 }

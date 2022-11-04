@@ -19,7 +19,7 @@ mixin _$HomeDataEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPopularMovies,
-    required TResult Function() getTrendingMovies,
+    required TResult Function(String dayOrWeek) getTrendingMovies,
     required TResult Function() getTopTamilMovies,
     required TResult Function() getTopHindiMovies,
     required TResult Function() getTopMalayalamMovies,
@@ -28,7 +28,7 @@ mixin _$HomeDataEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
@@ -37,7 +37,7 @@ mixin _$HomeDataEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
@@ -134,7 +134,7 @@ class _$_GetPopularMovies implements _GetPopularMovies {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPopularMovies,
-    required TResult Function() getTrendingMovies,
+    required TResult Function(String dayOrWeek) getTrendingMovies,
     required TResult Function() getTopTamilMovies,
     required TResult Function() getTopHindiMovies,
     required TResult Function() getTopMalayalamMovies,
@@ -146,7 +146,7 @@ class _$_GetPopularMovies implements _GetPopularMovies {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
@@ -158,7 +158,7 @@ class _$_GetPopularMovies implements _GetPopularMovies {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
@@ -221,6 +221,7 @@ abstract class _$$_GetTrendingMoviesCopyWith<$Res> {
   factory _$$_GetTrendingMoviesCopyWith(_$_GetTrendingMovies value,
           $Res Function(_$_GetTrendingMovies) then) =
       __$$_GetTrendingMoviesCopyWithImpl<$Res>;
+  $Res call({String dayOrWeek});
 }
 
 /// @nodoc
@@ -233,63 +234,87 @@ class __$$_GetTrendingMoviesCopyWithImpl<$Res>
 
   @override
   _$_GetTrendingMovies get _value => super._value as _$_GetTrendingMovies;
+
+  @override
+  $Res call({
+    Object? dayOrWeek = freezed,
+  }) {
+    return _then(_$_GetTrendingMovies(
+      dayOrWeek: dayOrWeek == freezed
+          ? _value.dayOrWeek
+          : dayOrWeek // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_GetTrendingMovies implements _GetTrendingMovies {
-  const _$_GetTrendingMovies();
+  const _$_GetTrendingMovies({required this.dayOrWeek});
+
+  @override
+  final String dayOrWeek;
 
   @override
   String toString() {
-    return 'HomeDataEvent.getTrendingMovies()';
+    return 'HomeDataEvent.getTrendingMovies(dayOrWeek: $dayOrWeek)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetTrendingMovies);
+        (other.runtimeType == runtimeType &&
+            other is _$_GetTrendingMovies &&
+            const DeepCollectionEquality().equals(other.dayOrWeek, dayOrWeek));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(dayOrWeek));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_GetTrendingMoviesCopyWith<_$_GetTrendingMovies> get copyWith =>
+      __$$_GetTrendingMoviesCopyWithImpl<_$_GetTrendingMovies>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPopularMovies,
-    required TResult Function() getTrendingMovies,
+    required TResult Function(String dayOrWeek) getTrendingMovies,
     required TResult Function() getTopTamilMovies,
     required TResult Function() getTopHindiMovies,
     required TResult Function() getTopMalayalamMovies,
   }) {
-    return getTrendingMovies();
+    return getTrendingMovies(dayOrWeek);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
   }) {
-    return getTrendingMovies?.call();
+    return getTrendingMovies?.call(dayOrWeek);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
     required TResult orElse(),
   }) {
     if (getTrendingMovies != null) {
-      return getTrendingMovies();
+      return getTrendingMovies(dayOrWeek);
     }
     return orElse();
   }
@@ -337,7 +362,13 @@ class _$_GetTrendingMovies implements _GetTrendingMovies {
 }
 
 abstract class _GetTrendingMovies implements HomeDataEvent {
-  const factory _GetTrendingMovies() = _$_GetTrendingMovies;
+  const factory _GetTrendingMovies({required final String dayOrWeek}) =
+      _$_GetTrendingMovies;
+
+  String get dayOrWeek;
+  @JsonKey(ignore: true)
+  _$$_GetTrendingMoviesCopyWith<_$_GetTrendingMovies> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -382,7 +413,7 @@ class _$_GetTopTamilMovies implements _GetTopTamilMovies {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPopularMovies,
-    required TResult Function() getTrendingMovies,
+    required TResult Function(String dayOrWeek) getTrendingMovies,
     required TResult Function() getTopTamilMovies,
     required TResult Function() getTopHindiMovies,
     required TResult Function() getTopMalayalamMovies,
@@ -394,7 +425,7 @@ class _$_GetTopTamilMovies implements _GetTopTamilMovies {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
@@ -406,7 +437,7 @@ class _$_GetTopTamilMovies implements _GetTopTamilMovies {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
@@ -506,7 +537,7 @@ class _$_GetTopHindiMovies implements _GetTopHindiMovies {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPopularMovies,
-    required TResult Function() getTrendingMovies,
+    required TResult Function(String dayOrWeek) getTrendingMovies,
     required TResult Function() getTopTamilMovies,
     required TResult Function() getTopHindiMovies,
     required TResult Function() getTopMalayalamMovies,
@@ -518,7 +549,7 @@ class _$_GetTopHindiMovies implements _GetTopHindiMovies {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
@@ -530,7 +561,7 @@ class _$_GetTopHindiMovies implements _GetTopHindiMovies {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
@@ -631,7 +662,7 @@ class _$_GetTopMalayalamMovies implements _GetTopMalayalamMovies {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPopularMovies,
-    required TResult Function() getTrendingMovies,
+    required TResult Function(String dayOrWeek) getTrendingMovies,
     required TResult Function() getTopTamilMovies,
     required TResult Function() getTopHindiMovies,
     required TResult Function() getTopMalayalamMovies,
@@ -643,7 +674,7 @@ class _$_GetTopMalayalamMovies implements _GetTopMalayalamMovies {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,
@@ -655,7 +686,7 @@ class _$_GetTopMalayalamMovies implements _GetTopMalayalamMovies {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function()? getTrendingMovies,
+    TResult Function(String dayOrWeek)? getTrendingMovies,
     TResult Function()? getTopTamilMovies,
     TResult Function()? getTopHindiMovies,
     TResult Function()? getTopMalayalamMovies,

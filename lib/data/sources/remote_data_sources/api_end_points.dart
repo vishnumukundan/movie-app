@@ -8,11 +8,14 @@ class Language {
   static const String hindi = 'hi';
 }
 
+class TrendigMovies {
+  static const String allDay = 'day';
+  static const String allWeek = 'week';
+}
+
 class ApiEndPoints {
-  static String trendingMovieAllWeek =
-      '$kBaseUrl/trending/movie/week?api_key=$apiKey';
-  static String trendingMovieToday =
-      '$kBaseUrl/trending/movie/day?api_key=$apiKey';
+  static String trendingMovies(dayRange) =>
+      '$kBaseUrl/trending/movie/$dayRange?api_key=$apiKey';
   static String popularMovies =
       '$kDiscoverUrl&sort_by=popularity.desc&page=1&vote_count.gte=10&vote_average.gte=6';
   static String topBestMovies(lang) =>

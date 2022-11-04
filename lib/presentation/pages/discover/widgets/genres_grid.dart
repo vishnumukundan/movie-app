@@ -35,7 +35,7 @@ class GenresGrid__widget extends StatelessWidget {
                   id: state.genresDataList[index].id.toString(),
                   navigateFrom: NavigateFrom.genre,
                   title:
-                      '${getFirstWord(state.genresDataList[index].name!)}\'s Movies',
+                      '${getFirstWord(state.genresDataList[index].name!)} Movies',
                 ),
               );
             },

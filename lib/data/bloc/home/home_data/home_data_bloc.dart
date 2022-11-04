@@ -65,7 +65,8 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
       //
       emit(state.copyWith(isLoading: true));
       //
-      final _resut = await _iHomeRepo.getTrendingMovies();
+      final _resut =
+          await _iHomeRepo.getTrendingMovies(dayOrWeek: event.dayOrWeek);
       //
       final _state = _resut.fold(
         (failure) =>

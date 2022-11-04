@@ -10,10 +10,11 @@ import 'package:movie_app/data/bloc/movie_details/movie_details_bloc.dart';
 import 'package:movie_app/data/bloc/movies_result_grid/movies_result_grid_bloc.dart';
 import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:movie_app/domain/usecase/dependancy_injection/injectable.dart';
-import 'package:movie_app/presentation/bloc/bloc/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
+import 'package:movie_app/presentation/bloc/components/widgets_functionality/widgets_functionality_bloc.dart';
 import 'package:movie_app/presentation/bloc/home/slider_image/slider_image_cubit.dart';
 import 'package:movie_app/presentation/bloc/main/appbar/appbar_bloc.dart';
+import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/bloc/watchlist/watchlist_scroll/watchlist_scroll_cubit.dart';
 import 'package:movie_app/presentation/components/error_widget.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => AppbarSearchCubit()),
         BlocProvider(create: (context) => AppbarBloc()),
         BlocProvider(create: (context) => NavigationFromBloc()),
+        BlocProvider(create: (context) => WidgetsFunctionalityBloc()),
         //data blocs
         BlocProvider(create: (context) => getIt<LoginPosterBloc>()),
         BlocProvider(create: (context) => getIt<ImageSliderBloc>()),

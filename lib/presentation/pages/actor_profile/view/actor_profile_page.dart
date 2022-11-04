@@ -8,7 +8,7 @@ import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
 import 'package:movie_app/core/utils/generics/string_manipulation.dart';
 import 'package:movie_app/data/bloc/actor_profile/person_details_bloc.dart';
 import 'package:movie_app/gen/assets.gen.dart';
-import 'package:movie_app/presentation/bloc/bloc/navigation_from_bloc.dart';
+import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/image_container.dart';

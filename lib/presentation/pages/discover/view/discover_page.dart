@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
-import 'package:movie_app/presentation/bloc/bloc/navigation_from_bloc.dart';
+import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/blurred_background.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/discover/widgets/genres_grid.dart';
