@@ -80,9 +80,7 @@ class UpcomingStack__widget extends StatelessWidget {
             width: 100,
             child: Primary_Small__button(
               text: 'View All',
-              onTap: () {
-                PageNav.push(context, const UpcomingMoviesPage());
-              },
+              onTap: () => PageNav.push(context, const UpcomingMoviesPage()),
             ),
           ),
         ],

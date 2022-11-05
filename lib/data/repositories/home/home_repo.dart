@@ -11,9 +11,10 @@ import 'package:movie_app/domain/repositories/home/i_home_repo.dart';
 @LazySingleton(as: IHomeRepo)
 class HomeRepository implements IHomeRepo {
   @override
-  Future<Either<NetworkError, List<Result>>> getPopularMovies() async {
+  Future<Either<NetworkError, List<Result>>> getTopRatedMovies() async {
     try {
-      final response = await Dio(BaseOptions()).get(ApiEndPoints.popularMovies);
+      final response =
+          await Dio(BaseOptions()).get(ApiEndPoints.topRatedMovies);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = (response.data['results'] as List)

@@ -2,7 +2,7 @@ part of 'home_data_bloc.dart';
 
 @freezed
 class HomeDataEvent with _$HomeDataEvent {
-  const factory HomeDataEvent.getPopularMovies() = _GetPopularMovies;
+  const factory HomeDataEvent.getTopRatedMovies() = _GetTopRatedMovies;
   const factory HomeDataEvent.getTrendingMovies({
     required String dayOrWeek,
   }) = _GetTrendingMovies;

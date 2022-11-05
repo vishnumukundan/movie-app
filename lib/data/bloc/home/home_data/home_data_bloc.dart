@@ -17,20 +17,20 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
     //////////////
     ////////
     ///
-    on<_GetPopularMovies>((event, emit) async {
+    on<_GetTopRatedMovies>((event, emit) async {
       //
-      if (state.popularList.isNotEmpty) {
+      if (state.topRatedList.isNotEmpty) {
         emit(state.copyWith(
           isLoading: false,
           hasError: false,
           isSucces: true,
-          popularList: state.popularList,
+          topRatedList: state.topRatedList,
         ));
       }
       //
       emit(state.copyWith(isLoading: true));
       //
-      final _resut = await _iHomeRepo.getPopularMovies();
+      final _resut = await _iHomeRepo.getTopRatedMovies();
       //
       final _state = _resut.fold(
         (failure) =>
@@ -39,7 +39,7 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
           isLoading: false,
           hasError: false,
           isSucces: true,
-          popularList: success,
+          topRatedList: success,
           trendingList: state.trendingList,
           topTamilList: state.topTamilList,
           topHindiList: state.topHindiList,
@@ -75,7 +75,7 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
           isLoading: false,
           hasError: false,
           isSucces: true,
-          popularList: state.popularList,
+          topRatedList: state.topRatedList,
           trendingList: success,
           topTamilList: state.topTamilList,
           topHindiList: state.topHindiList,
@@ -110,7 +110,7 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
           isLoading: false,
           hasError: false,
           isSucces: true,
-          popularList: state.popularList,
+          topRatedList: state.topRatedList,
           trendingList: state.trendingList,
           topTamilList: success,
           topHindiList: state.topHindiList,
@@ -145,7 +145,7 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
           isLoading: false,
           hasError: false,
           isSucces: true,
-          popularList: state.popularList,
+          topRatedList: state.topRatedList,
           trendingList: state.trendingList,
           topTamilList: state.topTamilList,
           topHindiList: success,
@@ -180,7 +180,7 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
           isLoading: false,
           hasError: false,
           isSucces: true,
-          popularList: state.popularList,
+          topRatedList: state.topRatedList,
           trendingList: state.trendingList,
           topTamilList: state.topTamilList,
           topHindiList: state.topHindiList,

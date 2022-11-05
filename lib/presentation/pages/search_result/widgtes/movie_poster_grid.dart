@@ -15,7 +15,6 @@ import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
-import '../../../../data/sources/dummy/dummy_data.dart';
 import '../../../bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
 
 class MoviePosterGrid__widget extends StatelessWidget {
@@ -43,7 +42,7 @@ class MoviePosterGrid__widget extends StatelessWidget {
         bottom: kDefaultPadding * 2,
       ),
       crossAxisCount: _iconIndex == 0 ? 3 : 2,
-      dataList: upcomingMoviesDummyData,
+      dataList: dataList.results,
       itemCount: dataList.results.length,
       mainAxisSpacing: kDefaultPadding / 2,
       crossAxisSpacing: kDefaultPadding / 2,

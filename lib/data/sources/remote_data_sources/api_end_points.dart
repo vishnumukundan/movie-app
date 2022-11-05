@@ -20,9 +20,9 @@ class ApiEndPoints {
       '$kDiscoverUrl&sort_by=popularity.desc&page=1&vote_count.gte=10&vote_average.gte=6';
   static String topBestMovies(lang) =>
       '$popularMovies&with_original_language=$lang';
-
   static String popularTv =
       '$kBaseUrl/tv/popular?api_key=$apiKey&language=en-US';
+  static String topRatedMovies = '$kBaseUrl/movie/top_rated?api_key=$apiKey';
   static String movieDetils(movieId) =>
       '$kBaseUrl/movie/$movieId?api_key=$apiKey&append_to_response=videos,casts,reviews';
   static String movieCast(movieId) =>

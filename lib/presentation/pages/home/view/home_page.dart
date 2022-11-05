@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
 
       context.read<DiscoverBloc>().add(const DiscoverEvent.getMovieGenres());
 
-      context.read<HomeDataBloc>().add(const HomeDataEvent.getPopularMovies());
+      context.read<HomeDataBloc>().add(const HomeDataEvent.getTopRatedMovies());
       context.read<HomeDataBloc>().add(const HomeDataEvent.getTopHindiMovies());
       context
           .read<HomeDataBloc>()
@@ -86,13 +86,13 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 92.0),
               const GenresScroll__widget(),
 
-              // Popular Movies
+              // Top Rated Movies
               BlocBuilder<HomeDataBloc, HomeDataState>(
                 builder: (context, state) {
                   return MovieListScroll__widget(
-                    title: 'Popular Movies',
+                    title: 'Top Rated Movies',
                     itemCount: 10,
-                    dataList: state.popularList,
+                    dataList: state.topRatedList,
                   );
                 },
               ),
