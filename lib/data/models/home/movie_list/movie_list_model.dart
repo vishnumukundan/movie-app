@@ -26,6 +26,7 @@ class MovieList with _$MovieList {
 class Result with _$Result {
   const factory Result({
     required int id,
+    String? title,
     @JsonKey(name: 'poster_path') String? posterPath,
     double? popularity,
     @JsonKey(name: 'release_date') String? releaseDate,

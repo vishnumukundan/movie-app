@@ -41,6 +41,10 @@ class ApiEndPoints {
   //
   static String popularMoviesWithOriginalLanguage(lang, fromDate, toDate) =>
       '$kBaseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc&page=1&primary_release_date.gte=$fromDate&primary_release_date.lte=$toDate&with_original_language=$lang';
+
+  //
+  static String searchMovie(query) =>
+      '$kBaseUrl/search/movie?api_key=$apiKey&query=$query&page=1&include_adult=true';
 }
 
 enum ImageWidth { w92, w154, w185, w342, w500, w780, original }

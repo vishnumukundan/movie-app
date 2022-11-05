@@ -25,6 +25,7 @@ Map<String, dynamic> _$$_MovieListToJson(_$_MovieList instance) =>
 
 _$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
       id: json['id'] as int,
+      title: json['title'] as String?,
       posterPath: json['poster_path'] as String?,
       popularity: (json['popularity'] as num?)?.toDouble(),
       releaseDate: json['release_date'] as String?,
@@ -34,6 +35,7 @@ _$_Result _$$_ResultFromJson(Map<String, dynamic> json) => _$_Result(
 
 Map<String, dynamic> _$$_ResultToJson(_$_Result instance) => <String, dynamic>{
       'id': instance.id,
+      'title': instance.title,
       'poster_path': instance.posterPath,
       'popularity': instance.popularity,
       'release_date': instance.releaseDate,

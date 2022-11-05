@@ -1,8 +1,9 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
-import 'package:movie_app/data/sources/dummy/dummy_data.dart';
+import 'package:movie_app/data/bloc/search_result/search_result_bloc.dart';
 import 'package:movie_app/presentation/components/movie_horizontal_card_with_playbutton.dart';
 import 'package:movie_app/presentation/components/text.dart';
 
@@ -27,14 +28,18 @@ class TopSearchedListview__widget extends StatelessWidget {
         children: [
           const Medium__text(text: 'Top Searched', fontSize: 16.0),
           const SizedBox(height: kDefaultPadding),
-          CustomListViewBuilder(
-            itemCount: 10,
-            builder: (context, index) =>
-                MovieHorizontalCardWithPlaybutton__widget(
-              id: upcomingMoviesDummyData[index]["id"],
-              title: upcomingMoviesDummyData[index]["title"],
-              image: upcomingMoviesDummyData[index]["poster_path"],
-            ),
+          BlocBuilder<SearchResultBloc, SearchResultState>(
+            builder: (context, state) {
+              return CustomListViewBuilder(
+                itemCount: 10,
+                builder: (context, index) =>
+                    MovieHorizontalCardWithPlaybutton__widget(
+                  id: state.popularDataList.results[index].id,
+                  title: state.popularDataList.results[index].title!,
+                  image: state.popularDataList.results[index].posterPath!,
+                ),
+              );
+            },
           ),
         ],
       ),

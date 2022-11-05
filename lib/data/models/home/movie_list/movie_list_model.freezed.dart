@@ -234,6 +234,7 @@ Result _$ResultFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Result {
   int get id => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'poster_path')
   String? get posterPath => throw _privateConstructorUsedError;
   double? get popularity => throw _privateConstructorUsedError;
@@ -255,6 +256,7 @@ abstract class $ResultCopyWith<$Res> {
       _$ResultCopyWithImpl<$Res>;
   $Res call(
       {int id,
+      String? title,
       @JsonKey(name: 'poster_path') String? posterPath,
       double? popularity,
       @JsonKey(name: 'release_date') String? releaseDate,
@@ -273,6 +275,7 @@ class _$ResultCopyWithImpl<$Res> implements $ResultCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? title = freezed,
     Object? posterPath = freezed,
     Object? popularity = freezed,
     Object? releaseDate = freezed,
@@ -284,6 +287,10 @@ class _$ResultCopyWithImpl<$Res> implements $ResultCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
@@ -315,6 +322,7 @@ abstract class _$$_ResultCopyWith<$Res> implements $ResultCopyWith<$Res> {
   @override
   $Res call(
       {int id,
+      String? title,
       @JsonKey(name: 'poster_path') String? posterPath,
       double? popularity,
       @JsonKey(name: 'release_date') String? releaseDate,
@@ -334,6 +342,7 @@ class __$$_ResultCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? title = freezed,
     Object? posterPath = freezed,
     Object? popularity = freezed,
     Object? releaseDate = freezed,
@@ -345,6 +354,10 @@ class __$$_ResultCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       posterPath: posterPath == freezed
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
@@ -374,6 +387,7 @@ class __$$_ResultCopyWithImpl<$Res> extends _$ResultCopyWithImpl<$Res>
 class _$_Result implements _Result {
   const _$_Result(
       {required this.id,
+      this.title,
       @JsonKey(name: 'poster_path') this.posterPath,
       this.popularity,
       @JsonKey(name: 'release_date') this.releaseDate,
@@ -385,6 +399,8 @@ class _$_Result implements _Result {
 
   @override
   final int id;
+  @override
+  final String? title;
   @override
   @JsonKey(name: 'poster_path')
   final String? posterPath;
@@ -402,7 +418,7 @@ class _$_Result implements _Result {
 
   @override
   String toString() {
-    return 'Result(id: $id, posterPath: $posterPath, popularity: $popularity, releaseDate: $releaseDate, voteAverage: $voteAverage, voteCount: $voteCount)';
+    return 'Result(id: $id, title: $title, posterPath: $posterPath, popularity: $popularity, releaseDate: $releaseDate, voteAverage: $voteAverage, voteCount: $voteCount)';
   }
 
   @override
@@ -411,6 +427,7 @@ class _$_Result implements _Result {
         (other.runtimeType == runtimeType &&
             other is _$_Result &&
             const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.posterPath, posterPath) &&
             const DeepCollectionEquality()
@@ -427,6 +444,7 @@ class _$_Result implements _Result {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(posterPath),
       const DeepCollectionEquality().hash(popularity),
       const DeepCollectionEquality().hash(releaseDate),
@@ -449,6 +467,7 @@ class _$_Result implements _Result {
 abstract class _Result implements Result {
   const factory _Result(
       {required final int id,
+      final String? title,
       @JsonKey(name: 'poster_path') final String? posterPath,
       final double? popularity,
       @JsonKey(name: 'release_date') final String? releaseDate,
@@ -459,6 +478,8 @@ abstract class _Result implements Result {
 
   @override
   int get id;
+  @override
+  String? get title;
   @override
   @JsonKey(name: 'poster_path')
   String? get posterPath;

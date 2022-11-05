@@ -25,7 +25,10 @@ import 'package:movie_app/presentation/themes/values.dart';
 import '../../../components/text.dart';
 
 class MovieDetailsPage extends StatelessWidget {
-  const MovieDetailsPage({Key? key, required this.id}) : super(key: key);
+  const MovieDetailsPage({
+    Key? key,
+    required this.id,
+  }) : super(key: key);
 
   final int id;
 
