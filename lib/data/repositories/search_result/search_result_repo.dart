@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
@@ -21,7 +20,7 @@ class MovieDetailsRepository implements ISearchResultRepo {
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = MovieList.fromJson(response.data);
 
-        log(jsonEncode(dataList.results).toString());
+        // log(jsonEncode(dataList.results).toString());
         return Right(dataList);
       } else {
         log(const Left(NetworkError.serverError()).toString());
@@ -45,7 +44,7 @@ class MovieDetailsRepository implements ISearchResultRepo {
       if (response.statusCode == 200 || response.statusCode == 201) {
         final dataList = MovieList.fromJson(response.data);
 
-        log(jsonEncode(dataList.results).toString());
+        // log(jsonEncode(dataList.results).toString());
         return Right(dataList);
       } else {
         log(const Left(NetworkError.serverError()).toString());

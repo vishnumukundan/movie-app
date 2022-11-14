@@ -129,7 +129,7 @@ class CustomGridViewBuilder extends StatelessWidget {
     this.clipBehavior = Clip.hardEdge,
     this.dragStartBehavior = DragStartBehavior.start,
     //
-    required this.dataList,
+    this.dataList,
     required this.itemCount,
     required this.builder,
     this.reverseList = false,
@@ -156,7 +156,7 @@ class CustomGridViewBuilder extends StatelessWidget {
   final Clip clipBehavior;
   final DragStartBehavior dragStartBehavior;
   //
-  final List dataList;
+  final List? dataList;
   final int itemCount;
   final IndexedWidgetBuilder builder;
   final bool reverseList;
@@ -165,35 +165,35 @@ class CustomGridViewBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (dataList.isNotEmpty) {
-      for (int i = 0; i < itemCount; i++) {
-        items.add(builder(context, i));
-      }
-      return GridView.count(
-        crossAxisCount: crossAxisCount,
-        scrollDirection: scrollDirection,
-        reverse: reverse,
-        controller: controller,
-        primary: primary,
-        physics: physics,
-        shrinkWrap: shrinkWrap,
-        padding: padding,
-        mainAxisSpacing: mainAxisSpacing,
-        crossAxisSpacing: crossAxisSpacing,
-        childAspectRatio: childAspectRatio,
-        addAutomaticKeepAlives: addAutomaticKeepAlives,
-        addRepaintBoundaries: addRepaintBoundaries,
-        addSemanticIndexes: addSemanticIndexes,
-        cacheExtent: cacheExtent,
-        semanticChildCount: semanticChildCount,
-        keyboardDismissBehavior: keyboardDismissBehavior,
-        restorationId: restorationId,
-        clipBehavior: clipBehavior,
-        dragStartBehavior: dragStartBehavior,
-        children: reverseList ? items.reversed.toList() : items,
-      );
-    } else {
-      return Container();
+    // if (dataList!.isNotEmpty) {
+    for (int i = 0; i < itemCount; i++) {
+      items.add(builder(context, i));
     }
+    return GridView.count(
+      crossAxisCount: crossAxisCount,
+      scrollDirection: scrollDirection,
+      reverse: reverse,
+      controller: controller,
+      primary: primary,
+      physics: physics,
+      shrinkWrap: shrinkWrap,
+      padding: padding,
+      mainAxisSpacing: mainAxisSpacing,
+      crossAxisSpacing: crossAxisSpacing,
+      childAspectRatio: childAspectRatio,
+      addAutomaticKeepAlives: addAutomaticKeepAlives,
+      addRepaintBoundaries: addRepaintBoundaries,
+      addSemanticIndexes: addSemanticIndexes,
+      cacheExtent: cacheExtent,
+      semanticChildCount: semanticChildCount,
+      keyboardDismissBehavior: keyboardDismissBehavior,
+      restorationId: restorationId,
+      clipBehavior: clipBehavior,
+      dragStartBehavior: dragStartBehavior,
+      children: reverseList ? items.reversed.toList() : items,
+    );
+    // } else {
+    //   return Container();
+    // }
   }
 }

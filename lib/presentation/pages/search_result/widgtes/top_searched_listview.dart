@@ -6,6 +6,7 @@ import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/data/bloc/search_result/search_result_bloc.dart';
 import 'package:movie_app/presentation/components/movie_horizontal_card_with_playbutton.dart';
 import 'package:movie_app/presentation/components/text.dart';
+import 'package:movie_app/presentation/pages/search_result/widgtes/skelton/top_searched_listview_skelton.dart';
 
 import '../../../themes/screen_size_config.dart';
 import '../../../themes/values.dart';
@@ -32,12 +33,17 @@ class TopSearchedListview__widget extends StatelessWidget {
             builder: (context, state) {
               return CustomListViewBuilder(
                 itemCount: 10,
-                builder: (context, index) =>
-                    MovieHorizontalCardWithPlaybutton__widget(
-                  id: state.popularDataList.results[index].id,
-                  title: state.popularDataList.results[index].title!,
-                  image: state.popularDataList.results[index].posterPath!,
-                ),
+                builder: (context, index) {
+                  if (state.isLoading) {
+                    return const TopSearchedListviewSkelton__widget();
+                  } else {
+                    return MovieHorizontalCardWithPlaybutton__widget(
+                      id: state.popularDataList.results[index].id,
+                      title: state.popularDataList.results[index].title!,
+                      image: state.popularDataList.results[index].posterPath!,
+                    );
+                  }
+                },
               );
             },
           ),

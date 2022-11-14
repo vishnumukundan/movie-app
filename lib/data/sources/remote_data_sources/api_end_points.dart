@@ -44,7 +44,7 @@ class ApiEndPoints {
 
   //
   static String searchMovie(query) =>
-      '$kBaseUrl/search/movie?api_key=$apiKey&query=$query&page=1&include_adult=true';
+      '$kBaseUrl/search/movie?api_key=$apiKey&query=$query&page=1&include_adult=false';
 }
 
 enum ImageWidth { w92, w154, w185, w342, w500, w780, original }

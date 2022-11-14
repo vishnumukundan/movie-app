@@ -1,8 +1,10 @@
-// ignore_for_file: camel_case_types, no_leading_underscores_for_local_identifiers, must_be_immutable, invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, prefer_final_fields
+// ignore_for_file: camel_case_types, no_leading_underscores_for_local_identifiers, must_be_immutable, invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, prefer_final_fields, await_only_futures
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/services/debouncer.dart';
 import 'package:movie_app/core/services/navigator.dart';
+import 'package:movie_app/data/bloc/search_result/search_result_bloc.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
@@ -18,6 +20,8 @@ class AppbarSearch__widget extends StatelessWidget {
 
   FocusNode _focus = FocusNode();
   final TextEditingController _controller = TextEditingController();
+
+  final _debouncer = Debouncer(milliseconds: 2 * 1000);
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +53,12 @@ class AppbarSearch__widget extends StatelessWidget {
                     Future.delayed(const Duration(milliseconds: 300), () {
                       context.read<AppbarSearchCubit>().emit(
                             const AppbarSearchState.initial(
-                                focusEnabled: false),
+                              focusEnabled: false,
+                            ),
                           );
+                      context
+                          .read<SearchResultBloc>()
+                          .emit(SearchResultState.initial());
                     });
                   },
                   child: Padding(
@@ -65,6 +73,13 @@ class AppbarSearch__widget extends StatelessWidget {
               child: TextField(
                 onTap: () {
                   context.read<AppbarSearchCubit>().isFocused();
+                },
+                onChanged: (value) {
+                  _debouncer.run(() {
+                    context
+                        .read<SearchResultBloc>()
+                        .add(SearchResultEvent.getSearchedMovies(query: value));
+                  });
                 },
                 focusNode: _focus,
                 controller: _controller,

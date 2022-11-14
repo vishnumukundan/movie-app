@@ -140,7 +140,7 @@ class pageWidget extends StatelessWidget {
           alignment: Alignment.topCenter,
           children: [
             Background(
-              child: MoviePosterGrid__widget(id: id, dataList: dataList),
+              child: MoviePosterGrid__widget(dataList: dataList),
             ),
             AppbarWithBackButton__widget(text: title),
           ],

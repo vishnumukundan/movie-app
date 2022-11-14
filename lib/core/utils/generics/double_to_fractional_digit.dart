@@ -1,5 +1,5 @@
-doubleToFactionalDigit(double vale, int digits) {
-  final String stringValue = vale.toStringAsFixed(digits);
+doubleToFactionalDigit(double value, int digits) {
+  final String stringValue = value.toStringAsFixed(digits);
   final double finalValue = double.parse(stringValue);
   return finalValue;
 }

@@ -20,11 +20,9 @@ import '../../../bloc/components/inner_appbars/appbar_search/appbar_search_cubit
 class MoviePosterGrid__widget extends StatelessWidget {
   const MoviePosterGrid__widget({
     Key? key,
-    required this.id,
     required this.dataList,
   }) : super(key: key);
 
-  final dynamic id;
   final MovieList dataList;
 
   @override
@@ -42,7 +40,6 @@ class MoviePosterGrid__widget extends StatelessWidget {
         bottom: kDefaultPadding * 2,
       ),
       crossAxisCount: _iconIndex == 0 ? 3 : 2,
-      dataList: dataList.results,
       itemCount: dataList.results.length,
       mainAxisSpacing: kDefaultPadding / 2,
       crossAxisSpacing: kDefaultPadding / 2,

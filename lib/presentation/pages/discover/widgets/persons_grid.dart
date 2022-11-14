@@ -7,7 +7,6 @@ import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/string_manipulation.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
 import 'package:movie_app/data/models/movie_details/movie_details_model.dart';
-import 'package:movie_app/data/sources/dummy/dummy_data.dart';
 import 'package:movie_app/presentation/components/person_image_and_name_card.dart';
 import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/values.dart';
@@ -22,7 +21,6 @@ class PersonsGrid__widget extends StatelessWidget {
           horizontal: kDefaultPadding * 2,
         ),
         crossAxisCount: 3,
-        dataList: personDummyData,
         mainAxisSpacing: kDefaultPadding,
         crossAxisSpacing: kDefaultPadding,
         childAspectRatio: 3 / 4,
