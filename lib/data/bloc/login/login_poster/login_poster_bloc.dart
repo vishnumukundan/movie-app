@@ -16,22 +16,28 @@ class LoginPosterBloc extends Bloc<LoginPosterEvent, LoginPosterState> {
   final ILoginImagesRepo _loginImagesRepo;
   LoginPosterBloc(this._loginImagesRepo) : super(LoginPosterState.initial()) {
     on<_GetLoginPosterImages>((event, emit) async {
-      emit(state.copyWith(
-        isLoading: true,
-        loginPosterFailureOrSuccessOption: none(),
-      ));
+      if (state.loginPosterDataList.isNotEmpty) {
+        emit(LoginPosterState(
+          isLoading: false,
+          hasError: false,
+          isSuccess: true,
+          loginPosterDataList: state.loginPosterDataList,
+        ));
+      }
+
+      emit(state.copyWith(isLoading: true));
       final Either<NetworkError, List<LoginPoster>> loginPosterOption =
           await _loginImagesRepo.getLoginPosterImages();
       emit(loginPosterOption.fold(
         (failure) => state.copyWith(
           isLoading: false,
           hasError: true,
-          loginPosterFailureOrSuccessOption: some(left(failure)),
         ),
-        (success) => state.copyWith(
+        (success) => LoginPosterState(
           isLoading: false,
+          hasError: false,
+          isSuccess: true,
           loginPosterDataList: success,
-          loginPosterFailureOrSuccessOption: some(right(success)),
         ),
       ));
     });

@@ -170,11 +170,9 @@ abstract class _GetLoginPosterImages implements LoginPosterEvent {
 mixin _$LoginPosterState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
+  bool get isSuccess => throw _privateConstructorUsedError;
   List<LoginPoster> get loginPosterDataList =>
       throw _privateConstructorUsedError;
-  Option<Either<NetworkError, List<LoginPoster>>>
-      get loginPosterFailureOrSuccessOption =>
-          throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginPosterStateCopyWith<LoginPosterState> get copyWith =>
@@ -189,9 +187,8 @@ abstract class $LoginPosterStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool hasError,
-      List<LoginPoster> loginPosterDataList,
-      Option<Either<NetworkError, List<LoginPoster>>>
-          loginPosterFailureOrSuccessOption});
+      bool isSuccess,
+      List<LoginPoster> loginPosterDataList});
 }
 
 /// @nodoc
@@ -207,8 +204,8 @@ class _$LoginPosterStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? hasError = freezed,
+    Object? isSuccess = freezed,
     Object? loginPosterDataList = freezed,
-    Object? loginPosterFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
@@ -219,15 +216,14 @@ class _$LoginPosterStateCopyWithImpl<$Res>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSuccess: isSuccess == freezed
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
       loginPosterDataList: loginPosterDataList == freezed
           ? _value.loginPosterDataList
           : loginPosterDataList // ignore: cast_nullable_to_non_nullable
               as List<LoginPoster>,
-      loginPosterFailureOrSuccessOption: loginPosterFailureOrSuccessOption ==
-              freezed
-          ? _value.loginPosterFailureOrSuccessOption
-          : loginPosterFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<NetworkError, List<LoginPoster>>>,
     ));
   }
 }
@@ -242,9 +238,8 @@ abstract class _$$_LoginPosterStateCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool hasError,
-      List<LoginPoster> loginPosterDataList,
-      Option<Either<NetworkError, List<LoginPoster>>>
-          loginPosterFailureOrSuccessOption});
+      bool isSuccess,
+      List<LoginPoster> loginPosterDataList});
 }
 
 /// @nodoc
@@ -262,8 +257,8 @@ class __$$_LoginPosterStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? hasError = freezed,
+    Object? isSuccess = freezed,
     Object? loginPosterDataList = freezed,
-    Object? loginPosterFailureOrSuccessOption = freezed,
   }) {
     return _then(_$_LoginPosterState(
       isLoading: isLoading == freezed
@@ -274,15 +269,14 @@ class __$$_LoginPosterStateCopyWithImpl<$Res>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSuccess: isSuccess == freezed
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
       loginPosterDataList: loginPosterDataList == freezed
           ? _value._loginPosterDataList
           : loginPosterDataList // ignore: cast_nullable_to_non_nullable
               as List<LoginPoster>,
-      loginPosterFailureOrSuccessOption: loginPosterFailureOrSuccessOption ==
-              freezed
-          ? _value.loginPosterFailureOrSuccessOption
-          : loginPosterFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<NetworkError, List<LoginPoster>>>,
     ));
   }
 }
@@ -293,14 +287,16 @@ class _$_LoginPosterState implements _LoginPosterState {
   const _$_LoginPosterState(
       {required this.isLoading,
       required this.hasError,
-      required final List<LoginPoster> loginPosterDataList,
-      required this.loginPosterFailureOrSuccessOption})
+      required this.isSuccess,
+      required final List<LoginPoster> loginPosterDataList})
       : _loginPosterDataList = loginPosterDataList;
 
   @override
   final bool isLoading;
   @override
   final bool hasError;
+  @override
+  final bool isSuccess;
   final List<LoginPoster> _loginPosterDataList;
   @override
   List<LoginPoster> get loginPosterDataList {
@@ -309,12 +305,8 @@ class _$_LoginPosterState implements _LoginPosterState {
   }
 
   @override
-  final Option<Either<NetworkError, List<LoginPoster>>>
-      loginPosterFailureOrSuccessOption;
-
-  @override
   String toString() {
-    return 'LoginPosterState(isLoading: $isLoading, hasError: $hasError, loginPosterDataList: $loginPosterDataList, loginPosterFailureOrSuccessOption: $loginPosterFailureOrSuccessOption)';
+    return 'LoginPosterState(isLoading: $isLoading, hasError: $hasError, isSuccess: $isSuccess, loginPosterDataList: $loginPosterDataList)';
   }
 
   @override
@@ -324,11 +316,9 @@ class _$_LoginPosterState implements _LoginPosterState {
             other is _$_LoginPosterState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.hasError, hasError) &&
+            const DeepCollectionEquality().equals(other.isSuccess, isSuccess) &&
             const DeepCollectionEquality()
-                .equals(other._loginPosterDataList, _loginPosterDataList) &&
-            const DeepCollectionEquality().equals(
-                other.loginPosterFailureOrSuccessOption,
-                loginPosterFailureOrSuccessOption));
+                .equals(other._loginPosterDataList, _loginPosterDataList));
   }
 
   @override
@@ -336,8 +326,8 @@ class _$_LoginPosterState implements _LoginPosterState {
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(hasError),
-      const DeepCollectionEquality().hash(_loginPosterDataList),
-      const DeepCollectionEquality().hash(loginPosterFailureOrSuccessOption));
+      const DeepCollectionEquality().hash(isSuccess),
+      const DeepCollectionEquality().hash(_loginPosterDataList));
 
   @JsonKey(ignore: true)
   @override
@@ -347,21 +337,20 @@ class _$_LoginPosterState implements _LoginPosterState {
 
 abstract class _LoginPosterState implements LoginPosterState {
   const factory _LoginPosterState(
-      {required final bool isLoading,
-      required final bool hasError,
-      required final List<LoginPoster> loginPosterDataList,
-      required final Option<Either<NetworkError, List<LoginPoster>>>
-          loginPosterFailureOrSuccessOption}) = _$_LoginPosterState;
+          {required final bool isLoading,
+          required final bool hasError,
+          required final bool isSuccess,
+          required final List<LoginPoster> loginPosterDataList}) =
+      _$_LoginPosterState;
 
   @override
   bool get isLoading;
   @override
   bool get hasError;
   @override
-  List<LoginPoster> get loginPosterDataList;
+  bool get isSuccess;
   @override
-  Option<Either<NetworkError, List<LoginPoster>>>
-      get loginPosterFailureOrSuccessOption;
+  List<LoginPoster> get loginPosterDataList;
   @override
   @JsonKey(ignore: true)
   _$$_LoginPosterStateCopyWith<_$_LoginPosterState> get copyWith =>

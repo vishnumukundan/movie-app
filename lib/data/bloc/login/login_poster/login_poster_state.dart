@@ -5,16 +5,15 @@ class LoginPosterState with _$LoginPosterState {
   const factory LoginPosterState({
     required bool isLoading,
     required bool hasError,
+    required bool isSuccess,
     required List<LoginPoster> loginPosterDataList,
-    required Option<Either<NetworkError, List<LoginPoster>>>
-        loginPosterFailureOrSuccessOption,
   }) = _LoginPosterState;
 
   factory LoginPosterState.initial() {
     return const LoginPosterState(
       isLoading: true,
       hasError: false,
-      loginPosterFailureOrSuccessOption: None(),
+      isSuccess: false,
       loginPosterDataList: [],
     );
   }
