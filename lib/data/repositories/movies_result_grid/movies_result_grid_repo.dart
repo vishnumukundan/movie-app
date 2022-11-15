@@ -19,19 +19,14 @@ class MoviesResultGridRepository implements IMoviesResultGridRepo {
 
       // log(jsonEncode(response.data).toString());
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = MovieList.fromJson(response.data);
+      final dataList = MovieList.fromJson(response.data);
 
-        // log(jsonEncode(dataList).toString());
+      // log(jsonEncode(dataList).toString());
 
-        return Right(dataList);
-      } else {
-        log(const Left(NetworkError.serverError()).toString());
-        return const Left(NetworkError.serverError());
-      }
+      return Right(dataList);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 
@@ -44,18 +39,13 @@ class MoviesResultGridRepository implements IMoviesResultGridRepo {
 
       // log(jsonEncode(response.data).toString());
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = MovieList.fromJson(response.data);
+      final dataList = MovieList.fromJson(response.data);
 
-        // log(jsonEncode(dataList).toString());
-        return Right(dataList);
-      } else {
-        log(const Left(NetworkError.serverError()).toString());
-        return const Left(NetworkError.serverError());
-      }
+      // log(jsonEncode(dataList).toString());
+      return Right(dataList);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 }

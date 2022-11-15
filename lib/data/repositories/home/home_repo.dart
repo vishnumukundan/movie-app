@@ -16,18 +16,14 @@ class HomeRepository implements IHomeRepo {
       final response =
           await Dio(BaseOptions()).get(ApiEndPoints.topRatedMovies);
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = (response.data['results'] as List)
-            .map((e) => Result.fromJson(e))
-            .toList();
-        // log((dataList).toString());
-        return Right(dataList);
-      } else {
-        return const Left(NetworkError.serverError());
-      }
+      final dataList = (response.data['results'] as List)
+          .map((e) => Result.fromJson(e))
+          .toList();
+      // log((dataList).toString());
+      return Right(dataList);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 
@@ -37,18 +33,14 @@ class HomeRepository implements IHomeRepo {
       final response = await Dio(BaseOptions())
           .get(ApiEndPoints.topBestMovies(Language.hindi));
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = (response.data['results'] as List)
-            .map((e) => Result.fromJson(e))
-            .toList();
-        // log((dataList).toString());
-        return Right(dataList);
-      } else {
-        return const Left(NetworkError.serverError());
-      }
+      final dataList = (response.data['results'] as List)
+          .map((e) => Result.fromJson(e))
+          .toList();
+      // log((dataList).toString());
+      return Right(dataList);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 
@@ -58,18 +50,14 @@ class HomeRepository implements IHomeRepo {
       final response = await Dio(BaseOptions())
           .get(ApiEndPoints.topBestMovies(Language.malayalam));
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = (response.data['results'] as List)
-            .map((e) => Result.fromJson(e))
-            .toList();
-        // log((dataList).toString());
-        return Right(dataList);
-      } else {
-        return const Left(NetworkError.serverError());
-      }
+      final dataList = (response.data['results'] as List)
+          .map((e) => Result.fromJson(e))
+          .toList();
+      // log((dataList).toString());
+      return Right(dataList);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 
@@ -79,18 +67,14 @@ class HomeRepository implements IHomeRepo {
       final response = await Dio(BaseOptions())
           .get(ApiEndPoints.topBestMovies(Language.tamil));
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = (response.data['results'] as List)
-            .map((e) => Result.fromJson(e))
-            .toList();
-        // log((dataList).toString());
-        return Right(dataList);
-      } else {
-        return const Left(NetworkError.serverError());
-      }
+      final dataList = (response.data['results'] as List)
+          .map((e) => Result.fromJson(e))
+          .toList();
+      // log((dataList).toString());
+      return Right(dataList);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 
@@ -102,18 +86,14 @@ class HomeRepository implements IHomeRepo {
       final response =
           await Dio(BaseOptions()).get(ApiEndPoints.trendingMovies(dayOrWeek));
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = (response.data['results'] as List)
-            .map((e) => Result.fromJson(e))
-            .toList();
-        // log((dataList).toString());
-        return Right(dataList);
-      } else {
-        return const Left(NetworkError.serverError());
-      }
+      final dataList = (response.data['results'] as List)
+          .map((e) => Result.fromJson(e))
+          .toList();
+      // log((dataList).toString());
+      return Right(dataList);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 }

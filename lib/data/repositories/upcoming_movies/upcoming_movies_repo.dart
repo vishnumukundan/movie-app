@@ -17,20 +17,16 @@ class UpcomingMoviesRepository implements IUpcomingMoviesRepo {
       final response = await Dio(BaseOptions())
           .get(ApiEndPoints.upcomingMovies(date, Language.malayalam));
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = (response.data["results"] as List)
-            .map((e) => UpcomingMovies.fromJson(e))
-            .toList();
-        dataList.sort(((a, b) => a.releaseDate!.compareTo(b.releaseDate!)));
+      final dataList = (response.data["results"] as List)
+          .map((e) => UpcomingMovies.fromJson(e))
+          .toList();
+      dataList.sort(((a, b) => a.releaseDate!.compareTo(b.releaseDate!)));
 
-        // log(json.encode(dataList).toString());
-        return Right(dataList);
-      } else {
-        return const Left(NetworkError.serverError());
-      }
+      // log(json.encode(dataList).toString());
+      return Right(dataList);
     } catch (e) {
       // log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 }

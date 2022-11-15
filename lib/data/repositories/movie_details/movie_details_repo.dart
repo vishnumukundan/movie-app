@@ -20,18 +20,13 @@ class MovieDetailsRepository implements IMovieDetailsRepo {
 
       // log(jsonEncode(response.data).toString());
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = MovieDetails.fromJson(response.data);
+      final dataList = MovieDetails.fromJson(response.data);
 
-        // log(jsonEncode(dataList.casts!.cast).toString());
-        return Right(dataList);
-      } else {
-        log(const Left(NetworkError.serverError()).toString());
-        return const Left(NetworkError.serverError());
-      }
+      // log(jsonEncode(dataList.casts!.cast).toString());
+      return Right(dataList);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 }

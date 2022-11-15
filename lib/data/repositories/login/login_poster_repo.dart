@@ -17,21 +17,16 @@ class LoginPosterRepository implements ILoginImagesRepo {
       final response = await Dio(BaseOptions())
           .get(ApiEndPoints.trendingMovies(TrendigMovies.allDay));
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final loginPostersList = (response.data["results"] as List)
-            .map((e) => LoginPoster.fromJson(e))
-            .toList();
-        loginPostersList
-            .sort(((a, b) => a.popularity!.compareTo(b.popularity!)));
+      final loginPostersList = (response.data["results"] as List)
+          .map((e) => LoginPoster.fromJson(e))
+          .toList();
+      loginPostersList.sort(((a, b) => a.popularity!.compareTo(b.popularity!)));
 
-        log(loginPostersList.reversed.toList().toString());
-        return Right(loginPostersList.reversed.toList());
-      } else {
-        return const Left(NetworkError.serverError());
-      }
+      log(loginPostersList.reversed.toList().toString());
+      return Right(loginPostersList.reversed.toList());
     } catch (e) {
       // log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 }

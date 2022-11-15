@@ -33,17 +33,13 @@ class ImageSliderRepository implements IImageSliderRepo {
           ApiEndPoints.popularMoviesWithOriginalLanguage(
               Language.malayalam, formatedPastDate, formattedTodayDate));
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final imageSliderData = (response.data["results"] as List)
-            .map((e) => ImageSlider.fromJson(e))
-            .toList();
-        return Right(imageSliderData);
-      } else {
-        return const Left(NetworkError.serverError());
-      }
+      final imageSliderData = (response.data["results"] as List)
+          .map((e) => ImageSlider.fromJson(e))
+          .toList();
+      return Right(imageSliderData);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 }

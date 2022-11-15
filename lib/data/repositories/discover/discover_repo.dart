@@ -15,19 +15,15 @@ class DiscoverRepository implements IDiscoverRepo {
     try {
       final response = await Dio(BaseOptions()).get(ApiEndPoints.movieGenres);
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = (response.data["genres"] as List)
-            .map((e) => Genre.fromJson(e))
-            .toList();
+      final dataList = (response.data["genres"] as List)
+          .map((e) => Genre.fromJson(e))
+          .toList();
 
-        // log(json.encode(dataList).toString());
-        return Right(dataList);
-      } else {
-        return const Left(NetworkError.serverError());
-      }
+      // log(json.encode(dataList).toString());
+      return Right(dataList);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 
@@ -37,19 +33,15 @@ class DiscoverRepository implements IDiscoverRepo {
       final response =
           await Dio(BaseOptions()).get(ApiEndPoints.popularPersons);
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final dataList = (response.data["results"] as List)
-            .map((e) => Cast.fromJson(e))
-            .toList();
+      final dataList = (response.data["results"] as List)
+          .map((e) => Cast.fromJson(e))
+          .toList();
 
-        // log(json.encode(dataList).toString());
-        return Right(dataList);
-      } else {
-        return const Left(NetworkError.serverError());
-      }
+      // log(json.encode(dataList).toString());
+      return Right(dataList);
     } catch (e) {
       log(e.toString());
-      return const Left(NetworkError.clientError());
+      return Left(NetworkError.getDioException(e));
     }
   }
 }
