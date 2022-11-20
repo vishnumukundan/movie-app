@@ -11,16 +11,25 @@ class TextFormField__widget extends StatelessWidget {
     required this.hint,
     this.prefixIcon,
     required this.controller,
+    this.initialValue,
+    this.obscureText = false,
+    this.keyboardType = TextInputType.none,
   }) : super(key: key);
 
   final String hint;
+  final String? initialValue;
   final prefixIcon;
   final TextEditingController controller;
+  final bool obscureText;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
+      obscureText: obscureText,
       controller: controller,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         border: InputBorder.none,
         hintText: hint,

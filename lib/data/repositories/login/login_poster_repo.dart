@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -22,7 +20,7 @@ class LoginPosterRepository implements ILoginImagesRepo {
           .toList();
       loginPostersList.sort(((a, b) => a.popularity!.compareTo(b.popularity!)));
 
-      log(loginPostersList.reversed.toList().toString());
+      // log(loginPostersList.reversed.toList().toString());
       return Right(loginPostersList.reversed.toList());
     } catch (e) {
       // log(e.toString());

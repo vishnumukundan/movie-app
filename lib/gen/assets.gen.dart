@@ -116,6 +116,10 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/logo2.svg
   SvgGenImage get logo2 => const SvgGenImage('assets/images/logo2.svg');
+
+  /// File path: assets/images/no_signal.png
+  AssetGenImage get noSignal =>
+      const AssetGenImage('assets/images/no_signal.png');
 }
 
 class Assets {

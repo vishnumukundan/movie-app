@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/custom_scroll_behavior.dart';
@@ -16,6 +17,7 @@ import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/presentation/bloc/components/widgets_functionality/widgets_functionality_bloc.dart';
 import 'package:movie_app/presentation/bloc/main/appbar/appbar_bloc.dart';
 import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
+import 'package:movie_app/presentation/components/error_widgets/no_internet_dialog.dart';
 import 'package:movie_app/presentation/components/movie_list_scroll.dart';
 import 'package:movie_app/presentation/pages/home/widgets/genres_scroll.dart';
 import 'package:movie_app/presentation/pages/home/widgets/latest_trailers.dart';

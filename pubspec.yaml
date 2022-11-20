@@ -12,6 +12,7 @@ dependencies:
   auto_route: ^5.0.1
   cached_network_image: ^3.2.1
   carousel_slider: ^4.1.1
+  connectivity_plus: ^3.0.2
   dartz: ^0.10.1
   dio: ^4.0.6
   flutter:

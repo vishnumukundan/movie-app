@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
+
 import '../../../themes/colors.dart';
 import '../../../themes/text_form_field.dart';
 import '../../../themes/values.dart';
@@ -11,11 +12,17 @@ class TextField__widget extends StatelessWidget {
     required this.hint,
     required this.prefixIcon,
     required this.controller,
+    this.initialValue,
+    this.obscureText = false,
+    this.keyboardType = TextInputType.none,
   }) : super(key: key);
 
   final String hint;
   final prefixIcon;
   final TextEditingController controller;
+  final String? initialValue;
+  final bool obscureText;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +47,14 @@ class TextField__widget extends StatelessWidget {
               ),
               const SizedBox(width: kDefaultPadding / 2),
               Expanded(
-                  child: TextFormField__widget(
-                      hint: hint, controller: controller)),
+                child: TextFormField__widget(
+                  hint: hint,
+                  controller: controller,
+                  initialValue: initialValue,
+                  obscureText: obscureText,
+                  keyboardType: keyboardType,
+                ),
+              ),
             ],
           ),
         ),
