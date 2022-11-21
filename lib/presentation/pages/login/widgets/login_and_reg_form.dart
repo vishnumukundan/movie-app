@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/presentation/components/button.dart';
-import 'package:movie_app/presentation/components/error_widgets/no_internet_dialog.dart';
 import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 
@@ -63,9 +62,7 @@ class _LoginAndRegForm__widgetState extends State<LoginAndRegForm__widget> {
                   child: Accent_Large__button(
                     text: 'SignUp',
                     // onTap: () => PageNav.pushAndReplace(context, MainPage()),
-                    onTap: () {
-                      showNoInternetDialog(context);
-                    },
+                    onTap: () {},
                   ),
                 ),
               ],

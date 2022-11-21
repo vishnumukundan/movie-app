@@ -26,7 +26,7 @@ import 'package:movie_app/presentation/themes/colors.dart';
 
 import 'data/bloc/home/image_slider/image_slider_bloc.dart';
 import 'presentation/bloc/main/bottom_navbar/botom_nav_cubit.dart';
-import 'presentation/components/error_widgets/error_widget.dart';
+import 'presentation/components/dialogs/error_widget.dart';
 import 'presentation/pages/splash/view/splash_page.dart';
 
 Future<void> main() async {
