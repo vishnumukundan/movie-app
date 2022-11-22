@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 const String LOGIN_STATUS = 'isLogin';
 
+//
 inputValidation(value) {
   if (value == null || value.isEmpty) {
     return 'Value is empty';
@@ -22,6 +23,7 @@ inputValidation(value) {
   }
 }
 
+//
 userLogin(BuildContext context, String username, String password) async {
   if (username == password) {
     final pref = await SharedPreferences.getInstance();
@@ -34,9 +36,17 @@ userLogin(BuildContext context, String username, String password) async {
   }
 }
 
-gotoLogin(BuildContext context) {
-  Future.delayed(const Duration(seconds: 3), () {
+//
+Future<void> gotoLogin(BuildContext context) async {
+  await Future.delayed(const Duration(seconds: 3), () {
     PageNav.pushAndReplace(context, const LoginPage());
+  });
+}
+
+//
+Future<void> gotoHome(BuildContext context) async {
+  await Future.delayed(const Duration(seconds: 3), () {
+    PageNav.pushAndReplace(context, MainPage());
   });
 }
 
@@ -46,7 +56,7 @@ Future<void> chechkUserLoggedIn(BuildContext context) async {
   if (userLoggedIn == null || userLoggedIn == false) {
     gotoLogin(context);
   } else {
-    PageNav.pushAndReplace(context, MainPage());
+    gotoHome(context);
   }
 }
 
