@@ -1,11 +1,10 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:movie_app/core/services/navigator.dart';
+import 'package:movie_app/core/services/login_service.dart';
+import 'package:movie_app/core/utils/generics/dialoge_and_snackbar_strings.dart';
 import 'package:movie_app/presentation/components/button.dart';
-import 'package:movie_app/presentation/pages/main/view/main_page.dart';
-import 'package:movie_app/presentation/themes/colors.dart';
+import 'package:movie_app/presentation/components/snackbar/snackbar.dart';
 
 import '../../../../gen/assets.gen.dart';
 import '../../../themes/values.dart';
@@ -27,11 +26,15 @@ class _LoginAndRegForm__widgetState extends State<LoginAndRegForm__widget> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-
+//
+  final _formKey = GlobalKey<FormState>();
+  final _isDataMatched = true;
+  //
   @override
   Widget build(BuildContext context) {
     if (_isSignup) {
       return Form(
+        key: _formKey,
         child: Column(
           children: [
             TextField__widget(
@@ -72,20 +75,22 @@ class _LoginAndRegForm__widgetState extends State<LoginAndRegForm__widget> {
       );
     } else {
       return Form(
+        key: _formKey,
         child: Column(
           children: [
             TextField__widget(
               hint: 'Username',
-              // initialValue: 'user@email.com',
               prefixIcon: Assets.icons.user,
-              controller: _usernameController..text = 'user@email.com',
-              keyboardType: TextInputType.emailAddress,
+              controller: _usernameController,
+              validator: (value) => inputValidation(value),
+              onChanged: (value) => _formKey.currentState!.validate(),
             ),
             TextField__widget(
               hint: 'Password',
               prefixIcon: Assets.icons.password,
-              controller: _passwordController..text = 'user1234',
+              controller: _passwordController,
               obscureText: true,
+              validator: (value) => inputValidation(value),
             ),
             Row(
               children: <Widget>[
@@ -93,21 +98,26 @@ class _LoginAndRegForm__widgetState extends State<LoginAndRegForm__widget> {
                   text: 'SignUp',
                   // onTap: () => setState(() => _isSignup = true),
                   onTap: () {
-                    Get.snackbar(
-                      'Not available',
-                      'There isn\'t currently a signup page. Thank you for your patience. We are attempting to fix it.',
-                      snackPosition: SnackPosition.BOTTOM,
-                      duration: const Duration(seconds: 5),
-                      isDismissible: true,
-                      backgroundColor: kColorPrimary,
-                    );
+                    const Snackbar__widget(
+                      message: SnackBarMessage.noSignupPage,
+                    ).buildSnackBar();
                   },
                 ),
                 const SizedBox(width: kDefaultPadding),
                 Expanded(
                   child: Accent_Large__button(
                     text: 'Login',
-                    onTap: () => PageNav.pushAndReplace(context, MainPage()),
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        userLogin(
+                          context,
+                          _usernameController.text,
+                          _passwordController.text,
+                        );
+                      } else {
+                        return;
+                      }
+                    },
                   ),
                 ),
               ],

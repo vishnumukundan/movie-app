@@ -1,9 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/services/navigator.dart';
+import 'package:movie_app/core/services/login_service.dart';
 import 'package:movie_app/presentation/components/background.dart';
-import 'package:movie_app/presentation/pages/login/view/login_page.dart';
 
 import '../../../../gen/assets.gen.dart';
 import '../../../themes/screen_size_config.dart';
@@ -17,16 +14,13 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   @override
-  Widget build(BuildContext context) {
-    // context
-    //     .read<InternetConnenctivityBloc>()
-    //     .add(InternetConnenctivityEvent.checkConnectivity(
-    //       connectivityResult: ,
-    //     ));
-    Future.delayed(const Duration(seconds: 3), () {
-      PageNav.pushAndReplace(context, const LoginPage());
-    });
+  void initState() {
+    chechkUserLoggedIn(context);
+    super.initState();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     ScreenConfig().init(context);
     return Scaffold(
       body: Background(

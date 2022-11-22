@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/services/login_service.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/pages/profile/widgets/profile_menu_item.dart';
@@ -114,6 +115,7 @@ class ProfilePage extends StatelessWidget {
                         ProfileMenuItem__widget(
                           icon: Assets.icons.logout,
                           text: 'Sign Out',
+                          onTap: () => signOut(context),
                         ),
                       ],
                     ),

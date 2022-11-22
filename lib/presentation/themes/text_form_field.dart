@@ -11,17 +11,22 @@ class TextFormField__widget extends StatelessWidget {
     required this.hint,
     this.prefixIcon,
     required this.controller,
+    this.validator,
     this.initialValue,
     this.obscureText = false,
-    this.keyboardType = TextInputType.none,
+    this.keyboardType = TextInputType.text,
+    this.onChanged,
   }) : super(key: key);
 
   final String hint;
+
   final String? initialValue;
   final prefixIcon;
   final TextEditingController controller;
   final bool obscureText;
   final TextInputType keyboardType;
+  final String? Function(String?)? validator;
+  final Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +35,16 @@ class TextFormField__widget extends StatelessWidget {
       obscureText: obscureText,
       controller: controller,
       keyboardType: keyboardType,
+      validator: validator,
       decoration: InputDecoration(
         border: InputBorder.none,
         hintText: hint,
         hintStyle: kHintTextStyle,
         labelStyle: kLabelTextStyle,
+        errorStyle: kErrorTextStyle,
       ),
       cursorColor: kColorWhite,
+      onChanged: onChanged,
     );
   }
 }

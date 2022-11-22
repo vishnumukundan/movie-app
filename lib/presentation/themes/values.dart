@@ -30,6 +30,14 @@ const TextStyle kHintTextStyle = TextStyle(
   color: kColorWhite50,
 );
 
+//error text style
+const TextStyle kErrorTextStyle = TextStyle(
+  fontFamily: 'Poppins',
+  fontSize: 12,
+  fontWeight: FontWeight.w500,
+  color: kColorAccent,
+);
+
 //hint text style
 const TextStyle kLabelTextStyle = TextStyle(
   fontFamily: 'Poppins',
