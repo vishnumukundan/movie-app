@@ -21,7 +21,9 @@ import 'package:movie_app/presentation/components/dialogs/exit_app_dialoge.dart'
 import 'package:movie_app/presentation/components/movie_list_scroll.dart';
 import 'package:movie_app/presentation/pages/home/widgets/genres_scroll.dart';
 import 'package:movie_app/presentation/pages/home/widgets/latest_trailers.dart';
-import 'package:movie_app/presentation/pages/home/widgets/upcoming_movies/upcoming_stack.dart';
+import 'package:movie_app/presentation/pages/home/widgets/skelton/home_page_skelton.dart';
+import 'package:movie_app/presentation/pages/home/widgets/skelton/widgets/upcoming_movies_stack_skelton.dart';
+import 'package:movie_app/presentation/pages/home/widgets/upcoming_movies/upcoming_movies_stack.dart';
 import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 
@@ -80,74 +82,79 @@ class HomePage extends StatelessWidget {
       children: [
         SingleChildScrollView(
           padding: const EdgeInsets.only(bottom: 116),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ImageSlider__widget(),
-              const SizedBox(height: 92.0),
-              const GenresScroll__widget(),
+          child: BlocBuilder<HomeDataBloc, HomeDataState>(
+              builder: (context, state) {
+            if (state.isLoading) {
+              return const HomePageSkelton__widget();
+            }
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ImageSlider__widget(),
+                const SizedBox(height: 92.0),
+                const GenresScroll__widget(),
+                // Top Rated Movies
+                BlocBuilder<HomeDataBloc, HomeDataState>(
+                  builder: (context, state) {
+                    return MovieListScroll__widget(
+                      title: 'Top Rated Movies',
+                      itemCount: 10,
+                      dataList: state.topRatedList,
+                    );
+                  },
+                ),
 
-              // Top Rated Movies
-              BlocBuilder<HomeDataBloc, HomeDataState>(
-                builder: (context, state) {
-                  return MovieListScroll__widget(
-                    title: 'Top Rated Movies',
-                    itemCount: 10,
-                    dataList: state.topRatedList,
-                  );
-                },
-              ),
+                const SizedBox(height: kDefaultPadding * 2),
+                const UpcomingMoviesStack__widget(),
 
-              const SizedBox(height: kDefaultPadding * 2),
-              const UpcomingStack__widget(),
+                // Trending
+                BlocBuilder<HomeDataBloc, HomeDataState>(
+                  builder: (context, state) {
+                    return MovieListScroll__widget(
+                      title: 'Trending ',
+                      dataList: state.trendingList,
+                      buttonVisibility: true,
+                    );
+                  },
+                ),
+                // const SizedBox(height: kDefaultPadding),
 
-              // Trending
-              BlocBuilder<HomeDataBloc, HomeDataState>(
-                builder: (context, state) {
-                  return MovieListScroll__widget(
-                    title: 'Trending ',
-                    dataList: state.trendingList,
-                    buttonVisibility: true,
-                  );
-                },
-              ),
-              // const SizedBox(height: kDefaultPadding),
+                // const LatestTrailers__widget(),
+                const SizedBox(height: kDefaultPadding),
 
-              // const LatestTrailers__widget(),
-              const SizedBox(height: kDefaultPadding),
+                // Top 10 Tamil Movies
+                BlocBuilder<HomeDataBloc, HomeDataState>(
+                  builder: (context, state) {
+                    return MovieListScroll__widget(
+                      title: 'Top 10 Tamil Movies',
+                      dataList: state.topTamilList,
+                    );
+                  },
+                ),
 
-              // Top 10 Tamil Movies
-              BlocBuilder<HomeDataBloc, HomeDataState>(
-                builder: (context, state) {
-                  return MovieListScroll__widget(
-                    title: 'Top 10 Tamil Movies',
-                    dataList: state.topTamilList,
-                  );
-                },
-              ),
+                // Top 10 Hindi Movies
+                BlocBuilder<HomeDataBloc, HomeDataState>(
+                  builder: (context, state) {
+                    return MovieListScroll__widget(
+                      title: 'Top 10 Hindi Movies',
+                      dataList: state.topHindiList,
+                    );
+                  },
+                ),
 
-              // Top 10 Hindi Movies
-              BlocBuilder<HomeDataBloc, HomeDataState>(
-                builder: (context, state) {
-                  return MovieListScroll__widget(
-                    title: 'Top 10 Hindi Movies',
-                    dataList: state.topHindiList,
-                  );
-                },
-              ),
-
-              // Top 10 Malayalam Movies
-              BlocBuilder<HomeDataBloc, HomeDataState>(
-                builder: (context, state) {
-                  return MovieListScroll__widget(
-                    title: 'Top 10 Malayalam Movies',
-                    dataList: state.topMalayalamList,
-                  );
-                },
-              ),
-            ],
-          ),
+                // Top 10 Malayalam Movies
+                BlocBuilder<HomeDataBloc, HomeDataState>(
+                  builder: (context, state) {
+                    return MovieListScroll__widget(
+                      title: 'Top 10 Malayalam Movies',
+                      dataList: state.topMalayalamList,
+                    );
+                  },
+                ),
+              ],
+            );
+          }),
         ),
         const Appbar__widget(),
       ],

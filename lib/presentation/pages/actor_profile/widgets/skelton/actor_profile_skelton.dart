@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/button.dart';
 import 'package:movie_app/presentation/components/skelton.dart';
-import 'package:movie_app/presentation/pages/home/widgets/skelton/movie_list_scroll.skelton.dart';
+import 'package:movie_app/presentation/pages/home/widgets/skelton/widgets/movie_list_scroll_skelton.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 

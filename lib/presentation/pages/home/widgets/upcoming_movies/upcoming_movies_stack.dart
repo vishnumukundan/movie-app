@@ -15,8 +15,8 @@ import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
 import '../../../../themes/values.dart';
 
-class UpcomingStack__widget extends StatelessWidget {
-  const UpcomingStack__widget({Key? key}) : super(key: key);
+class UpcomingMoviesStack__widget extends StatelessWidget {
+  const UpcomingMoviesStack__widget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SizedBox(

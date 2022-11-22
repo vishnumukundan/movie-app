@@ -9,7 +9,6 @@ import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/gen/assets.gen.dart';
 import 'package:movie_app/presentation/components/icon_button.dart';
 import 'package:movie_app/presentation/components/text.dart';
-import 'package:movie_app/presentation/pages/home/widgets/skelton/image_slider_skelton.dart';
 import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
@@ -17,6 +16,7 @@ import 'package:movie_app/presentation/themes/screen_size_config.dart';
 import '../../../../data/bloc/home/image_slider/image_slider_bloc.dart';
 import '../../../bloc/home/slider_image/slider_image_cubit.dart';
 import '../../../themes/values.dart';
+import 'skelton/widgets/image_slider_skelton.dart';
 
 class ImageSlider__widget extends StatelessWidget {
   ImageSlider__widget({Key? key}) : super(key: key);
