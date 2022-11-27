@@ -15,7 +15,7 @@ import 'package:movie_app/data/bloc/movies_result_grid/movies_result_grid_bloc.d
 import 'package:movie_app/data/bloc/search_result/search_result_bloc.dart';
 import 'package:movie_app/data/bloc/upcoming_movies/upcoming_movies_bloc.dart';
 import 'package:movie_app/domain/usecase/dependancy_injection/injectable.dart';
-import 'package:movie_app/presentation/bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
+import 'package:movie_app/presentation/bloc/components/inner_appbars/bloc/appbar_search_bloc.dart';
 import 'package:movie_app/presentation/bloc/components/widgets_functionality/widgets_functionality_bloc.dart';
 import 'package:movie_app/presentation/bloc/home/slider_image/slider_image_cubit.dart';
 import 'package:movie_app/presentation/bloc/main/appbar/appbar_bloc.dart';
@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (context) => BottomNavCubit()),
         BlocProvider(create: (context) => SliderImageCubit()),
         BlocProvider(create: (context) => WatchlistScrollCubit()),
-        BlocProvider(create: (context) => AppbarSearchCubit()),
+        BlocProvider(create: (context) => AppbarSearchBloc()),
         BlocProvider(create: (context) => AppbarBloc()),
         BlocProvider(create: (context) => NavigationFromBloc()),
         BlocProvider(create: (context) => WidgetsFunctionalityBloc()),

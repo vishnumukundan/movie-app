@@ -19,19 +19,19 @@ mixin _$SearchResultEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPopularMovies,
-    required TResult Function(String query) getSearchedMovies,
+    required TResult Function(String? query) getSearchedMovies,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function(String query)? getSearchedMovies,
+    TResult Function(String? query)? getSearchedMovies,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function(String query)? getSearchedMovies,
+    TResult Function(String? query)? getSearchedMovies,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,7 +115,7 @@ class _$_GetPopularMovies implements _GetPopularMovies {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPopularMovies,
-    required TResult Function(String query) getSearchedMovies,
+    required TResult Function(String? query) getSearchedMovies,
   }) {
     return getPopularMovies();
   }
@@ -124,7 +124,7 @@ class _$_GetPopularMovies implements _GetPopularMovies {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function(String query)? getSearchedMovies,
+    TResult Function(String? query)? getSearchedMovies,
   }) {
     return getPopularMovies?.call();
   }
@@ -133,7 +133,7 @@ class _$_GetPopularMovies implements _GetPopularMovies {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function(String query)? getSearchedMovies,
+    TResult Function(String? query)? getSearchedMovies,
     required TResult orElse(),
   }) {
     if (getPopularMovies != null) {
@@ -183,7 +183,7 @@ abstract class _$$_GetSearchedMoviesCopyWith<$Res> {
   factory _$$_GetSearchedMoviesCopyWith(_$_GetSearchedMovies value,
           $Res Function(_$_GetSearchedMovies) then) =
       __$$_GetSearchedMoviesCopyWithImpl<$Res>;
-  $Res call({String query});
+  $Res call({String? query});
 }
 
 /// @nodoc
@@ -205,7 +205,7 @@ class __$$_GetSearchedMoviesCopyWithImpl<$Res>
       query: query == freezed
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -216,7 +216,7 @@ class _$_GetSearchedMovies implements _GetSearchedMovies {
   const _$_GetSearchedMovies({required this.query});
 
   @override
-  final String query;
+  final String? query;
 
   @override
   String toString() {
@@ -245,7 +245,7 @@ class _$_GetSearchedMovies implements _GetSearchedMovies {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPopularMovies,
-    required TResult Function(String query) getSearchedMovies,
+    required TResult Function(String? query) getSearchedMovies,
   }) {
     return getSearchedMovies(query);
   }
@@ -254,7 +254,7 @@ class _$_GetSearchedMovies implements _GetSearchedMovies {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function(String query)? getSearchedMovies,
+    TResult Function(String? query)? getSearchedMovies,
   }) {
     return getSearchedMovies?.call(query);
   }
@@ -263,7 +263,7 @@ class _$_GetSearchedMovies implements _GetSearchedMovies {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPopularMovies,
-    TResult Function(String query)? getSearchedMovies,
+    TResult Function(String? query)? getSearchedMovies,
     required TResult orElse(),
   }) {
     if (getSearchedMovies != null) {
@@ -305,10 +305,10 @@ class _$_GetSearchedMovies implements _GetSearchedMovies {
 }
 
 abstract class _GetSearchedMovies implements SearchResultEvent {
-  const factory _GetSearchedMovies({required final String query}) =
+  const factory _GetSearchedMovies({required final String? query}) =
       _$_GetSearchedMovies;
 
-  String get query;
+  String? get query;
   @JsonKey(ignore: true)
   _$$_GetSearchedMoviesCopyWith<_$_GetSearchedMovies> get copyWith =>
       throw _privateConstructorUsedError;

@@ -48,6 +48,7 @@ class ActorProfilePage extends StatelessWidget {
 
     return Scaffold(
       body: Background(
+        height: ScreenConfig.screenHeight,
         child: Stack(
           children: [
             ScrollConfiguration(

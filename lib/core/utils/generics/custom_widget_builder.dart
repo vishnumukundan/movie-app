@@ -192,8 +192,5 @@ class CustomGridViewBuilder extends StatelessWidget {
       dragStartBehavior: dragStartBehavior,
       children: reverseList ? items.reversed.toList() : items,
     );
-    // } else {
-    //   return Container();
-    // }
   }
 }

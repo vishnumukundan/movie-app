@@ -7,6 +7,7 @@ import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/data/models/home/movie_list/movie_list_model.dart';
 import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
+import 'package:movie_app/presentation/bloc/components/inner_appbars/bloc/appbar_search_bloc.dart';
 import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
@@ -15,23 +16,25 @@ import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
-import '../../../bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
-
 class MoviePosterGrid__widget extends StatelessWidget {
-  const MoviePosterGrid__widget({
+  MoviePosterGrid__widget({
     Key? key,
     required this.dataList,
   }) : super(key: key);
 
   final MovieList dataList;
 
+//
+  final ScrollController _controller = ScrollController();
+  //
   @override
   Widget build(BuildContext context) {
     //
     //
     final navigateFromState =
         context.watch<NavigationFromBloc>().state.navigateFrom;
-    final int _iconIndex = context.watch<AppbarSearchCubit>().state.iconIndex;
+    final int _iconIndex =
+        context.watch<AppbarSearchBloc>().state.columnIconIndex;
     return CustomGridViewBuilder(
       padding: EdgeInsets.only(
         left: kDefaultPadding * 2,
@@ -39,6 +42,10 @@ class MoviePosterGrid__widget extends StatelessWidget {
         right: kDefaultPadding * 2,
         bottom: kDefaultPadding * 2,
       ),
+      physics: const ScrollPhysics(),
+      shrinkWrap: true,
+      controller: _controller,
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       crossAxisCount: _iconIndex == 0 ? 3 : 2,
       itemCount: dataList.results.length,
       mainAxisSpacing: kDefaultPadding / 2,
@@ -62,7 +69,7 @@ class MoviePosterGrid__widget extends StatelessWidget {
                         image: NetworkImage(
                           ApiDataFetching.image(
                             dataList.results[index].posterPath!,
-                            ImageWidth.w154,
+                            _iconIndex == 0 ? ImageWidth.w154 : ImageWidth.w342,
                           ),
                         ),
                         fit: BoxFit.cover),

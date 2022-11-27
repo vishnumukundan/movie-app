@@ -2,11 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/services/app_default_preferences.dart';
 import 'package:movie_app/core/services/debouncer.dart';
 import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/data/bloc/search_result/search_result_bloc.dart';
 import 'package:movie_app/gen/assets.gen.dart';
-import 'package:movie_app/presentation/bloc/components/inner_appbars/appbar_search/appbar_search_cubit.dart';
+import 'package:movie_app/presentation/bloc/components/inner_appbars/bloc/appbar_search_bloc.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 
@@ -20,13 +21,26 @@ class AppbarSearch__widget extends StatelessWidget {
 
   FocusNode _focus = FocusNode();
   final TextEditingController _controller = TextEditingController();
+  //
+  bool _isFocused = false;
 
-  final _debouncer = Debouncer(milliseconds: 2 * 1000);
-
+  final _debouncer = Debouncer(milliseconds: 1 * 1000);
+  int _iconIndex = 0;
+  //
   @override
   Widget build(BuildContext context) {
-    final _isFocused = context.watch<AppbarSearchCubit>().state.focusEnabled;
-    final int _iconIndex = context.watch<AppbarSearchCubit>().state.iconIndex;
+    //
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {},
+    );
+    // _focus.addListener(() {
+    //   updateState(context);
+    // });
+
+    //
+    getIconIndex();
+    //
+    //
 
     return BlurredBackground__widget(
       color: Colors.transparent,
@@ -39,108 +53,92 @@ class AppbarSearch__widget extends StatelessWidget {
         ),
         child: Row(
           children: <Widget>[
-            IndexedStack(
-              index: _isFocused == true ? 1 : 0,
-              alignment: Alignment.centerLeft,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: Assets.icons.search.svg(),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    PageNav.pop(context);
-                    Future.delayed(const Duration(milliseconds: 300), () {
-                      context.read<AppbarSearchCubit>().emit(
-                            const AppbarSearchState.initial(
-                              focusEnabled: false,
-                            ),
-                          );
-                      context
-                          .read<SearchResultBloc>()
-                          .emit(SearchResultState.initial());
-                    });
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(0.0),
-                    child: Assets.icons.arrowLeft.svg(color: kColorWhite),
-                  ),
-                ),
-              ],
+            // back button
+            GestureDetector(
+              onTap: () {
+                PageNav.pop(context);
+                updateState(context, false);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: Assets.icons.arrowLeft.svg(color: kColorWhite),
+              ),
             ),
             const SizedBox(width: kDefaultPadding / 2),
+
+            // text field
             Expanded(
-              child: TextField(
-                onTap: () {
-                  context.read<AppbarSearchCubit>().isFocused();
-                },
-                onChanged: (value) {
-                  _debouncer.run(() {
+              child: GestureDetector(
+                onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                child: TextField(
+                  onChanged: (value) => _debouncer.run(() {
                     context
                         .read<SearchResultBloc>()
                         .add(SearchResultEvent.getSearchedMovies(query: value));
-                  });
-                },
-                focusNode: _focus,
-                controller: _controller,
-                cursorColor: kColorWhite,
-                decoration: const InputDecoration(
-                  isDense: true,
-                  border: InputBorder.none,
-                  hintText: 'Search here',
-                  hintStyle: TextStyle(
-                    color: kColorWhite80,
-                    fontFamily: kFontFamily,
-                    fontSize: 16,
-                  ),
-                  labelStyle: TextStyle(
-                    color: kColorWhite,
-                    fontFamily: kFontFamily,
-                    fontSize: 16,
+                  }),
+                  onTap: () => updateState(context, true),
+                  textInputAction: TextInputAction.search,
+                  focusNode: _focus,
+                  controller: _controller,
+                  cursorColor: kColorWhite,
+                  decoration: const InputDecoration(
+                    isDense: true,
+                    border: InputBorder.none,
+                    hintText: 'Search here...',
+                    hintStyle: TextStyle(
+                      color: kColorWhite80,
+                      fontFamily: kFontFamily,
+                      fontSize: 16,
+                    ),
+                    labelStyle: TextStyle(
+                      color: kColorWhite,
+                      fontFamily: kFontFamily,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
             ),
             const SizedBox(width: kDefaultPadding),
-            IndexedStack(
-              index: _isFocused == true ? 1 : 0,
-              alignment: Alignment.centerRight,
-              children: [
-                Assets.icons.mic.svg(width: 24, height: 24, color: kColorWhite),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () => _controller.clear(),
-                      child: Assets.icons.close.svg(height: 24),
-                    ),
-                    const SizedBox(width: kDefaultPadding / 2),
-                    IndexedStack(
-                      index: _iconIndex,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            context.read<AppbarSearchCubit>().setIconIndex(1);
-                          },
-                          child: Assets.icons.column2
-                              .svg(width: 32, height: 32, color: kColorWhite50),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            context.read<AppbarSearchCubit>().setIconIndex(0);
-                          },
-                          child: Assets.icons.column3
-                              .svg(width: 32, height: 32, color: kColorWhite50),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            BlocBuilder<AppbarSearchBloc, AppbarSearchState>(
+                builder: (context, state) {
+              return IndexedStack(
+                index: state.isTextFieldFocused == true ? 1 : 0,
+                alignment: Alignment.centerRight,
+                children: [
+                  // mic icon
+                  Assets.icons.mic
+                      .svg(width: 24, height: 24, color: kColorWhite),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // close icon
+                      GestureDetector(
+                        onTap: () => _controller.clear(),
+                        child: Assets.icons.close.svg(height: 24),
+                      ),
+                      const SizedBox(width: kDefaultPadding / 2),
+
+                      // column icon stack
+                      // const MovieGridLayoutButton__widget(),
+                    ],
+                  ),
+                ],
+              );
+            }),
           ],
         ),
       ),
     );
+  }
+
+  updateState(BuildContext context, bool isTextFieldFocused) {
+    context.read<AppbarSearchBloc>().add(AppbarSearchEvent.userTappedTextField(
+          isTextFieldFocused: isTextFieldFocused,
+        ));
+    //
+    context
+        .read<AppbarSearchBloc>()
+        .add(AppbarSearchEvent.columnButtonPress(columnIconIndex: _iconIndex));
   }
 }

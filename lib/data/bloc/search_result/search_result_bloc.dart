@@ -69,7 +69,7 @@ class SearchResultBloc extends Bloc<SearchResultEvent, SearchResultState> {
       emit(state.copyWith(isLoading: true));
 // fetch data
       final _result =
-          await _iSearchResultRepo.getSearchedMovies(query: event.query);
+          await _iSearchResultRepo.getSearchedMovies(query: event.query ?? '');
 
 // apply to state
       final _state = _result.fold(
