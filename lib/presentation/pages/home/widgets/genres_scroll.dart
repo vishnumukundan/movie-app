@@ -20,44 +20,49 @@ class GenresScroll__widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DiscoverBloc, DiscoverState>(builder: (context, state) {
-      return CustomListViewBuilder(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
-        itemCount: _genrePositions.length,
-        contentSpacing: kDefaultPadding,
-        builder: (context, index) {
-          final genreIndex = _genrePositions[index];
+      if (state.isSuccess) {
+        return CustomListViewBuilder(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
+          itemCount: _genrePositions.length,
+          contentSpacing: kDefaultPadding,
+          builder: (context, index) {
+            final genreIndex = _genrePositions[index];
 
-          return GestureDetector(
-            onTap: () {
-              context.read<NavigationFromBloc>().add(
-                  const NavigationFromEvent.setNavigationFrom(
-                      navigateFrom: NavigateFrom.posterGrid));
-              PageNav.push(
-                context,
-                MoviesResultGridPage(
-                  id: state.genresDataList[genreIndex].id.toString(),
-                  navigateFrom: NavigateFrom.genre,
-                  title: '${state.genresDataList[genreIndex].name} Movies',
+            return GestureDetector(
+              onTap: () {
+                context.read<NavigationFromBloc>().add(
+                    const NavigationFromEvent.setNavigationFrom(
+                        navigateFrom: NavigateFrom.posterGrid));
+                PageNav.push(
+                  context,
+                  MoviesResultGridPage(
+                    id: state.genresDataList[genreIndex].id.toString(),
+                    navigateFrom: NavigateFrom.genre,
+                    title: '${state.genresDataList[genreIndex].name} Movies',
+                  ),
+                );
+              },
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: kColorPrimary.withOpacity(0.5),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: kColorPrimary.withOpacity(0.5),
-              ),
-              child: Center(
-                child: Regular__text(
-                  text: state.genresDataList[genreIndex].name!,
-                  fontSize: 18.0,
+                child: Center(
+                  child: Regular__text(
+                    text: state.genresDataList[genreIndex].name!,
+                    fontSize: 18.0,
+                  ),
                 ),
               ),
-            ),
-          );
-        },
-      );
+            );
+          },
+        );
+      } else {
+        return Container();
+      }
     });
   }
 }

@@ -40,39 +40,43 @@ class UpcomingMoviesStack__widget extends StatelessWidget {
               }
 
               //
-              return SizedBox(
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  alignment: AlignmentDirectional.center,
-                  children: [
-                    SizedBox(width: ScreenConfig.screenWidth),
-                    Positioned(
-                      left: -8,
-                      child: Transform.scale(
-                        scale: 0.8,
-                        child: Transform.rotate(
-                          angle: -pi / 15,
-                          child: UpcomingMoviesSinglePoster__widget(
-                              dataList: newList, index: 1),
+              if (state.isSuccess) {
+                return SizedBox(
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      SizedBox(width: ScreenConfig.screenWidth),
+                      Positioned(
+                        left: -8,
+                        child: Transform.scale(
+                          scale: 0.8,
+                          child: Transform.rotate(
+                            angle: -pi / 15,
+                            child: UpcomingMoviesSinglePoster__widget(
+                                dataList: newList, index: 1),
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      right: -8,
-                      child: Transform.scale(
-                        scale: 0.8,
-                        child: Transform.rotate(
-                          angle: pi / 15,
-                          child: UpcomingMoviesSinglePoster__widget(
-                              dataList: newList, index: 2),
+                      Positioned(
+                        right: -8,
+                        child: Transform.scale(
+                          scale: 0.8,
+                          child: Transform.rotate(
+                            angle: pi / 15,
+                            child: UpcomingMoviesSinglePoster__widget(
+                                dataList: newList, index: 2),
+                          ),
                         ),
                       ),
-                    ),
-                    UpcomingMoviesSinglePoster__widget(
-                        dataList: newList, index: 0),
-                  ],
-                ),
-              );
+                      UpcomingMoviesSinglePoster__widget(
+                          dataList: newList, index: 0),
+                    ],
+                  ),
+                );
+              } else {
+                return Container();
+              }
             },
           ),
           const SizedBox(height: kDefaultPadding),
