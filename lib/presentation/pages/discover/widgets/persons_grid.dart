@@ -7,7 +7,9 @@ import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/string_manipulation.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
 import 'package:movie_app/data/models/movie_details/movie_details_model.dart';
+import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/person_image_and_name_card.dart';
+import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
@@ -38,20 +40,25 @@ class PersonsGrid__widget extends StatelessWidget {
               newList.add(_data[i]);
             }
           }
-
-          if (state.hasError) {}
-          if (state.isLoading) {}
+          if (state.hasError) {
+            return Container();
+          }
+          if (state.isLoading) {
+            return Container();
+          }
           return PersonImageAndNameCard__widget(
             image: newList[index].profilePath!,
             name: newList[index].name!,
             isLoading: true,
             onTap: () {
+              context.read<NavigationFromBloc>().add(
+                  const NavigationFromEvent.setNavigationFrom(
+                      navigateFrom: NavigateFrom.grid));
               PageNav.push(
                 context,
                 MoviesResultGridPage(
                   id: newList[index].id.toString(),
                   title: '${getFirstWord(newList[index].name!)}\'s Movies',
-                  navigateFrom: NavigateFrom.person,
                 ),
               );
             },

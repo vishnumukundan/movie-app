@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
+import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 
 part 'navigation_from_bloc.freezed.dart';
 part 'navigation_from_event.dart';

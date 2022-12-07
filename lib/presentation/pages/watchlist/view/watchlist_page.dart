@@ -5,8 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/get_random_no_from_range.dart';
 import 'package:movie_app/data/sources/dummy/dummy_data.dart';
+import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/components/movie_horizontal_card_with_playbutton.dart';
+import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 import 'package:movie_app/presentation/pages/watchlist/widgets/continue_watching_card.dart';
 import 'package:movie_app/presentation/pages/watchlist/widgets/title_with_toggle.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
@@ -22,10 +24,19 @@ class WatchlistPage extends StatelessWidget {
   const WatchlistPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    //
     double _watchlistHeight =
         context.watch<WatchlistScrollCubit>().state.watchlistHeight;
+    //
     bool _isWatchlistExpanded =
         context.watch<WatchlistScrollCubit>().state.watchlistExpanded;
+//
+    context
+        .read<NavigationFromBloc>()
+        .add(const NavigationFromEvent.setNavigationFrom(
+          navigateFrom: NavigateFrom.poster,
+        ));
+    //
     return Scaffold(
       backgroundColor: kColorPrimary,
       body: Stack(

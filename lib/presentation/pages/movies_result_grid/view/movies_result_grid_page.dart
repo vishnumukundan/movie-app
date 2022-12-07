@@ -10,82 +10,46 @@ import 'package:movie_app/presentation/components/inner_appbars/appbar_with_back
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/search_result/widgtes/movie_poster_grid.dart';
 
-enum NavigateFrom {
-  none,
-  home,
-  person,
-  genre,
-  searchPage,
-  actorProfile,
-
-  // navigate from posters that in sliders and any list except grid list in discover page
-  posterScroll,
-
-  // navigate from movie result grid in discover page
-  posterGrid,
-}
-
 class MoviesResultGridPage extends StatelessWidget {
   const MoviesResultGridPage({
     Key? key,
     required this.id,
-    required this.navigateFrom,
     required this.title,
+    this.isUserId = false,
   }) : super(key: key);
 
   final String id;
-  final NavigateFrom navigateFrom;
   final String title;
+  final bool? isUserId;
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
-        if (navigateFrom == NavigateFrom.person ||
-            navigateFrom == NavigateFrom.actorProfile) {
+        if (isUserId != true) {
+          context
+              .read<MoviesResultGridBloc>()
+              .add(MoviesResultGridEvent.getMovieByGenre(genre: id));
+        } else {
           context
               .read<MoviesResultGridBloc>()
               .add(MoviesResultGridEvent.getMovieByPerson(personId: id));
         }
-        if (navigateFrom == NavigateFrom.genre) {
-          context
-              .read<MoviesResultGridBloc>()
-              .add(MoviesResultGridEvent.getMovieByGenre(genre: id));
-        }
       },
     );
 
-    if (navigateFrom == NavigateFrom.person ||
-        navigateFrom == NavigateFrom.actorProfile) {
-      return BlocBuilder<MoviesResultGridBloc, MoviesResultGridState>(
-        builder: (context, state) {
-          if (state.hasError) {
-            return errorWidget(title: title);
-          } else {
-            return pageWidget(
-              id: id,
-              title: title,
-              dataList: state.movieDataList,
-            );
-          }
-        },
-      );
-    }
-    if (navigateFrom == NavigateFrom.genre) {
-      return BlocBuilder<MoviesResultGridBloc, MoviesResultGridState>(
-        builder: (context, state) {
-          if (state.hasError) {
-            return errorWidget(title: title);
-          } else {
-            return pageWidget(
-              id: id,
-              title: title,
-              dataList: state.movieDataList,
-            );
-          }
-        },
-      );
-    }
-    return errorWidget(title: title);
+    return BlocBuilder<MoviesResultGridBloc, MoviesResultGridState>(
+      builder: (context, state) {
+        if (state.hasError) {
+          return errorWidget(title: title);
+        } else {
+          return pageWidget(
+            id: id,
+            title: title,
+            dataList: state.movieDataList,
+          );
+        }
+      },
+    );
   }
 }
 

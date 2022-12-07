@@ -17,6 +17,7 @@ import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/pages/actor_profile/widgets/biogarphy_bottomsheet.dart';
 import 'package:movie_app/presentation/pages/actor_profile/widgets/skelton/actor_profile_skelton.dart';
 import 'package:movie_app/presentation/pages/actor_profile/widgets/title_and_data.dart';
+import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
@@ -43,7 +44,7 @@ class ActorProfilePage extends StatelessWidget {
 
     //
     //
-    final navigateFromState =
+    final _navigateFromState =
         context.watch<NavigationFromBloc>().state.navigateFrom;
 
     return Scaffold(
@@ -160,9 +161,7 @@ class ActorProfilePage extends StatelessWidget {
                                   text: 'Biography', fontSize: 16.0),
                               const SizedBox(height: kDefaultPadding / 2),
                               Medium__text(
-                                text: _data.biography != ''
-                                    ? _data.biography!
-                                    : 'no data',
+                                text: _data.biography ?? 'no data',
                                 fontSize: 12.0,
                                 height: 1.4,
                                 letterSpacing: 0.9,
@@ -172,8 +171,9 @@ class ActorProfilePage extends StatelessWidget {
                               ),
                               const SizedBox(height: kDefaultPadding / 2),
                               Visibility(
-                                visible:
-                                    state.personData.biography!.length > 400,
+                                visible: state.personData.biography!.isNotEmpty
+                                    ? state.personData.biography!.length > 400
+                                    : false,
                                 child: Align(
                                   alignment: Alignment.centerRight,
                                   child: GestureDetector(
@@ -218,17 +218,17 @@ class ActorProfilePage extends StatelessWidget {
                               cornerRadius: 60.0,
                               rightIcon: Assets.icons.arrowRight,
                               onTap: () {
-                                if (navigateFromState ==
-                                    NavigateFrom.posterGrid) {
+                                if (_navigateFromState == NavigateFrom.grid) {
                                   Get.close(3);
                                 }
+
                                 PageNav.push(
                                   context,
                                   MoviesResultGridPage(
                                     id: state.personData.id.toString(),
-                                    navigateFrom: NavigateFrom.actorProfile,
                                     title:
                                         '${getFirstWord(state.personData.name!)}\'s Movies',
+                                    isUserId: true,
                                   ),
                                 );
                               },

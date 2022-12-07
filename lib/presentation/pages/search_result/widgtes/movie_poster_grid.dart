@@ -10,8 +10,8 @@ import 'package:movie_app/data/sources/remote_data_sources/api_end_points.dart';
 import 'package:movie_app/presentation/bloc/components/inner_appbars/bloc/appbar_search_bloc.dart';
 import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/text.dart';
+import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 import 'package:movie_app/presentation/pages/movie_details/view/movie_details_page.dart';
-import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/screen_size_config.dart';
 import 'package:movie_app/presentation/themes/values.dart';
@@ -26,13 +26,14 @@ class MoviePosterGrid__widget extends StatelessWidget {
 
 //
   final ScrollController _controller = ScrollController();
+
   //
   @override
   Widget build(BuildContext context) {
     //
-    //
-    final navigateFromState =
+    final _navigateFromState =
         context.watch<NavigationFromBloc>().state.navigateFrom;
+    //
     final int _iconIndex =
         context.watch<AppbarSearchBloc>().state.columnIconIndex;
     return CustomGridViewBuilder(
@@ -54,9 +55,10 @@ class MoviePosterGrid__widget extends StatelessWidget {
       builder: (context, index) {
         return GestureDetector(
           onTap: () {
-            if (navigateFromState == NavigateFrom.posterScroll) {
+            if (_navigateFromState == NavigateFrom.poster) {
               Get.close(3);
             }
+
             PageNav.push(
                 context, MovieDetailsPage(id: dataList.results[index].id));
           },

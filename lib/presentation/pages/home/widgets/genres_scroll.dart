@@ -7,6 +7,7 @@ import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
 import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/text.dart';
+import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/values.dart';
 
@@ -33,12 +34,11 @@ class GenresScroll__widget extends StatelessWidget {
               onTap: () {
                 context.read<NavigationFromBloc>().add(
                     const NavigationFromEvent.setNavigationFrom(
-                        navigateFrom: NavigateFrom.posterGrid));
+                        navigateFrom: NavigateFrom.grid));
                 PageNav.push(
                   context,
                   MoviesResultGridPage(
                     id: state.genresDataList[genreIndex].id.toString(),
-                    navigateFrom: NavigateFrom.genre,
                     title: '${state.genresDataList[genreIndex].name} Movies',
                   ),
                 );

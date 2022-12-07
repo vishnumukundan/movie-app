@@ -8,6 +8,7 @@ import 'package:movie_app/data/models/movie_details/movie_details_model.dart';
 import 'package:movie_app/presentation/components/text.dart';
 import 'package:movie_app/presentation/components/video_card_item.dart';
 import 'package:movie_app/presentation/pages/movie_details/widgets/skelton/video_section_skelton.dart';
+import 'package:movie_app/presentation/themes/colors.dart';
 
 import '../../../themes/values.dart';
 
@@ -29,7 +30,19 @@ class VideoSection__widget extends StatelessWidget {
             if (state.isLoading) const VideoSectionSkelton__widget();
 
             if (state.hasError ||
-                state.movieDetailsData.videos!.results!.isEmpty) {}
+                state.movieDetailsData.videos!.results!.isEmpty) {
+              return Container(
+                height: 140,
+                width: 250,
+                decoration: BoxDecoration(
+                  color: kColorWhite20,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Center(
+                  child: Regular__text(text: 'No Trailers', fontSize: 16.0),
+                ),
+              );
+            }
             return CustomListViewBuilder(
               clipBehavior: Clip.none,
               itemCount: dataList.length,

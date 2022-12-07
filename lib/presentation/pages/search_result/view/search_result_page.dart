@@ -6,7 +6,7 @@ import 'package:movie_app/presentation/bloc/components/inner_appbars/bloc/appbar
 import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/background.dart';
 import 'package:movie_app/presentation/components/inner_appbars/appbar_search.dart';
-import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
+import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 import 'package:movie_app/presentation/pages/search_result/widgtes/movie_poster_grid.dart';
 import 'package:movie_app/presentation/pages/search_result/widgtes/skelton/movie_poster_grid_skelton.dart';
 import 'package:movie_app/presentation/pages/search_result/widgtes/top_searched_listview.dart';
@@ -24,60 +24,63 @@ class SearchResultPage extends StatelessWidget {
           .read<SearchResultBloc>()
           .add(const SearchResultEvent.getPopularMovies());
     });
-    return Scaffold(
-      body: ScrollConfiguration(
-        behavior: CustomScroll(),
-        child: BlocBuilder<AppbarSearchBloc, AppbarSearchState>(
-          builder: (context, state) {
-            //
-            if (state.isTextFieldFocused) {
-              context
-                  .read<NavigationFromBloc>()
-                  .add(const NavigationFromEvent.setNavigationFrom(
-                    navigateFrom: NavigateFrom.searchPage,
-                  ));
-            } else {
-              context
-                  .read<NavigationFromBloc>()
-                  .add(const NavigationFromEvent.setNavigationFrom(
-                    navigateFrom: NavigateFrom.searchPage,
-                  ));
-            }
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        body: ScrollConfiguration(
+          behavior: CustomScroll(),
+          child: BlocBuilder<AppbarSearchBloc, AppbarSearchState>(
+            builder: (context, state) {
+              //
+              if (state.isTextFieldFocused) {
+                context
+                    .read<NavigationFromBloc>()
+                    .add(const NavigationFromEvent.setNavigationFrom(
+                      navigateFrom: NavigateFrom.grid,
+                    ));
+              } else {
+                context
+                    .read<NavigationFromBloc>()
+                    .add(const NavigationFromEvent.setNavigationFrom(
+                      navigateFrom: NavigateFrom.poster,
+                    ));
+              }
 
-            return SizedBox(
-              child: Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  // Padding(
-                  //   padding:
-                  //       EdgeInsets.only(top: getScreenHeightPercentage(20)),
-                  //   child: Bold__text(
-                  //     text: state.isTextFieldFocused.toString(),
-                  //     fontSize: 64.0,
-                  //     color:
-                  //         state.isTextFieldFocused ? kColorGreen : kColorAccent,
-                  //   ),
-                  // ),
-                  if (state.isTextFieldFocused == true)
-                    BlocBuilder<SearchResultBloc, SearchResultState>(
-                      builder: (context, state) {
-                        return Background(
-                          height: ScreenConfig.screenHeight,
-                          child: state.isLoading
-                              ? const MoviePosterGridSkelton__widget()
-                              : MoviePosterGrid__widget(
-                                  dataList: state.searchedDataList,
-                                ),
-                        );
-                      },
-                    ),
-                  if (state.isTextFieldFocused == false)
-                    const Background(child: TopSearchedListview__widget()),
-                  AppbarSearch__widget(),
-                ],
-              ),
-            );
-          },
+              return SizedBox(
+                child: Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    // Padding(
+                    //   padding:
+                    //       EdgeInsets.only(top: getScreenHeightPercentage(20)),
+                    //   child: Bold__text(
+                    //     text: state.isTextFieldFocused.toString(),
+                    //     fontSize: 64.0,
+                    //     color:
+                    //         state.isTextFieldFocused ? kColorGreen : kColorAccent,
+                    //   ),
+                    // ),
+                    if (state.isTextFieldFocused == true)
+                      BlocBuilder<SearchResultBloc, SearchResultState>(
+                        builder: (context, state) {
+                          return Background(
+                            height: ScreenConfig.screenHeight,
+                            child: state.isLoading
+                                ? const MoviePosterGridSkelton__widget()
+                                : MoviePosterGrid__widget(
+                                    dataList: state.searchedDataList,
+                                  ),
+                          );
+                        },
+                      ),
+                    if (state.isTextFieldFocused == false)
+                      const Background(child: TopSearchedListview__widget()),
+                    AppbarSearch__widget(),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

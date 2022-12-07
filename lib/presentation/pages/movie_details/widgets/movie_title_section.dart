@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/services/navigator.dart';
-import 'package:movie_app/presentation/pages/video_playback/view/video_playback_page.dart';
 
 import '../../../../gen/assets.gen.dart';
 import '../../../components/icon_button.dart';
@@ -39,6 +37,7 @@ class MovieTitleSection__widget extends StatelessWidget {
                 text: tagline,
                 fontSize: 14.0,
                 color: kColorWhite80,
+                height: 1.2,
               ),
             ],
           ),
@@ -47,9 +46,7 @@ class MovieTitleSection__widget extends StatelessWidget {
         Accent_Medium__IconButton(
           icon: Assets.icons.play,
           borderRadius: 60.0,
-          onTap: () {
-            PageNav.push(context, VideoPlaybackPage(youtubeKey: 'cJny6hBdUXU'));
-          },
+          onTap: () {},
         )
       ],
     );

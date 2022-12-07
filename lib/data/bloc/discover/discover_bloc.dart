@@ -16,42 +16,61 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
 
   DiscoverBloc(this._iDiscoverRepo) : super(DiscoverState.initial()) {
     on<GetMovieGenres>((event, emit) async {
-      //loading
-      emit(state.copyWith(isLoading: true));
-
-      // fetch data
-      final _result = await _iDiscoverRepo.getMovieGenres();
-      //
-      final _state = _result.fold(
-        (failure) => state.copyWith(isLoading: false, hasError: true),
-        (success) => DiscoverState(
-          isLoading: false,
-          hasError: false,
-          isSuccess: true,
-          genresDataList: success,
-          personDataList: state.personDataList,
-        ),
-      );
-      emit(_state);
-    });
-    on<GetPopularPersons>((event, emit) async {
-      //loading
-      emit(state.copyWith(isLoading: true));
-
-      // fetch data
-      final _result = await _iDiscoverRepo.getPopularPersons();
-      //
-      final _state = _result.fold(
-        (failure) => state.copyWith(isLoading: false, hasError: true),
-        (success) => DiscoverState(
+      if (state.genresDataList.isNotEmpty) {
+        emit(state.copyWith(
           isLoading: false,
           hasError: false,
           isSuccess: true,
           genresDataList: state.genresDataList,
-          personDataList: success,
-        ),
-      );
-      emit(_state);
+        ));
+      } else {
+        //loading
+        emit(state.copyWith(isLoading: true));
+
+        // fetch data
+        final _result = await _iDiscoverRepo.getMovieGenres();
+        //
+        final _state = _result.fold(
+          (failure) => state.copyWith(isLoading: false, hasError: true),
+          (success) => DiscoverState(
+            isLoading: false,
+            hasError: false,
+            isSuccess: true,
+            genresDataList: success,
+            personDataList: state.personDataList,
+          ),
+        );
+        emit(_state);
+      }
+    });
+
+    on<GetPopularPersons>((event, emit) async {
+      if (state.personDataList.isNotEmpty) {
+        emit(state.copyWith(
+          isLoading: false,
+          hasError: false,
+          isSuccess: true,
+          personDataList: state.personDataList,
+        ));
+      } else {
+        //loading
+        emit(state.copyWith(isLoading: true));
+
+        // fetch data
+        final _result = await _iDiscoverRepo.getPopularPersons();
+        //
+        final _state = _result.fold(
+          (failure) => state.copyWith(isLoading: false, hasError: true),
+          (success) => DiscoverState(
+            isLoading: false,
+            hasError: false,
+            isSuccess: true,
+            genresDataList: state.genresDataList,
+            personDataList: success,
+          ),
+        );
+        emit(_state);
+      }
     });
   }
 }

@@ -24,6 +24,7 @@ import 'package:movie_app/presentation/pages/home/widgets/latest_trailers.dart';
 import 'package:movie_app/presentation/pages/home/widgets/skelton/home_page_skelton.dart';
 import 'package:movie_app/presentation/pages/home/widgets/skelton/widgets/upcoming_movies_stack_skelton.dart';
 import 'package:movie_app/presentation/pages/home/widgets/upcoming_movies/upcoming_movies_stack.dart';
+import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 
@@ -76,7 +77,7 @@ class HomePage extends StatelessWidget {
     //
     context.read<NavigationFromBloc>().add(
         const NavigationFromEvent.setNavigationFrom(
-            navigateFrom: NavigateFrom.posterScroll));
+            navigateFrom: NavigateFrom.poster));
 
     return Stack(
       children: [

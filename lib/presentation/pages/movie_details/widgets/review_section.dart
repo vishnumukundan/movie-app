@@ -48,7 +48,7 @@ class ReviewSection__widget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Center(
-                  child: Medium__text(
+                  child: Regular__text(
                     text: 'No reviews',
                     fontSize: 16.0,
                   ),

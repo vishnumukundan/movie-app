@@ -16,6 +16,8 @@ import '../../../themes/colors.dart';
 import '../../../themes/screen_size_config.dart';
 import '../../../themes/values.dart';
 
+enum NavigateFrom { none, poster, grid }
+
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
 

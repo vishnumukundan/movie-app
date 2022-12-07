@@ -6,7 +6,9 @@ import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/generics/custom_widget_builder.dart';
 import 'package:movie_app/core/utils/generics/string_manipulation.dart';
 import 'package:movie_app/data/bloc/discover/discover_bloc.dart';
+import 'package:movie_app/presentation/bloc/navigation_from/navigation_from_bloc.dart';
 import 'package:movie_app/presentation/components/text.dart';
+import 'package:movie_app/presentation/pages/main/view/main_page.dart';
 import 'package:movie_app/presentation/pages/movies_result_grid/view/movies_result_grid_page.dart';
 import 'package:movie_app/presentation/themes/colors.dart';
 import 'package:movie_app/presentation/themes/values.dart';
@@ -27,11 +29,13 @@ class GenresGrid__widget extends StatelessWidget {
         builder: (context, index) {
           return GestureDetector(
             onTap: () {
+              context.read<NavigationFromBloc>().add(
+                  const NavigationFromEvent.setNavigationFrom(
+                      navigateFrom: NavigateFrom.grid));
               PageNav.push(
                 context,
                 MoviesResultGridPage(
                   id: state.genresDataList[index].id.toString(),
-                  navigateFrom: NavigateFrom.genre,
                   title:
                       '${getFirstWord(state.genresDataList[index].name!)} Movies',
                 ),
