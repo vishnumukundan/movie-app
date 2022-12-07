@@ -21,7 +21,6 @@ jobs:
           FILE_NAME: "lib/domain/usecase/apiKey.dart"
           FILE_DATA: "const String apiKey = '${{secrets.API_KEY}}';"
       - run: flutter pub get
-      - run: flutter analyze
       - run: flutter build apk
       - uses: actions/upload-artifact@v1
         with:
