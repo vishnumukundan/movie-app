@@ -22,9 +22,6 @@ jobs:
           FILE_DATA: "const String apiKey = '${{secrets.API_KEY}}';"
       - run: flutter pub get
       - run: flutter build apk
-      - uses: ncipollo/release-action@v1
-        with:
-          artifacts: "build/app/outputs/apk/release/*.apk"
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
